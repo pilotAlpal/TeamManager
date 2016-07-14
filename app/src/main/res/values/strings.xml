@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">TeamManager</string>
+    <string name="nombreUsuario">Nombre Usuario</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="login">Identificarse</string>
+    <string name="signin">Regirstrarse</string>
+    <string name="equipo">Equipo</string>
+    <string name="calendario">Calendario</string>
+    <string name="clasificacion">Clasificación</string>
+    <string name="jugador">Jugador</string>
+    <string name="prox_part">Próximo partido:</string>
+    <string name="volver">Volver</string>
+    <string name="prox_rival">Próximo Rival</string>
+    <string name="confirmados">Confirmados:</string>
+    <string name="apuntarse">¿Apuntarse?</string>
+
+</resources>
