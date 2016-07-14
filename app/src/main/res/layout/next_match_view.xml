@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:name="com.movildat.lucassegarra.teammanager.PlayersFragment"
-        android:id="@+id/fragment2"
+        android:id="@+id/fr_players_list"
         tools:layout="@layout/players_view" />
 
 </LinearLayout>

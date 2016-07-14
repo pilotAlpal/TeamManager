@@ -15,6 +15,7 @@ public class NextMatchFragment extends Fragment {
     @Override public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         proxRiv=(TextView)getActivity().findViewById(R.id.eT_prox_rival);
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
