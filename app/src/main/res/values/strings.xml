@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">TeamManager</string>
+    <string name="dorsal">Dorsal</string>
+    <string name="goles">Goles</string>
+    <string name="posicion">Posición</string>
+    <string name="valoracion">Valoración</string>
+    <string name="partidos_jugados">Partidos Jugados</string>
+    <string name="asistencias">Asistencias</string>
+    <string name="puntos">Pts</string>
+    <string name="jugados">Jug</string>
+    <string name="ganados">Gan</string>
+    <string name="perdidos">Per</string>
+    <string name="empatados">Emp</string>
+    <string name="favor">GF</string>
+    <string name="contra">GC</string>
+    <string name="expulsiones"><Expulsiones></Expulsiones></string>
     <string name="nombreUsuario">Nombre Usuario</string>
     <string name="contrasena">Contraseña</string>
     <string name="login">Identificarse</string>
@@ -7,11 +21,32 @@
     <string name="equipo">Equipo</string>
     <string name="calendario">Calendario</string>
     <string name="clasificacion">Clasificación</string>
+    <string name="vacio"></string>
     <string name="jugador">Jugador</string>
     <string name="prox_part">Próximo partido:</string>
     <string name="volver">Volver</string>
     <string name="prox_rival">Próximo Rival</string>
     <string name="confirmados">Confirmados:</string>
     <string name="apuntarse">¿Apuntarse?</string>
+    <string name="primero">1º</string>
+    <string name="segundo">2º</string>
+    <string name="tercero">3º</string>
+    <string name="cuarto">4º</string>
+    <string name="quinto">5º</string>
+    <string name="sexto">6º</string>
+    <string name="septimo">7º</string>
+    <string name="octavo">8º</string>
+    <string name="noveno">9º</string>
+    <string name="decimo">10º</string>
+    <string name="undecimo">11º</string>
+    <string name="duodecimo">12º</string>
+    <string name="decimotercero">13º</string>
+    <string name="decimocuarto">14º</string>
+    <string name="decimoquinto">15º</string>
+    <string name="decimosexto">16º</string>
+    <string name="decimoseptimo">17º</string>
+    <string name="deccimooctavo">18º</string>
+    <string name="decimonoveno">19º</string>
+    <string name="vigesimo">20º</string>
 
 </resources>

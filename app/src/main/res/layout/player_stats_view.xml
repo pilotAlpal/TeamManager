@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="end|right"
     android:weightSum="1">
@@ -13,14 +15,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="@string/nombreUsuario"
             android:id="@+id/textView6" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView8" />
+            android:text="@string/vacio"
+            android:id="@+id/tNombre" />
     </TableRow>
 
     <TableRow
@@ -30,14 +32,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="@string/dorsal"
             android:id="@+id/textView9" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView10" />
+            android:text="@string/vacio"
+            android:id="@+id/tDorsal" />
     </TableRow>
 
     <TableRow
@@ -47,13 +49,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="@string/posicion"
             android:id="@+id/textView11" />
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner2" />
+            android:id="@+id/sp_pos" />
     </TableRow>
 
     <TableRow
@@ -63,7 +65,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="@string/valoracion"
             android:id="@+id/textView12" />
 
         <RatingBar
@@ -83,7 +85,7 @@
             android:layout_column="0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="@string/goles"
             android:id="@+id/textView13" />
 
 
@@ -91,8 +93,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView14"
+            android:text="@string/vacio"
+            android:id="@+id/tv_goles"
             android:layout_row="0"
             android:layout_column="1" />
 
@@ -101,7 +103,7 @@
             android:layout_column="0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="@string/asistencias"
             android:id="@+id/textView18" />
 
         <TextView
@@ -109,22 +111,22 @@
             android:layout_column="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView20" />
+            android:text="@string/vacio"
+            android:id="@+id/tv_asistencias" />
 
         <TextView
             android:layout_row="2"
             android:layout_column="0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="@string/partidos_jugados"
             android:id="@+id/textView17" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView16"
+            android:text="@string/vacio"
+            android:id="@+id/tv_jugados"
             android:layout_row="2"
             android:layout_column="1" />
 
@@ -132,7 +134,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="@string/expulsiones"
             android:id="@+id/textView15"
             android:layout_row="3"
             android:layout_column="0" />
@@ -140,8 +142,8 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView5"
+            android:text="@string/vacio"
+            android:id="@+id/tv_expulsiones"
             android:layout_row="3"
             android:layout_column="1" />
 

@@ -26,12 +26,12 @@ public class MenuActivity extends Activity {
     }
 
     public void statsJugador(View view){
-        //pasar nombre del jugador
-        fInfo.showPlayerStats();
+        getFragmentManager().beginTransaction().add(R.id.f_info,new PlayerStatsFragment()).commit();
     }
     public void statsEquipo(View view){
         //pasar equipo
-        fInfo.showTeamStats();
+        getFragmentManager().beginTransaction().add(R.id.f_info,new TeamStatsFragment()).commit();
+        // fInfo.showTeamStats();
     }
     public void calendario(View view){
         //pasar equipo
@@ -39,7 +39,7 @@ public class MenuActivity extends Activity {
     }
     public void clasificacion(View view){
         //pasar equipo
-        fInfo.showClasif();
+        getFragmentManager().beginTransaction().add(R.id.f_info,new ClasificStatsFragment()).commit();
     }
     public void volver(View view){
         finish();

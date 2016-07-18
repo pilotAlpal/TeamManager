@@ -22,13 +22,8 @@ public class InfoFragment extends Fragment {
 
         return inflater.inflate(R.layout.info_view, container, false);
     }
-    public void showPlayerStats(){
-        getFragmentManager().beginTransaction().add(android.R.id.content,new PlayerStatsFragment()).commit();
-    }
-    public void showTeamStats(){
-        Intent teamStats=new Intent(getActivity(),TeamStatsFragment.class);
-        startActivity(teamStats);
-    }
+
+    //¿Se puede ejecutar un intent dentro de un fragment?
     public void showCalendar(){
         Uri.Builder builder=CalendarContract.CONTENT_URI.buildUpon();
         builder.appendPath("time");

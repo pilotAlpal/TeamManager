@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="posiciones">
+        <item>Portero</item>
+        <item>Central</item>
+        <item>Lateral</item>
+        <item>Medio</item>
+        <item>Extremo</item>
+        <item>Media Punta</item>
+        <item>Delantero</item>
+    </string-array>
+</resources>
