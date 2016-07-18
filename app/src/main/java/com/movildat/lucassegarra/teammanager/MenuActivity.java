@@ -1,6 +1,7 @@
 package com.movildat.lucassegarra.teammanager;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.View;
 
