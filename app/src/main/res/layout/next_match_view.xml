@@ -24,14 +24,11 @@
             android:text="@string/confirmados"
             android:id="@+id/textView7" />
 
-        <EditText
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:enabled="false"
-            android:text="0"
-            android:ems="2"
-            android:id="@+id/editText2" />
+            android:text="@string/vacio"
+            android:id="@+id/tv_n_jugadores" />
 
     </LinearLayout>
 

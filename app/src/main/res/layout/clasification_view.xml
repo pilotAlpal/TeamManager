@@ -3,6 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--Cambiar los dos linearLayout por un RecyclerView con GridLayoutManager-->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -215,7 +216,7 @@
     </LinearLayout>
 
     <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="281dp"
+        android:layout_height="501dp"
         android:layout_gravity="center_horizontal"></GridLayout>
 </LinearLayout>

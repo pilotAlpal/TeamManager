@@ -15,7 +15,9 @@ public class PlayersFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        listView=(ListView)getActivity().findViewById(R.id.lv_players);
+        //referenciar a objeto recyClerView construir un adapter
+        //e inicializarlo con dicho adapter y con un LinearLayoutMangaer
+        //RecyclerView=(RecyclerView)getActivity().findViewById(R.id.rv_players);
         //llenar listView con lista de los jugadores del equipo
     }
     @Override

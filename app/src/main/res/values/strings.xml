@@ -25,9 +25,10 @@
     <string name="jugador">Jugador</string>
     <string name="prox_part">Próximo partido:</string>
     <string name="volver">Volver</string>
-    <string name="prox_rival">Próximo Rival</string>
+    <string name="prox_rival">Próximo Rival:</string>
     <string name="confirmados">Confirmados:</string>
     <string name="apuntarse">¿Apuntarse?</string>
+    <string name="abre_calendario">Abrir calendario..</string>
     <string name="primero">1º</string>
     <string name="segundo">2º</string>
     <string name="tercero">3º</string>
@@ -48,5 +49,6 @@
     <string name="deccimooctavo">18º</string>
     <string name="decimonoveno">19º</string>
     <string name="vigesimo">20º</string>
+
 
 </resources>

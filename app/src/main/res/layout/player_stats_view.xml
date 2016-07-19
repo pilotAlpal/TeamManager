@@ -58,9 +58,11 @@
             android:id="@+id/sp_pos" />
     </TableRow>
 
-    <TableRow
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/tr_rating">
 
         <TextView
             android:layout_width="wrap_content"
@@ -69,10 +71,10 @@
             android:id="@+id/textView12" />
 
         <RatingBar
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/ratingBar" />
-    </TableRow>
+    </LinearLayout>
 
     <GridLayout
         android:layout_width="match_parent"
