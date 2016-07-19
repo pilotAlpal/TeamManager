@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.provider.CalendarContract;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 
@@ -20,19 +22,22 @@ public class MenuActivity extends Activity {
 
     private InfoFragment fInfo;
     private OptionsFragment fOps;
-    //private RecyclerView myRV;
-
+    private RecyclerView myRV;
+    private RecyclerView.Adapter myAdapter;
+    private RecyclerView.LayoutManager myLayoutManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        /*
-            crear clase MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
-            inicializar recyclerView.Adapter
-            inicializar LinearLayoutManager
-            inicializar recyclerView,
-            leer y guardar info del jugador:nombre
+        myRV=(RecyclerView) findViewById(R.id.rv_players);
+        myRV.setHasFixedSize(true);
+        myLayoutManager=new LinearLayoutManager(this);
+        myRV.setLayoutManager(myLayoutManager);
+        PlayersListAdapter adapter=new PlayersListAdapter(null);
+        myRV.setAdapter(myAdapter);
+
+        /*    leer y guardar info del jugador:nombre
                                             lista<equipos>
          */
         //comprobar que haga falta referenciar a los dos fragmentos
