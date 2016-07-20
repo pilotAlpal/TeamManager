@@ -22,21 +22,13 @@ public class MenuActivity extends Activity {
 
   //  private InfoFragment fInfo;
   //  private OptionsFragment fOps;
-    private RecyclerView myRV;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager myLayoutManager;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        myRV=(RecyclerView) findViewById(R.id.rv_players);
-        myRV.setHasFixedSize(true);
-        myLayoutManager=new LinearLayoutManager(this);
-        myRV.setLayoutManager(myLayoutManager);
-       // String[] equipoInvencible=getResources().getStringArray(R.array.equipo_fantasma);
-        String[] otroEquipo={"Albelda","Baraja"};
-        adapter=new PlayersListAdapter(otroEquipo);
+
 
        // myRV.setAdapter(adapter);
 
