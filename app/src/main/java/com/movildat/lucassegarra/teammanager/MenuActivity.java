@@ -23,7 +23,7 @@ public class MenuActivity extends Activity {
   //  private InfoFragment fInfo;
   //  private OptionsFragment fOps;
     private RecyclerView myRV;
-    private RecyclerView.Adapter myAdapter;
+    private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager myLayoutManager;
 
     @Override
@@ -34,9 +34,13 @@ public class MenuActivity extends Activity {
         myRV.setHasFixedSize(true);
         myLayoutManager=new LinearLayoutManager(this);
         myRV.setLayoutManager(myLayoutManager);
-        PlayersListAdapter adapter=new PlayersListAdapter(null);
-        myRV.setAdapter(myAdapter);
-        adapter.fillList(getResources().getStringArray(R.array.equipo_fantasma));
+       // String[] equipoInvencible=getResources().getStringArray(R.array.equipo_fantasma);
+        String[] otroEquipo={"Albelda","Baraja"};
+        adapter=new PlayersListAdapter(otroEquipo);
+
+       // myRV.setAdapter(adapter);
+
+      //  adapter.fillList(getResources().getStringArray(R.array.equipo_fantasma));
 
     }
 
