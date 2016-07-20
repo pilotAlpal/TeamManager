@@ -29,6 +29,7 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
+        //¿usar una nueva vista o usar players view?
         View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.next_match_availables_view,parent,false);
         // set the view's size, margins, paddings and layout parameters
 
