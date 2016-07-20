@@ -13,20 +13,17 @@ import android.widget.Spinner;
  */
 public class PlayerStatsFragment extends Fragment {
     private Spinner posChooser;
-    private ArrayAdapter<String> adapter;
+
     @Override public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-
-        //¿por qué se inicializa posChooser a null?
-        String[] pos= getResources().getStringArray(R.array.posiciones);
-        adapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,pos);
-       //descomentar linea de abajo cuandom se consiga inicializar bien el Spinner
 
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.player_stats_view, container, false);
+        String[] pos= getResources().getStringArray(R.array.posiciones);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,pos);
+        View v=inflater.inflate(R.layout.player_stats_view,container,false);
         posChooser=(Spinner) v.findViewById(R.id.sp_pos);
         posChooser.setAdapter(adapter);
         return v;

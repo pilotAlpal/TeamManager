@@ -20,10 +20,10 @@ import android.view.View;
 public class MenuActivity extends Activity {
 
 
-    private InfoFragment fInfo;
-    private OptionsFragment fOps;
+  //  private InfoFragment fInfo;
+  //  private OptionsFragment fOps;
     private RecyclerView myRV;
-    private RecyclerView.Adapter myAdapter;
+    private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager myLayoutManager;
 
     @Override
@@ -34,15 +34,14 @@ public class MenuActivity extends Activity {
         myRV.setHasFixedSize(true);
         myLayoutManager=new LinearLayoutManager(this);
         myRV.setLayoutManager(myLayoutManager);
-        PlayersListAdapter adapter=new PlayersListAdapter(null);
-        myRV.setAdapter(myAdapter);
+       // String[] equipoInvencible=getResources().getStringArray(R.array.equipo_fantasma);
+        String[] otroEquipo={"Albelda","Baraja"};
+        adapter=new PlayersListAdapter(otroEquipo);
 
-        /*    leer y guardar info del jugador:nombre
-                                            lista<equipos>
-         */
-        //comprobar que haga falta referenciar a los dos fragmentos
-        fInfo=(InfoFragment) getFragmentManager().findFragmentById(R.id.f_info);
-        fOps=(OptionsFragment)getFragmentManager().findFragmentById(R.id.f_ops);
+       // myRV.setAdapter(adapter);
+
+      //  adapter.fillList(getResources().getStringArray(R.array.equipo_fantasma));
+
     }
 
     public void statsJugador(View view){
