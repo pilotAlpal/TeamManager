@@ -21,11 +21,28 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
         }
     }
 
+
+
     public PlayersListAdapter(String[] data){
-        mDataSet=data;
+        if(data!=null)
+            mDataSet=data;
+        else
+            mDataSet=new String[11];
     }
 
+    /*
+    public void addItem(int pos){
+        mDataSet[pos]=new
+    }
+    */
 
+    public void fillList(String[] equipoFantasma){
+        for(int i=0;i<equipoFantasma.length;i++){
+            mDataSet[i]=equipoFantasma[i];
+            notifyItemInserted(i);
+        }
+
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){

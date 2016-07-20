@@ -9,4 +9,17 @@
         <item>Media Punta</item>
         <item>Delantero</item>
     </string-array>
+    <string-array name="equipo_fantasma">
+        <item>Cañizares</item>
+        <item>Angloma</item>
+        <item>Ayala</item>
+        <item>Pelegrino</item>
+        <item>Carboni</item>
+        <item>Albelda</item>
+        <item>Baraja</item>
+        <item>Rufete</item>
+        <item>Vicente</item>
+        <item>Aimar</item>
+        <item>Mista</item>
+    </string-array>
 </resources>
