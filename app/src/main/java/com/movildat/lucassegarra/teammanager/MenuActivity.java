@@ -1,17 +1,8 @@
 package com.movildat.lucassegarra.teammanager;
 
-
 import android.app.Activity;
-import android.content.ContentUris;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.provider.CalendarContract;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-
 
 /**
  * Created by lucas.segarra on 14/07/2016.
@@ -19,56 +10,37 @@ import android.view.View;
 
 public class MenuActivity extends Activity {
 
+        InfoFragment fInfo;
+        OptionsFragment fOps;
 
-    private InfoFragment fInfo;
-    private OptionsFragment fOps;
-    private RecyclerView myRV;
-    private RecyclerView.Adapter myAdapter;
-    private RecyclerView.LayoutManager myLayoutManager;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
-        myRV=(RecyclerView) findViewById(R.id.rv_players);
-        myRV.setHasFixedSize(true);
-        myLayoutManager=new LinearLayoutManager(this);
-        myRV.setLayoutManager(myLayoutManager);
-        PlayersListAdapter adapter=new PlayersListAdapter(null);
-        myRV.setAdapter(myAdapter);
-
-        /*    leer y guardar info del jugador:nombre
+        @Override
+        public void onCreate(Bundle savedInstanceState){
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_menu);
+        /*leer y guardar info del jugador:
+                                            nombre
                                             lista<equipos>
          */
-        //comprobar que haga falta referenciar a los dos fragmentos
         fInfo=(InfoFragment) getFragmentManager().findFragmentById(R.id.f_info);
         fOps=(OptionsFragment)getFragmentManager().findFragmentById(R.id.f_ops);
     }
 
     public void statsJugador(View view){
-        //pasar nombre del jugador (y equipo) para realizar la consulta
-        getFragmentManager().beginTransaction().replace(R.id.f_info,new PlayerStatsFragment()).commit();
+        //pasar nombre del jugador
+        fInfo.showPlayerStats();
     }
     public void statsEquipo(View view){
         //pasar equipo
-        getFragmentManager().beginTransaction().replace(R.id.f_info,new TeamStatsFragment()).commit();
+        fInfo.showTeamStats();
     }
     public void calendario(View view){
         //pasar equipo
-        getFragmentManager().beginTransaction().replace(R.id.f_info,new EventsFragment()).commit();
+        fInfo.showCalendar();
     }
     public void clasificacion(View view){
         //pasar equipo
-        getFragmentManager().beginTransaction().replace(R.id.f_info,new ClasificStatsFragment()).commit();
+        fInfo.showClasif();
     }
-    public void showCalendar(View v){
-        Uri.Builder builder= CalendarContract.CONTENT_URI.buildUpon();
-        builder.appendPath("time");
-        ContentUris.appendId(builder, SystemClock.currentThreadTimeMillis());
-        Intent calendarIntent=new Intent(Intent.ACTION_VIEW).setData(builder.build());
-        this.startActivity(calendarIntent);
-    }
-
     public void volver(View view){
         finish();
     }
