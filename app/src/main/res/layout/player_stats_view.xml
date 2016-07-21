@@ -7,6 +7,18 @@
     android:gravity="end|right"
     android:weightSum="1">
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/aimar"
+            android:id="@+id/imageView2"
+            android:layout_gravity="center_horizontal|top" />
+    </FrameLayout>
+
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -71,9 +83,12 @@
             android:id="@+id/textView12" />
 
         <RatingBar
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ratingBar" />
+            android:id="@+id/ratingBar"
+            android:clickable="false"
+            android:numStars="5"
+             />
     </LinearLayout>
 
     <GridLayout

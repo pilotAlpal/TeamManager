@@ -5,7 +5,7 @@
     android:orientation="vertical"
     tools:context=".EventsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
 
     <Button
         android:layout_width="wrap_content"
@@ -14,6 +14,9 @@
         android:id="@+id/b_abr_cal"
         android:onClick="showCalendar"
         android:layout_gravity="center_horizontal" />
+
+
+
 
     <!--Agregar RecyclerView con info de los 5 próximos días-->
 

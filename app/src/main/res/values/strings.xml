@@ -19,6 +19,12 @@
     <string name="login">Identificarse</string>
     <string name="signin">Regirstrarse</string>
     <string name="equipo">Equipo</string>
+    <string name="captain">Capitán</string>
+    <string name="top_scorer">Pichichi</string>
+    <string name="best_evaluated">Mejor valorado</string>
+    <string name="team_records">Récords del grupo</string>
+    <string name="pending">Pendientes</string>
+    <string name="plantilla">Plantilla</string>
     <string name="calendario">Calendario</string>
     <string name="clasificacion">Clasificación</string>
     <string name="vacio"></string>

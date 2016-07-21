@@ -20,20 +20,12 @@ import android.view.View;
 public class MenuActivity extends Activity {
 
 
-  //  private InfoFragment fInfo;
-  //  private OptionsFragment fOps;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
-
-       // myRV.setAdapter(adapter);
-
-      //  adapter.fillList(getResources().getStringArray(R.array.equipo_fantasma));
-
     }
 
     public void statsJugador(View view){
