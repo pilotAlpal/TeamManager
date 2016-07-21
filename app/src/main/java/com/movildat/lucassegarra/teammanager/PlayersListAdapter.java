@@ -20,6 +20,11 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
 //
             mTextView=tView;
         }
+        public ViewHolder(View v) {
+            super(v);
+            mTextView =(TextView) v.findViewById(R.id.tv_next_player);
+
+        }
     }
 
 
@@ -48,9 +53,9 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
     public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
         //¿usar una nueva vista o usar players view?
         View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.next_match_availables_view,parent,false);
-        TextView textView= (TextView) v.findViewById(R.id.tv_next_player);
+
         // set the view's size, margins, paddings and layout parameters
-        return new ViewHolder(textView);
+        return new ViewHolder(v);
 
     }
 

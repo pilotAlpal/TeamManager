@@ -17,13 +17,14 @@ public class NextMatchFragment extends Fragment {
     private RecyclerView myRV;
     @Override public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        proxRiv=(TextView)getActivity().findViewById(R.id.eT_prox_rival);
+
 
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.next_match_view, container, false);
+        proxRiv=(TextView)v.findViewById(R.id.eT_prox_rival);
         myRV=(RecyclerView) v.findViewById(R.id.rv_players_layout);
         myRV.setHasFixedSize(true);
         RecyclerView.LayoutManager  myLayoutManager=new LinearLayoutManager(getActivity());
@@ -32,6 +33,6 @@ public class NextMatchFragment extends Fragment {
         RecyclerView.Adapter adapter=new PlayersListAdapter(equipoInvencible);
         myRV.setAdapter(adapter);
         //return v;
-        return inflater.inflate(R.layout.next_match_view, container, false);
+        return v;
     }
 }
