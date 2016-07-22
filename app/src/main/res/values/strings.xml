@@ -25,9 +25,9 @@
     <string name="team_records">Récords del grupo</string>
     <string name="pending">Pendientes</string>
     <string name="plantilla">Plantilla</string>
-    <string name="calendario">Calendario</string>
-    <string name="clasificacion">Clasificación</string>
-    <string name="vacio"></string>
+    <string name="calendario">Calendar.</string>
+    <string name="clasificacion">Clasific.</string>
+    <string name="vacio">-</string>
     <string name="jugador">Jugador</string>
     <string name="prox_part">Próximo partido:</string>
     <string name="volver">Volver</string>
@@ -55,6 +55,11 @@
     <string name="deccimooctavo">18º</string>
     <string name="decimonoveno">19º</string>
     <string name="vigesimo">20º</string>
+    <string name="tb_apuntarse">Acudo</string>
+    <string name="tb_borrarse">Falto</string>
+    <string name="bayern">Babiera</string>
+    <string name="fecha">Fecha</string>
+
 
 
 </resources>

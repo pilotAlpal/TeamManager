@@ -8,10 +8,22 @@
     tools:showIn="@layout/options_view">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/prox_part"
+        android:onClick="displayNextMatchInfo"
+        android:id="@+id/textView5" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/eT_prox_rival"
         android:text="@string/prox_rival"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eT_prox_rival_nombre"
+        android:text="@string/bayern"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,14 +45,11 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/apuntarse"/>
     <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/apuntarse"
+        android:textOff="@string/tb_borrarse"
+        android:textOn="@string/tb_apuntarse"
         android:id="@+id/toggleButton" />
 
     <android.support.v7.widget.RecyclerView

@@ -19,13 +19,16 @@ import android.view.View;
 
 public class MenuActivity extends Activity {
 
-
+    private OptionsFragment optionsFragment;
+    private InfoFragment infoFragment;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        optionsFragment=(OptionsFragment)getFragmentManager().findFragmentById(R.id.f_ops);
+        infoFragment=(InfoFragment)getFragmentManager().findFragmentById((R.id.f_info));
     }
 
     public void statsJugador(View view){
@@ -50,6 +53,11 @@ public class MenuActivity extends Activity {
         ContentUris.appendId(builder, SystemClock.currentThreadTimeMillis());
         Intent calendarIntent=new Intent(Intent.ACTION_VIEW).setData(builder.build());
         this.startActivity(calendarIntent);
+    }
+
+    public void displayNextMatchInfo(View v){
+        getFragmentManager().beginTransaction().replace(R.id.f_info,new NextMatchFragment()).commit();
+        optionsFragment.hideNextMatchInfo();
     }
 
     public void volver(View view){

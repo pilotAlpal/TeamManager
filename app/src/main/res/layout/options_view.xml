@@ -5,10 +5,7 @@
     android:layout_height="match_parent"
     tools:showIn="@layout/activity_menu">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView" >
+
 
         <LinearLayout
             android:orientation="vertical"
@@ -62,11 +59,7 @@
                 android:onClick="volver"
                 android:id="@+id/b_volver" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/prox_part"
-                android:id="@+id/textView5" />
+
 
             <fragment
                 android:layout_width="match_parent"
@@ -75,5 +68,5 @@
                 android:id="@+id/fr_next_match"
                 tools:layout="@layout/next_match_view" />
         </LinearLayout>
-    </ScrollView>
+
 </LinearLayout>
