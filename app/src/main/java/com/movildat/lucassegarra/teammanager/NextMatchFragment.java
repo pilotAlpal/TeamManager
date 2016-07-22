@@ -1,6 +1,7 @@
 package com.movildat.lucassegarra.teammanager;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -35,6 +36,7 @@ public class NextMatchFragment extends Fragment {
         return v;
     }
     public void hideNextMatchInfo(){
-        getFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment());
+        FragmentManager myFM=getFragmentManager();
+        myFM.beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
     }
 }

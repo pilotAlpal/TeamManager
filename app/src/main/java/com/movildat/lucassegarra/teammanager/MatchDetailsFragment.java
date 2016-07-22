@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 public class MatchDetailsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceSate){
-
+        super.onCreate(savedInstanceSate);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup,Bundle savedInstanceState){

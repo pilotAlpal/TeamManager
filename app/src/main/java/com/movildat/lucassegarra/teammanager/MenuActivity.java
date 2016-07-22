@@ -58,6 +58,7 @@ public class MenuActivity extends Activity {
     public void displayNextMatchInfo(View v){
         getFragmentManager().beginTransaction().replace(R.id.f_info,new NextMatchFragment()).commit();
         optionsFragment.hideNextMatchInfo();
+        //  getFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
     }
 
     public void volver(View view){

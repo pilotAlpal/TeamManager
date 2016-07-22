@@ -2,6 +2,8 @@ package com.movildat.lucassegarra.teammanager;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +13,25 @@ import android.view.ViewGroup;
  */
 public class TeamStatsFragment extends Fragment {
 
+    private RecyclerView myRV;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        return inflater.inflate(R.layout.team_stats_view,container,false);
+        View v= inflater.inflate(R.layout.team_stats_view,container,false);
+        myRV=(RecyclerView) v.findViewById(R.id.rv_all_players_layout);
+        myRV.setHasFixedSize(true);
+        RecyclerView.LayoutManager mLayoutManager=new LinearLayoutManager(getActivity());
+        myRV.setLayoutManager(mLayoutManager);
+        String[] titulares=getResources().getStringArray(R.array.equipo_fantasma);
+        String[] suplentes=getResources().getStringArray(R.array.equipo_fantasma_suplentes);
+        String[] todos=new String[titulares.length+suplentes.length];
+        for (int i=0;i<titulares.length;i++)
+            todos[i]=titulares[i];
+        for(int k=titulares.length;k<todos.length;k++)
+            todos[k]=suplentes[k-titulares.length];
+        RecyclerView.Adapter adapter=new PlayersListAdapter(todos);
+        myRV.setAdapter(adapter);
+        return v;
     }
 
 }
