@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/myPurpleGrey"
+    tools:context="com.movildat.lucassegarra.teammanager.EditProfileFragment"
+    tools:showIn="@layout/player_stats_view">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cambiaFoto"
+            android:id="@+id/b_cambia_foto"
+            android:layout_gravity="left|center_vertical" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cambiarPos"
+            android:id="@+id/button"
+            android:layout_gravity="left|center_vertical" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sp_change_pos"
+            android:layout_gravity="left|bottom" />
+    </LinearLayout>
+
+

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,10 +8,22 @@
     tools:showIn="@layout/options_view">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/prox_part"
+        android:onClick="displayNextMatchInfo"
+        android:id="@+id/textView5" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/eT_prox_rival"
         android:text="@string/prox_rival"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eT_prox_rival_nombre"
+        android:text="@string/bayern"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,21 +45,18 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/apuntarse"/>
     <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/apuntarse"
+        android:textOff="@string/tb_borrarse"
+        android:textOn="@string/tb_apuntarse"
         android:id="@+id/toggleButton" />
 
-    <fragment
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:name="com.movildat.lucassegarra.teammanager.PlayersFragment"
-        android:id="@+id/fr_players_list"
-        tools:layout="@layout/players_view" />
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv_players_layout"
+        android:scrollbars="vertical"/>
+
 
 </LinearLayout>

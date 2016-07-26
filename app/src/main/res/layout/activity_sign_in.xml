@@ -39,11 +39,25 @@
         android:layout_height="wrap_content"
         android:id="@+id/et_equipo" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/signin"
-        android:onClick="signIn"
-        android:id="@+id/b_si_signin"
-        android:layout_gravity="center_horizontal" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signin"
+            android:onClick="signIn"
+            android:id="@+id/b_si_signin"
+            android:layout_gravity="center_horizontal" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:id="@+id/cb_sign_and_log"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
 </LinearLayout>

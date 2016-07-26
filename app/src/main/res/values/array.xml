@@ -22,4 +22,13 @@
         <item>Aimar</item>
         <item>Mista</item>
     </string-array>
+    <string-array name="equipo_fantasma_suplentes">
+        <item>Palop</item>
+        <item>Djukic</item>
+        <item>Fabio Aurelio</item>
+        <item>Marchena</item>
+        <item>Angulo</item>
+        <item>Juan Sánchez</item>
+        <item>Kily Gónzalez</item>
+    </string-array>
 </resources>
