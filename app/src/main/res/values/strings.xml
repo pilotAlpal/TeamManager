@@ -23,6 +23,13 @@
     <string name="cambiaFoto">Cambiar Foto</string>
     <string name="llamar">Llamar</string>
     <string name="cambiarPos">Cambiar Posición</string>
+    <string name="crearEvento">Crear Evento</string>
+    <string name="titulo">Título</string>
+    <string name="localizacion">Localización</string>
+    <string name="comienzo">Comienzo</string>
+    <string name="finali">Final</string>
+    <string name="guardar">Guardar</string>
+    <string name="duracion">Duración(Hs)</string>
     <string name="top_scorer">Pichichi</string>
     <string name="best_evaluated">Mejor valorado</string>
     <string name="team_records">Récords del grupo</string>

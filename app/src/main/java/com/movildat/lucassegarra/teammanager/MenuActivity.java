@@ -4,6 +4,7 @@ package com.movildat.lucassegarra.teammanager;
 import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Intent;
+import android.icu.util.GregorianCalendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -11,6 +12,10 @@ import android.provider.CalendarContract;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
+
+import java.util.Date;
 
 
 /**
@@ -53,6 +58,34 @@ public class MenuActivity extends Activity {
         ContentUris.appendId(builder, SystemClock.currentThreadTimeMillis());
         Intent calendarIntent=new Intent(Intent.ACTION_VIEW).setData(builder.build());
         this.startActivity(calendarIntent);
+    }
+
+    public void addEvent(View v){
+        setContentView(R.layout.add_event);
+    }
+
+    public void registraEvento(View v){
+        EditText etNomEvento=(EditText) v.findViewById(R.id.et_ev_titulo);
+        String nomEventto=etNomEvento.getText().toString();
+        EditText etLugEvento=(EditText) v.findViewById(R.id.et_ev_lug);
+        String lugEvent=etLugEvento.getText().toString();
+        DatePicker dpIni=(DatePicker) v.findViewById(R.id.dp_ini);
+        DatePicker dpFin=(DatePicker) v.findViewById(R.id.dp_fin);
+        GregorianCalendar calendarBeg=new GregorianCalendar(dpIni.getYear(),
+                dpIni.getMonth(),dpIni.getDayOfMonth());
+        Date begin=calendarBeg.getTime();
+        GregorianCalendar caledarEnd=new GregorianCalendar(dpFin.getYear(),
+                dpFin.getMonth(),dpFin.getDayOfMonth());
+        Date end=caledarEnd.getTime();
+
+        Intent addCalEvIntent=new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.Events.TITLE,nomEventto).putExtra(CalendarContract.Events.EVENT_LOCATION,lugEvent)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,begin).putExtra(CalendarContract.EXTRA_EVENT_END_TIME,end);
+
+        if ((addCalEvIntent.resolveActivity(getPackageManager()))!=null){
+            startActivity(addCalEvIntent);
+        }
+        setContentView(R.layout.activity_menu);
     }
 
     public void displayNextMatchInfo(View v){
