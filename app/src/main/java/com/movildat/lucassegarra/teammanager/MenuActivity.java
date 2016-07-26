@@ -9,8 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.provider.CalendarContract;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -65,22 +63,36 @@ public class MenuActivity extends Activity {
     }
 
     public void registraEvento(View v){
-        EditText etNomEvento=(EditText) v.findViewById(R.id.et_ev_titulo);
+        setContentView(R.layout.add_event);
+        EditText etNomEvento=(EditText) findViewById(R.id.et_ev_titulo);
         String nomEventto=etNomEvento.getText().toString();
-        EditText etLugEvento=(EditText) v.findViewById(R.id.et_ev_lug);
+        EditText etLugEvento=(EditText) findViewById(R.id.et_ev_lug);
         String lugEvent=etLugEvento.getText().toString();
-        DatePicker dpIni=(DatePicker) v.findViewById(R.id.dp_ini);
-        DatePicker dpFin=(DatePicker) v.findViewById(R.id.dp_fin);
-        GregorianCalendar calendarBeg=new GregorianCalendar(dpIni.getYear(),
-                dpIni.getMonth(),dpIni.getDayOfMonth());
-        Date begin=calendarBeg.getTime();
-        GregorianCalendar caledarEnd=new GregorianCalendar(dpFin.getYear(),
-                dpFin.getMonth(),dpFin.getDayOfMonth());
-        Date end=caledarEnd.getTime();
+        DatePicker dpIni=(DatePicker) findViewById(R.id.dp_ini);
+        DatePicker dpFin=(DatePicker) findViewById(R.id.dp_fin);
+        Intent addCalEvIntent = null;
+        GregorianCalendar calendarBeg= null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            calendarBeg = new GregorianCalendar(dpIni.getYear(),
+                    dpIni.getMonth(),dpIni.getDayOfMonth());
+            Date begin=calendarBeg.getTime();
+            GregorianCalendar caledarEnd=new GregorianCalendar(dpFin.getYear(),
+                    dpFin.getMonth(),dpFin.getDayOfMonth());
+            Date end=caledarEnd.getTime();
+            addCalEvIntent=new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI)
+                    .putExtra(CalendarContract.Events.TITLE,nomEventto).putExtra(CalendarContract.Events.EVENT_LOCATION,lugEvent)
+                    .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,begin).putExtra(CalendarContract.EXTRA_EVENT_END_TIME,end);
 
-        Intent addCalEvIntent=new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI)
-                .putExtra(CalendarContract.Events.TITLE,nomEventto).putExtra(CalendarContract.Events.EVENT_LOCATION,lugEvent)
-                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,begin).putExtra(CalendarContract.EXTRA_EVENT_END_TIME,end);
+        } else {
+            Date fechaIni = new Date(dpIni.getCalendarView().getDate());
+            Date fechaFin = new Date(dpFin.getCalendarView().getDate());
+            addCalEvIntent=new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI)
+                    .putExtra(CalendarContract.Events.TITLE,nomEventto).putExtra(CalendarContract.Events.EVENT_LOCATION,lugEvent)
+                    .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,fechaIni).putExtra(CalendarContract.EXTRA_EVENT_END_TIME,fechaFin);
+
+        }
+
+
 
         if ((addCalEvIntent.resolveActivity(getPackageManager()))!=null){
             startActivity(addCalEvIntent);
