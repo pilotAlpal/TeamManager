@@ -3,46 +3,17 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|top">
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New RadioButton"
-                android:id="@+id/radioButton" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New RadioButton"
-                android:id="@+id/radioButton2" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New RadioButton"
-                android:id="@+id/radioButton3" />
-        </RadioGroup>
-    </FrameLayout>
-
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/scrollView"
         android:layout_gravity="center" >
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:rowCount="5"
+            android:layout_height="match_parent"
+            android:rowCount="6"
             android:columnCount="2">
 
 
@@ -131,19 +102,44 @@
                 android:layout_column="1"
                 android:layout_gravity="bottom|right"/>
 
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="5"
+                android:layout_column="0">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/eventual"
+                    android:id="@+id/radioButton4" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mensual"
+                    android:id="@+id/radioButton5" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/semanal"
+                    android:id="@+id/radioButton6" />
+            </RadioGroup>
+
+            <Button
+                android:layout_column="1"
+                android:layout_row="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/guardar"
+                android:id="@+id/b_ev_guard"
+                android:onClick="registraEvento"
+                android:layout_gravity="center_horizontal|bottom" />
+
 
         </GridLayout>
 
-
     </ScrollView>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/guardar"
-        android:id="@+id/b_ev_guard"
-        android:onClick="registraEvento"
-        android:layout_gravity="center_horizontal|bottom" />
-
 
 </FrameLayout>

@@ -69,7 +69,10 @@
     <string name="tb_borrarse">Falto</string>
     <string name="bayern">Babiera</string>
     <string name="fecha">Fecha</string>
-
+    <string name="eventual">Eventual</string>
+    <string name="mensual">Mensual</string>
+    <string name="semanal">Semanal</string>
+    <string name="anadido">Añadido</string>
 
 
 

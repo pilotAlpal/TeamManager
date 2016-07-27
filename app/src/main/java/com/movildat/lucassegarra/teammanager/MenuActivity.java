@@ -58,47 +58,12 @@ public class MenuActivity extends Activity {
         this.startActivity(calendarIntent);
     }
 
+    //meter en Fragment?
     public void addEvent(View v){
-        setContentView(R.layout.add_event);
+        Intent registerEventIntent = new Intent(MenuActivity.this,RegisterEventActivity.class);
+        this.startActivity(registerEventIntent);
     }
 
-    public void registraEvento(View v){
-        setContentView(R.layout.add_event);
-        EditText etNomEvento=(EditText) findViewById(R.id.et_ev_titulo);
-        String nomEventto=etNomEvento.getText().toString();
-        EditText etLugEvento=(EditText) findViewById(R.id.et_ev_lug);
-        String lugEvent=etLugEvento.getText().toString();
-        DatePicker dpIni=(DatePicker) findViewById(R.id.dp_ini);
-        DatePicker dpFin=(DatePicker) findViewById(R.id.dp_fin);
-        Intent addCalEvIntent = null;
-        GregorianCalendar calendarBeg= null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            calendarBeg = new GregorianCalendar(dpIni.getYear(),
-                    dpIni.getMonth(),dpIni.getDayOfMonth());
-            Date begin=calendarBeg.getTime();
-            GregorianCalendar caledarEnd=new GregorianCalendar(dpFin.getYear(),
-                    dpFin.getMonth(),dpFin.getDayOfMonth());
-            Date end=caledarEnd.getTime();
-            addCalEvIntent=new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI)
-                    .putExtra(CalendarContract.Events.TITLE,nomEventto).putExtra(CalendarContract.Events.EVENT_LOCATION,lugEvent)
-                    .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,begin).putExtra(CalendarContract.EXTRA_EVENT_END_TIME,end);
-
-        } else {
-            Date fechaIni = new Date(dpIni.getCalendarView().getDate());
-            Date fechaFin = new Date(dpFin.getCalendarView().getDate());
-            addCalEvIntent=new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI)
-                    .putExtra(CalendarContract.Events.TITLE,nomEventto).putExtra(CalendarContract.Events.EVENT_LOCATION,lugEvent)
-                    .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,fechaIni).putExtra(CalendarContract.EXTRA_EVENT_END_TIME,fechaFin);
-
-        }
-
-
-
-        if ((addCalEvIntent.resolveActivity(getPackageManager()))!=null){
-            startActivity(addCalEvIntent);
-        }
-        setContentView(R.layout.activity_menu);
-    }
 
     public void displayNextMatchInfo(View v){
         getFragmentManager().beginTransaction().replace(R.id.f_info,new NextMatchFragment()).commit();
