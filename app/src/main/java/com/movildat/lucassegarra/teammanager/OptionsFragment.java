@@ -27,7 +27,6 @@ public class OptionsFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.options_view, container, false);
-        FragmentManager fM=getFragmentManager();
         nextMatchFragment=(NextMatchFragment) this.getChildFragmentManager().findFragmentById(R.id.fr_next_match);
         return v;
 
@@ -35,7 +34,8 @@ public class OptionsFragment extends Fragment{
     public void hideNextMatchInfo(){
         //ninguna de estas 3 llamadas funciona cómo quiero, es decir no se oculta el nextMatchFragment dentro del optionsFragment
         //this.getChildFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
-        getFragmentManager().beginTransaction().replace(nextMatchFragment.getId(),new MatchDetailsFragment()).commit();
-       // nextMatchFragment.hideNextMatchInfo();
+        getFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
+        getChildFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
+        // nextMatchFragment.hideNextMatchInfo();
     }
 }

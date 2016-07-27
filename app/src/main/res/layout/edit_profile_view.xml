@@ -4,8 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/myPurpleGrey"
-    tools:context="com.movildat.lucassegarra.teammanager.EditProfileFragment"
-    tools:showIn="@layout/player_stats_view">
+    tools:context="com.movildat.lucassegarra.teammanager.EditProfileFragment">
 
         <Button
             android:layout_width="wrap_content"

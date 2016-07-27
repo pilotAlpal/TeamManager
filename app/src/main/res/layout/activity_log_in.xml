@@ -53,5 +53,12 @@
             android:id="@+id/b_signin"
             android:onClick="signin"
             android:layout_gravity="center_horizontal" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mantenerLoggeado"
+            android:id="@+id/cb_keep_logged"
+            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 </RelativeLayout>

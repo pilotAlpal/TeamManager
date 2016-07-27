@@ -2,6 +2,7 @@ package com.movildat.lucassegarra.teammanager;
 
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.ContentUris;
 import android.content.Intent;
 import android.icu.util.GregorianCalendar;
@@ -66,9 +67,10 @@ public class MenuActivity extends Activity {
 
 
     public void displayNextMatchInfo(View v){
-        getFragmentManager().beginTransaction().replace(R.id.f_info,new NextMatchFragment()).commit();
-        optionsFragment.hideNextMatchInfo();
-        //  getFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
+         getFragmentManager().beginTransaction().replace(R.id.f_info,new NextMatchFragment()).commit();
+//        optionsFragment.getChildFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment());
+         optionsFragment.hideNextMatchInfo();
+//        getFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
     }
 
     public void volver(View view){
