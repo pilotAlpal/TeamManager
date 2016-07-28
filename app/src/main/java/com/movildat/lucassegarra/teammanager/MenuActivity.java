@@ -10,9 +10,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.provider.CalendarContract;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Date;
 
@@ -25,6 +27,7 @@ public class MenuActivity extends Activity {
 
     private OptionsFragment optionsFragment;
     private InfoFragment infoFragment;
+    private static int CAM_INTENT_CODE=0;
 
 
     @Override
@@ -59,7 +62,7 @@ public class MenuActivity extends Activity {
         this.startActivity(calendarIntent);
     }
 
-    //meter en Fragment?
+
     public void addEvent(View v){
         Intent registerEventIntent = new Intent(MenuActivity.this,RegisterEventActivity.class);
         this.startActivity(registerEventIntent);
@@ -68,12 +71,24 @@ public class MenuActivity extends Activity {
 
     public void displayNextMatchInfo(View v){
          getFragmentManager().beginTransaction().replace(R.id.f_info,new NextMatchFragment()).commit();
-//        optionsFragment.getChildFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment());
+     //    optionsFragment.getChildFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment());
          optionsFragment.hideNextMatchInfo();
 //        getFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
     }
 
     public void volver(View view){
         finish();
+    }
+
+    @Override
+    public void onActivityResult(int reqCo,int resCo,Intent data){
+        if(reqCo==CAM_INTENT_CODE)
+            Toast.makeText(this,"photo done",Toast.LENGTH_SHORT);
+    }
+    public void changePic(View v){
+        Intent photoIntent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if(photoIntent.resolveActivity(this.getPackageManager())!=null){
+            startActivityForResult(photoIntent,CAM_INTENT_CODE);
+        }
     }
 }

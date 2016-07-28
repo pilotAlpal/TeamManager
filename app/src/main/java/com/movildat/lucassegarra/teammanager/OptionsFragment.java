@@ -33,9 +33,8 @@ public class OptionsFragment extends Fragment{
     }
     public void hideNextMatchInfo(){
         //ninguna de estas 3 llamadas funciona cómo quiero, es decir no se oculta el nextMatchFragment dentro del optionsFragment
-        //this.getChildFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
         getFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
         getChildFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
-        // nextMatchFragment.hideNextMatchInfo();
+        nextMatchFragment.hideNextMatchInfo();
     }
 }

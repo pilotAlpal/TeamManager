@@ -4,12 +4,14 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/myPurpleGrey"
+    tools:showIn="p"
     tools:context="com.movildat.lucassegarra.teammanager.EditProfileFragment">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cambiaFoto"
+            android:onClick="changePic"
             android:id="@+id/b_cambia_foto"
             android:layout_gravity="left|center_vertical" />
 

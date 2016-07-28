@@ -1,18 +1,22 @@
 package com.movildat.lucassegarra.teammanager;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 /**
  * Created by lucas.segarra on 26/07/2016.
  */
 public class EditProfileFragment extends Fragment {
     private Spinner posChooser;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,7 +27,8 @@ public class EditProfileFragment extends Fragment {
         posChooser=(Spinner) v.findViewById(R.id.sp_change_pos);
         posChooser.setAdapter(adapter);
         return v;
-
-
     }
+
+
+
 }
