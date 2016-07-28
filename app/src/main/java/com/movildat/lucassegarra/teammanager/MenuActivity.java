@@ -70,9 +70,11 @@ public class MenuActivity extends Activity {
 
 
     public void displayNextMatchInfo(View v){
-         getFragmentManager().beginTransaction().replace(R.id.f_info,new NextMatchFragment()).commit();
-     //    optionsFragment.getChildFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment());
-         optionsFragment.hideNextMatchInfo();
+        getFragmentManager().beginTransaction().replace(R.id.f_info,new NextMatchFragment()).commit();
+        getFragmentManager().beginTransaction().hide(optionsFragment.getChildFragmentManager().findFragmentById(R.id.fr_next_match)).commit();
+       // getFragmentManager().beginTransaction().replace(optionsFragment.getChildFragmentManager().findFragmentById(R.id.fr_next_match).getId(),new MatchDetailsFragment()).commit();
+      //  optionsFragment.getChildFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
+      //  optionsFragment.hideNextMatchInfo();
 //        getFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
     }
 

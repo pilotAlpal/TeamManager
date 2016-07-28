@@ -33,7 +33,6 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.listed_event,parent,false);
         return new ViewHolder(v);
-
     }
 
     @Override
