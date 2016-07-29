@@ -31,10 +31,18 @@ public class OptionsFragment extends Fragment{
         return v;
 
     }
-    public void hideNextMatchInfo(){
-        //ninguna de estas 3 llamadas funciona cómo quiero, es decir no se oculta el nextMatchFragment dentro del optionsFragment
-        getFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
-        getChildFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
-        nextMatchFragment.hideNextMatchInfo();
+    public void replaceNextMatchInfo(){
+        /*
+        * ¿Por qué me da runtimeException
+        *
+        *  getFragmentManager().beginTransaction().replace(R.id.f_info,nextMatchFragment).commit();
+        * */
+        getFragmentManager().beginTransaction().replace(R.id.f_info,new NextMatchFragment()).commit();
+        //Intentar evitar esta llamada a hide
+        getFragmentManager().beginTransaction().hide(getChildFragmentManager().findFragmentById(R.id.fr_next_match)).commit();
+        getFragmentManager().beginTransaction().replace(R.id.left_bellow_ly,new MatchDetailsFragment()).commit();
+//        nextMatchFragment.replaceNextMatchInfo();
     }
+
+
 }

@@ -2,21 +2,15 @@ package com.movildat.lucassegarra.teammanager;
 
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.ContentUris;
 import android.content.Intent;
-import android.icu.util.GregorianCalendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.provider.CalendarContract;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Toast;
-
-import java.util.Date;
 
 
 /**
@@ -70,12 +64,7 @@ public class MenuActivity extends Activity {
 
 
     public void displayNextMatchInfo(View v){
-        getFragmentManager().beginTransaction().replace(R.id.f_info,new NextMatchFragment()).commit();
-        getFragmentManager().beginTransaction().hide(optionsFragment.getChildFragmentManager().findFragmentById(R.id.fr_next_match)).commit();
-       // getFragmentManager().beginTransaction().replace(optionsFragment.getChildFragmentManager().findFragmentById(R.id.fr_next_match).getId(),new MatchDetailsFragment()).commit();
-      //  optionsFragment.getChildFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
-      //  optionsFragment.hideNextMatchInfo();
-//        getFragmentManager().beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
+        optionsFragment.replaceNextMatchInfo();
     }
 
     public void volver(View view){

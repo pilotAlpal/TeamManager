@@ -42,12 +42,18 @@
                 android:id="@+id/b_volver" />
 
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/left_bellow_ly">
 
-            <fragment
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:name="com.movildat.lucassegarra.teammanager.NextMatchFragment"
-                android:id="@+id/fr_next_match"
-                tools:layout="@layout/next_match_view" />
+        <fragment
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:name="com.movildat.lucassegarra.teammanager.NextMatchFragment"
+                    android:id="@+id/fr_next_match"
+                    tools:layout="@layout/next_match_view" />
+    </FrameLayout>
+
 </LinearLayout>
 
