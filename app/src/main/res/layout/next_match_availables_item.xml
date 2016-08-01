@@ -12,14 +12,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_next_player"
+                android:layout_gravity="center_vertical"
                 android:text="@string/nombreUsuario"/>
 
-            <ImageView
-                android:src="@mipmap/ic_launcher"
+            <ImageButton
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/imageView"
-                android:layout_gravity="right|top" />
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton"
+                android:layout_gravity="right|center_vertical"
+                android:src="@drawable/phone"/>
+
         </FrameLayout>
 
 

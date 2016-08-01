@@ -1,7 +1,6 @@
 package com.movildat.lucassegarra.teammanager;
 
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +14,12 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView mTextView;
+
         public ViewHolder(TextView tView){
             super(tView);
-//
             mTextView=tView;
         }
+
         public ViewHolder(View v){
             super(v);
             mTextView=(TextView)v.findViewById(R.id.tv_next_player);
@@ -27,11 +27,9 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
     }
 
 
-
     public PlayersListAdapter(String[] data){
         if(data!=null)
             mDataSet=data;
-
     }
 
     /*
@@ -50,11 +48,8 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
-        //¿usar una nueva vista o usar players view?
-        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.next_match_availables_view,parent,false);
-        // set the view's size, margins, paddings and layout parameters
+        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.next_match_availables_item,parent,false);
         return new ViewHolder(v);
-
     }
 
     @Override

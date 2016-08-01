@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/myPurpleGrey"
-    tools:showIn="p"
     tools:context="com.movildat.lucassegarra.teammanager.EditProfileFragment">
 
         <Button

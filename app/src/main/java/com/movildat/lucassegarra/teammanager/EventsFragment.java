@@ -15,7 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import static android.support.v7.widget.RecyclerView.*;
+
 
 /**
  * Created by lucas.segarra on 19/07/2016.
@@ -43,11 +43,13 @@ public class EventsFragment extends Fragment {
         String selection = "((" + CalendarContract.Calendars.ACCOUNT_TYPE + " = ?))";
         String[] sArgs = new String[]{"com.movildat"};
         String[] eventos=new String[EVENTS_SHOWN];
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CALENDAR) == PackageManager.PERMISSION_GRANTED) {
             cursor = cResolver.query(uri, EVENT_PROJECTION, selection, sArgs, null);
+//            cursor = cResolver.query(uri, EVENT_PROJECTION, null, sArgs, null);
             int eS=0;
             while ((eS<EVENTS_SHOWN)&&(cursor.moveToNext())){
                 eventos[eS]=cursor.getString(2);
+                eS++;
             }
             if(eS>0){
                 RecyclerView.Adapter adapter=new CalendarListAdapter(eventos);

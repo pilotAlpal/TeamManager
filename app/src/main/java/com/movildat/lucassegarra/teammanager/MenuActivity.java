@@ -82,4 +82,6 @@ public class MenuActivity extends Activity {
             startActivityForResult(photoIntent,CAM_INTENT_CODE);
         }
     }
+
+
 }

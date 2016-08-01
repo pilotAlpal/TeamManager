@@ -7,35 +7,35 @@
     tools:showIn="@layout/activity_menu">
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/jugador"
                 android:onClick="statsJugador"
                 android:id="@+id/b_stats_jug" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/equipo"
                 android:onClick="statsEquipo"
                 android:id="@+id/b_stats_eq" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="calendario"
                 android:text="@string/calendario"
                 android:id="@+id/b_calendario" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/clasificacion"
                 android:onClick="clasificacion"
                 android:id="@+id/b_calsif" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/volver"
                 android:onClick="volver"
