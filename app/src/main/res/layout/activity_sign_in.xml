@@ -42,14 +42,32 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/posicion"
-        android:id="@+id/textView5" />
+        android:text="@string/telefono"
+        android:id="@+id/textView23" />
 
-    <Spinner
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/sp_si_pos"
-        android:layout_gravity="center_horizontal" />
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/tv_telefono" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/posicion"
+            android:id="@+id/textView5" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sp_si_pos"
+            android:layout_gravity="center_horizontal" />
+    </TableRow>
 
     <LinearLayout
         android:orientation="vertical"

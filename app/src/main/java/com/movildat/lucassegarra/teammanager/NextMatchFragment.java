@@ -36,8 +36,8 @@ public class NextMatchFragment extends Fragment {
         myRV.setAdapter(adapter);
         return v;
     }
-    public void replaceNextMatchInfo(){
+/*    public void replaceNextMatchInfo(){
         FragmentManager myFM=getFragmentManager();
             myFM.beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
-    }
+    }*/
 }

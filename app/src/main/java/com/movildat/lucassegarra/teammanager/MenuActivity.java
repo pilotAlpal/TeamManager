@@ -63,9 +63,9 @@ public class MenuActivity extends Activity {
     }
 
 
-    public void displayNextMatchInfo(View v){
+    /*public void displayNextMatchInfo(View v){
         optionsFragment.replaceNextMatchInfo();
-    }
+    }*/
 
     public void volver(View view){
         finish();

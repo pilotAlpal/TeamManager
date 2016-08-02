@@ -31,4 +31,27 @@
         <item>Juan Sánchez</item>
         <item>Kily Gónzalez</item>
     </string-array>
+
+    <string-array name="clasificacion_mitica">
+        <item>Valencia</item>
+        <item>Barcelona</item>
+        <item>Deportivo</item>
+        <item>Madrid</item>
+        <item>Athletic</item>
+        <item>Sevilla</item>
+        <item>Atlético</item>
+        <item>Villarreal</item>
+        <item>Betis</item>
+        <item>Malga</item>
+        <item>Mallorca</item>
+        <item>Zaragoza</item>
+        <item>Osasuna</item>
+        <item>Albacete</item>
+        <item>Sociedad</item>
+        <item>Racing</item>
+        <item>Espanyol</item>
+        <item>Valladolid</item>
+        <item>Vigo</item>
+        <item>Murcia</item>
+    </string-array>
 </resources>

@@ -39,8 +39,11 @@
     <string name="clasificacion">Clasific.</string>
     <string name="vacio">-</string>
     <string name="jugador">Jugador</string>
-    <string name="prox_part"><u>Próximo partido</u>:</string>
+    <string name="prox_part">Próximo partido</string>
+    <string name="telefono">Teléfono</string>
+    <string name="partidos">Partidos:</string>
     <string name="volver">Volver</string>
+    <string name="resultado">Resultado</string>
     <string name="prox_rival">Próximo Rival:</string>
     <string name="confirmados">Confirmados:</string>
     <string name="apuntarse">¿Apuntarse?</string>

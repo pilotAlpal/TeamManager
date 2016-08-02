@@ -29,7 +29,7 @@ public class TeamStatsFragment extends Fragment {
             todos[i]=titulares[i];
         for(int k=titulares.length;k<todos.length;k++)
             todos[k]=suplentes[k-titulares.length];
-        RecyclerView.Adapter adapter=new PlayersListAdapter(todos);
+        RecyclerView.Adapter adapter=new TeamPlayersAdapter(todos);
         myRV.setAdapter(adapter);
         return v;
     }

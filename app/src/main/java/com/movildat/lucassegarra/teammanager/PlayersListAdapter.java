@@ -1,10 +1,22 @@
 package com.movildat.lucassegarra.teammanager;
 
+
+import android.content.Context;
+import android.content.Intent;
+
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.provider.ContactsContract;
+
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.widget.ImageButton;
 import android.widget.TextView;
+
+import static android.support.v4.app.ActivityCompat.startActivityForResult;
 
 /**
  * Created by lucas.segarra on 19/07/2016.
@@ -14,15 +26,26 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView mTextView;
-
-        public ViewHolder(TextView tView){
-            super(tView);
-            mTextView=tView;
-        }
+        public ImageButton butt;
 
         public ViewHolder(View v){
             super(v);
             mTextView=(TextView)v.findViewById(R.id.tv_next_player);
+            butt=(ImageButton)v.findViewById(R.id.call_but);
+        }
+        public void listenCallButton(final Context context){
+            butt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //hacerse con el número asociado mTextView.getText
+                    String numero="626992478";
+                    Intent callIntent=new Intent(Intent.ACTION_DIAL);
+                    callIntent.setData(Uri.parse("tel:"+numero));
+                    if (callIntent.resolveActivity(context.getPackageManager())!=null){
+                        context.startActivity(callIntent);
+                    }
+                }
+            });
         }
     }
 
@@ -49,6 +72,8 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
         View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.next_match_availables_item,parent,false);
+        ViewHolder vH=new ViewHolder(v);
+        vH.listenCallButton(parent.getContext());
         return new ViewHolder(v);
     }
 
@@ -61,6 +86,5 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
     public int getItemCount(){
         return mDataSet.length;
     }
-
 
 }

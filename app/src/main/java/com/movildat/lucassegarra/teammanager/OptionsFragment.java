@@ -31,18 +31,14 @@ public class OptionsFragment extends Fragment{
         return v;
 
     }
-    public void replaceNextMatchInfo(){
-        /*
-        * ¿Por qué me da runtimeException
-        *
-        *  getFragmentManager().beginTransaction().replace(R.id.f_info,nextMatchFragment).commit();
-        * */
+   /* public void replaceNextMatchInfo(){
+
         getFragmentManager().beginTransaction().replace(R.id.f_info,new NextMatchFragment()).commit();
         //Intentar evitar esta llamada a hide
         getFragmentManager().beginTransaction().hide(getChildFragmentManager().findFragmentById(R.id.fr_next_match)).commit();
         getFragmentManager().beginTransaction().replace(R.id.left_bellow_ly,new MatchDetailsFragment()).commit();
 //        nextMatchFragment.replaceNextMatchInfo();
-    }
+    }*/
 
 
 }
