@@ -11,15 +11,23 @@ import android.widget.TextView;
  */
 public class ClasificationAdapter extends RecyclerView.Adapter<ClasificationAdapter.ViewHolder> {
     private String[][] clasif;
-    private static final int NUM_EQUIPOS=20;
+    private static final int NUM_FILAS=20;
     private static final int NUM_COLUMNAS=8;
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView tvName;
+        public TextView[] tvName;
 
         public ViewHolder(View v){
             super(v);
-            tvName=(TextView)v.findViewById(R.id.tv_nom_equi_ci);
+            tvName=new TextView[NUM_COLUMNAS];
+            tvName[0]=(TextView)v.findViewById(R.id.tv_nom_equi_ci);
+            tvName[1]=(TextView)v.findViewById(R.id.tv_ptos);
+            tvName[2]=(TextView)v.findViewById(R.id.tv_jugados);
+            tvName[3]=(TextView)v.findViewById(R.id.tv_ganados);
+            tvName[4]=(TextView)v.findViewById(R.id.tv_empatados);
+            tvName[5]=(TextView)v.findViewById(R.id.tv_perdidos);
+            tvName[6]=(TextView)v.findViewById(R.id.tv_g_favor);
+            tvName[7]=(TextView)v.findViewById(R.id.tv_g_contra);
         }
     }
 
@@ -44,7 +52,11 @@ public class ClasificationAdapter extends RecyclerView.Adapter<ClasificationAdap
     @Override
     public void onBindViewHolder(ViewHolder vH,int pos){
         //utilizar pos para ver clasificación de cada equipo
-        vH.tvName.setText(clasif[pos][0]);
+        vH.tvName[0].setText(clasif[pos][0]);
+        for(int i=1;i<NUM_COLUMNAS;i++){
+            vH.tvName[i].setText("0");
+        }
+
     }
 
     @Override

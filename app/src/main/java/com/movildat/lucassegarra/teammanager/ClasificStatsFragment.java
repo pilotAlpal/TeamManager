@@ -26,7 +26,6 @@ public class ClasificStatsFragment extends Fragment {
         View v= inflater.inflate(R.layout.clasification_view,viewGroup, false);
         myCv=(CardView) v.findViewById(R.id.cv_matches);
         myRv=(RecyclerView) v.findViewById(R.id.rv_teams_layout);
-     //   RecyclerView.LayoutManager layoutManager=new GridLayoutManager(getActivity(),EQUIPOS);
         RecyclerView.LayoutManager layoutManager=new GridLayoutManager(getActivity(),EQUIPOS, LinearLayoutManager.HORIZONTAL,false );
         myRv.setHasFixedSize(true);
         myRv.setLayoutManager(layoutManager);

@@ -228,7 +228,10 @@
         android:id="@+id/rv_teams_layout"
         android:scrollbars="vertical"
         android:layout_below="@+id/linearLayout2"
-        android:layout_toEndOf="@+id/linearLayout3" />
+        android:layout_toEndOf="@+id/linearLayout3">
+
+        <include layout="@layout/clasification_item"/>
+        </android.support.v7.widget.RecyclerView>
 
     <FrameLayout
         android:layout_width="match_parent"
