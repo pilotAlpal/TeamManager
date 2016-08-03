@@ -30,4 +30,9 @@ public class LogInActivity extends AppCompatActivity {
         Intent signInIntent=new Intent(LogInActivity.this,SignInActivity.class);
         startActivity(signInIntent);
     }
+
+    public void registrateTeam(View v){
+        Intent newTeamIntent=new Intent(LogInActivity.this,NewTeamActivity.class);
+        startActivity(newTeamIntent);
+    }
 }

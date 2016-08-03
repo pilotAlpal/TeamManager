@@ -19,6 +19,7 @@
         <activity android:name=".SignInActivity"></activity>
         <activity android:name=".MenuActivity"></activity>
         <activity android:name=".RegisterEventActivity"></activity>
+        <activity android:name=".NewTeamActivity"></activity>
     </application>
 
 </manifest>

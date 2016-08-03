@@ -1,5 +1,6 @@
 package com.movildat.lucassegarra.teammanager;
 
+import android.support.annotation.StringDef;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,15 +20,16 @@ public class ClasificationAdapter extends RecyclerView.Adapter<ClasificationAdap
 
         public ViewHolder(View v){
             super(v);
-            tvName=new TextView[NUM_COLUMNAS];
-            tvName[0]=(TextView)v.findViewById(R.id.tv_nom_equi_ci);
-            tvName[1]=(TextView)v.findViewById(R.id.tv_ptos);
-            tvName[2]=(TextView)v.findViewById(R.id.tv_jugados);
-            tvName[3]=(TextView)v.findViewById(R.id.tv_ganados);
-            tvName[4]=(TextView)v.findViewById(R.id.tv_empatados);
-            tvName[5]=(TextView)v.findViewById(R.id.tv_perdidos);
-            tvName[6]=(TextView)v.findViewById(R.id.tv_g_favor);
-            tvName[7]=(TextView)v.findViewById(R.id.tv_g_contra);
+            tvName=new TextView[NUM_COLUMNAS+1];
+            tvName[0]=(TextView)v.findViewById(R.id.tv_pos);
+            tvName[1]=(TextView)v.findViewById(R.id.tv_nom_equi_ci);
+            tvName[2]=(TextView)v.findViewById(R.id.tv_ptos);
+            tvName[3]=(TextView)v.findViewById(R.id.tv_jugados);
+            tvName[4]=(TextView)v.findViewById(R.id.tv_ganados);
+            tvName[5]=(TextView)v.findViewById(R.id.tv_empatados);
+            tvName[6]=(TextView)v.findViewById(R.id.tv_perdidos);
+            tvName[7]=(TextView)v.findViewById(R.id.tv_g_favor);
+            tvName[8]=(TextView)v.findViewById(R.id.tv_g_contra);
         }
     }
 
@@ -54,9 +56,9 @@ public class ClasificationAdapter extends RecyclerView.Adapter<ClasificationAdap
 
     @Override
     public void onBindViewHolder(ViewHolder vH,int pos){
-        //utilizar pos para ver clasificación de cada equipo
-        vH.tvName[0].setText(clasif[pos][0]);
-        for(int i=1;i<NUM_COLUMNAS;i++){
+        vH.tvName[0].setText(String.valueOf(pos+1)+"º-");
+        vH.tvName[1].setText(clasif[pos][0]);
+        for(int i=2;i<NUM_COLUMNAS+1;i++){
             vH.tvName[i].setText("0");
         }
 

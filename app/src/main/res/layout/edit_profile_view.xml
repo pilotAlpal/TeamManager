@@ -6,26 +6,32 @@
     android:background="@color/myPurpleGrey"
     tools:context="com.movildat.lucassegarra.teammanager.EditProfileFragment">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cambiaFoto"
-            android:onClick="changePic"
-            android:id="@+id/b_cambia_foto"
-            android:layout_gravity="left|center_vertical" />
+    <Button
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="@string/cambiaFoto"
+         android:onClick="changePic"
+         android:id="@+id/b_cambia_foto"
+         android:layout_gravity="left|center_vertical" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cambiarPos"
-            android:id="@+id/button"
-            android:layout_gravity="left|center_vertical" />
+    <Button
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="@string/cambiarPos"
+         android:id="@+id/button"
+         android:layout_gravity="left|center_vertical" />
 
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/sp_change_pos"
-            android:layout_gravity="left|bottom" />
-    </LinearLayout>
+    <Spinner
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/sp_change_pos"
+         android:layout_gravity="left|bottom" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/borrar"
+        android:id="@+id/button6" />
+</LinearLayout>
 
 
