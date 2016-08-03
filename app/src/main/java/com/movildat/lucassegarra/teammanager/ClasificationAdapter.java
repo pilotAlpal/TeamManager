@@ -36,10 +36,13 @@ public class ClasificationAdapter extends RecyclerView.Adapter<ClasificationAdap
             clasif=data;
     }
 
-    public ClasificationAdapter(String[] s){
-        clasif=new String[s.length][NUM_COLUMNAS];
-        for (int i=0;i<s.length;i++)
-            clasif[i][0]=s[i];
+    public ClasificationAdapter(String[] s) {
+        clasif = new String[s.length][NUM_COLUMNAS];
+        for (int i = 0; i < s.length; i++){
+            clasif[i][0] = s[i];
+            for(int j=1;j<NUM_COLUMNAS;j++)
+                clasif[i][j]="0";
+       }
     }
 
 
