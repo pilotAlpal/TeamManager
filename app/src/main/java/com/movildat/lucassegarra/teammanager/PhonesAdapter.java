@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -27,9 +28,11 @@ public class PhonesAdapter extends RecyclerView.Adapter<PhonesAdapter.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView phoneTV;
+        public Button removeButt;
         public ViewHolder(View v){
             super(v);
             phoneTV=(TextView)v.findViewById(R.id.tv_phone);
+            removeButt=(Button)v.findViewById(R.id.b_remove_phone);
         }
     }
     @Override
@@ -41,6 +44,17 @@ public class PhonesAdapter extends RecyclerView.Adapter<PhonesAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder,int pos){
         holder.phoneTV.setText(matesPhones[pos]);
+        final int aux=pos;
+        holder.removeButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for (int i= aux;i<aux-1;i++)
+                    matesPhones[i]=matesPhones[i+1];
+                matesPhones[numElems]=null;
+                numElems--;
+                notifyDataSetChanged();
+            }
+        });
     }
     @Override
     public int getItemCount(){
@@ -52,10 +66,5 @@ public class PhonesAdapter extends RecyclerView.Adapter<PhonesAdapter.ViewHolder
         numElems++;
         notifyDataSetChanged();
     }
-    public void remove(int pos){
-        for(int i=pos;i<numElems-1;i++)
-            matesPhones[i]=matesPhones[i+1];
-        numElems--;
-        notifyDataSetChanged();
-    }
+
 }

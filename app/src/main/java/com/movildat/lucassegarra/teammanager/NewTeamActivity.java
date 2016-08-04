@@ -30,10 +30,8 @@ public class NewTeamActivity extends AppCompatActivity {
 
     public void addPhone(View v){
         String mateNumber=phoneET.getText().toString();
+        phoneET.setText("");
         adapter.addItem(mateNumber);
     }
 
-    public void removeView(View v){
-
-    }
 }
