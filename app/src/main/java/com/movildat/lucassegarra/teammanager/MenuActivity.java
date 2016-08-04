@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.provider.CalendarContract;
 import android.provider.MediaStore;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -55,13 +57,16 @@ public class MenuActivity extends Activity {
         Intent calendarIntent=new Intent(Intent.ACTION_VIEW).setData(builder.build());
         this.startActivity(calendarIntent);
     }
-
-
     public void addEvent(View v){
         Intent registerEventIntent = new Intent(MenuActivity.this,RegisterEventActivity.class);
         this.startActivity(registerEventIntent);
     }
 
+    public void partnerClicked(View v){
+        TextView t= (TextView) v.findViewById(R.id.tv_name_tmi);
+        String s=t.getText().toString();
+        getFragmentManager().beginTransaction().replace(R.id.f_info,new PlayerStatsFragment()).commit();
+    }
 
     /*public void displayNextMatchInfo(View v){
         optionsFragment.replaceNextMatchInfo();
@@ -82,6 +87,4 @@ public class MenuActivity extends Activity {
             startActivityForResult(photoIntent,CAM_INTENT_CODE);
         }
     }
-
-
 }
