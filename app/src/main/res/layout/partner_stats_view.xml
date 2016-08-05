@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_player_image"
+        android:id="@+id/layout_partner_image"/>
+    <include layout="@layout/rating_layout"/>
+    <include layout="@layout/player_stats_layout"/>
+    <include layout="@layout/contact_partner_view"
+        android:id="@+id/layout_contact"/>
+
+
+</LinearLayout>

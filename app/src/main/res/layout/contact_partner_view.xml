@@ -3,10 +3,33 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/llamar"
-        android:id="@+id/button2"
-        android:layout_gravity="center" />
+        android:layout_gravity="center">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/b_contact_call"
+            android:layout_gravity="center"
+            android:src="@drawable/phone"
+           />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/b_contact_message"
+            android:src="@drawable/message"/>
+
+    </LinearLayout>
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:id="@+id/ratingBar2"
+        android:layout_gravity="center_horizontal|top" />
+
 </FrameLayout>

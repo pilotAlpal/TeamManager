@@ -65,7 +65,7 @@ public class MenuActivity extends Activity {
     public void partnerClicked(View v){
         TextView t= (TextView) v.findViewById(R.id.tv_name_tmi);
         String s=t.getText().toString();
-        getFragmentManager().beginTransaction().replace(R.id.f_info,new PlayerStatsFragment()).commit();
+        getFragmentManager().beginTransaction().replace(R.id.f_info,new PartnerStatsFragment()).commit();
     }
 
     /*public void displayNextMatchInfo(View v){
