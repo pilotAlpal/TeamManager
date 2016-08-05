@@ -1,4 +1,4 @@
-package com.movildat.lucassegarra.teammanager;
+package com.movildat.lucassegarra.teammanager.view;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+
+import com.movildat.lucassegarra.teammanager.R;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.movildat.lucassegarra.teammanager;
+package com.movildat.lucassegarra.teammanager.view;
 
 import android.app.Fragment;
 import android.content.ContentUris;
@@ -10,6 +10,8 @@ import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.movildat.lucassegarra.teammanager.R;
 
 /**
  * Created by lucas.segarra on 14/07/2016.

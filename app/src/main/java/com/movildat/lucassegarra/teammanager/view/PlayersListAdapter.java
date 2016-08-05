@@ -1,12 +1,10 @@
-package com.movildat.lucassegarra.teammanager;
+package com.movildat.lucassegarra.teammanager.view;
 
 
 import android.content.Context;
 import android.content.Intent;
 
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.provider.ContactsContract;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import static android.support.v4.app.ActivityCompat.startActivityForResult;
+import com.movildat.lucassegarra.teammanager.R;
 
 /**
  * Created by lucas.segarra on 19/07/2016.

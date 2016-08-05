@@ -1,4 +1,4 @@
-package com.movildat.lucassegarra.teammanager;
+package com.movildat.lucassegarra.teammanager.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+
+import com.movildat.lucassegarra.teammanager.R;
 
 /**
  * Created by lucas.segarra on 14/07/2016.

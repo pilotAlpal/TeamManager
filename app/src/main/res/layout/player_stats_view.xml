@@ -198,7 +198,7 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.movildat.lucassegarra.teammanager.EditProfileFragment"
+        android:name="com.movildat.lucassegarra.teammanager.view.EditProfileFragment"
         android:id="@+id/down_fragment"
         android:layout_gravity="center_horizontal" />
 

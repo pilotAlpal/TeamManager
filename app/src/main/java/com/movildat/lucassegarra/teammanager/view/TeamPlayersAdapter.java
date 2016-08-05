@@ -1,20 +1,13 @@
-package com.movildat.lucassegarra.teammanager;
+package com.movildat.lucassegarra.teammanager.view;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.media.Image;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.movildat.lucassegarra.teammanager.R;
 
 /**
  * Created by lucas.segarra on 02/08/2016.

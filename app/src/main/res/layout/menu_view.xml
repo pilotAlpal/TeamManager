@@ -7,14 +7,14 @@
 
 
 
-    <fragment android:name="com.movildat.lucassegarra.teammanager.OptionsFragment"
+    <fragment android:name="com.movildat.lucassegarra.teammanager.view.OptionsFragment"
         android:id="@+id/f_ops"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         tools:layout="@layout/options_view" />
 
-    <fragment android:name="com.movildat.lucassegarra.teammanager.InfoFragment"
+    <fragment android:name="com.movildat.lucassegarra.teammanager.view.InfoFragment"
         android:id="@+id/f_info"
         android:layout_weight="2"
         android:layout_width="0dp"

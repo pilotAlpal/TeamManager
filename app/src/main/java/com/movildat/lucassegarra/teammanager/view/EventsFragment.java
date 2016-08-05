@@ -1,4 +1,4 @@
-package com.movildat.lucassegarra.teammanager;
+package com.movildat.lucassegarra.teammanager.view;
 
 import android.Manifest;
 import android.app.Fragment;
@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.movildat.lucassegarra.teammanager.R;
 
 
 /**

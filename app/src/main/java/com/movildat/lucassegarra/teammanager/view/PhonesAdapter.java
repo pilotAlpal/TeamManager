@@ -1,4 +1,4 @@
-package com.movildat.lucassegarra.teammanager;
+package com.movildat.lucassegarra.teammanager.view;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.movildat.lucassegarra.teammanager.R;
 
 /**
  * Created by lucas.segarra on 03/08/2016.
@@ -24,6 +26,12 @@ public class PhonesAdapter extends RecyclerView.Adapter<PhonesAdapter.ViewHolder
     PhonesAdapter(){
         numElems=0;
         matesPhones=new String[PLAYERS_FOR_TEAM];
+    }
+
+    public void clear() {
+        numElems=0;
+        matesPhones=new String[PLAYERS_FOR_TEAM];
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{

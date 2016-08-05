@@ -4,7 +4,7 @@
     android:orientation="vertical" android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@color/myRegularGrey"
-    tools:showIn="@layout/activity_menu">
+    tools:showIn="@layout/menu_view">
 
             <Button
                 android:layout_width="match_parent"
@@ -50,7 +50,7 @@
         <fragment
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:name="com.movildat.lucassegarra.teammanager.NextMatchFragment"
+                    android:name="com.movildat.lucassegarra.teammanager.view.NextMatchFragment"
                     android:id="@+id/fr_next_match"
                     tools:layout="@layout/next_match_view" />
     </FrameLayout>

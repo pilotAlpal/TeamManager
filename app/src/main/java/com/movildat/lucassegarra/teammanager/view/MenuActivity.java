@@ -1,4 +1,4 @@
-package com.movildat.lucassegarra.teammanager;
+package com.movildat.lucassegarra.teammanager.view;
 
 
 import android.app.Activity;
@@ -9,10 +9,11 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.provider.CalendarContract;
 import android.provider.MediaStore;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.movildat.lucassegarra.teammanager.R;
 
 
 /**
@@ -29,7 +30,7 @@ public class MenuActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.menu_view);
         optionsFragment=(OptionsFragment)getFragmentManager().findFragmentById(R.id.f_ops);
         infoFragment=(InfoFragment)getFragmentManager().findFragmentById((R.id.f_info));
     }

@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
-                android:ems="10"
+                android:ems="4"
                 android:id="@+id/et_phone" />
 
             <Button
@@ -51,6 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/crearEquipo"
+                android:onClick="createTeam"
                 android:id="@+id/button5"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true" />
