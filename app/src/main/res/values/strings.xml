@@ -24,6 +24,7 @@
     <string name="duracion">Duración(Hs)</string>
     <string name="empatados">Emp</string>
     <string name="equipo">Equipo</string>
+    <string name="equipo_vacio">El nombre del equipo no puede ser vacío</string>
     <string name="eventual">Eventual</string>
     <string name="expulsiones">Expulsiones</string>
     <string name="favor">GF</string>
@@ -41,12 +42,14 @@
     <string name="mantenerLoggeado">Mantener Loggeado</string>
     <string name="mensual">Mensual</string>
     <string name="nombre_equipo">Nombre del equipo</string>
+    <string name="nombre_vacio">El nombre de jugador no puede estar vacío</string>
     <string name="nombreUsuario">Nombre Usuario</string>
     <string name="partidos_jugados">Partidos Jugados</string>
     <string name="pending">Pendientes</string>
     <string name="perdidos">Per</string>
     <string name="plantilla">Plantilla</string>
     <string name="partidos">Partidos:</string>
+    <string name="password_vacio">El password no puede ser vacío</string>
     <string name="posicion">Posición</string>
     <string name="prox_part">Próximo partido</string>
     <string name="prox_rival">Próximo Rival:</string>
@@ -59,6 +62,7 @@
     <string name="tb_borrarse">Falto</string>
     <string name="team_records">Récords del grupo</string>
     <string name="telefono">Teléfono</string>
+    <string name="telefono_vacio">El número de teléfono no puede ser vacío</string>
     <string name="titulo">Título</string>
     <string name="top_scorer">Pichichi</string>
     <string name="vacio">-</string>

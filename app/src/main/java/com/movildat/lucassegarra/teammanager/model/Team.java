@@ -15,6 +15,13 @@ public class Team {
         name=teamName;
         players=new ArrayList<String>();
     }
+    public Team(String id,String tName,ArrayList<String> tPlayers){
+        myId=id;name=tName;
+        if (tPlayers!=null)
+            players=tPlayers;
+        else
+            players=new ArrayList<String>();
+    }
     public void aniadePlayer(String playerId){
         players.add(playerId);
     }

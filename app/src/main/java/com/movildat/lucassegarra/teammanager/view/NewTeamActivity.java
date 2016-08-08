@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 
+import java.util.ArrayList;
+
 /**
  * Created by lucas.segarra on 03/08/2016.
  */
@@ -43,7 +45,8 @@ public class NewTeamActivity extends AppCompatActivity {
         String teamName=teamET.getText().toString();
         teamET.setText("");
         adapter.clear();
-        Controller.createTeam(teamName);
+        ArrayList<String> equipoInicial=adapter.getValues();
+        Controller.createTeam(teamName,equipoInicial);
         Toast.makeText(this,teamName+" "+R.string.anadido,Toast.LENGTH_SHORT).show();
     }
 

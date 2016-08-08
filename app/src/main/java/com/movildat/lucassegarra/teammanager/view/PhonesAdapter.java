@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.movildat.lucassegarra.teammanager.R;
 
+import java.util.ArrayList;
+
 /**
  * Created by lucas.segarra on 03/08/2016.
  */
@@ -74,5 +76,10 @@ public class PhonesAdapter extends RecyclerView.Adapter<PhonesAdapter.ViewHolder
         numElems++;
         notifyDataSetChanged();
     }
+
+    public ArrayList<String> getValues(){
+        return new ArrayList<String>();
+    }
+
 
 }
