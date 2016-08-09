@@ -20,6 +20,7 @@
     <string name="confirmados">Confirmados:</string>
     <string name="crearEquipo">Crear Equipo</string>
     <string name="crearEvento">Crear Evento</string>
+    <string name="crearPartido">Crear Parido</string>
     <string name="dorsal">Dorsal</string>
     <string name="duracion">Duración(Hs)</string>
     <string name="empatados">Emp</string>
@@ -29,10 +30,13 @@
     <string name="expulsiones">Expulsiones</string>
     <string name="favor">GF</string>
     <string name="fecha">Fecha</string>
+    <string name="fecha_incorrecta">La fecha no puede ser vacía</string>
     <string name="finali">Final</string>
     <string name="ganados">Gan</string>
     <string name="guardar">Guardar</string>
     <string name="goles">Goles</string>
+    <string name="hora">Hora</string>
+    <string name="hora_vacia">La hora no puede ser vacía</string>
     <string name="invita_amigos">Invitar amigos</string>
     <string name="jugador">Jugador</string>
     <string name="jugados">Jug</string>
@@ -56,6 +60,7 @@
     <string name="puntos">Pts</string>
     <string name="registra_partido">Regista Partido</string>
     <string name="resultado">Resultado</string>
+    <string name="rival_vacio">El nombre del rival no puede ser vacío</string>
     <string name="semanal">Semanal</string>
     <string name="signin">Regirstrarse</string>
     <string name="tb_apuntarse">Acudo</string>

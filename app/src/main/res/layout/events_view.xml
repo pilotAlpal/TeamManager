@@ -24,6 +24,14 @@
         android:layout_gravity="center_horizontal" />
 
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/crearPartido"
+        android:onClick="addMatch"
+        android:id="@+id/button2"
+        android:layout_gravity="center_horizontal"/>
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
