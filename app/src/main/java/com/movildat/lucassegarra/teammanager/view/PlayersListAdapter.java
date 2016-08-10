@@ -16,11 +16,13 @@ import android.widget.TextView;
 
 import com.movildat.lucassegarra.teammanager.R;
 
+import java.util.ArrayList;
+
 /**
  * Created by lucas.segarra on 19/07/2016.
  */
 public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.ViewHolder> {
-    private String[] mDataSet;
+    private ArrayList<String> mDataSet;
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView mTextView;
@@ -49,8 +51,10 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
 
 
     public PlayersListAdapter(String[] data){
+        mDataSet=new ArrayList<String>();
         if(data!=null)
-            mDataSet=data;
+            for (int i=0;i<data.length;i++)
+                mDataSet.add(i,data[i]);
     }
 
     /*
@@ -61,7 +65,7 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
 
     public void fillList(String[] equipoFantasma){
         for(int i=0;i<equipoFantasma.length;i++){
-            mDataSet[i]=equipoFantasma[i];
+            mDataSet.add(i,equipoFantasma[i]);
             notifyItemInserted(i);
         }
 
@@ -72,17 +76,17 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
         View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.next_match_availables_item,parent,false);
         ViewHolder vH=new ViewHolder(v);
         vH.listenCallButton(parent.getContext());
-        return new ViewHolder(v);
+      return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder,int pos){
-        holder.mTextView.setText(mDataSet[pos]);
+        holder.mTextView.setText(mDataSet.get(pos));
     }
 
     @Override
     public int getItemCount(){
-        return mDataSet.length;
+        return mDataSet.size();
     }
 
 }
