@@ -51,4 +51,7 @@ public class Controller {
     private static String getTeamId(){return null;}
     private static String getUserId(){return null;}
 
+    public static String[] getEvents(int eventsShown) {
+        return DatabaseHandler.getEvents(eventsShown);
+    }
 }

@@ -25,14 +25,15 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView mTextView;
+        public TextView tvFecha,tvRivNam;
         public ViewHolder(TextView textView){
             super(textView);
-            mTextView=textView;
+            tvFecha =textView;
         }
         public ViewHolder(View v){
             super(v);
-            mTextView=(TextView) v.findViewById(R.id.tv_fecha);
+            tvFecha =(TextView) v.findViewById(R.id.tv_fecha);
+            tvRivNam=(TextView)v.findViewById(R.id.tv_nom_rival);
         }
     }
 
@@ -44,7 +45,7 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder,int pos){
-        holder.mTextView.setText(myEvents.get(pos));
+        holder.tvRivNam.setText(myEvents.get(pos));
     }
 
     @Override

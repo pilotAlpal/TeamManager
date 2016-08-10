@@ -1,6 +1,12 @@
 package com.movildat.lucassegarra.teammanager.model;
 
+import android.app.Activity;
+import android.content.res.Resources;
+import android.icu.util.Freezable;
+import android.support.v4.app.Fragment;
 import android.text.format.Time;
+
+import com.movildat.lucassegarra.teammanager.R;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -115,5 +121,13 @@ public class DatabaseHandler {
 
     public static String createConvocatory(Convocatory c) {
         return "1";
+    }
+
+    public static String[] getEvents(int eventsShown) {
+        String a[]= new String[2];
+        // Resources.getSystem().getStringArray(R.array.eventos);
+        a[0]="Leeds";
+        a[1]="Bayern";
+        return a;
     }
 }

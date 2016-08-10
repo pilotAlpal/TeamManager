@@ -54,4 +54,10 @@
         <item>Vigo</item>
         <item>Murcia</item>
     </string-array>
+    <string-array name="eventos">
+        <item>Leeds</item>
+        <item>Bayern</item>
+    </string-array>
+
+
 </resources>

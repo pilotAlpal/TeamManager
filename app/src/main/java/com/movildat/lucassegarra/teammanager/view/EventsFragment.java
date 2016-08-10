@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.movildat.lucassegarra.teammanager.R;
+import com.movildat.lucassegarra.teammanager.controler.Controller;
 
 
 /**
@@ -29,7 +30,7 @@ public class EventsFragment extends Fragment {
             CalendarContract.Calendars.CALENDAR_DISPLAY_NAME,         // 2
             CalendarContract.Calendars.OWNER_ACCOUNT                  // 3
     };
-    public final int EVENTS_SHOWN=7;
+    private static final int EVENTS_SHOWN =5 ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,25 +39,11 @@ public class EventsFragment extends Fragment {
         myRecycler.setHasFixedSize(true);
         RecyclerView.LayoutManager rvLM=new LinearLayoutManager(getActivity());
         myRecycler.setLayoutManager(rvLM);
-        Cursor cursor = null;
-        ContentResolver cResolver = getActivity().getContentResolver();
-        Uri uri = CalendarContract.Calendars.CONTENT_URI;
-        String selection = "((" + CalendarContract.Calendars.ACCOUNT_TYPE + " = ?))";
-        String[] sArgs = new String[]{"com.movildat"};
-        String[] eventos=new String[EVENTS_SHOWN];
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CALENDAR) == PackageManager.PERMISSION_GRANTED) {
-            cursor = cResolver.query(uri, EVENT_PROJECTION, selection, sArgs, null);
-//            cursor = cResolver.query(uri, EVENT_PROJECTION, null, sArgs, null);
-            int eS=0;
-            while ((eS<EVENTS_SHOWN)&&(cursor.moveToNext())){
-                eventos[eS]=cursor.getString(2);
-                eS++;
-            }
-            if(eS>0){
-                RecyclerView.Adapter adapter=new CalendarListAdapter(eventos);
-                myRecycler.setAdapter(adapter);
-            }
-        }
+        String[] eventos= Controller.getEvents(EVENTS_SHOWN);
+
+        RecyclerView.Adapter adapter=new CalendarListAdapter(eventos);
+        myRecycler.setAdapter(adapter);
+
         return v;
     }
 

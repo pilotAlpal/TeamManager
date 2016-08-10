@@ -37,7 +37,7 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
             butt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //hacerse con el número asociado mTextView.getText
+                    //hacerse con el número asociado
                     String numero="626992478";
                     Intent callIntent=new Intent(Intent.ACTION_DIAL);
                     callIntent.setData(Uri.parse("tel:"+numero));
