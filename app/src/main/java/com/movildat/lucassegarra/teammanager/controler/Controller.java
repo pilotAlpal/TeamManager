@@ -54,4 +54,9 @@ public class Controller {
     public static String[] getEvents(int eventsShown) {
         return DatabaseHandler.getEvents(eventsShown);
     }
+
+    public static boolean login(String nombre, String pass) {
+        //guardar en algun lado id_usuario
+        return DatabaseHandler.login(nombre,pass);
+    }
 }

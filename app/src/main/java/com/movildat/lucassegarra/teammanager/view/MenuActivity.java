@@ -29,6 +29,7 @@ public class MenuActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState){
+        //cagar id_usuario
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_view);
         optionsFragment=(OptionsFragment)getFragmentManager().findFragmentById(R.id.f_ops);
@@ -36,18 +37,19 @@ public class MenuActivity extends Activity {
     }
 
     public void statsJugador(View view){
-        //pasar nombre del jugador (y equipo) para realizar la consulta
+        //pasar id_jugador
         getFragmentManager().beginTransaction().replace(R.id.f_info,new PlayerStatsFragment()).commit();
     }
     public void statsEquipo(View view){
-        //pasar equipo
+        //obtener y pasar id_equipo
         getFragmentManager().beginTransaction().replace(R.id.f_info,new TeamStatsFragment()).commit();
     }
     public void calendario(View view){
-        //pasar equipo
+        //pasar id_jugador
         getFragmentManager().beginTransaction().replace(R.id.f_info,new EventsFragment()).commit();
     }
     public void clasificacion(View view){
+        //posiblemente excluir de 1ºversion
         //pasar equipo
         getFragmentManager().beginTransaction().replace(R.id.f_info,new ClasificStatsFragment()).commit();
     }

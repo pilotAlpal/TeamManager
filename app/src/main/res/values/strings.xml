@@ -8,6 +8,7 @@
     <string name="bayern">Babiera</string>
     <string name="best_evaluated">Mejor valorado</string>
     <string name="borrar">Borrar</string>
+    <string name="buscar_equipo">Buscar equipo</string>
     <string name="calendario">Calendar.</string>
     <string name="cambiaFoto">Cambiar Foto</string>
     <string name="cambiarPos">Cambiar Posición</string>
@@ -20,7 +21,7 @@
     <string name="confirmados">Confirmados:</string>
     <string name="crearEquipo">Crear Equipo</string>
     <string name="crearEvento">Crear Evento</string>
-    <string name="crearPartido">Crear Parido</string>
+    <string name="crearPartido">Crear Partido</string>
     <string name="dorsal">Dorsal</string>
     <string name="duracion">Duración(Hs)</string>
     <string name="empatados">Emp</string>

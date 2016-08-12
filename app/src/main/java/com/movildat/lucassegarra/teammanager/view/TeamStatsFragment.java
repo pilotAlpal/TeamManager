@@ -24,6 +24,8 @@ public class TeamStatsFragment extends Fragment {
         myRV.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager=new LinearLayoutManager(getActivity());
         myRV.setLayoutManager(mLayoutManager);
+        //cargar estadisticas del equipo
+        //cargar jugadores de mi equipo y pasarselos al adapter
         String[] titulares=getResources().getStringArray(R.array.equipo_fantasma);
         String[] suplentes=getResources().getStringArray(R.array.equipo_fantasma_suplentes);
         String[] todos=new String[titulares.length+suplentes.length];

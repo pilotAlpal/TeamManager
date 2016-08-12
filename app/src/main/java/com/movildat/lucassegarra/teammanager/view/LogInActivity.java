@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.movildat.lucassegarra.teammanager.R;
+import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.DatabaseHandler;
 
 public class LogInActivity extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class LogInActivity extends AppCompatActivity {
     public void login(View view){
         String nombre=etName.getText().toString();
         String pass=etPass.getText().toString();
-        if(DatabaseHandler.login(nombre,pass)) {
+        if(Controller.login(nombre,pass)) {
             Intent menuIntent = new Intent(LogInActivity.this, MenuActivity.class);
             startActivity(menuIntent);
         }
