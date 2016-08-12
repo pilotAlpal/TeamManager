@@ -1,5 +1,7 @@
 package com.movildat.lucassegarra.teammanager.model;
 
+import com.movildat.lucassegarra.teammanager.controler.Controller;
+
 import java.util.ArrayList;
 
 /**
@@ -15,8 +17,8 @@ public class Team {
         name=teamName;
         players=new ArrayList<String>();
     }
-    public Team(String id,String tName,ArrayList<String> tPlayers){
-        myId=id;name=tName;
+    public Team(String tName,ArrayList<String> tPlayers){
+        myId= DatabaseHandler.getNextTeamId();name=tName;
         if (tPlayers!=null)
             players=tPlayers;
         else

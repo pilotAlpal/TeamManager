@@ -9,11 +9,13 @@ import android.widget.TextView;
 
 import com.movildat.lucassegarra.teammanager.R;
 
+import java.util.ArrayList;
+
 /**
  * Created by lucas.segarra on 02/08/2016.
  */
 public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.ViewHolder> {
-    private String list[];
+    private ArrayList<String> list;
 
     public static class ViewHolder extends RecyclerView.ViewHolder /*implements View.OnClickListener*/{
         public ImageView image;
@@ -31,8 +33,10 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
     }
 
     public TeamPlayersAdapter(String data[]){
+        list=new ArrayList<String>();
         if(data!=null)
-            list=data;
+            for (int i=0;i<data.length;i++)
+                list.add(i,data[i]);
     }
 
     @Override
@@ -42,12 +46,12 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
     }
      @Override
     public void onBindViewHolder(ViewHolder vH,int pos){
-        vH.name.setText(list[pos]);
+        vH.name.setText(list.get(pos));
          //cargar imagenes
      }
 
     @Override
     public int getItemCount(){
-        return list.length;
+        return list.size();
     }
 }

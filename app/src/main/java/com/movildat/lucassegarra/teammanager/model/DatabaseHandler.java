@@ -1,18 +1,22 @@
 package com.movildat.lucassegarra.teammanager.model;
 
+import android.app.Activity;
+import android.content.res.Resources;
+import android.icu.util.Freezable;
+import android.support.v4.app.Fragment;
+import android.text.format.Time;
+
+import com.movildat.lucassegarra.teammanager.R;
+
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by lucas.segarra on 05/08/2016.
  */
 public class DatabaseHandler {
-    static int nextTeamId=0,nextPlayerId=0;
 
-    /**
-     * recibe un objeto jugador (sin equipo) y guarda su info en la BD
-     *
-     * @param player objeto cuya información voy a guardar
-     */
+
     public static void insertPlayer(Player player){}
 
     /**
@@ -37,24 +41,6 @@ public class DatabaseHandler {
     public static void insertPlayer(Player player,String teamId){}
 
     /**
-     * crea una nueva convocatoria
-     * @param convocatory
-     */
-    public static void insertConvocatory(Convocatory convocatory){}
-
-    /**
-     * borra una convocatoria
-     * @param convocatoryId
-     */
-    public static void removeConvocatory(String convocatoryId){}
-
-    /**
-     * Almacena un nuevo equipo en la BD,si ya existe algún equipo con ese nombre se le pedirá al usuario que introduzca otro
-     * @param team
-     */
-    public static void insertTeam(Team team){}
-
-    /**
      * Permite eliminar un equipo de la BD
      * @param teamId
      */
@@ -64,19 +50,8 @@ public class DatabaseHandler {
      * Almacena en la BD un nuevo equipo, si no existe ninguno con el mismo nombre.
      * @param team equipo
      */
-    public static void createTeam(Team team){}
+    public static String  createTeam(Team team){return "1";}
 
-    /**
-     * Permite crear una nueva liga
-     * @param leage
-     */
-    public static void insertLeage(Leage leage){}
-
-    /**
-     * Permite borrar una liga
-     * @param leageId
-     */
-    public static void removeLeage(String leageId){}
 
     /**
      * Permite registrar un evento
@@ -90,19 +65,69 @@ public class DatabaseHandler {
      */
     public static void removeEvent(String eventId){}
 
+    /**
+     *
+     * @return el proximo id libre para asignarle a un equipo
+     */
     public static String getNextTeamId(){
-        return String.valueOf(nextTeamId);
+        return "1";
     }
 
+    /**
+     *
+     * @return el proximo id libre para asignarle a un jugador
+     */
     public static String getNextPlayerId() {
-        return String.valueOf(nextPlayerId);
+        return "1";
     }
 
+    /**
+     *
+     * @param pTeam nombre del equipo del que se quiere conocer el id
+     * @return Devuelve el id asociado a un equipo
+     */
     public static String getTeamId(String pTeam) {
         return "0";
     }
 
+    /**
+     * Permite identificar a un usuario
+     * @param nombre nombre del usuario
+     * @param pass contrasena
+     * @return true si se ha identificado correctamente, false si no
+     */
     public static boolean login(String nombre, String pass) {
         return true;
+    }
+
+    /**
+     *
+     * @return Lista de convocados para el próximo partido
+     */
+    public static ArrayList<String> getNextConvocatory() { return null;
+    }
+
+    public static String createMatch(Match m) {
+        return "1";
+    }
+
+    public static String getNextMatchId() {
+        return "1";
+    }
+
+    public static String getNextConvocatoryId() {
+        return "1";
+    }
+
+    public static String createConvocatory(Convocatory c) {
+        return "1";
+    }
+
+    public static String[] getEvents(int eventsShown) {
+        String a[]= new String[2];
+        // Resources.getSystem().getStringArray(R.array.eventos);
+        a[0]="Leeds";
+        a[1]="Bayern";
+        return a;
     }
 }

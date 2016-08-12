@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.movildat.lucassegarra.teammanager.R;
+import com.movildat.lucassegarra.teammanager.controler.Controller;
+
+import java.util.ArrayList;
 
 /**
  * Created by lucas.segarra on 14/07/2016.
@@ -32,6 +35,7 @@ public class NextMatchFragment extends Fragment {
         myRV.setHasFixedSize(true);
         RecyclerView.LayoutManager  myLayoutManager=new LinearLayoutManager(getActivity());
         myRV.setLayoutManager(myLayoutManager);
+        ArrayList<String> convocados= Controller.getNextConvocatory();
         String[] equipoInvencible=getResources().getStringArray(R.array.equipo_fantasma);
         RecyclerView.Adapter adapter=new PlayersListAdapter(equipoInvencible);
         myRV.setAdapter(adapter);

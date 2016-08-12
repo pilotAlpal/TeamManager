@@ -15,24 +15,22 @@ import java.util.ArrayList;
  * Created by lucas.segarra on 03/08/2016.
  */
 public class PhonesAdapter extends RecyclerView.Adapter<PhonesAdapter.ViewHolder> {
-    private String[] matesPhones;
-    private int numElems;
-    private final static int PLAYERS_FOR_TEAM=21;
+    private ArrayList<String> matesPhones;
 
     PhonesAdapter(String[] data){
+        matesPhones=new ArrayList<String>();
         if(data!=null) {
-            matesPhones = data;
-            numElems=data.length;
+            for(int i=0;i<data.length;i++){
+                matesPhones.add(i,data[i]);
+            }
         }
     }
     PhonesAdapter(){
-        numElems=0;
-        matesPhones=new String[PLAYERS_FOR_TEAM];
+        matesPhones=new ArrayList<String>();
     }
 
     public void clear() {
-        numElems=0;
-        matesPhones=new String[PLAYERS_FOR_TEAM];
+        matesPhones=new ArrayList<String >();
         notifyDataSetChanged();
     }
 
@@ -53,32 +51,28 @@ public class PhonesAdapter extends RecyclerView.Adapter<PhonesAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder,int pos){
-        holder.phoneTV.setText(matesPhones[pos]);
+        holder.phoneTV.setText(matesPhones.get(pos));
         final int aux=pos;
         holder.removeButt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (int i= aux;i<aux-1;i++)
-                    matesPhones[i]=matesPhones[i+1];
-                matesPhones[numElems]=null;
-                numElems--;
+                matesPhones.remove(aux);
                 notifyDataSetChanged();
             }
         });
     }
     @Override
     public int getItemCount(){
-        return numElems;
+        return matesPhones.size();
     }
 
     public void addItem(String number){
-        matesPhones[numElems]=number;
-        numElems++;
+        matesPhones.add(matesPhones.size(),number);
         notifyDataSetChanged();
     }
 
     public ArrayList<String> getValues(){
-        return new ArrayList<String>();
+        return matesPhones;
     }
 
 

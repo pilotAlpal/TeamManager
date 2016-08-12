@@ -8,26 +8,32 @@ import android.widget.TextView;
 
 import com.movildat.lucassegarra.teammanager.R;
 
+import java.util.ArrayList;
+
 /**
  * Created by lucas.segarra on 28/07/2016.
  */
 public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapter.ViewHolder> {
-    private String[] myEvents;
+    private ArrayList<String> myEvents;
 
     CalendarListAdapter(String[] data){
         if(data!=null)
-            myEvents=data;
+            myEvents=new ArrayList<String>();
+            for (int i=0;i<data.length;i++){
+                myEvents.add(i,data[i]);
+            }
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView mTextView;
+        public TextView tvFecha,tvRivNam;
         public ViewHolder(TextView textView){
             super(textView);
-            mTextView=textView;
+            tvFecha =textView;
         }
         public ViewHolder(View v){
             super(v);
-            mTextView=(TextView) v.findViewById(R.id.tv_fecha);
+            tvFecha =(TextView) v.findViewById(R.id.tv_fecha);
+            tvRivNam=(TextView)v.findViewById(R.id.tv_nom_rival);
         }
     }
 
@@ -39,11 +45,11 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder,int pos){
-        holder.mTextView.setText(myEvents[pos]);
+        holder.tvRivNam.setText(myEvents.get(pos));
     }
 
     @Override
     public int getItemCount(){
-        return myEvents.length;
+        return myEvents.size();
     }
 }

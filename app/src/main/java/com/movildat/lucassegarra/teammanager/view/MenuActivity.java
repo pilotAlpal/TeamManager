@@ -63,6 +63,11 @@ public class MenuActivity extends Activity {
         this.startActivity(registerEventIntent);
     }
 
+    public void addMatch(View v){
+        Intent registerMatchIntent=new Intent(MenuActivity.this,RegisterMatchActivity.class);
+        this.startActivity(registerMatchIntent);
+    }
+
     public void partnerClicked(View v){
         TextView t= (TextView) v.findViewById(R.id.tv_name_tmi);
         String s=t.getText().toString();
