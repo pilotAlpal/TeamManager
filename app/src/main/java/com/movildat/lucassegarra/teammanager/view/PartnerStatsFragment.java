@@ -10,11 +10,14 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.movildat.lucassegarra.teammanager.R;
+import com.movildat.lucassegarra.teammanager.model.Sesion;
+
+import java.util.Observable;
 
 /**
  * Created by lucas.segarra on 05/08/2016.
  */
-public class PartnerStatsFragment extends Fragment {
+public class PartnerStatsFragment extends Fragment implements Sesion.Observador{
 
     private ImageButton callButt,messageBut;
 
@@ -51,5 +54,10 @@ public class PartnerStatsFragment extends Fragment {
             }
         });
         return v;
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+
     }
 }

@@ -9,11 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.movildat.lucassegarra.teammanager.R;
+import com.movildat.lucassegarra.teammanager.model.Sesion;
+
+import java.util.Observable;
 
 /**
  * Created by lucas.segarra on 15/07/2016.
  */
-public class TeamStatsFragment extends Fragment {
+public class TeamStatsFragment extends Fragment implements Sesion.Observador{
 
     private RecyclerView myRV;
 
@@ -38,4 +41,8 @@ public class TeamStatsFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void update(Observable observable, Object o) {
+        return;
+    }
 }

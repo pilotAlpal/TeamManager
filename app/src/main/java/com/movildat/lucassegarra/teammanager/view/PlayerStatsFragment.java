@@ -9,11 +9,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.movildat.lucassegarra.teammanager.R;
+import com.movildat.lucassegarra.teammanager.model.Sesion;
+
+import java.util.Observable;
 
 /**
  * Created by lucas.segarra on 15/07/2016.
  */
-public class PlayerStatsFragment extends Fragment {
+public class PlayerStatsFragment extends Fragment implements Sesion.Observador {
 
 
     @Override public void onCreate(Bundle savedInstanceState){
@@ -25,5 +28,10 @@ public class PlayerStatsFragment extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.player_stats_view,container,false);
 
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        return;
     }
 }
