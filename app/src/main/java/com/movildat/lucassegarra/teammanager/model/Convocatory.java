@@ -10,11 +10,9 @@ import java.util.ArrayList;
 public class Convocatory {
     private String id_partido;
     private String id_equipo;
-    private String id_convocatory;
     private ArrayList<String > convocados;
 
     public Convocatory(String partido, String equipo){
-        id_convocatory= DatabaseHandler.getNextConvocatoryId();
         id_partido=partido;
         id_equipo=equipo;
         convocados=new ArrayList<String>();

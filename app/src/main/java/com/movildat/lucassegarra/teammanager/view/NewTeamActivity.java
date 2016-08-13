@@ -10,17 +10,19 @@ import android.widget.Toast;
 
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
+import com.movildat.lucassegarra.teammanager.model.Sesion;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 /**
  * Created by lucas.segarra on 03/08/2016.
  */
-public class NewTeamActivity extends AppCompatActivity {
+public class NewTeamActivity extends AppCompatActivity implements Sesion.Observador{
     RecyclerView phoneNumbers;
     EditText phoneET,teamET;
     PhonesAdapter adapter;
-
+    private Controller myController;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -46,8 +48,17 @@ public class NewTeamActivity extends AppCompatActivity {
         teamET.setText("");
         adapter.clear();
         ArrayList<String> equipoInicial=adapter.getValues();
-        Controller.createTeam(teamName,equipoInicial);
+        myController.createTeam(teamName,equipoInicial);
         Toast.makeText(this,teamName+" "+R.string.anadido,Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void setController(Controller controller) {
+
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+
+    }
 }

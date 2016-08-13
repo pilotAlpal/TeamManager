@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.movildat.lucassegarra.teammanager.R;
+import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
 
 import java.util.Observable;
@@ -33,5 +34,10 @@ public class PlayerStatsFragment extends Fragment implements Sesion.Observador {
     @Override
     public void update(Observable observable, Object o) {
         return;
+    }
+
+    @Override
+    public void setController(Controller controller) {
+
     }
 }

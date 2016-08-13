@@ -4,6 +4,7 @@ import com.movildat.lucassegarra.teammanager.model.Convocatory;
 import com.movildat.lucassegarra.teammanager.model.DatabaseHandler;
 import com.movildat.lucassegarra.teammanager.model.Match;
 import com.movildat.lucassegarra.teammanager.model.Player;
+import com.movildat.lucassegarra.teammanager.model.Sesion;
 import com.movildat.lucassegarra.teammanager.model.Team;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,50 +14,46 @@ import java.util.Date;
  */
 public class Controller {
 
-    public static void createTeam(String teamName, ArrayList<String> initPlayers){
+    private Sesion mySesion;
+
+    public Controller(Sesion s){
+        mySesion=s;
+    }
+    public  void createTeam(String teamName, ArrayList<String> initPlayers){
         Team equipo=new Team(teamName,initPlayers);
-        DatabaseHandler.createTeam(equipo);
+        mySesion.createTeam(equipo);
     }
 
-    public static void createPlayer(String pName,String pPass,String pTeam,String pTel,String pos) {
-        String teamId=DatabaseHandler.getTeamId(pTeam);
+    public  void createPlayer(String pName,String pPass,String pTel,String pos) {
+
         Player jugador=new Player(pName,pPass,pTel,pos);
-        DatabaseHandler.insertPlayer(jugador,teamId);
+        mySesion.insertPlayer(jugador,mySesion.getTeamId());
     }
 
     /**
      *
      * @return Lista convocados proximo partido
      */
-    public static ArrayList<String> getNextConvocatory() {
-        return DatabaseHandler.getNextConvocatory();
+    public ArrayList<String> getNextConvocatory() {
+        return mySesion.getNextConvocatory();
     }
 
-    /**
-     * permite registrar un partido al usuario
-     * @param nRival nombre del rival
-     * @param f fecha
-     * @param h hora
-     */
-    public static void registetMatch(String nRival, Date f, Time h) {
-        String idRival=DatabaseHandler.getTeamId(nRival);
-        Match m=new Match(getTeamId(),idRival,f,h);
-        String idPartido=DatabaseHandler.createMatch(m);
-        registerConvocatory(idPartido);
-    }
-    public static void registerConvocatory(String idPartido){
-        Convocatory c=new Convocatory(idPartido,getTeamId());
-        DatabaseHandler.createConvocatory(c);
-    }
-    private static String getTeamId(){return null;}
-    private static String getUserId(){return null;}
 
-    public static String[] getEvents(int eventsShown) {
-        return DatabaseHandler.getEvents(eventsShown);
+    public void registerConvocatory(String idPartido){
+        Convocatory c=new Convocatory(idPartido,mySesion.getTeamId());
+        mySesion.createConvocatory(c);
     }
 
-    public static boolean login(String nombre, String pass) {
+    public  String[] getEvents(int eventsShown) {
+        return mySesion.getEvents(eventsShown);
+    }
+
+    public boolean validLogin(String nombre, String pass) {
         //guardar en algun lado id_usuario
-        return DatabaseHandler.login(nombre,pass);
+        return mySesion.validLogin(nombre,pass);
+    }
+
+    public void login(String nombre, String pass) {
+        mySesion.login(nombre,pass);
     }
 }

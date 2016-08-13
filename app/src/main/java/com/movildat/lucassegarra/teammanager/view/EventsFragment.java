@@ -17,19 +17,18 @@ import android.view.ViewGroup;
 
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
+import com.movildat.lucassegarra.teammanager.model.Sesion;
+
+import java.util.Observable;
 
 
 /**
  * Created by lucas.segarra on 19/07/2016.
  */
-public class EventsFragment extends Fragment {
+public class EventsFragment extends Fragment implements Sesion.Observador {
 
-    public static final String[] EVENT_PROJECTION = new String[]{
-            CalendarContract.Calendars._ID,                           // 0
-            CalendarContract.Calendars.ACCOUNT_NAME,                  // 1
-            CalendarContract.Calendars.CALENDAR_DISPLAY_NAME,         // 2
-            CalendarContract.Calendars.OWNER_ACCOUNT                  // 3
-    };
+
+    private Controller myController;
     private static final int EVENTS_SHOWN =5 ;
 
     @Override
@@ -39,7 +38,7 @@ public class EventsFragment extends Fragment {
         myRecycler.setHasFixedSize(true);
         RecyclerView.LayoutManager rvLM=new LinearLayoutManager(getActivity());
         myRecycler.setLayoutManager(rvLM);
-        String[] eventos= Controller.getEvents(EVENTS_SHOWN);
+        String[] eventos= myController.getEvents(EVENTS_SHOWN);
 
         RecyclerView.Adapter adapter=new CalendarListAdapter(eventos);
         myRecycler.setAdapter(adapter);
@@ -47,4 +46,13 @@ public class EventsFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void setController(Controller controller) {
+        myController=controller;
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+
+    }
 }

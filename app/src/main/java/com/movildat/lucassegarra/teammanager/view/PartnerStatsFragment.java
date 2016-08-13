@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.movildat.lucassegarra.teammanager.R;
+import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
 
 import java.util.Observable;
@@ -58,6 +59,11 @@ public class PartnerStatsFragment extends Fragment implements Sesion.Observador{
 
     @Override
     public void update(Observable observable, Object o) {
+
+    }
+
+    @Override
+    public void setController(Controller controller) {
 
     }
 }

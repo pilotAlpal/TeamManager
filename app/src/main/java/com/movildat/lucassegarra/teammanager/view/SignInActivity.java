@@ -20,7 +20,7 @@ public class SignInActivity extends Activity {
     private CheckBox cbLog;
     private Spinner spPos;
     private EditText etNombre,etContrasena,etEquipo,etTelefono;
-
+    private Controller myController;
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -44,7 +44,7 @@ public class SignInActivity extends Activity {
             String pass = etContrasena.getText().toString();
             String name = etNombre.getText().toString();
             String posicion=(String)spPos.getSelectedItem();
-            Controller.createPlayer(name,pass,team,tel,posicion);
+            myController.createPlayer(name,pass,tel,posicion);
             if (cbLog.isChecked()) {
                 Intent signInIntent = new Intent(SignInActivity.this, MenuActivity.class);
                 startActivity(signInIntent);

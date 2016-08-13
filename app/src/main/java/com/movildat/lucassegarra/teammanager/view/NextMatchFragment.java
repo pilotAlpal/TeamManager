@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class NextMatchFragment extends Fragment {
     private TextView proxRiv,numConfirmados;
     private RecyclerView myRV;
+    private Controller myController;
     @Override public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
@@ -35,7 +36,7 @@ public class NextMatchFragment extends Fragment {
         myRV.setHasFixedSize(true);
         RecyclerView.LayoutManager  myLayoutManager=new LinearLayoutManager(getActivity());
         myRV.setLayoutManager(myLayoutManager);
-        ArrayList<String> convocados= Controller.getNextConvocatory();
+        ArrayList<String> convocados= myController.getNextConvocatory();
         String[] equipoInvencible=getResources().getStringArray(R.array.equipo_fantasma);
         RecyclerView.Adapter adapter=new PlayersListAdapter(equipoInvencible);
         myRV.setAdapter(adapter);

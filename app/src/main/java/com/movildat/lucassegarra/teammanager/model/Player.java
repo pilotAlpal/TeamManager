@@ -12,9 +12,8 @@ public class Player {
     //(id,pName,pPass,pTel,pos)
 
     public Player(String pNam,String pass,String pTel,String pPos){
-        id= DatabaseHandler.getNextPlayerId();
+        id= pNam;
         posicion=pPos;
-        nombre=pNam;
         contrasena=pass;
         telefono=pTel;
     }

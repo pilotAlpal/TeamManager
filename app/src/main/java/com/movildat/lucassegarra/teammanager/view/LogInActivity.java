@@ -9,10 +9,13 @@ import android.widget.EditText;
 
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
-import com.movildat.lucassegarra.teammanager.model.DatabaseHandler;
+import com.movildat.lucassegarra.teammanager.model.Sesion;
 
-public class LogInActivity extends AppCompatActivity {
+import java.util.Observable;
 
+public class LogInActivity extends AppCompatActivity implements Sesion.Observador{
+
+    private Controller myController;
     private Button bLog,bSign;
     private EditText etName,etPass;
 
@@ -27,8 +30,12 @@ public class LogInActivity extends AppCompatActivity {
     public void login(View view){
         String nombre=etName.getText().toString();
         String pass=etPass.getText().toString();
-        if(Controller.login(nombre,pass)) {
+        Sesion s=new Sesion();
+        if(s.validLogin(nombre,pass)) {
+            s.login(nombre,pass);
+            Controller controller=new Controller(s);
             Intent menuIntent = new Intent(LogInActivity.this, MenuActivity.class);
+            //pasarle controller a menuintent
             startActivity(menuIntent);
         }
     }
@@ -40,5 +47,15 @@ public class LogInActivity extends AppCompatActivity {
     public void registrateTeam(View v){
         Intent newTeamIntent=new Intent(LogInActivity.this,NewTeamActivity.class);
         startActivity(newTeamIntent);
+    }
+
+    @Override
+    public void setController(Controller controller) {
+
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+
     }
 }

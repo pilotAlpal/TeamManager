@@ -19,14 +19,12 @@ public class Match {
     private int homeG,guestG;
 
     public Match(String tournamentId,String home_id,String guest_id,Date w,int home_goals,int guest_goals){
-        id= DatabaseHandler.getNextMatchId();tournament=tournamentId;homeId=home_id;guestId=guest_id;
         when=w;
         homeG=home_goals;
         guestG=guest_goals;
     }
 
     public Match(String teamId, String idRival, Date f, Time h) {
-        id=DatabaseHandler.getNextMatchId();
         homeId=teamId;
         guestId=idRival;
         when=f;

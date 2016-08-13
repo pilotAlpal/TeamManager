@@ -9,16 +9,14 @@ import java.util.ArrayList;
  */
 public class Team {
     private String myId;
-    private String name;
     private ArrayList<String> players;
 
-    public Team(String id,String teamName){
+    public Team(String id){
         myId=id;
-        name=teamName;
         players=new ArrayList<String>();
     }
     public Team(String tName,ArrayList<String> tPlayers){
-        myId= DatabaseHandler.getNextTeamId();name=tName;
+        myId=tName;
         if (tPlayers!=null)
             players=tPlayers;
         else
@@ -31,6 +29,9 @@ public class Team {
         players.remove(playerId);
     }
     public String getId(){return myId;}
-    public String getName(){return name;}
     public int getCount(){return players.size();}
+
+    public String getTeamId() {
+        return myId;
+    }
 }
