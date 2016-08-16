@@ -79,6 +79,14 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         return jugador.getId();
     }
 
+    public TeamStats getTeamStats(String teamId) {
+        return dao.getTeamStats(teamId);
+    }
+
+    public ArrayList<String> getPartners() {
+        return equipo.getPlayersList();
+    }
+
     public interface Observador extends Observer{
         public void setController(Controller controller);
         /**

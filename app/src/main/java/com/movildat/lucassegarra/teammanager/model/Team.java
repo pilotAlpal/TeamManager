@@ -35,4 +35,8 @@ public class Team implements Serializable{
     public String getTeamId() {
         return myId;
     }
+
+    public ArrayList<String> getPlayersList() {
+        return players;
+    }
 }

@@ -19,7 +19,7 @@ import java.util.Observable;
 /**
  * Created by lucas.segarra on 15/07/2016.
  */
-public class PlayerStatsFragment extends Fragment {
+public class PlayerStatsFragment extends ViewFragment {
 
     private PlayerStats playerStats;
 
@@ -40,5 +40,10 @@ public class PlayerStatsFragment extends Fragment {
 
     private void setPlayerStats(PlayerStats pStats) {
         playerStats=pStats;
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+
     }
 }

@@ -46,10 +46,17 @@ public class SignInActivity extends Activity {
             String name = etNombre.getText().toString();
             String posicion=(String)spPos.getSelectedItem();
             myController=new Controller();
-
+            /*hacer createPlayer booleano que informe de si ha sido
+            * posible crear un usuario con ese nombre
+            * si no,notificar al usuario*/
             myController.createPlayer(name,pass,tel,posicion);
             if (cbLog.isChecked()) {
-                Intent signInIntent = new Intent(SignInActivity.this, MenuActivity.class);
+                myController.login(name,pass);
+                Intent signInIntent = new Intent();
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("Controller",myController);
+                signInIntent.putExtras(bundle);
+                signInIntent.setClass(this,MenuActivity.class);
                 startActivity(signInIntent);
             }
             finish();

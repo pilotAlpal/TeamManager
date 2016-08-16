@@ -10,15 +10,20 @@ import android.view.ViewGroup;
 
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
+import com.movildat.lucassegarra.teammanager.model.Player;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
+import com.movildat.lucassegarra.teammanager.model.TeamStats;
+import com.movildat.lucassegarra.teammanager.model.ViewFragment;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 /**
  * Created by lucas.segarra on 15/07/2016.
  */
-public class TeamStatsFragment extends Fragment implements Sesion.Observador{
+public class TeamStatsFragment extends ViewFragment {
 
+    private TeamStats teamStats;
     private RecyclerView myRV;
 
     @Override
@@ -28,8 +33,11 @@ public class TeamStatsFragment extends Fragment implements Sesion.Observador{
         myRV.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager=new LinearLayoutManager(getActivity());
         myRV.setLayoutManager(mLayoutManager);
-        //cargar estadisticas del equipo
-        //cargar jugadores de mi equipo y pasarselos al adapter
+        teamStats=myController.getMyTeamStats();
+        ArrayList<String> teamMates=myController.getPartners();
+        //pasarle teamMates al adapter
+        //cargar teamStats en los textViews
+        //cargar y pasar rating de cada jugador al adapter,aparecerá en la vista del item
         String[] titulares=getResources().getStringArray(R.array.equipo_fantasma);
         String[] suplentes=getResources().getStringArray(R.array.equipo_fantasma_suplentes);
         String[] todos=new String[titulares.length+suplentes.length];
@@ -45,11 +53,6 @@ public class TeamStatsFragment extends Fragment implements Sesion.Observador{
     @Override
     public void update(Observable observable, Object o) {
         return;
-    }
-
-    @Override
-    public void setController(Controller controller) {
-
     }
 
     public static TeamStatsFragment newInstance(Controller myController) {

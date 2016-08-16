@@ -56,4 +56,8 @@ public class DatabaseHandler implements Serializable {
     public PlayerStats getPlayerStats(String s) {
         return new PlayerStats();
     }
+
+    public TeamStats getTeamStats(String teamId) {
+        return new TeamStats();
+    }
 }

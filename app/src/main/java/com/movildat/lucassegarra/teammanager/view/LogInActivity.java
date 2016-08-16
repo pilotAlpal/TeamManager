@@ -31,7 +31,6 @@ public class LogInActivity extends AppCompatActivity implements Sesion.Observado
         String pass=etPass.getText().toString();
         Sesion s=new Sesion();
         if(s.validLogin(nombre,pass)) {
-            s.login(nombre,pass);
             Controller controller=new Controller(s);
             Intent menuIntent = new Intent();
             Bundle bundle=new Bundle();

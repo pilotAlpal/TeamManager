@@ -7,6 +7,7 @@ import com.movildat.lucassegarra.teammanager.model.Player;
 import com.movildat.lucassegarra.teammanager.model.PlayerStats;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
 import com.movildat.lucassegarra.teammanager.model.Team;
+import com.movildat.lucassegarra.teammanager.model.TeamStats;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -62,11 +63,30 @@ public class Controller implements Serializable{
       return   mySesion.validLogin(nombre,pass);
     }
 
+    public PlayerStats getMyplayerStats(){
+        return getPlayerStats(getPlayerId());
+    }
     public PlayerStats getPlayerStats(String s) {
         return mySesion.getPlayerStats(s);
     }
 
+    public TeamStats getMyTeamStats(){
+        return getTeamStats(getTeamId());
+    }
+
+    public TeamStats getTeamStats(String teamId){
+        return mySesion.getTeamStats(teamId);
+    }
+
+    public String getTeamId(){
+        return mySesion.getTeamId();
+    }
+
     public String getPlayerId() {
         return mySesion.getPlayerId();
+    }
+
+    public ArrayList<String> getPartners() {
+        return mySesion.getPartners();
     }
 }
