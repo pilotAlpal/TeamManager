@@ -15,7 +15,6 @@ import java.util.Observable;
 
 public class LogInActivity extends AppCompatActivity implements Sesion.Observador{
 
-    private Controller myController;
     private Button bLog,bSign;
     private EditText etName,etPass;
 

@@ -52,4 +52,8 @@ public class DatabaseHandler implements Serializable {
     public Team lastTeamChosen(String nombre) {
         return new Team("Rayo Vaticano");
     }
+
+    public PlayerStats getPlayerStats(String s) {
+        return new PlayerStats();
+    }
 }

@@ -41,4 +41,10 @@ public class PlayerStatsFragment extends ViewFragment {
     public void setController(Controller controller) {
 
     }
+
+    public static PlayerStatsFragment newInstance(Controller myController) {
+        PlayerStatsFragment pSf=new PlayerStatsFragment();
+        pSf.setController(myController);
+        return pSf;
+    }
 }

@@ -12,11 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.movildat.lucassegarra.teammanager.R;
+import com.movildat.lucassegarra.teammanager.model.ViewFragment;
+
+import java.util.Observable;
 
 /**
  * Created by lucas.segarra on 14/07/2016.
  */
-public class InfoFragment extends Fragment {
+public class InfoFragment extends ViewFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,4 +29,8 @@ public class InfoFragment extends Fragment {
     }
 
 
+    @Override
+    public void update(Observable observable, Object o) {
+
+    }
 }

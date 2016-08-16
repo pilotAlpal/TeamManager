@@ -71,6 +71,10 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         return dao.getNextConvocatory();
     }
 
+    public PlayerStats getPlayerStats(String s) {
+        return dao.getPlayerStats(s);
+    }
+
     public interface Observador extends Observer{
         public void setController(Controller controller);
         /**

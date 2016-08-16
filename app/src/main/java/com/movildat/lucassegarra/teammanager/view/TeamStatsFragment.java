@@ -51,4 +51,10 @@ public class TeamStatsFragment extends Fragment implements Sesion.Observador{
     public void setController(Controller controller) {
 
     }
+
+    public static TeamStatsFragment newInstance(Controller myController) {
+        TeamStatsFragment teamStatsFragment=new TeamStatsFragment();
+        teamStatsFragment.setController(myController);
+        return teamStatsFragment;
+    }
 }

@@ -67,4 +67,10 @@ public class PartnerStatsFragment extends ViewFragment{
     public void setController(Controller controller) {
 
     }
+
+    public static PartnerStatsFragment newInstance(Controller myController) {
+        PartnerStatsFragment partnerStatsFragment=new PartnerStatsFragment();
+        partnerStatsFragment.setController(myController);
+        return partnerStatsFragment;
+    }
 }

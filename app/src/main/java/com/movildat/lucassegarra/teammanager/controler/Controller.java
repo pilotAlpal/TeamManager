@@ -4,6 +4,7 @@ import com.movildat.lucassegarra.teammanager.model.Convocatory;
 import com.movildat.lucassegarra.teammanager.model.DatabaseHandler;
 import com.movildat.lucassegarra.teammanager.model.Match;
 import com.movildat.lucassegarra.teammanager.model.Player;
+import com.movildat.lucassegarra.teammanager.model.PlayerStats;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
 import com.movildat.lucassegarra.teammanager.model.Team;
 
@@ -63,5 +64,9 @@ public class Controller implements Serializable{
 
     public void login(String nombre, String pass) {
         mySesion.login(nombre,pass);
+    }
+
+    public PlayerStats getPlayerStats(String s) {
+        return mySesion.getPlayerStats(s);
     }
 }

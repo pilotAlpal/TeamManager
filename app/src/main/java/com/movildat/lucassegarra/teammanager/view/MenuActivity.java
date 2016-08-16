@@ -1,7 +1,6 @@
 package com.movildat.lucassegarra.teammanager.view;
 
 
-import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Intent;
 import android.net.Uri;
@@ -15,40 +14,40 @@ import android.widget.Toast;
 
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
+import com.movildat.lucassegarra.teammanager.model.PlayerStats;
+import com.movildat.lucassegarra.teammanager.model.ViewActivity;
 
 
 /**
  * Created by lucas.segarra on 14/07/2016.
  */
 
-public class MenuActivity extends Activity {
+public class MenuActivity extends ViewActivity {
 
     private OptionsFragment optionsFragment;
     private InfoFragment infoFragment;
     private static int CAM_INTENT_CODE=0;
-    private Controller myController;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
-        //cagar id_usuario
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_view);
         myController=(Controller)getIntent().getSerializableExtra("Controller");
         optionsFragment=(OptionsFragment)getFragmentManager().findFragmentById(R.id.f_ops);
         optionsFragment.setController(myController);
         infoFragment=(InfoFragment)getFragmentManager().findFragmentById((R.id.f_info));
+        infoFragment.setController(myController);
     }
 
     public void statsJugador(View view){
-        //pasar id_jugador
-        getFragmentManager().beginTransaction().replace(R.id.f_info,new PlayerStatsFragment()).commit();
+        PlayerStatsFragment pSf=PlayerStatsFragment.newInstance(myController);
+        getFragmentManager().beginTransaction().replace(R.id.f_info,pSf).commit();
     }
     public void statsEquipo(View view){
-        //obtener y pasar id_equipo
+        TeamStatsFragment tSf=TeamStatsFragment.newInstance(myController);
         getFragmentManager().beginTransaction().replace(R.id.f_info,new TeamStatsFragment()).commit();
     }
     public void calendario(View view){
-        //pasar id_jugador
         EventsFragment eventsFragment=EventsFragment.newInstance(myController);
         getFragmentManager().beginTransaction().replace(R.id.f_info,eventsFragment).commit();
     }
@@ -66,21 +65,29 @@ public class MenuActivity extends Activity {
     }
     public void addEvent(View v){
         Intent registerEventIntent = new Intent(MenuActivity.this,RegisterEventActivity.class);
+        Bundle b=new Bundle();
+        b.putSerializable("Controller",myController);
+        registerEventIntent.putExtras(b);
+        registerEventIntent.setClass(this,RegisterEventActivity.class);
         this.startActivity(registerEventIntent);
     }
 
     public void addMatch(View v){
         Intent registerMatchIntent=new Intent(MenuActivity.this,RegisterMatchActivity.class);
+        Bundle b=new Bundle();
+        b.putSerializable("Controller",myController);
+        registerMatchIntent.putExtras(b);
+        registerMatchIntent.setClass(this,RegisterMatchActivity.class);
         this.startActivity(registerMatchIntent);
     }
 
     public void partnerClicked(View v){
         TextView t= (TextView) v.findViewById(R.id.tv_name_tmi);
         String s=t.getText().toString();
-        getFragmentManager().beginTransaction().replace(R.id.f_info,new PartnerStatsFragment()).commit();
+        PlayerStats pSf=myController.getPlayerStats(s);
+        PartnerStatsFragment partnerStatsFragment=PartnerStatsFragment.newInstance(myController);
+        getFragmentManager().beginTransaction().replace(R.id.f_info,partnerStatsFragment).commit();
     }
-
-
 
     public void volver(View view){
         finish();
@@ -97,6 +104,4 @@ public class MenuActivity extends Activity {
             startActivityForResult(photoIntent,CAM_INTENT_CODE);
         }
     }
-
-    public void setController(Controller c){myController=c;}
 }
