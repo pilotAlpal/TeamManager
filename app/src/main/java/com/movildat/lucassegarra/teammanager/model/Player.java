@@ -19,4 +19,8 @@ public class Player implements Serializable {
         contrasena=pass;
         telefono=pTel;
     }
+
+    public String getId() {
+        return id;
+    }
 }

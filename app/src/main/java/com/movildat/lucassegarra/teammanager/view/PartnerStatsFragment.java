@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
+import com.movildat.lucassegarra.teammanager.model.PlayerStats;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
 import com.movildat.lucassegarra.teammanager.model.ViewFragment;
 
@@ -68,7 +69,7 @@ public class PartnerStatsFragment extends ViewFragment{
 
     }
 
-    public static PartnerStatsFragment newInstance(Controller myController) {
+    public static PartnerStatsFragment newInstance(Controller myController, PlayerStats pSf) {
         PartnerStatsFragment partnerStatsFragment=new PartnerStatsFragment();
         partnerStatsFragment.setController(myController);
         return partnerStatsFragment;

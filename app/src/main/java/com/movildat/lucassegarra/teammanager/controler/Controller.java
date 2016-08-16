@@ -57,16 +57,16 @@ public class Controller implements Serializable{
         return mySesion.getEvents(eventsShown);
     }
 
-    public boolean validLogin(String nombre, String pass) {
-        //guardar en algun lado id_usuario
-        return mySesion.validLogin(nombre,pass);
-    }
 
-    public void login(String nombre, String pass) {
-        mySesion.login(nombre,pass);
+    public boolean login(String nombre, String pass) {
+      return   mySesion.validLogin(nombre,pass);
     }
 
     public PlayerStats getPlayerStats(String s) {
         return mySesion.getPlayerStats(s);
+    }
+
+    public String getPlayerId() {
+        return mySesion.getPlayerId();
     }
 }

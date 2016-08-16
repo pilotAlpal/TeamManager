@@ -10,6 +10,7 @@ import android.widget.Spinner;
 
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
+import com.movildat.lucassegarra.teammanager.model.PlayerStats;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
 import com.movildat.lucassegarra.teammanager.model.ViewFragment;
 
@@ -18,8 +19,9 @@ import java.util.Observable;
 /**
  * Created by lucas.segarra on 15/07/2016.
  */
-public class PlayerStatsFragment extends ViewFragment {
+public class PlayerStatsFragment extends Fragment {
 
+    private PlayerStats playerStats;
 
     @Override public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -29,22 +31,14 @@ public class PlayerStatsFragment extends ViewFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.player_stats_view,container,false);
-
     }
-
-    @Override
-    public void update(Observable observable, Object o) {
-        return;
-    }
-
-    @Override
-    public void setController(Controller controller) {
-
-    }
-
-    public static PlayerStatsFragment newInstance(Controller myController) {
+    public static PlayerStatsFragment newInstance(PlayerStats playerStats) {
         PlayerStatsFragment pSf=new PlayerStatsFragment();
-        pSf.setController(myController);
+        pSf.setPlayerStats(playerStats);
         return pSf;
+    }
+
+    private void setPlayerStats(PlayerStats pStats) {
+        playerStats=pStats;
     }
 }

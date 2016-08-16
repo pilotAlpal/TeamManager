@@ -5,6 +5,7 @@ import com.movildat.lucassegarra.teammanager.controler.Controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observer;
+import java.util.concurrent.SynchronousQueue;
 
 /**
  * Created by Propietario on 12/08/2016.
@@ -39,13 +40,12 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         if(!dao.validLogin(nombre,pass))
             notifyInvalidCredentials();
         else {
-            jugador=dao.login(nombre,pass);
-            //cargar ultimo equipo en el que se ha registrado el jugador
+            login(nombre,pass);
         }
         return retorno;
     }
 
-    public void login(String nombre, String pass) {
+    private void login(String nombre, String pass) {
         jugador=dao.login(nombre,pass);
         equipo=dao.lastTeamChosen(nombre);
     }
@@ -73,6 +73,10 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
 
     public PlayerStats getPlayerStats(String s) {
         return dao.getPlayerStats(s);
+    }
+
+    public String getPlayerId() {
+        return jugador.getId();
     }
 
     public interface Observador extends Observer{

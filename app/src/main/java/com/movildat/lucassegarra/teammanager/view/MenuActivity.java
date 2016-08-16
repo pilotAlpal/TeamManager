@@ -40,7 +40,7 @@ public class MenuActivity extends ViewActivity {
     }
 
     public void statsJugador(View view){
-        PlayerStatsFragment pSf=PlayerStatsFragment.newInstance(myController);
+        PlayerStatsFragment pSf=PlayerStatsFragment.newInstance(myController.getPlayerStats(myController.getPlayerId()));
         getFragmentManager().beginTransaction().replace(R.id.f_info,pSf).commit();
     }
     public void statsEquipo(View view){
@@ -85,7 +85,7 @@ public class MenuActivity extends ViewActivity {
         TextView t= (TextView) v.findViewById(R.id.tv_name_tmi);
         String s=t.getText().toString();
         PlayerStats pSf=myController.getPlayerStats(s);
-        PartnerStatsFragment partnerStatsFragment=PartnerStatsFragment.newInstance(myController);
+        PartnerStatsFragment partnerStatsFragment=PartnerStatsFragment.newInstance(myController,pSf);
         getFragmentManager().beginTransaction().replace(R.id.f_info,partnerStatsFragment).commit();
     }
 
