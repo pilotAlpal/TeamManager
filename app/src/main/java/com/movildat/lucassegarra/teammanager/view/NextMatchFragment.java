@@ -36,15 +36,22 @@ public class NextMatchFragment extends Fragment {
         myRV.setHasFixedSize(true);
         RecyclerView.LayoutManager  myLayoutManager=new LinearLayoutManager(getActivity());
         myRV.setLayoutManager(myLayoutManager);
+
+//        numConfirmados.setText(adapter.getItemCount());
+        return v;
+    }
+
+    public NextMatchFragment newInstance(Controller c){
+        NextMatchFragment nextMF=new NextMatchFragment();
+        nextMF.myController=c;
+        return nextMF;
+    }
+    public void setController(Controller c){
+        myController=c;
         ArrayList<String> convocados= myController.getNextConvocatory();
         String[] equipoInvencible=getResources().getStringArray(R.array.equipo_fantasma);
         RecyclerView.Adapter adapter=new PlayersListAdapter(equipoInvencible);
         myRV.setAdapter(adapter);
-//        numConfirmados.setText(adapter.getItemCount());
-        return v;
     }
-/*    public void replaceNextMatchInfo(){
-        FragmentManager myFM=getFragmentManager();
-            myFM.beginTransaction().replace(R.id.fr_next_match,new MatchDetailsFragment()).commit();
-    }*/
+
 }

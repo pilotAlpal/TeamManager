@@ -2,10 +2,12 @@ package com.movildat.lucassegarra.teammanager.model;
 
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 
+import java.io.Serializable;
+
 /**
  * Created by lucas.segarra on 05/08/2016.
  */
-public class Player {
+public class Player implements Serializable {
     private String telefono,id,posicion,nombre,contrasena;
     private int dorsal,goles,asistencias;
 

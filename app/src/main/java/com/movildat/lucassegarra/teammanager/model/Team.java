@@ -2,12 +2,13 @@ package com.movildat.lucassegarra.teammanager.model;
 
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by lucas.segarra on 05/08/2016.
  */
-public class Team {
+public class Team implements Serializable{
     private String myId;
     private ArrayList<String> players;
 

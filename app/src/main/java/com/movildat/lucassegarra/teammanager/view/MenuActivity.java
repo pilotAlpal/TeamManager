@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.movildat.lucassegarra.teammanager.R;
+import com.movildat.lucassegarra.teammanager.controler.Controller;
 
 
 /**
@@ -25,14 +26,16 @@ public class MenuActivity extends Activity {
     private OptionsFragment optionsFragment;
     private InfoFragment infoFragment;
     private static int CAM_INTENT_CODE=0;
-
+    private Controller myController;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         //cagar id_usuario
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_view);
+        myController=(Controller)getIntent().getSerializableExtra("Controller");
         optionsFragment=(OptionsFragment)getFragmentManager().findFragmentById(R.id.f_ops);
+        optionsFragment.setController(myController);
         infoFragment=(InfoFragment)getFragmentManager().findFragmentById((R.id.f_info));
     }
 
@@ -46,7 +49,8 @@ public class MenuActivity extends Activity {
     }
     public void calendario(View view){
         //pasar id_jugador
-        getFragmentManager().beginTransaction().replace(R.id.f_info,new EventsFragment()).commit();
+        EventsFragment eventsFragment=EventsFragment.newInstance(myController);
+        getFragmentManager().beginTransaction().replace(R.id.f_info,eventsFragment).commit();
     }
     public void clasificacion(View view){
         //posiblemente excluir de 1ºversion
@@ -76,9 +80,7 @@ public class MenuActivity extends Activity {
         getFragmentManager().beginTransaction().replace(R.id.f_info,new PartnerStatsFragment()).commit();
     }
 
-    /*public void displayNextMatchInfo(View v){
-        optionsFragment.replaceNextMatchInfo();
-    }*/
+
 
     public void volver(View view){
         finish();
@@ -95,4 +97,6 @@ public class MenuActivity extends Activity {
             startActivityForResult(photoIntent,CAM_INTENT_CODE);
         }
     }
+
+    public void setController(Controller c){myController=c;}
 }

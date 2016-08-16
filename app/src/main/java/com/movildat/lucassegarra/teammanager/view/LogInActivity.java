@@ -34,8 +34,11 @@ public class LogInActivity extends AppCompatActivity implements Sesion.Observado
         if(s.validLogin(nombre,pass)) {
             s.login(nombre,pass);
             Controller controller=new Controller(s);
-            Intent menuIntent = new Intent(LogInActivity.this, MenuActivity.class);
-            //pasarle controller a menuintent
+            Intent menuIntent = new Intent();
+            Bundle bundle=new Bundle();
+            bundle.putSerializable("Controller",controller);
+            menuIntent.putExtras(bundle);
+            menuIntent.setClass(this,MenuActivity.class);
             startActivity(menuIntent);
         }
     }

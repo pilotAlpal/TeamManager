@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
+import com.movildat.lucassegarra.teammanager.model.ViewFragment;
 
 import java.util.Observable;
 
@@ -25,10 +26,9 @@ import java.util.Observable;
 /**
  * Created by lucas.segarra on 19/07/2016.
  */
-public class EventsFragment extends Fragment implements Sesion.Observador {
+public class EventsFragment extends ViewFragment {
 
 
-    private Controller myController;
     private static final int EVENTS_SHOWN =5 ;
 
     @Override
@@ -46,13 +46,15 @@ public class EventsFragment extends Fragment implements Sesion.Observador {
         return v;
     }
 
-    @Override
-    public void setController(Controller controller) {
-        myController=controller;
-    }
 
     @Override
     public void update(Observable observable, Object o) {
 
+    }
+
+    public static EventsFragment newInstance(Controller c) {
+        EventsFragment ef=new EventsFragment();
+        ef.setController(c);
+        return ef;
     }
 }

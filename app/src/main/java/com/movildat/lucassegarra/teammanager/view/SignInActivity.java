@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
+import com.movildat.lucassegarra.teammanager.model.Sesion;
 
 /**
  * Created by lucas.segarra on 14/07/2016.
@@ -44,6 +45,8 @@ public class SignInActivity extends Activity {
             String pass = etContrasena.getText().toString();
             String name = etNombre.getText().toString();
             String posicion=(String)spPos.getSelectedItem();
+            myController=new Controller();
+
             myController.createPlayer(name,pass,tel,posicion);
             if (cbLog.isChecked()) {
                 Intent signInIntent = new Intent(SignInActivity.this, MenuActivity.class);

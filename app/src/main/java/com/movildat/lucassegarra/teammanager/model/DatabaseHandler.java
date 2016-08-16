@@ -8,13 +8,14 @@ import android.text.format.Time;
 
 import com.movildat.lucassegarra.teammanager.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by lucas.segarra on 05/08/2016.
  */
-public class DatabaseHandler {
+public class DatabaseHandler implements Serializable {
 
 
 
@@ -46,5 +47,9 @@ public class DatabaseHandler {
 
     public ArrayList<String> getNextConvocatory() {
         return new ArrayList<String>();
+    }
+
+    public Team lastTeamChosen(String nombre) {
+        return new Team("Rayo Vaticano");
     }
 }

@@ -2,13 +2,14 @@ package com.movildat.lucassegarra.teammanager.model;
 
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observer;
 
 /**
  * Created by Propietario on 12/08/2016.
  */
-public class Sesion implements Observable<Sesion.Observador> {
+public class Sesion implements Observable<Sesion.Observador> ,Serializable{
 
     private Player jugador;
     private Team equipo;
@@ -46,6 +47,7 @@ public class Sesion implements Observable<Sesion.Observador> {
 
     public void login(String nombre, String pass) {
         jugador=dao.login(nombre,pass);
+        equipo=dao.lastTeamChosen(nombre);
     }
     public String[] getEvents(int eventsShown){
         return dao.getEvents(eventsShown);

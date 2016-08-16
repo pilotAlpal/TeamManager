@@ -6,23 +6,31 @@ import com.movildat.lucassegarra.teammanager.model.Match;
 import com.movildat.lucassegarra.teammanager.model.Player;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
 import com.movildat.lucassegarra.teammanager.model.Team;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by lucas.segarra on 05/08/2016.
  */
-public class Controller {
+public class Controller implements Serializable{
 
     private Sesion mySesion;
 
     public Controller(Sesion s){
         mySesion=s;
     }
+
+    public Controller() {
+        mySesion=new Sesion();
+    }
+
     public  void createTeam(String teamName, ArrayList<String> initPlayers){
         Team equipo=new Team(teamName,initPlayers);
         mySesion.createTeam(equipo);
     }
+
 
     public  void createPlayer(String pName,String pPass,String pTel,String pos) {
 

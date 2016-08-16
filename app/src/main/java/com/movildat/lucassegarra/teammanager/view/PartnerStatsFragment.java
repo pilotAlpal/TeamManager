@@ -12,13 +12,14 @@ import android.widget.ImageButton;
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
+import com.movildat.lucassegarra.teammanager.model.ViewFragment;
 
 import java.util.Observable;
 
 /**
  * Created by lucas.segarra on 05/08/2016.
  */
-public class PartnerStatsFragment extends Fragment implements Sesion.Observador{
+public class PartnerStatsFragment extends ViewFragment{
 
     private ImageButton callButt,messageBut;
 
