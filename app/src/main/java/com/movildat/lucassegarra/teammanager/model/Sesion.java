@@ -61,10 +61,12 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         return equipo.getTeamId();
     }
 
-    public void createTeam(Team equipo) {
+    public boolean createTeam(Team equipo) {
+        return true;
     }
 
-    public void insertPlayer(Player jugador, String teamId) {
+    public boolean insertPlayer(Player jugador, String teamId) {
+        return true;
     }
 
     public ArrayList<String> getNextConvocatory() {

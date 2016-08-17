@@ -18,7 +18,7 @@ import com.movildat.lucassegarra.teammanager.model.Sesion;
  * Created by lucas.segarra on 14/07/2016.
  */
 public class SignInActivity extends Activity {
-    private CheckBox cbLog;
+//    private CheckBox cbLog;
     private Spinner spPos;
     private EditText etNombre,etContrasena,etEquipo,etTelefono;
     private Controller myController;
@@ -26,7 +26,7 @@ public class SignInActivity extends Activity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        cbLog=(CheckBox)findViewById(R.id.cb_sign_and_log);
+     //   cbLog=(CheckBox)findViewById(R.id.cb_sign_and_log);
         spPos=(Spinner) findViewById(R.id.sp_si_pos);
         String[] pos= getResources().getStringArray(R.array.posiciones);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,pos);
@@ -46,12 +46,8 @@ public class SignInActivity extends Activity {
             String name = etNombre.getText().toString();
             String posicion=(String)spPos.getSelectedItem();
             myController=new Controller();
-            /*hacer createPlayer booleano que informe de si ha sido
-            * posible crear un usuario con ese nombre
-            * si no,notificar al usuario*/
-            myController.createPlayer(name,pass,tel,posicion);
-            if (cbLog.isChecked()) {
-                myController.login(name,pass);
+            if (myController.createPlayer(name,pass,tel,posicion)) {
+                myController.validLogin(name,pass);
                 Intent signInIntent = new Intent();
                 Bundle bundle=new Bundle();
                 bundle.putSerializable("Controller",myController);

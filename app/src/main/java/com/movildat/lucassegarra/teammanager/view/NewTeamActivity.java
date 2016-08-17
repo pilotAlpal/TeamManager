@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
+import com.movildat.lucassegarra.teammanager.model.ViewActivity;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -18,14 +19,14 @@ import java.util.Observable;
 /**
  * Created by lucas.segarra on 03/08/2016.
  */
-public class NewTeamActivity extends AppCompatActivity implements Sesion.Observador{
+public class NewTeamActivity extends ViewActivity{
     RecyclerView phoneNumbers;
     EditText phoneET,teamET;
     PhonesAdapter adapter;
-    private Controller myController;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        myController=(Controller)getIntent().getSerializableExtra("Controller");
         setContentView(R.layout.create_team_view);
         phoneNumbers=(RecyclerView) findViewById(R.id.rv_new_team_phones);
         phoneNumbers.setHasFixedSize(true);
@@ -48,13 +49,17 @@ public class NewTeamActivity extends AppCompatActivity implements Sesion.Observa
         teamET.setText("");
         adapter.clear();
         ArrayList<String> equipoInicial=adapter.getValues();
-        myController.createTeam(teamName,equipoInicial);
-        Toast.makeText(this,teamName+" "+R.string.anadido,Toast.LENGTH_SHORT).show();
+        if (validPhones(equipoInicial)) {
+            if(myController.createTeam(teamName,equipoInicial))
+                Toast.makeText(this,teamName+" "+R.string.anadido,Toast.LENGTH_SHORT).show();
+            else Toast.makeText(this,"fallo equipos",Toast.LENGTH_SHORT).show();
+        }
+        else Toast.makeText(this,"fallo telefonos",Toast.LENGTH_SHORT).show();
+
     }
 
-    @Override
-    public void setController(Controller controller) {
-
+    private boolean validPhones(ArrayList<String> equipoInicial) {
+        return true;
     }
 
     @Override

@@ -17,6 +17,7 @@ public abstract class ViewActivity extends Activity implements Sesion.Observador
         myController=controller;
     }
 
+
     @Override
     public void update(Observable observable, Object o) {
 

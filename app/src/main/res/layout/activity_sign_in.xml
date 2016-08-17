@@ -82,12 +82,12 @@
             android:id="@+id/b_si_signin"
             android:layout_gravity="center_horizontal" />
 
-        <CheckBox
+        <!--<CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login"
             android:id="@+id/cb_sign_and_log"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal" />-->
 
     </LinearLayout>
 

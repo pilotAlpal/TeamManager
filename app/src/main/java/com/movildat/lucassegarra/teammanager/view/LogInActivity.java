@@ -29,7 +29,6 @@ public class LogInActivity extends AppCompatActivity implements Sesion.Observado
     public void login(View view){
         String nombre=etName.getText().toString();
         String pass=etPass.getText().toString();
-       // Sesion s=new Sesion();
         Controller controller=new Controller();
         if(controller.validLogin(nombre,pass)) {
             Intent menuIntent = new Intent();
@@ -47,6 +46,11 @@ public class LogInActivity extends AppCompatActivity implements Sesion.Observado
 
     public void registrateTeam(View v){
         Intent newTeamIntent=new Intent(LogInActivity.this,NewTeamActivity.class);
+        Controller controller=new Controller();
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("Controller",controller);
+        newTeamIntent.putExtras(bundle);
+        newTeamIntent.setClass(this,NewTeamActivity.class);
         startActivity(newTeamIntent);
     }
 

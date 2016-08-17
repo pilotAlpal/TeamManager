@@ -25,17 +25,9 @@ public class Controller implements Serializable{
         mySesion=new Sesion();
     }
 
-    public  void createTeam(String teamName, ArrayList<String> initPlayers){
-        Team equipo=new Team(teamName,initPlayers);
-        mySesion.createTeam(equipo);
-    }
 
 
-    public  void createPlayer(String pName,String pPass,String pTel,String pos) {
 
-        Player jugador=new Player(pName,pPass,pTel,pos);
-        mySesion.insertPlayer(jugador,mySesion.getTeamId());
-    }
 
     /**
      *
@@ -55,14 +47,6 @@ public class Controller implements Serializable{
         return mySesion.getEvents(eventsShown);
     }
 
-
-    public boolean login(String nombre, String pass) {
-      return   mySesion.validLogin(nombre,pass);
-    }
-
-    public PlayerStats getMyplayerStats(){
-        return getPlayerStats(getPlayerId());
-    }
     public PlayerStats getPlayerStats(String s) {
         return mySesion.getPlayerStats(s);
     }
@@ -87,24 +71,84 @@ public class Controller implements Serializable{
         return mySesion.getPartners();
     }
 
-    public void changePic() {
-        mySesion.changePic();
-    }
+
 
     public String[] getMyTeams() {
         return mySesion.getMyTeams();
     }
 
+
+
+
+
+
+
+    /**
+     * permite cambiar la posicion del jugador en sesion y bd
+     */
+    public void changeMyPos() {
+    }
+    /**
+     * permite cambiar la foto en bd y jugador
+     */
+    public void changePic() {
+        mySesion.changePic();
+    }
+
+    /**
+     * permite cambiar equipo en bd y sesion
+     */
     public void changeTeam() {
     }
 
-    public void changeMyPos() {
+    /**
+     * Crea un usuario con esos datos si no existia ya uno con ese nombre
+     * @param pName
+     * @param pPass
+     * @param pTel
+     * @param pos
+     * @return si no existia un usuario con ese nombre y se ha registrado al jugador
+     */
+    public  boolean createPlayer(String pName,String pPass,String pTel,String pos) {
+
+        Player jugador=new Player(pName,pPass,pTel,pos);
+        return mySesion.insertPlayer(jugador,mySesion.getTeamId());
     }
 
+    /**
+     * Crea un nuevo equipo con ese teléfono y esa lista de jugadores si no existía ya un equipo con ese nombre
+     * @param teamName
+     * @param initPlayers
+     * @return si se ha podido crear el equipo
+     */
+    public boolean createTeam(String teamName, ArrayList<String> initPlayers){
+        Team equipo=new Team(teamName,initPlayers);
+        return mySesion.createTeam(equipo);
+    }
+
+    /**
+     * permite al usuario borrar su perfil
+     */
     public void deleteProfile() {
     }
 
+    /**
+     *
+     * @return Las estadísticas asociadas a mi jugador
+     */
+    public PlayerStats getMyplayerStats(){
+        return getPlayerStats(getPlayerId());
+    }
+
+    /**
+     *  Carga en el modelo los datos correspondientes al usuario asociado a ese nombre,
+     *  si dicho usuario existe y si pass es su contraseña.
+     * @param nombre
+     * @param pass
+     * @return si se ha podido identificar a un usuario con esas credenciales y cargar los datos
+     */
     public boolean validLogin(String nombre, String pass) {
         return mySesion.validLogin(nombre,pass);
     }
+
 }
