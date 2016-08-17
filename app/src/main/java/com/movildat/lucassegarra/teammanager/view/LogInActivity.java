@@ -29,9 +29,9 @@ public class LogInActivity extends AppCompatActivity implements Sesion.Observado
     public void login(View view){
         String nombre=etName.getText().toString();
         String pass=etPass.getText().toString();
-        Sesion s=new Sesion();
-        if(s.validLogin(nombre,pass)) {
-            Controller controller=new Controller(s);
+       // Sesion s=new Sesion();
+        Controller controller=new Controller();
+        if(controller.validLogin(nombre,pass)) {
             Intent menuIntent = new Intent();
             Bundle bundle=new Bundle();
             bundle.putSerializable("Controller",controller);

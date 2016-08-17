@@ -20,9 +20,6 @@ public class Controller implements Serializable{
 
     private Sesion mySesion;
 
-    public Controller(Sesion s){
-        mySesion=s;
-    }
 
     public Controller() {
         mySesion=new Sesion();
@@ -105,5 +102,9 @@ public class Controller implements Serializable{
     }
 
     public void deleteProfile() {
+    }
+
+    public boolean validLogin(String nombre, String pass) {
+        return mySesion.validLogin(nombre,pass);
     }
 }
