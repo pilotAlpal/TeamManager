@@ -25,64 +25,6 @@ public class Controller implements Serializable{
         mySesion=new Sesion();
     }
 
-
-
-
-
-    /**
-     *
-     * @return Lista convocados proximo partido
-     */
-    public ArrayList<String> getNextConvocatory() {
-        return mySesion.getNextConvocatory();
-    }
-
-
-    public void registerConvocatory(String idPartido){
-        Convocatory c=new Convocatory(idPartido,mySesion.getTeamId());
-        mySesion.createConvocatory(c);
-    }
-
-    public  String[] getEvents(int eventsShown) {
-        return mySesion.getEvents(eventsShown);
-    }
-
-    public PlayerStats getPlayerStats(String s) {
-        return mySesion.getPlayerStats(s);
-    }
-
-    public TeamStats getMyTeamStats(){
-        return getTeamStats(getTeamId());
-    }
-
-    public TeamStats getTeamStats(String teamId){
-        return mySesion.getTeamStats(teamId);
-    }
-
-    public String getTeamId(){
-        return mySesion.getTeamId();
-    }
-
-    public String getPlayerId() {
-        return mySesion.getPlayerId();
-    }
-
-    public ArrayList<String> getPartners() {
-        return mySesion.getPartners();
-    }
-
-
-
-    public String[] getMyTeams() {
-        return mySesion.getMyTeams();
-    }
-
-
-
-
-
-
-
     /**
      * permite cambiar la posicion del jugador en sesion y bd
      */
@@ -99,6 +41,11 @@ public class Controller implements Serializable{
      * permite cambiar equipo en bd y sesion
      */
     public void changeTeam() {
+    }
+
+    public void createConvocatory(String idPartido){
+        Convocatory c=new Convocatory(idPartido,mySesion.getTeamId());
+        mySesion.createConvocatory(c);
     }
 
     /**
@@ -138,6 +85,48 @@ public class Controller implements Serializable{
      */
     public PlayerStats getMyplayerStats(){
         return getPlayerStats(getPlayerId());
+    }
+
+    public  String[] getEvents(int eventsShown) {
+        return mySesion.getEvents(eventsShown);
+    }
+
+    public String[] getMyTeams() {
+        return mySesion.getMyTeams();
+    }
+
+    public TeamStats getMyTeamStats(){
+        return getTeamStats(getTeamId());
+    }
+
+    /**
+     *
+     * @return Lista convocados proximo partido
+     */
+    public ArrayList<String> getNextConvocatory() {
+        return mySesion.getNextConvocatory();
+    }
+
+
+    public ArrayList<String> getPartners() {
+        return mySesion.getPartners();
+    }
+
+    public String getPlayerId() {
+        return mySesion.getPlayerId();
+    }
+
+    public PlayerStats getPlayerStats(String s) {
+        return mySesion.getPlayerStats(s);
+    }
+
+
+    public String getTeamId(){
+        return mySesion.getTeamId();
+    }
+
+    public TeamStats getTeamStats(String teamId){
+        return mySesion.getTeamStats(teamId);
     }
 
     /**

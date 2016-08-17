@@ -44,7 +44,7 @@ public class MenuActivity extends ViewActivity {
         getFragmentManager().beginTransaction().replace(R.id.f_info,pSf).commit();
     }
     public void statsEquipo(View view){
-        TeamStatsFragment tSf=TeamStatsFragment.newInstance(myController);
+        TeamStatsFragment tSf=TeamStatsFragment.newInstance(myController,myController.getMyTeamStats());
         getFragmentManager().beginTransaction().replace(R.id.f_info,tSf).commit();
     }
     public void calendario(View view){

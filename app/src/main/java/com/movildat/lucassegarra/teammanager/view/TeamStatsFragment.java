@@ -55,9 +55,14 @@ public class TeamStatsFragment extends ViewFragment {
         return;
     }
 
-    public static TeamStatsFragment newInstance(Controller myController) {
+    public static TeamStatsFragment newInstance(Controller myController,TeamStats ts) {
         TeamStatsFragment teamStatsFragment=new TeamStatsFragment();
         teamStatsFragment.setController(myController);
+        teamStatsFragment.setStats(ts);
         return teamStatsFragment;
+    }
+
+    private void setStats(TeamStats s) {
+        teamStats = s;
     }
 }
