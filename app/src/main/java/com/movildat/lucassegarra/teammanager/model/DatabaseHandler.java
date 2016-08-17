@@ -60,4 +60,14 @@ public class DatabaseHandler implements Serializable {
     public TeamStats getTeamStats(String teamId) {
         return new TeamStats();
     }
+
+    public void changePic(String id) {
+    }
+
+    public String[] getTeams(String id) {
+        String[] ret=new String[2];
+        ret[0]="Argentina";
+        ret[1]="Valencia";
+        return ret;
+    }
 }

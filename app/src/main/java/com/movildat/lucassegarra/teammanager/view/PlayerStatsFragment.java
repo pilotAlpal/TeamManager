@@ -32,9 +32,10 @@ public class PlayerStatsFragment extends ViewFragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.player_stats_view,container,false);
     }
-    public static PlayerStatsFragment newInstance(PlayerStats playerStats) {
+    public static PlayerStatsFragment newInstance(PlayerStats playerStats,Controller c) {
         PlayerStatsFragment pSf=new PlayerStatsFragment();
         pSf.setPlayerStats(playerStats);
+        pSf.setController(c);
         return pSf;
     }
 

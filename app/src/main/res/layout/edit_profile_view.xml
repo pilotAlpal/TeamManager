@@ -61,6 +61,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="@string/borrar"
+            android:onClick="deleteProfile"
             android:id="@+id/button6" />
 
         <Button

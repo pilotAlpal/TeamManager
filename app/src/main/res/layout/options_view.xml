@@ -27,12 +27,12 @@
                 android:text="@string/calendario"
                 android:id="@+id/b_calendario" />
 
-            <Button
+          <!--  <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/clasificacion"
                 android:onClick="clasificacion"
-                android:id="@+id/b_calsif" />
+                android:id="@+id/b_calsif" />-->
 
             <Button
                 android:layout_width="match_parent"

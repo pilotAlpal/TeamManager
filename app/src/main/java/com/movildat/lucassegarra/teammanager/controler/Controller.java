@@ -89,4 +89,21 @@ public class Controller implements Serializable{
     public ArrayList<String> getPartners() {
         return mySesion.getPartners();
     }
+
+    public void changePic() {
+        mySesion.changePic();
+    }
+
+    public String[] getMyTeams() {
+        return mySesion.getMyTeams();
+    }
+
+    public void changeTeam() {
+    }
+
+    public void changeMyPos() {
+    }
+
+    public void deleteProfile() {
+    }
 }

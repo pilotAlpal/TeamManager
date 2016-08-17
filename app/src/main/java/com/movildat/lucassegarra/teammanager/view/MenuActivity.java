@@ -45,17 +45,17 @@ public class MenuActivity extends ViewActivity {
     }
     public void statsEquipo(View view){
         TeamStatsFragment tSf=TeamStatsFragment.newInstance(myController);
-        getFragmentManager().beginTransaction().replace(R.id.f_info,new TeamStatsFragment()).commit();
+        getFragmentManager().beginTransaction().replace(R.id.f_info,tSf).commit();
     }
     public void calendario(View view){
         EventsFragment eventsFragment=EventsFragment.newInstance(myController);
         getFragmentManager().beginTransaction().replace(R.id.f_info,eventsFragment).commit();
     }
-    public void clasificacion(View view){
+   /* public void clasificacion(View view){
         //posiblemente excluir de 1ºversion
         //pasar equipo
         getFragmentManager().beginTransaction().replace(R.id.f_info,new ClasificStatsFragment()).commit();
-    }
+    }*/
     public void showCalendar(View v){
         Uri.Builder builder= CalendarContract.CONTENT_URI.buildUpon();
         builder.appendPath("time");
@@ -95,13 +95,19 @@ public class MenuActivity extends ViewActivity {
 
     @Override
     public void onActivityResult(int reqCo,int resCo,Intent data){
-        if(reqCo==CAM_INTENT_CODE)
-            Toast.makeText(this,"photo done",Toast.LENGTH_SHORT);
+        if(reqCo==CAM_INTENT_CODE) {
+            Toast.makeText(this, "photo done", Toast.LENGTH_SHORT);
+            myController.changePic();
+        }
     }
     public void changePic(View v){
         Intent photoIntent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if(photoIntent.resolveActivity(this.getPackageManager())!=null){
             startActivityForResult(photoIntent,CAM_INTENT_CODE);
         }
+    }
+
+    public void deleteProfile(View v){
+        myController.deleteProfile();
     }
 }
