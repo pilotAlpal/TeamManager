@@ -1,9 +1,11 @@
 package com.movildat.lucassegarra.teammanager.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Propietario on 16/08/2016.
  */
-public class TeamStats {
+public class TeamStats implements Serializable {
     private int jugados,ganados,empatados,perdidos,pendientes;
     private String maxGoleador,maxAsistente;
 
