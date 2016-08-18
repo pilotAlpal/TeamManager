@@ -12,13 +12,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.movildat.lucassegarra.teammanager.R;
+import com.movildat.lucassegarra.teammanager.controler.Controller;
+import com.movildat.lucassegarra.teammanager.model.ViewActivity;
 
 import java.util.Date;
 
 /**
  * Created by lucas.segarra on 27/07/2016.
  */
-public class RegisterEventActivity extends Activity {
+public class RegisterEventActivity extends ViewActivity {
 
     private  EditText etNomEvento,etLugEvento;
     private DatePicker dpIni,dpFin;
@@ -26,6 +28,7 @@ public class RegisterEventActivity extends Activity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_event);
+        myController=(Controller)getIntent().getSerializableExtra("Controller");
         etNomEvento=(EditText) findViewById(R.id.et_ev_titulo);
         etLugEvento=(EditText) findViewById(R.id.et_ev_lug);
         dpIni=(DatePicker) findViewById(R.id.dp_ini);
@@ -58,6 +61,7 @@ public class RegisterEventActivity extends Activity {
 
         }
         if ((addCalEvIntent.resolveActivity(getPackageManager()))!=null){
+            myController.createEvent();
             startActivity(addCalEvIntent);
         }
         finish();

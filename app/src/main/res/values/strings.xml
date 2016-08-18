@@ -1,4 +1,5 @@
 <resources>
+    <string name="abandonar">Abandonar</string>
     <string name="abre_calendario">Abrir calendario..</string>
     <string name="anadido">Añadido</string>
     <string name="añadir">Añadir</string>

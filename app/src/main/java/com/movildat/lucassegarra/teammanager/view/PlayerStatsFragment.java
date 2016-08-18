@@ -22,6 +22,7 @@ import java.util.Observable;
 public class PlayerStatsFragment extends ViewFragment {
 
     private PlayerStats playerStats;
+    private EditProfileFragment editProfileFragment;
 
     @Override public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -30,7 +31,9 @@ public class PlayerStatsFragment extends ViewFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.player_stats_view,container,false);
+        View v=inflater.inflate(R.layout.player_stats_view,container,false);
+        editProfileFragment=(EditProfileFragment) this.getFragmentManager().findFragmentById(R.id.edit_prof_fragment);
+        return v;
     }
     public static PlayerStatsFragment newInstance(PlayerStats playerStats,Controller c) {
         PlayerStatsFragment pSf=new PlayerStatsFragment();
@@ -45,6 +48,10 @@ public class PlayerStatsFragment extends ViewFragment {
 
     @Override
     public void update(Observable observable, Object o) {
-
+    }
+    @Override
+    public void setController(Controller c){
+        editProfileFragment=EditProfileFragment.newInstance(c);
+        super.setController(c);
     }
 }

@@ -65,7 +65,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         return true;
     }
 
-    public boolean insertPlayer(Player jugador, String teamId) {
+    public boolean insertPlayer(Player jugador) {
         return true;
     }
 

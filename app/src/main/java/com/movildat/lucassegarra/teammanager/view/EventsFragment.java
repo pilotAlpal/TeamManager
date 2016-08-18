@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
+import com.movildat.lucassegarra.teammanager.model.Result;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
 import com.movildat.lucassegarra.teammanager.model.ViewFragment;
 
@@ -39,7 +40,7 @@ public class EventsFragment extends ViewFragment {
         RecyclerView.LayoutManager rvLM=new LinearLayoutManager(getActivity());
         myRecycler.setLayoutManager(rvLM);
         String[] eventos= myController.getEvents(EVENTS_SHOWN);
-
+        Result[] resultados=myController.getResults();
         RecyclerView.Adapter adapter=new CalendarListAdapter(eventos);
         myRecycler.setAdapter(adapter);
 

@@ -93,6 +93,10 @@ public class MenuActivity extends ViewActivity {
         finish();
     }
 
+    public void leaveTeam(View view){
+        myController.leaveTeam();
+    }
+
     @Override
     public void onActivityResult(int reqCo,int resCo,Intent data){
         if(reqCo==CAM_INTENT_CODE) {

@@ -5,6 +5,7 @@ import com.movildat.lucassegarra.teammanager.model.DatabaseHandler;
 import com.movildat.lucassegarra.teammanager.model.Match;
 import com.movildat.lucassegarra.teammanager.model.Player;
 import com.movildat.lucassegarra.teammanager.model.PlayerStats;
+import com.movildat.lucassegarra.teammanager.model.Result;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
 import com.movildat.lucassegarra.teammanager.model.Team;
 import com.movildat.lucassegarra.teammanager.model.TeamStats;
@@ -48,6 +49,9 @@ public class Controller implements Serializable{
         mySesion.createConvocatory(c);
     }
 
+    public void createEvent() {
+    }
+
     /**
      * Crea un usuario con esos datos si no existia ya uno con ese nombre
      * @param pName
@@ -59,7 +63,7 @@ public class Controller implements Serializable{
     public  boolean createPlayer(String pName,String pPass,String pTel,String pos) {
 
         Player jugador=new Player(pName,pPass,pTel,pos);
-        return mySesion.insertPlayer(jugador,mySesion.getTeamId());
+        return mySesion.insertPlayer(jugador);
     }
 
     /**
@@ -129,15 +133,24 @@ public class Controller implements Serializable{
         return mySesion.getTeamStats(teamId);
     }
 
+    public void leaveTeam() {
+    }
+
     /**
-     *  Carga en el modelo los datos correspondientes al usuario asociado a ese nombre,
-     *  si dicho usuario existe y si pass es su contraseña.
+     *  Carga en el modelo los datos correspondientes al usuario asociado a ese nombre, si dicho usuario existe y si pass es su contraseña.
      * @param nombre
      * @param pass
      * @return si se ha podido identificar a un usuario con esas credenciales y cargar los datos
      */
     public boolean validLogin(String nombre, String pass) {
         return mySesion.validLogin(nombre,pass);
+    }
+
+
+    public Result[] getResults() {
+        Result[] r=new Result[1];
+        r[0]=new Result();
+        return r;
     }
 
 }

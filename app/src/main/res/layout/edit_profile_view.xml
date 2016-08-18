@@ -68,8 +68,9 @@
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/guardar"
-            android:id="@+id/b_ep_save" />
+            android:text="@string/abandonar"
+            android:onClick="leaveTeam"
+            android:id="@+id/b_abandonar" />
     </LinearLayout>
     <Button
         android:layout_width="match_parent"
