@@ -106,9 +106,10 @@ public class Controller implements Serializable{
     /**
      *
      * @return Lista convocados proximo partido
+     * @param teamId
      */
-    public ArrayList<String> getNextConvocatory() {
-        return mySesion.getNextConvocatory();
+    public ArrayList<Player> getNextConvocatory(String teamId) {
+        return mySesion.getNextConvocatory(teamId);
     }
 
 

@@ -62,8 +62,8 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         return true;
     }
 
-    public ArrayList<String> getNextConvocatory() {
-        return dao.getNextConvocatory();
+    public ArrayList<Player> getNextConvocatory(String teamId) {
+        return dao.getNextConvocatory(teamId);
     }
 
     public PlayerStats getPlayerStats(String playerId) {

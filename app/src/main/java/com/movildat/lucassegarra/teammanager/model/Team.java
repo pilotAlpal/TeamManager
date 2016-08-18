@@ -13,17 +13,21 @@ public class Team implements Serializable{
     private ArrayList<String> players;
     private TeamStats myTeamStats;
     private ArrayList<Match> proximosPartidos,ultimosPartidos;
+    private Convocatory proxConcocatoria;
+    private ArrayList<Events> teamEvents;
 
 
-    public Team(String id,ArrayList<String> tPlayers,TeamStats ts){
+    public Team(String id,ArrayList<String> tPlayers,TeamStats ts,ArrayList<Player> nextConvocated){
         myId=id;
         players= tPlayers;
         myTeamStats=ts;
+        //inicializar partidos,inicializar convocatoria,inicializar eventos
     }
     public Team(String tName,ArrayList<String> tPlayers){
         myId=tName;
         players=tPlayers;
         myTeamStats=new TeamStats();
+        //inicializar partidos,inicializar convocatoria,inicializar eventos
     }
 
     public Team(TeamStats teamStats) {

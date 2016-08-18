@@ -46,13 +46,13 @@ public class DatabaseHandler implements Serializable {
     public void createConvocatory(Convocatory c) {
     }
 
-    public ArrayList<String> getNextConvocatory() {
-        return new ArrayList<String>();
+    public ArrayList<Player> getNextConvocatory(String teamId) {
+        return new ArrayList<>();
     }
 
     public Team lastTeamChosen(String idJugador) {
         String team="Rayo Vaticano";
-        return new Team(team,getTeamPlayers(),getTeamStats(team));
+        return new Team(team,getTeamPlayers(),getTeamStats(team),getNextConvocatory(team));
     }
 
     private ArrayList<String> getTeamPlayers() {

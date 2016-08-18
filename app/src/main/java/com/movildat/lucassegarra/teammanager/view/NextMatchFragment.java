@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
+import com.movildat.lucassegarra.teammanager.model.Player;
 
 import java.util.ArrayList;
 
@@ -48,7 +49,7 @@ public class NextMatchFragment extends Fragment {
     }
     public void setController(Controller c){
         myController=c;
-        ArrayList<String> convocados= myController.getNextConvocatory();
+        ArrayList<Player> convocados= myController.getNextConvocatory(myController.getTeamId());
         String[] equipoInvencible=getResources().getStringArray(R.array.equipo_fantasma);
         RecyclerView.Adapter adapter=new PlayersListAdapter(equipoInvencible);
         myRV.setAdapter(adapter);

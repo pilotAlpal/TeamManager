@@ -2,12 +2,13 @@ package com.movildat.lucassegarra.teammanager.model;
 
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by lucas.segarra on 05/08/2016.
  */
-public class Convocatory {
+public class Convocatory implements Serializable {
     private String id_partido;
     private String id_equipo;
     private ArrayList<String > convocados;
