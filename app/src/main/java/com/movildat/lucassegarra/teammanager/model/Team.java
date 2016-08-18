@@ -11,18 +11,24 @@ import java.util.ArrayList;
 public class Team implements Serializable{
     private String myId;
     private ArrayList<String> players;
+    private TeamStats myTeamStats;
+    private ArrayList<Match> proximosPartidos,ultimosPartidos;
 
-    public Team(String id){
+
+    public Team(String id,ArrayList<String> tPlayers,TeamStats ts){
         myId=id;
-        players=new ArrayList<String>();
+        players= tPlayers;
+        myTeamStats=ts;
     }
     public Team(String tName,ArrayList<String> tPlayers){
         myId=tName;
-        if (tPlayers!=null)
-            players=tPlayers;
-        else
-            players=new ArrayList<String>();
+        players=tPlayers;
+        myTeamStats=new TeamStats();
     }
+
+    public Team(TeamStats teamStats) {
+    }
+
     public void aniadePlayer(String playerId){
         players.add(playerId);
     }

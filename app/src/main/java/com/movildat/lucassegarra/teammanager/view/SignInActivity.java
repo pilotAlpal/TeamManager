@@ -47,7 +47,7 @@ public class SignInActivity extends Activity {
             String posicion=(String)spPos.getSelectedItem();
             myController=new Controller();
             if (myController.createPlayer(name,pass,tel,posicion)) {
-                myController.validLogin(name,pass);
+                myController.validLogin(tel,pass);
                 Intent signInIntent = new Intent();
                 Bundle bundle=new Bundle();
                 bundle.putSerializable("Controller",myController);

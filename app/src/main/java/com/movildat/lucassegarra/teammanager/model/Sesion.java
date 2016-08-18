@@ -5,7 +5,6 @@ import com.movildat.lucassegarra.teammanager.controler.Controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observer;
-import java.util.concurrent.SynchronousQueue;
 
 /**
  * Created by Propietario on 12/08/2016.
@@ -19,12 +18,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     public Sesion(){
         lista=new ArrayList<>();
         dao=new DatabaseHandler();
-
     }
-    public void setUserName(String name){
-
-    }
-    public void setTeamName(String name){}
     @Override
     public void addObserver(Observador observer) {
         lista.add(observer);
@@ -36,18 +30,17 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     }
 
     public boolean validLogin(String nombre, String pass) {
-        boolean retorno=dao.validLogin(nombre,pass);
-        if(!dao.validLogin(nombre,pass))
-            notifyInvalidCredentials();
-        else {
-            login(nombre,pass);
+        if(dao.validLogin(nombre,pass)) {
+            login(nombre, pass);
+            return true;
         }
-        return retorno;
+        notifyInvalidCredentials();
+        return false;
     }
 
     private void login(String nombre, String pass) {
         jugador=dao.login(nombre,pass);
-        equipo=dao.lastTeamChosen(nombre);
+        equipo=dao.lastTeamChosen(jugador.getPhone());
     }
     public String[] getEvents(int eventsShown){
         return dao.getEvents(eventsShown);
@@ -73,12 +66,12 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         return dao.getNextConvocatory();
     }
 
-    public PlayerStats getPlayerStats(String s) {
-        return dao.getPlayerStats(s);
+    public PlayerStats getPlayerStats(String playerId) {
+        return dao.getPlayerStats(playerId);
     }
 
     public String getPlayerId() {
-        return jugador.getId();
+        return jugador.getPhone();
     }
 
     public TeamStats getTeamStats(String teamId) {
@@ -90,15 +83,24 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     }
 
     public void changePic() {
-        dao.changePic(jugador.getId());
+        dao.changePic(jugador.getPhone());
     }
 
     public String[] getMyTeams() {
-        return dao.getTeams(jugador.getId());
+        return dao.getTeams(jugador.getPhone());
+    }
+
+    public boolean enrollTeam(String teamName) {
+        if(dao.existTeam(teamName)){
+            jugador.addTeam(teamName);
+            equipo=new Team(dao.getTeamStats(teamName));
+            return true;
+        }
+        return false;
     }
 
     public interface Observador extends Observer{
-        public void setController(Controller controller);
+        void setController(Controller controller);
         /**
          * añadir aqui notificaciones a la vista
          */

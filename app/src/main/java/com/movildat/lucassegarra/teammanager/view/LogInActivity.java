@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.movildat.lucassegarra.teammanager.R;
@@ -15,19 +14,18 @@ import java.util.Observable;
 
 public class LogInActivity extends AppCompatActivity implements Sesion.Observador{
 
-    private Button bLog,bSign;
-    private EditText etName,etPass;
+    private EditText etPhone,etPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_in_view);
-        etName=(EditText) findViewById(R.id.et_nomUsuario);
+        etPhone =(EditText) findViewById(R.id.et_li_telefono);
         etPass=(EditText) findViewById(R.id.et_contrasena);
     }
 
     public void login(View view){
-        String nombre=etName.getText().toString();
+        String nombre= etPhone.getText().toString();
         String pass=etPass.getText().toString();
         Controller controller=new Controller();
         if(controller.validLogin(nombre,pass)) {
@@ -45,7 +43,7 @@ public class LogInActivity extends AppCompatActivity implements Sesion.Observado
     }
 
     public void registrateTeam(View v){
-        Intent newTeamIntent=new Intent(LogInActivity.this,NewTeamActivity.class);
+        Intent newTeamIntent=new Intent();
         Controller controller=new Controller();
         Bundle bundle=new Bundle();
         bundle.putSerializable("Controller",controller);

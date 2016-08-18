@@ -1,6 +1,7 @@
 package com.movildat.lucassegarra.teammanager.model;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
 import android.icu.util.Freezable;
 import android.support.v4.app.Fragment;
@@ -49,16 +50,39 @@ public class DatabaseHandler implements Serializable {
         return new ArrayList<String>();
     }
 
-    public Team lastTeamChosen(String nombre) {
-        return new Team("Rayo Vaticano");
+    public Team lastTeamChosen(String idJugador) {
+        String team="Rayo Vaticano";
+        return new Team(team,getTeamPlayers(),getTeamStats(team));
     }
 
-    public PlayerStats getPlayerStats(String s) {
-        return new PlayerStats();
+    private ArrayList<String> getTeamPlayers() {
+        ArrayList<String> l=new ArrayList<>();
+        l.add("Cañizares");
+        l.add("Palop");
+        l.add("Angloma");
+        l.add("Pelegrino");
+        l.add("Ayala");
+        l.add("Djukic");
+        l.add("Carboni");
+        l.add("Fabio Aurelio");
+        l.add("Albelda");
+        l.add("Baraja");
+        l.add("Aimar");
+        l.add("Angulo");
+        l.add("Rufete");
+        l.add("Vicente");
+        l.add("Killy Gónzalez");
+        l.add("Carew");
+        l.add("Mista");
+        return l;
+    }
+
+    public PlayerStats getPlayerStats(String playerId) {
+        return new PlayerStats("mediapunta");
     }
 
     public TeamStats getTeamStats(String teamId) {
-        return new TeamStats();
+        return new TeamStats(100,80,10,10,10,"Mista","Vicente");
     }
 
     public void changePic(String id) {
@@ -69,5 +93,9 @@ public class DatabaseHandler implements Serializable {
         ret[0]="Argentina";
         ret[1]="Valencia";
         return ret;
+    }
+
+    public boolean existTeam(String teamName) {
+        return true;
     }
 }

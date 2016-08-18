@@ -73,12 +73,22 @@ public class MenuActivity extends ViewActivity {
     }
 
     public void addMatch(View v){
-        Intent registerMatchIntent=new Intent(MenuActivity.this,RegisterMatchActivity.class);
+        Intent registerMatchIntent=new Intent();
         Bundle b=new Bundle();
         b.putSerializable("Controller",myController);
         registerMatchIntent.putExtras(b);
         registerMatchIntent.setClass(this,RegisterMatchActivity.class);
         this.startActivity(registerMatchIntent);
+    }
+
+    public void showTeams(View v){
+        Intent showTeamsIntent=new Intent();
+        Bundle b=new Bundle();
+        b.putSerializable("Controller",myController);
+        showTeamsIntent.putExtras(b);
+        showTeamsIntent.setClass(this,LoadTeamsActivity.class);
+        this.startActivity(showTeamsIntent);
+
     }
 
     public void partnerClicked(View v){
@@ -96,6 +106,7 @@ public class MenuActivity extends ViewActivity {
     public void leaveTeam(View view){
         myController.leaveTeam();
     }
+
 
     @Override
     public void onActivityResult(int reqCo,int resCo,Intent data){

@@ -1,8 +1,5 @@
 package com.movildat.lucassegarra.teammanager.controler;
-import android.text.format.Time;
 import com.movildat.lucassegarra.teammanager.model.Convocatory;
-import com.movildat.lucassegarra.teammanager.model.DatabaseHandler;
-import com.movildat.lucassegarra.teammanager.model.Match;
 import com.movildat.lucassegarra.teammanager.model.Player;
 import com.movildat.lucassegarra.teammanager.model.PlayerStats;
 import com.movildat.lucassegarra.teammanager.model.Result;
@@ -12,7 +9,6 @@ import com.movildat.lucassegarra.teammanager.model.TeamStats;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by lucas.segarra on 05/08/2016.
@@ -58,10 +54,9 @@ public class Controller implements Serializable{
      * @param pPass
      * @param pTel
      * @param pos
-     * @return si no existia un usuario con ese nombre y se ha registrado al jugador
+     * @return si no existia un usuario con ese telefono y se ha registrado al jugador
      */
     public  boolean createPlayer(String pName,String pPass,String pTel,String pos) {
-
         Player jugador=new Player(pName,pPass,pTel,pos);
         return mySesion.insertPlayer(jugador);
     }
@@ -81,6 +76,11 @@ public class Controller implements Serializable{
      * permite al usuario borrar su perfil
      */
     public void deleteProfile() {
+    }
+
+    public boolean enrollTeam(String teamName){
+        return mySesion.enrollTeam(teamName);
+
     }
 
     /**
@@ -120,10 +120,15 @@ public class Controller implements Serializable{
         return mySesion.getPlayerId();
     }
 
-    public PlayerStats getPlayerStats(String s) {
-        return mySesion.getPlayerStats(s);
+    public PlayerStats getPlayerStats(String playerId) {
+        return mySesion.getPlayerStats(playerId);
     }
 
+    public Result[] getResults() {
+        Result[] r=new Result[1];
+        r[0]=new Result();
+        return r;
+    }
 
     public String getTeamId(){
         return mySesion.getTeamId();
@@ -147,10 +152,6 @@ public class Controller implements Serializable{
     }
 
 
-    public Result[] getResults() {
-        Result[] r=new Result[1];
-        r[0]=new Result();
-        return r;
-    }
+
 
 }

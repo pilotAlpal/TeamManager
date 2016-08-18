@@ -55,15 +55,10 @@ public class NewTeamActivity extends ViewActivity{
             else Toast.makeText(this,"fallo equipos",Toast.LENGTH_SHORT).show();
         }
         else Toast.makeText(this,"fallo telefonos",Toast.LENGTH_SHORT).show();
-
     }
 
     private boolean validPhones(ArrayList<String> equipoInicial) {
         return true;
     }
 
-    @Override
-    public void update(Observable observable, Object o) {
-
-    }
 }
