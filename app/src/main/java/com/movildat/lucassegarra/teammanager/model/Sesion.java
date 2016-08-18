@@ -42,8 +42,8 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         jugador=dao.login(nombre,pass);
         equipo=dao.lastTeamChosen(jugador.getPhone());
     }
-    public String[] getEvents(int eventsShown){
-        return dao.getEvents(eventsShown);
+    public ArrayList<Events> getEvents(String teamId){
+        return dao.getEvents(teamId);
     }
 
     public void createConvocatory(Convocatory c) {
@@ -93,7 +93,8 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     public boolean enrollTeam(String teamName) {
         if(dao.existTeam(teamName)){
             jugador.addTeam(teamName);
-            equipo=new Team(dao.getTeamStats(teamName));
+            equipo=new Team(teamName,dao.getTeamPlayers(),dao.getTeamStats(teamName),dao.getNextConvocatory(teamName),
+                    dao.getNextMatchId(teamName),dao.getEvents(teamName),dao.getLastMatches(teamName),dao.getNextMatches(teamName));
             return true;
         }
         return false;

@@ -5,13 +5,13 @@ package com.movildat.lucassegarra.teammanager.model;
  */
 public class Gol {
     private String authorId;
-    private String matchId;
+    private boolean localGol;
     private int homeAfterGol;
     private int guestAfterGol;
 
-    private Gol(String autor,String match,int homA,int guestA){
+    private Gol(String autor,boolean local,int homA,int guestA){
         authorId=autor;
-        matchId=match;
+        localGol=local;
         homeAfterGol=homA;
         guestAfterGol=guestA;
     }

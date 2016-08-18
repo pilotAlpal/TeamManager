@@ -107,6 +107,9 @@ public class MenuActivity extends ViewActivity {
         myController.leaveTeam();
     }
 
+    public void ratePartner(View v){
+
+    }
 
     @Override
     public void onActivityResult(int reqCo,int resCo,Intent data){

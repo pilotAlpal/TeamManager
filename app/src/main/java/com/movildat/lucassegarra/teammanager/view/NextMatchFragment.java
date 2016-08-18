@@ -7,7 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
@@ -22,6 +24,7 @@ public class NextMatchFragment extends Fragment {
     private TextView proxRiv,numConfirmados;
     private RecyclerView myRV;
     private Controller myController;
+    private ToggleButton tgAcudo;
     @Override public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
@@ -32,6 +35,15 @@ public class NextMatchFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.next_match_view, container, false);
         proxRiv=(TextView)v.findViewById(R.id.eT_prox_rival);
+        tgAcudo=(ToggleButton)v.findViewById(R.id.toggleButton);
+        tgAcudo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b)
+                    myController.addToNextConvocatory();
+                else myController.removeFromNextConvocatory();
+            }
+        });
         numConfirmados=(TextView)v.findViewById(R.id.tv_n_confirmados);
         myRV=(RecyclerView) v.findViewById(R.id.rv_players_layout);
         myRV.setHasFixedSize(true);

@@ -16,22 +16,28 @@ public class Team implements Serializable{
     private Convocatory proxConcocatoria;
     private ArrayList<Events> teamEvents;
 
-
-    public Team(String id,ArrayList<String> tPlayers,TeamStats ts,ArrayList<Player> nextConvocated){
+//equipo ya existente
+    public Team(String id,ArrayList<String> tPlayers,TeamStats ts,ArrayList<Player> nextConvocated,String nextMatchId,
+                ArrayList<Events> eventos,ArrayList<Match> ultimos,ArrayList<Match> proximos){
         myId=id;
         players= tPlayers;
         myTeamStats=ts;
-        //inicializar partidos,inicializar convocatoria,inicializar eventos
+        proxConcocatoria=new Convocatory(nextMatchId,myId,nextConvocated);
+        teamEvents=eventos;
+        proximosPartidos=proximos;
+        ultimosPartidos=ultimos;
     }
+    //equipo recien creado
     public Team(String tName,ArrayList<String> tPlayers){
         myId=tName;
         players=tPlayers;
         myTeamStats=new TeamStats();
-        //inicializar partidos,inicializar convocatoria,inicializar eventos
+        proxConcocatoria=new Convocatory(myId);
+        teamEvents=new ArrayList<>();
+        proximosPartidos=new ArrayList<>();
+        ultimosPartidos=new ArrayList<>();
     }
 
-    public Team(TeamStats teamStats) {
-    }
 
     public void aniadePlayer(String playerId){
         players.add(playerId);

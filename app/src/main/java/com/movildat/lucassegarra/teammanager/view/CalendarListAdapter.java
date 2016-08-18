@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.movildat.lucassegarra.teammanager.R;
+import com.movildat.lucassegarra.teammanager.model.Events;
 
 import java.util.ArrayList;
 
@@ -14,15 +15,13 @@ import java.util.ArrayList;
  * Created by lucas.segarra on 28/07/2016.
  */
 public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapter.ViewHolder> {
-    private ArrayList<String> myEvents;
+    private ArrayList<Events> myEvents;
 
-    CalendarListAdapter(String[] data){
+    CalendarListAdapter(ArrayList<Events> data){
         if(data!=null)
-            myEvents=new ArrayList<String>();
-            for (int i=0;i<data.length;i++){
-                myEvents.add(i,data[i]);
-            }
+            myEvents=data;
     }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView tvFecha,tvRivNam;
@@ -45,7 +44,7 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder,int pos){
-        holder.tvRivNam.setText(myEvents.get(pos));
+        holder.tvRivNam.setText(myEvents.get(pos).getId());
     }
 
     @Override

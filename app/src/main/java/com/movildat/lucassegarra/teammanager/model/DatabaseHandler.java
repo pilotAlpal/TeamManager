@@ -31,11 +31,11 @@ public class DatabaseHandler implements Serializable {
     }
 
 
-    public static String[] getEvents(int eventsShown) {
-        String a[]= new String[2];
+    public static ArrayList<Events> getEvents(String teamId) {
+        ArrayList<Events> a= new ArrayList<>();
         // Resources.getSystem().getStringArray(R.array.eventos);
-        a[0]="Leeds";
-        a[1]="Bayern";
+        a.add(new Events("Leeds",teamId));
+        a.add(new Events("Bayern",teamId));
         return a;
     }
 
@@ -52,10 +52,22 @@ public class DatabaseHandler implements Serializable {
 
     public Team lastTeamChosen(String idJugador) {
         String team="Rayo Vaticano";
-        return new Team(team,getTeamPlayers(),getTeamStats(team),getNextConvocatory(team));
+        return new Team(team,getTeamPlayers(),getTeamStats(team),getNextConvocatory(team),getNextMatchId(team),getEvents(team)
+        ,getLastMatches(team),getNextMatches(team));
     }
 
-    private ArrayList<String> getTeamPlayers() {
+    public ArrayList<Match> getLastMatches(String team) {
+        return new ArrayList<>();
+    }
+    public ArrayList<Match> getNextMatches(String team){
+        return new ArrayList<>();
+    }
+
+    public String getNextMatchId(String team) {
+        return "Final de la Champions";
+    }
+
+    public ArrayList<String> getTeamPlayers() {
         ArrayList<String> l=new ArrayList<>();
         l.add("Cañizares");
         l.add("Palop");

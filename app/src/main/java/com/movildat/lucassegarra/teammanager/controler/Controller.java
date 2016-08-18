@@ -1,5 +1,6 @@
 package com.movildat.lucassegarra.teammanager.controler;
 import com.movildat.lucassegarra.teammanager.model.Convocatory;
+import com.movildat.lucassegarra.teammanager.model.Events;
 import com.movildat.lucassegarra.teammanager.model.Player;
 import com.movildat.lucassegarra.teammanager.model.PlayerStats;
 import com.movildat.lucassegarra.teammanager.model.Result;
@@ -91,8 +92,8 @@ public class Controller implements Serializable{
         return getPlayerStats(getPlayerId());
     }
 
-    public  String[] getEvents(int eventsShown) {
-        return mySesion.getEvents(eventsShown);
+    public ArrayList<Events> getEvents(String teamId) {
+        return mySesion.getEvents(teamId);
     }
 
     public String[] getMyTeams() {
@@ -153,6 +154,13 @@ public class Controller implements Serializable{
     }
 
 
+    public void ratePlayer() {
+        
+    }
 
+    public void addToNextConvocatory() {
+    }
 
+    public void removeFromNextConvocatory() {
+    }
 }

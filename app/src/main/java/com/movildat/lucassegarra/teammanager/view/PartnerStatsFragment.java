@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.RatingBar;
 
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
@@ -23,6 +24,7 @@ import java.util.Observable;
 public class PartnerStatsFragment extends ViewFragment{
 
     private ImageButton callButt,messageBut;
+    private RatingBar ratePartner;
 
     @Override public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -33,6 +35,14 @@ public class PartnerStatsFragment extends ViewFragment{
                              Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.partner_stats_view,container,false);
         View v2=v.findViewById(R.id.layout_contact);
+        ratePartner=(RatingBar)v2.findViewById(R.id.r_b_partner);
+        ratePartner.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                //pasar numero del compañero
+                myController.ratePlayer();
+            }
+        });
         callButt=(ImageButton) v2.findViewById(R.id.b_contact_call);
         callButt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,19 +69,15 @@ public class PartnerStatsFragment extends ViewFragment{
         return v;
     }
 
-    @Override
-    public void update(Observable observable, Object o) {
-
-    }
-
-    @Override
-    public void setController(Controller controller) {
-
-    }
 
     public static PartnerStatsFragment newInstance(Controller myController, PlayerStats pSf) {
         PartnerStatsFragment partnerStatsFragment=new PartnerStatsFragment();
         partnerStatsFragment.setController(myController);
         return partnerStatsFragment;
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+
     }
 }

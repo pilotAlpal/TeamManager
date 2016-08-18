@@ -1,9 +1,8 @@
 package com.movildat.lucassegarra.teammanager.model;
 
-import android.text.format.Time;
+import java.sql.Time;
 
-import com.movildat.lucassegarra.teammanager.controler.Controller;
-
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -12,22 +11,19 @@ import java.util.Date;
  */
 public class Match {
     private String id;
-    private String tournament;//leage
     private String homeId,guestId;
     private Date when;
     private Time t;
-    private int homeG,guestG;
+    private Result resultado;
+    private ArrayList<Gol> goles;
 
-    public Match(String tournamentId,String home_id,String guest_id,Date w,int home_goals,int guest_goals){
-        when=w;
-        homeG=home_goals;
-        guestG=guest_goals;
-    }
 
-    public Match(String teamId, String idRival, Date f, Time h) {
+    public Match(String teamId, String idRival,boolean local, Date f, Time h) {
         homeId=teamId;
         guestId=idRival;
         when=f;
         t=h;
+        resultado=new Result();
+        goles=new ArrayList<>();
     }
 }
