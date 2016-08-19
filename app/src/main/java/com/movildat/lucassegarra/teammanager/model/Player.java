@@ -32,4 +32,8 @@ public class Player implements Serializable {
 
     public void addTeam(String teamName) {
     }
+
+    public void changePic() {
+
+    }
 }

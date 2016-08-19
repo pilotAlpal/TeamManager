@@ -34,6 +34,7 @@ public class PlayerStatsFragment extends ViewFragment {
         View v=inflater.inflate(R.layout.player_stats_view,container,false);
         editProfileFragment=(EditProfileFragment) this.getChildFragmentManager().findFragmentById(R.id.edit_prof_fragment);
         editProfileFragment.setController(myController);
+        editProfileFragment.setTeamAdapter();
         return v;
     }
     public static PlayerStatsFragment newInstance(PlayerStats playerStats,Controller c) {
@@ -49,10 +50,5 @@ public class PlayerStatsFragment extends ViewFragment {
 
     @Override
     public void update(Observable observable, Object o) {
-    }/*
-    @Override
-    public void setController(Controller c){
-        editProfileFragment=EditProfileFragment.newInstance(c);
-        super.setController(c);
-    }*/
+    }
 }

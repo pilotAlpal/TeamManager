@@ -11,6 +11,7 @@ import java.util.Observer;
  */
 public class Sesion implements Observable<Sesion.Observador> ,Serializable{
 
+    private PlayerStats estsJugEqu;
     private Player jugador;
     private Team equipo;
     private DatabaseHandler dao;
@@ -24,72 +25,47 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         lista.add(observer);
     }
 
+    //cambia en modelo y bd imagen asociada al usuario
+    //recibirá una imagen cómo parámetro
+    public void changePic() {
+        jugador.changePic();
+        dao.changePic(jugador.getPhone());
+    }
+
+    //Modelo:carga en equipo la informacion correspondiente a un equipo que se recibirá cómo parámetro
+    //existe una relación entre el equipo y el usuario en la bd
+    //recibirá el nombre de un equipo como parámetro
+    public void changeTeam() {
+    }
+
+    //BD:crea una nueva convocatoria en la base de datos
+    //Modelo:si es anterior a la próxima convocatoria almacenada por equipo en sesión,actualizarla
+    public void createConvocatory(Convocatory c) {
+        dao.createConvocatory(c);
+    }
+
+    //BD:permite al usuario guardar un jugador en la bd
+    //Modelo:No hay cambios ya que la sesion aun no ha sido iniciada cuando se invoca a este método
+    //Controlador:Permite al controlador conocer si se ha insertado el jugador.
+    public boolean createPlayer(Player jugador) {
+        return dao.createPlayer(jugador);
+    }
+
+    //BD:permite al usuario insertar un nuevo método en la bd
+    //Modelo:No hay cambios ya que la sesion aun no ha sido iniciada cuando se invoca a este método
+    //Controlador:Informa al controlador si ha sido posible crear el equipo
+    public boolean createTeam(Team equipo) {
+        return dao.createTeam(equipo);
+    }
+
     @Override
     public void delObserver(Observador observer) {
         lista.remove(observer);
     }
 
-    public boolean validLogin(String nombre, String pass) {
-        if(dao.validLogin(nombre,pass)) {
-            login(nombre, pass);
-            return true;
-        }
-        notifyInvalidCredentials();
-        return false;
-    }
-
-    private void login(String nombre, String pass) {
-        jugador=dao.login(nombre,pass);
-        equipo=dao.lastTeamChosen(jugador.getPhone());
-    }
-    public ArrayList<Events> getEvents(String teamId){
-        return dao.getEvents(teamId);
-    }
-
-    public void createConvocatory(Convocatory c) {
-        dao.createConvocatory(c);
-    }
-
-    public String getTeamId() {
-        return equipo.getTeamId();
-    }
-
-    public boolean createTeam(Team equipo) {
-        return true;
-    }
-
-    public boolean insertPlayer(Player jugador) {
-        return true;
-    }
-
-    public ArrayList<Player> getNextConvocatory(String teamId) {
-        return dao.getNextConvocatory(teamId);
-    }
-
-    public PlayerStats getPlayerStats(String playerId) {
-        return dao.getPlayerStats(playerId);
-    }
-
-    public String getPlayerId() {
-        return jugador.getPhone();
-    }
-
-    public TeamStats getTeamStats(String teamId) {
-        return dao.getTeamStats(teamId);
-    }
-
-    public ArrayList<String> getPartners() {
-        return equipo.getPlayersList();
-    }
-
-    public void changePic() {
-        dao.changePic(jugador.getPhone());
-    }
-
-    public String[] getMyTeams() {
-        return dao.getTeams(jugador.getPhone());
-    }
-
+    //BD:permite al usuario apuntarse a un equipo ya existente
+    //Modelo:Carga en el objeto equipo la información asociada a ese equipo
+    //Controlador:recibe la información de si ha sido posible inscribir al jugador en el equipo
     public boolean enrollTeam(String teamName) {
         if(dao.existTeam(teamName)){
             jugador.addTeam(teamName);
@@ -97,6 +73,71 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
                     dao.getNextMatchId(teamName),dao.getEvents(teamName),dao.getLastMatches(teamName),dao.getNextMatches(teamName));
             return true;
         }
+        return false;
+    }
+    //BD:carga la lista de próximos eventos
+    public ArrayList<Events> getEvents(String teamId){
+        return dao.getEvents(teamId);
+    }
+
+    //Modelo:Devuelve el id de mi jugador
+    public String getMyPlayerId() {
+        return jugador.getPhone();
+    }
+
+    //BD:carga la lista de equipos relacionados con un jugador
+    public String[] getMyTeams() {
+        return dao.getTeams(jugador.getPhone());
+    }
+    //BD:carga info sobre próxima convocatoria
+    public ArrayList<Player> getNextConvocatory(String teamId) {
+        return dao.getNextConvocatory(teamId);
+    }
+    //Modelo:Obtiene del modelo la lista de compañeros de equipo
+    public ArrayList<String> getPartners() {
+        return equipo.getPlayersList();
+    }
+
+    //BD:carga de las estadisticas asociadas al compañero
+    public PlayerStats getPlayerStats(String playerId) {
+        return dao.getPlayerStats(playerId);
+    }
+
+    /**
+     *
+     * @return el id de mi equipo
+     */
+    public String getTeamId() {
+        return equipo.getTeamId();
+    }
+
+    /**
+     *
+     * @param teamId
+     * @return estadisticas asociadas a mi equipo
+     */
+    public TeamStats getTeamStats(String teamId) {
+        return equipo.getTeamStats(teamId);
+    }
+
+    private void login(String nombre, String pass) {
+        jugador=dao.login(nombre,pass);
+        equipo=dao.lastTeamChosen(jugador.getPhone());
+        estsJugEqu=dao.getTeamPlayerStats(jugador.getPhone(),equipo.getId());
+    }
+
+    /**
+     *
+     * @param nombre
+     * @param pass
+     * @return
+     */
+    public boolean validLogin(String nombre, String pass) {
+        if(dao.validLogin(nombre,pass)) {
+            login(nombre, pass);
+            return true;
+        }
+        notifyInvalidCredentials();
         return false;
     }
 

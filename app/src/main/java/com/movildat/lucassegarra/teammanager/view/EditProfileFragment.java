@@ -35,21 +35,31 @@ public class EditProfileFragment extends ViewFragment {
         posChooser=(Spinner) v.findViewById(R.id.sp_change_pos);
         posChooser.setAdapter(adapter);
         teamChooser=(Spinner)v.findViewById(R.id.s_ep_equipo);
-
-/*        posChooser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        posChooser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 myController.changeMyPos();
             }
-        });*/
 
-
-        /*teamChooser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        teamChooser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 myController.changeTeam();
             }
-        });*/
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
         return v;
     }
 
@@ -61,7 +71,7 @@ public class EditProfileFragment extends ViewFragment {
     }
 
 
-    private void setTeamAdapter() {
+    public void setTeamAdapter() {
         String[] equipos=myController.getMyTeams();
         ArrayAdapter<String> adapter1=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,equipos);
         teamChooser.setAdapter(adapter1);

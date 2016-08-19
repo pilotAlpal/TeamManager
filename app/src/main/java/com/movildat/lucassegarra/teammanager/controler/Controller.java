@@ -36,9 +36,10 @@ public class Controller implements Serializable{
     }
 
     /**
-     * permite cambiar equipo en bd y sesion
+     * permite cambiar equipo en sesion
      */
     public void changeTeam() {
+        mySesion.changeTeam();
     }
 
     public void createConvocatory(String idPartido){
@@ -59,7 +60,7 @@ public class Controller implements Serializable{
      */
     public  boolean createPlayer(String pName,String pPass,String pTel,String pos) {
         Player jugador=new Player(pName,pPass,pTel,pos);
-        return mySesion.insertPlayer(jugador);
+        return mySesion.createPlayer(jugador);
     }
 
     /**
@@ -79,9 +80,9 @@ public class Controller implements Serializable{
     public void deleteProfile() {
     }
 
+    //permite al usuario inscribirse en un equipo
     public boolean enrollTeam(String teamName){
         return mySesion.enrollTeam(teamName);
-
     }
 
     /**
@@ -89,7 +90,7 @@ public class Controller implements Serializable{
      * @return Las estadísticas asociadas a mi jugador
      */
     public PlayerStats getMyplayerStats(){
-        return getPlayerStats(getPlayerId());
+        return getPlayerStats(mySesion.getMyPlayerId());
     }
 
     public ArrayList<Events> getEvents(String teamId) {
@@ -118,9 +119,6 @@ public class Controller implements Serializable{
         return mySesion.getPartners();
     }
 
-    public String getPlayerId() {
-        return mySesion.getPlayerId();
-    }
 
     public PlayerStats getPlayerStats(String playerId) {
         return mySesion.getPlayerStats(playerId);

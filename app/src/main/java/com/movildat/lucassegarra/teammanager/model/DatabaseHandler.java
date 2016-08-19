@@ -110,4 +110,16 @@ public class DatabaseHandler implements Serializable {
     public boolean existTeam(String teamName) {
         return true;
     }
+
+    public PlayerStats getTeamPlayerStats(String phone, String id) {
+        return new PlayerStats("mediapunta");
+    }
+
+    public boolean createPlayer(Player jugador) {
+        return true;
+    }
+
+    public boolean createTeam(Team equipo) {
+        return true;
+    }
 }
