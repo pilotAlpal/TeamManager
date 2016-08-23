@@ -32,7 +32,9 @@ public class Team implements Serializable{
         myId=tName;
         players=tPlayers;
         myTeamStats=new TeamStats();
-        proxPartido=new Match();
+        proxPartido=new Match(
+
+        );
         teamEvents=new ArrayList<>();
         proximosPartidos=new ArrayList<>();
         ultimosPartidos=new ArrayList<>();
