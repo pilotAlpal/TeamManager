@@ -16,15 +16,15 @@ public class Match {
     private Time t;
     private Result resultado;
     private ArrayList<Gol> goles;
-
+    private Convocatory convocados;
 
     public Match(){};
 
-    public Match(String teamId, String idRival,boolean local, Date f, Time h) {
-        homeId=teamId;
-        guestId=idRival;
-        when=f;
-        t=h;
+    public Match(String rival,Convocatory nc) {
+        convocados=nc;
+        guestId=rival;
+        id=convocados.getMatchId();
+        homeId=convocados.getTeamId();
         resultado=new Result();
         goles=new ArrayList<>();
     }

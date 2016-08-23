@@ -1,9 +1,8 @@
 package com.movildat.lucassegarra.teammanager.model;
 
-import com.movildat.lucassegarra.teammanager.controler.Controller;
-
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by lucas.segarra on 05/08/2016.
@@ -12,32 +11,31 @@ public class Team implements Serializable{
     private String myId;
     private ArrayList<String> players;
     private TeamStats myTeamStats;
-    private ArrayList<Match> proximosPartidos,ultimosPartidos;
+    private ArrayList<Match> listaProximos, listaUltimos;
     private Match proxPartido;
     private ArrayList<Events> teamEvents;
+    private HashMap<String,PlayerStats> playerStats;
 
 //equipo ya existente
-    public Team(String id,ArrayList<String> tPlayers,TeamStats ts,ArrayList<Player> nextConvocated,String nextMatchId,
+    public Team(String myTeamid,ArrayList<String> myTeamPlayers,TeamStats ts,Convocatory nextConvocated,String nextRivalId,
                 ArrayList<Events> eventos,ArrayList<Match> ultimos,ArrayList<Match> proximos){
-        myId=id;
-        players= tPlayers;
+        myId=myTeamid;
+        players= myTeamPlayers;
         myTeamStats=ts;
-        proxPartido=new Match();
+        proxPartido=new Match(nextRivalId,nextConvocated);
         teamEvents=eventos;
-        proximosPartidos=proximos;
-        ultimosPartidos=ultimos;
+        listaProximos=proximos;
+        listaUltimos =ultimos;
     }
     //equipo recien creado
     public Team(String tName,ArrayList<String> tPlayers){
         myId=tName;
         players=tPlayers;
         myTeamStats=new TeamStats();
-        proxPartido=new Match(
-
-        );
+        proxPartido=new Match();
         teamEvents=new ArrayList<>();
-        proximosPartidos=new ArrayList<>();
-        ultimosPartidos=new ArrayList<>();
+        listaProximos=new ArrayList<>();
+        listaUltimos =new ArrayList<>();
     }
 
 

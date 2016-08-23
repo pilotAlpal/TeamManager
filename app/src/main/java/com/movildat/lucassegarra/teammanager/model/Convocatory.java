@@ -30,6 +30,7 @@ public class Convocatory implements Serializable {
         convocados=new ArrayList<>();
     }
 
+
     public void convoca(Player player){
         convocados.add(player);
     }

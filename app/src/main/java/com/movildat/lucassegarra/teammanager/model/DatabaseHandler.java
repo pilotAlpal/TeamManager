@@ -52,9 +52,12 @@ public class DatabaseHandler implements Serializable {
 
     public Team lastTeamChosen(String idJugador) {
         String team="Rayo Vaticano";
-        return new Team(team,getTeamPlayers(),getTeamStats(team),getNextConvocatory(team),getNextMatchId(team),getEvents(team)
-        ,getLastMatches(team),getNextMatches(team));
+        Convocatory convocatory=new Convocatory(getNextMatchId(team),team,getNextConvocatory(team));
+        return new Team(team,getTeamPlayers(),getTeamStats(team),convocatory,getNextRivalId(team),
+                getEvents(team),getLastMatches(team),getNextMatches(team));
     }
+
+
 
     public ArrayList<Match> getLastMatches(String team) {
         return new ArrayList<>();
@@ -65,6 +68,10 @@ public class DatabaseHandler implements Serializable {
 
     public String getNextMatchId(String team) {
         return "Final de la Champions";
+    }
+
+    public String getNextRivalId(String team) {
+        return "Bayern";
     }
 
     public ArrayList<String> getTeamPlayers() {

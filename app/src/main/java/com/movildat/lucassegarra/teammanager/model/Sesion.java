@@ -69,12 +69,16 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     public boolean enrollTeam(String teamName) {
         if(dao.existTeam(teamName)){
             jugador.addTeam(teamName);
-            equipo=new Team(teamName,dao.getTeamPlayers(),dao.getTeamStats(teamName),dao.getNextConvocatory(teamName),
-                    dao.getNextMatchId(teamName),dao.getEvents(teamName),dao.getLastMatches(teamName),dao.getNextMatches(teamName));
+            Convocatory convocatory=new Convocatory(getNextMatchId(teamName),teamName, getNextConvocated(teamName));
+            equipo=new Team(teamName,getTeamPlayers(),getTeamStats(teamName),convocatory,getNextRivalId(teamName),getEvents(teamName),dao.getLastMatches(teamName),getNextMatches(teamName));
             return true;
         }
         return false;
     }
+
+
+
+
     //BD:carga la lista de próximos eventos
     public ArrayList<Events> getEvents(String teamId){
         return dao.getEvents(teamId);
@@ -90,9 +94,22 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         return dao.getTeams(jugador.getPhone());
     }
     //BD:carga info sobre próxima convocatoria
-    public ArrayList<Player> getNextConvocatory(String teamId) {
+    public ArrayList<Player> getNextConvocated(String teamId) {
         return dao.getNextConvocatory(teamId);
     }
+
+    private ArrayList<Match> getNextMatches(String teamName) {
+        return dao.getNextMatches(teamName);
+    }
+
+    public String getNextMatchId(String tName){
+        return dao.getNextMatchId(tName);
+    }
+
+    private String getNextRivalId(String teamName) {
+        return dao.getNextRivalId(teamName);
+    }
+
     //Modelo:Obtiene del modelo la lista de compañeros de equipo
     public ArrayList<String> getPartners() {
         return equipo.getPlayersList();
@@ -109,6 +126,10 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      */
     public String getTeamId() {
         return equipo.getTeamId();
+    }
+
+    private ArrayList<String> getTeamPlayers() {
+        return dao.getTeamPlayers();
     }
 
     /**

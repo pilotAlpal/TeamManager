@@ -74,6 +74,7 @@ public class Controller implements Serializable{
         return mySesion.createTeam(equipo);
     }
 
+
     /**
      * permite al usuario borrar su perfil
      */
@@ -91,6 +92,10 @@ public class Controller implements Serializable{
      */
     public PlayerStats getMyplayerStats(){
         return getPlayerStats(mySesion.getMyPlayerId());
+    }
+
+    private String getNextMatchId(String teamName) {
+        return mySesion.getNextMatchId(teamName);
     }
 
     public ArrayList<Events> getEvents(String teamId) {
@@ -111,8 +116,9 @@ public class Controller implements Serializable{
      * @param teamId
      */
     public ArrayList<Player> getNextConvocatory(String teamId) {
-        return mySesion.getNextConvocatory(teamId);
+        return mySesion.getNextConvocated(teamId);
     }
+
 
 
     public ArrayList<String> getPartners() {
