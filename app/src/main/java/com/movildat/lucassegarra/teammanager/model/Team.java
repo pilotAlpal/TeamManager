@@ -13,7 +13,7 @@ public class Team implements Serializable{
     private ArrayList<String> players;
     private TeamStats myTeamStats;
     private ArrayList<Match> proximosPartidos,ultimosPartidos;
-    private Convocatory proxConcocatoria;
+    private Match proxPartido;
     private ArrayList<Events> teamEvents;
 
 //equipo ya existente
@@ -22,7 +22,7 @@ public class Team implements Serializable{
         myId=id;
         players= tPlayers;
         myTeamStats=ts;
-        proxConcocatoria=new Convocatory(nextMatchId,myId,nextConvocated);
+        proxPartido=new Match();
         teamEvents=eventos;
         proximosPartidos=proximos;
         ultimosPartidos=ultimos;
@@ -32,7 +32,7 @@ public class Team implements Serializable{
         myId=tName;
         players=tPlayers;
         myTeamStats=new TeamStats();
-        proxConcocatoria=new Convocatory(myId);
+        proxPartido=new Match();
         teamEvents=new ArrayList<>();
         proximosPartidos=new ArrayList<>();
         ultimosPartidos=new ArrayList<>();

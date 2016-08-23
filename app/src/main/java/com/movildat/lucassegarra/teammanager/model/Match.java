@@ -18,6 +18,8 @@ public class Match {
     private ArrayList<Gol> goles;
 
 
+    public Match(){};
+
     public Match(String teamId, String idRival,boolean local, Date f, Time h) {
         homeId=teamId;
         guestId=idRival;
