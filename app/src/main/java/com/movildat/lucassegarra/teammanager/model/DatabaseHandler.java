@@ -32,6 +32,14 @@ public class DatabaseHandler implements Serializable {
     public static ArrayList<Events> getEvents(String teamId) {
         ArrayList<Events> a= new ArrayList<>();
         // Resources.getSystem().getStringArray(R.array.eventos);
+        a.add(new Events("Tirol",teamId));
+        a.add(new Events("Olimpique",teamId));
+        a.add(new Events("Heerenveen",teamId));
+        a.add(new Events("Olimpiakos",teamId));
+        a.add(new Events("Manchester",teamId));
+        a.add(new Events("Stum Graz",teamId));
+        a.add(new Events("Panathinaikos",teamId));
+        a.add(new Events("Arsenal",teamId));
         a.add(new Events("Leeds",teamId));
         a.add(new Events("Bayern",teamId));
         return a;
