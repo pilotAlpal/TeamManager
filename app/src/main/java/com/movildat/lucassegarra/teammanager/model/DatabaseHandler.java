@@ -53,7 +53,8 @@ public class DatabaseHandler implements Serializable {
         Convocatory convocatory=new Convocatory(getNextMatchId(team),team,getNextConvocatory(team));
         Match nextMatch=new Match(getNextRivalId(team),convocatory);
         Agenda agenda=new Agenda(getNextMatches(team),getLastMatches(team),nextMatch,getEvents(team));
-        return new Team(team,getTeamPlayers(),getTeamStats(team),agenda);
+        TeamRecords tr=getTeamRecords(team);
+        return new Team(team,getTeamPlayers(),getTeamStats(team),agenda,tr);
     }
 
     public ArrayList<Match> getLastMatches(String team) {
@@ -98,7 +99,7 @@ public class DatabaseHandler implements Serializable {
     }
 
     public TeamStats getTeamStats(String teamId) {
-        return new TeamStats(100,80,10,10,10,"Mista","Vicente");
+        return new TeamStats(100,80,10,10,10);
     }
 
     public void changePic(String id) {
@@ -125,5 +126,9 @@ public class DatabaseHandler implements Serializable {
 
     public boolean createTeam(Team equipo) {
         return true;
+    }
+
+    public TeamRecords getTeamRecords(String teamName) {
+        return new TeamRecords();
     }
 }

@@ -4,6 +4,7 @@ import com.movildat.lucassegarra.teammanager.model.Convocatory;
 import com.movildat.lucassegarra.teammanager.model.Events;
 import com.movildat.lucassegarra.teammanager.model.Player;
 import com.movildat.lucassegarra.teammanager.model.PlayerStats;
+import com.movildat.lucassegarra.teammanager.model.TeamRecords;
 import com.movildat.lucassegarra.teammanager.model.Result;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
 import com.movildat.lucassegarra.teammanager.model.Team;
@@ -73,9 +74,11 @@ public class Controller implements Serializable{
     public boolean createTeam(String teamName, ArrayList<String> initPlayers){
         Agenda agenda=new Agenda();
         TeamStats ts=new TeamStats();
-        Team equipo=new Team(teamName,initPlayers,ts,agenda);
+        TeamRecords recordEquipo=getTeamRecords(teamName);
+        Team equipo=new Team(teamName,initPlayers,ts,agenda,recordEquipo);
         return mySesion.createTeam(equipo);
     }
+
 
 
     /**
@@ -115,6 +118,10 @@ public class Controller implements Serializable{
         return getTeamStats(getTeamId());
     }
 
+    public TeamRecords getMyTeamRecords() {
+        return getTeamRecords(getTeamId());
+    }
+
     /**
      *
      * @return Lista convocados proximo partido
@@ -144,6 +151,10 @@ public class Controller implements Serializable{
         return mySesion.getTeamId();
     }
 
+    public TeamRecords getTeamRecords(String teamName) {
+        return mySesion.getTeamRecords(teamName);
+    }
+
     public TeamStats getTeamStats(String teamId){
         return mySesion.getTeamStats(teamId);
     }
@@ -171,4 +182,6 @@ public class Controller implements Serializable{
 
     public void removeFromNextConvocatory() {
     }
+
+
 }

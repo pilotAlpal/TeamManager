@@ -12,14 +12,16 @@ public class Team implements Serializable{
     private ArrayList<String> players;
     private TeamStats myTeamStats;
     private Agenda agenda;
-    private HashMap<String,PlayerStats> playerStats;
+    private TeamRecords records;
 
 
-    public Team(String myTeamid,ArrayList<String> myTeamPlayers,TeamStats ts,Agenda ag){
+
+    public Team(String myTeamid,ArrayList<String> myTeamPlayers,TeamStats ts,Agenda ag,TeamRecords tr){
         myId=myTeamid;
         players= myTeamPlayers;
         myTeamStats=ts;
         agenda=ag;
+        records=tr;
     }
 
     public void addEvent(Events e){

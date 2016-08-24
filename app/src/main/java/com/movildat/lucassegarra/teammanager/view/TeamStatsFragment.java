@@ -13,6 +13,7 @@ import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.Player;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
+import com.movildat.lucassegarra.teammanager.model.TeamRecords;
 import com.movildat.lucassegarra.teammanager.model.TeamStats;
 import com.movildat.lucassegarra.teammanager.model.ViewFragment;
 
@@ -26,7 +27,9 @@ public class TeamStatsFragment extends ViewFragment {
 
     private TeamStats teamStats;
     private RecyclerView myRV;
-    private TextView jugados,ganados,empatados,perdidos,pendientes,pichichi,asistente;
+    private TextView jugados,ganados,empatados,perdidos,pendientes,pichichi,asistente,maxJugados;
+    private ArrayList<String> teamPartners;
+    private TeamRecords records;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -35,25 +38,31 @@ public class TeamStatsFragment extends ViewFragment {
         myRV.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager=new LinearLayoutManager(getActivity());
         myRV.setLayoutManager(mLayoutManager);
-        teamStats=myController.getMyTeamStats();
         ArrayList<String> teamMates=myController.getPartners();
-        //pasarle teamMates al adapter
-        //cargar teamStats en los textViews
-        //cargar y pasar rating de cada jugador al adapter,aparecerá en la vista del item
-        jugados=(TextView) v.findViewById(R.id.tv_tsv_jugados);
-        ganados=(TextView) v.findViewById(R.id.tv_tsv_ganados);
-        empatados=(TextView)v.findViewById(R.id.tv_tsv_empatados);
-        perdidos=(TextView) v.findViewById(R.id.tv_tsv_perdidos);
-        pendientes=(TextView) v.findViewById(R.id.tv_tsv_pendientes);
-        String[] titulares=getResources().getStringArray(R.array.equipo_fantasma);
-        String[] suplentes=getResources().getStringArray(R.array.equipo_fantasma_suplentes);
-        String[] todos=new String[titulares.length+suplentes.length];
-        for (int i=0;i<titulares.length;i++)
-            todos[i]=titulares[i];
-        for(int k=titulares.length;k<todos.length;k++)
-            todos[k]=suplentes[k-titulares.length];
-        RecyclerView.Adapter adapter=new TeamPlayersAdapter(todos);
+        RecyclerView.Adapter adapter=new TeamPlayersAdapter(teamMates);
         myRV.setAdapter(adapter);
+        teamStats=myController.getMyTeamStats();
+        String aux=String.valueOf(teamStats.getPlayed());
+        jugados.setText(aux);
+        ganados=(TextView) v.findViewById(R.id.tv_tsv_ganados);
+        aux=String.valueOf(teamStats.getWon());
+        ganados.setText(aux);
+        empatados=(TextView)v.findViewById(R.id.tv_tsv_empatados);
+        aux=String.valueOf(teamStats.getDrawn());
+        empatados.setText(aux);
+        perdidos=(TextView) v.findViewById(R.id.tv_tsv_perdidos);
+        aux=String.valueOf(teamStats.getLost());
+        perdidos.setText(aux);
+        pendientes=(TextView) v.findViewById(R.id.tv_tsv_pendientes);
+        aux=String.valueOf(teamStats.getPending());
+        pendientes.setText(aux);
+        jugados=(TextView) v.findViewById(R.id.tv_tsv_jugados);
+        aux=String.valueOf(teamStats.getPlayed());
+        jugados.setText(aux);
+        pichichi=(TextView) v.findViewById(R.id.tv_tsv_pichichi);
+        aux=String.valueOf(records.getTopScorer());
+        pichichi.setText(aux);
+        asistente=(TextView)v.findViewById(R.id.tv_tsv_asistente);
         return v;
     }
 
@@ -62,14 +71,18 @@ public class TeamStatsFragment extends ViewFragment {
         return;
     }
 
-    public static TeamStatsFragment newInstance(Controller myController,TeamStats ts) {
+    public static TeamStatsFragment newInstance(Controller myController) {
         TeamStatsFragment teamStatsFragment=new TeamStatsFragment();
         teamStatsFragment.setController(myController);
-        teamStatsFragment.setStats(ts);
+        teamStatsFragment.setStats(myController.getMyTeamStats());
+        teamStatsFragment.setMates(myController.getPartners());
+        teamStatsFragment.setRecords(myController.getMyTeamRecords());
         return teamStatsFragment;
     }
 
+    private void setRecords(TeamRecords myTeamRecords) {records=myTeamRecords;}
     private void setStats(TeamStats s) {
         teamStats = s;
     }
+    private void setMates(ArrayList<String> partners){teamPartners=partners;}
 }

@@ -72,7 +72,8 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
             Convocatory convocatory=new Convocatory(getNextMatchId(teamName),teamName, getNextConvocated(teamName));
             Match proxP=new Match(getNextRivalId(teamName),convocatory);
             Agenda agenda=new Agenda(getNextMatches(teamName),getLastMatches(teamName),proxP,getEvents(teamName));
-            equipo=new Team(teamName,getTeamPlayers(),getTeamStats(teamName),agenda);
+            TeamRecords tr=dao.getTeamRecords(teamName);
+            equipo=new Team(teamName,getTeamPlayers(),getTeamStats(teamName),agenda,tr);
             return true;
         }
         return false;
@@ -166,6 +167,10 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         }
         notifyInvalidCredentials();
         return false;
+    }
+
+    public TeamRecords getTeamRecords(String teamName) {
+        return dao.getTeamRecords(teamName);
     }
 
     public interface Observador extends Observer{

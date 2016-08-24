@@ -26,17 +26,12 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
             image=(ImageView) v.findViewById(R.id.iv_tmi);
             name=(TextView) v.findViewById(R.id.tv_name_tmi);
         }
-      /*  @Override
-        public void onClick(View v){
-            Toast.makeText(v.getContext(),name.getText().toString(),Toast.LENGTH_LONG).show();
-        }*/
     }
 
-    public TeamPlayersAdapter(String data[]){
-        list=new ArrayList<String>();
+    public TeamPlayersAdapter(ArrayList<String> data){
+
         if(data!=null)
-            for (int i=0;i<data.length;i++)
-                list.add(i,data[i]);
+            list=data;
     }
 
     @Override

@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.PlayerStats;
+import com.movildat.lucassegarra.teammanager.model.TeamStats;
 import com.movildat.lucassegarra.teammanager.model.ViewActivity;
 
 
@@ -44,7 +45,7 @@ public class MenuActivity extends ViewActivity {
         getFragmentManager().beginTransaction().replace(R.id.f_info,pSf).commit();
     }
     public void statsEquipo(View view){
-        TeamStatsFragment tSf=TeamStatsFragment.newInstance(myController,myController.getMyTeamStats());
+        TeamStatsFragment tSf=TeamStatsFragment.newInstance(myController);
         getFragmentManager().beginTransaction().replace(R.id.f_info,tSf).commit();
     }
     public void calendario(View view){

@@ -113,6 +113,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/goles"
                 android:id="@+id/textView49" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vacio"
+                android:id="@+id/tv_tsv_pichichi" />
+
         </TableRow>
 
         <TableRow
@@ -124,6 +130,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/asistencias"
                 android:id="@+id/textView50" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vacio"
+                android:id="@+id/tv_tsv_asistente" />
         </TableRow>
     </LinearLayout>
 

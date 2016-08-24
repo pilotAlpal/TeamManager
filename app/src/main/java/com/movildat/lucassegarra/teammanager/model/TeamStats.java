@@ -7,15 +7,13 @@ import java.io.Serializable;
  */
 public class TeamStats implements Serializable {
     private int jugados,ganados,empatados,perdidos,pendientes;
-    private String maxGoleador,maxAsistente;
 
-    public TeamStats(int j,int g,int e,int p,int pend,String pichichi,String asistente){
+    public TeamStats(int j,int g,int e,int p,int pend){
         jugados=j;
         ganados=g;
         perdidos=p;
         pendientes=pend;
-        maxAsistente=asistente;
-        maxGoleador=pichichi;
+
     }
     public TeamStats(){
         jugados=0;
@@ -23,35 +21,26 @@ public class TeamStats implements Serializable {
         perdidos=0;
         ganados=0;
         empatados=0;
-        maxGoleador="nadie";
-        maxAsistente="nadie";
     }
 
-    private int getPlayed(){
+    public int getPlayed(){
         return jugados;
     }
 
-    private int getWon(){
+    public int getWon(){
         return ganados;
     }
 
-    private int getDrawn(){
+    public int getDrawn(){
         return empatados;
     }
 
-    private int getLost(){
+    public int getLost(){
         return perdidos;
     }
 
-    private int getPending(){
+    public int getPending(){
         return pendientes;
     }
 
-    private String pichichi(){
-        return maxGoleador;
-    }
-
-    private String asistente(){
-        return maxAsistente;
-    }
 }
