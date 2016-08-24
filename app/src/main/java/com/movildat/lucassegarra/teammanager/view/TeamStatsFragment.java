@@ -42,10 +42,8 @@ public class TeamStatsFragment extends ViewFragment {
         RecyclerView.Adapter adapter=new TeamPlayersAdapter(teamMates);
         myRV.setAdapter(adapter);
         teamStats=myController.getMyTeamStats();
-        String aux=String.valueOf(teamStats.getPlayed());
-        jugados.setText(aux);
         ganados=(TextView) v.findViewById(R.id.tv_tsv_ganados);
-        aux=String.valueOf(teamStats.getWon());
+        String aux=String.valueOf(teamStats.getWon());
         ganados.setText(aux);
         empatados=(TextView)v.findViewById(R.id.tv_tsv_empatados);
         aux=String.valueOf(teamStats.getDrawn());
