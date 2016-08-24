@@ -1,9 +1,11 @@
 package com.movildat.lucassegarra.teammanager.model;
 
+import java.io.Serializable;
+
 /**
  * Created by lucas.segarra on 05/08/2016.
  */
-public class Gol {
+public class Gol implements Serializable {
     private String authorId;
     private boolean localGol;
     private int homeAfterGol;

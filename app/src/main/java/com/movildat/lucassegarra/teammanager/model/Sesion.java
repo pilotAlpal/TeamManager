@@ -70,7 +70,9 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         if(dao.existTeam(teamName)){
             jugador.addTeam(teamName);
             Convocatory convocatory=new Convocatory(getNextMatchId(teamName),teamName, getNextConvocated(teamName));
-            equipo=new Team(teamName,getTeamPlayers(),getTeamStats(teamName),convocatory,getNextRivalId(teamName),getEvents(teamName),dao.getLastMatches(teamName),getNextMatches(teamName));
+            Match proxP=new Match(getNextRivalId(teamName),convocatory);
+            Agenda agenda=new Agenda(getNextMatches(teamName),getLastMatches(teamName),proxP,getEvents(teamName));
+            equipo=new Team(teamName,getTeamPlayers(),getTeamStats(teamName),agenda);
             return true;
         }
         return false;
@@ -82,6 +84,10 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     //BD:carga la lista de próximos eventos
     public ArrayList<Events> getEvents(String teamId){
         return dao.getEvents(teamId);
+    }
+
+    public ArrayList<Match> getLastMatches(String teamName){
+        return dao.getLastMatches(teamName);
     }
 
     //Modelo:Devuelve el id de mi jugador
@@ -144,7 +150,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     private void login(String nombre, String pass) {
         jugador=dao.login(nombre,pass);
         equipo=dao.lastTeamChosen(jugador.getPhone());
-        estsJugEqu=dao.getTeamPlayerStats(jugador.getPhone(),equipo.getId());
+        estsJugEqu=dao.getTeamPlayerStats(jugador.getPhone(),equipo.getTeamId());
     }
 
     /**

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
@@ -25,6 +26,7 @@ public class TeamStatsFragment extends ViewFragment {
 
     private TeamStats teamStats;
     private RecyclerView myRV;
+    private TextView jugados,ganados,empatados,perdidos,pendientes,pichichi,asistente;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -38,6 +40,11 @@ public class TeamStatsFragment extends ViewFragment {
         //pasarle teamMates al adapter
         //cargar teamStats en los textViews
         //cargar y pasar rating de cada jugador al adapter,aparecerá en la vista del item
+        jugados=(TextView) v.findViewById(R.id.tv_tsv_jugados);
+        ganados=(TextView) v.findViewById(R.id.tv_tsv_ganados);
+        empatados=(TextView)v.findViewById(R.id.tv_tsv_empatados);
+        perdidos=(TextView) v.findViewById(R.id.tv_tsv_perdidos);
+        pendientes=(TextView) v.findViewById(R.id.tv_tsv_pendientes);
         String[] titulares=getResources().getStringArray(R.array.equipo_fantasma);
         String[] suplentes=getResources().getStringArray(R.array.equipo_fantasma_suplentes);
         String[] todos=new String[titulares.length+suplentes.length];

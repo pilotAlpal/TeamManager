@@ -194,7 +194,8 @@
     android:layout_gravity="bottom|right"/>
 
     </GridLayout>-->
-    <include layout="@layout/player_stats_layout"/>
+    <include layout="@layout/player_stats_layout"
+        android:id="@+id/psl_psv"/>
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"

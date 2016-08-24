@@ -26,4 +26,32 @@ public class TeamStats implements Serializable {
         maxGoleador="nadie";
         maxAsistente="nadie";
     }
+
+    private int getPlayed(){
+        return jugados;
+    }
+
+    private int getWon(){
+        return ganados;
+    }
+
+    private int getDrawn(){
+        return empatados;
+    }
+
+    private int getLost(){
+        return perdidos;
+    }
+
+    private int getPending(){
+        return pendientes;
+    }
+
+    private String pichichi(){
+        return maxGoleador;
+    }
+
+    private String asistente(){
+        return maxAsistente;
+    }
 }

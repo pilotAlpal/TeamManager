@@ -1,4 +1,5 @@
 package com.movildat.lucassegarra.teammanager.controler;
+import com.movildat.lucassegarra.teammanager.model.Agenda;
 import com.movildat.lucassegarra.teammanager.model.Convocatory;
 import com.movildat.lucassegarra.teammanager.model.Events;
 import com.movildat.lucassegarra.teammanager.model.Player;
@@ -70,7 +71,9 @@ public class Controller implements Serializable{
      * @return si se ha podido crear el equipo
      */
     public boolean createTeam(String teamName, ArrayList<String> initPlayers){
-        Team equipo=new Team(teamName,initPlayers);
+        Agenda agenda=new Agenda();
+        TeamStats ts=new TeamStats();
+        Team equipo=new Team(teamName,initPlayers,ts,agenda);
         return mySesion.createTeam(equipo);
     }
 
@@ -102,6 +105,8 @@ public class Controller implements Serializable{
         return mySesion.getEvents(teamId);
     }
 
+    public String getMyPlayerId(){return mySesion.getMyPlayerId();}
+
     public String[] getMyTeams() {
         return mySesion.getMyTeams();
     }
@@ -124,7 +129,6 @@ public class Controller implements Serializable{
     public ArrayList<String> getPartners() {
         return mySesion.getPartners();
     }
-
 
     public PlayerStats getPlayerStats(String playerId) {
         return mySesion.getPlayerStats(playerId);

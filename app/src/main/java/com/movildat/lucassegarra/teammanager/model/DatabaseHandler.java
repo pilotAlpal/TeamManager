@@ -18,8 +18,6 @@ import java.util.Date;
  */
 public class DatabaseHandler implements Serializable {
 
-
-
     /**
      * Permite identificar a un usuario
      * @param nombre nombre del usuario
@@ -53,11 +51,10 @@ public class DatabaseHandler implements Serializable {
     public Team lastTeamChosen(String idJugador) {
         String team="Rayo Vaticano";
         Convocatory convocatory=new Convocatory(getNextMatchId(team),team,getNextConvocatory(team));
-        return new Team(team,getTeamPlayers(),getTeamStats(team),convocatory,getNextRivalId(team),
-                getEvents(team),getLastMatches(team),getNextMatches(team));
+        Match nextMatch=new Match(getNextRivalId(team),convocatory);
+        Agenda agenda=new Agenda(getNextMatches(team),getLastMatches(team),nextMatch,getEvents(team));
+        return new Team(team,getTeamPlayers(),getTeamStats(team),agenda);
     }
-
-
 
     public ArrayList<Match> getLastMatches(String team) {
         return new ArrayList<>();

@@ -1,5 +1,6 @@
 package com.movildat.lucassegarra.teammanager.model;
 
+import java.io.Serializable;
 import java.sql.Time;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.Date;
 /**
  * Created by lucas.segarra on 05/08/2016.
  */
-public class Match {
+public class Match implements Serializable {
     private String id;
     private String homeId,guestId;
     private Date when;
