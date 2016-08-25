@@ -17,15 +17,8 @@ import java.util.ArrayList;
 public class PhonesAdapter extends RecyclerView.Adapter<PhonesAdapter.ViewHolder> {
     private ArrayList<String> matesPhones;
 
-    PhonesAdapter(String[] data){
-        matesPhones=new ArrayList<String>();
-        if(data!=null) {
-            for(int i=0;i<data.length;i++){
-                matesPhones.add(i,data[i]);
-            }
-        }
-    }
-    PhonesAdapter(){
+
+    public PhonesAdapter(){
         matesPhones=new ArrayList<String>();
     }
 

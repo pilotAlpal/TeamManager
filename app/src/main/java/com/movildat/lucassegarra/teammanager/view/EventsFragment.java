@@ -33,11 +33,12 @@ public class EventsFragment extends ViewFragment {
 
 
     private static final int EVENTS_SHOWN =5 ;
+    private RecyclerView myRecycler;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.events_view,container,false);
-        RecyclerView myRecycler=(RecyclerView)v.findViewById(R.id.rv_next_matches);
+        myRecycler=(RecyclerView)v.findViewById(R.id.rv_next_matches);
         myRecycler.setHasFixedSize(true);
         RecyclerView.LayoutManager rvLM=new LinearLayoutManager(getActivity());
         myRecycler.setLayoutManager(rvLM);

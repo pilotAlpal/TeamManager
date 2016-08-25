@@ -45,6 +45,8 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder,int pos){
         holder.tvRivNam.setText(myEvents.get(pos).getId());
+        String date=String.valueOf(myEvents.get(pos).getEventDate());
+        holder.tvFecha.setText(date);
     }
 
     @Override
