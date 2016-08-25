@@ -40,8 +40,8 @@ public class NextMatchFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b)
-                    myController.addToNextConvocatory();
-                else myController.removeFromNextConvocatory();
+                    myController.addMeToNextConvocatory();
+                else myController.removeMeFromNextConvocatory();
             }
         });
         numConfirmados=(TextView)v.findViewById(R.id.tv_n_confirmados);
@@ -62,8 +62,7 @@ public class NextMatchFragment extends Fragment {
     public void setController(Controller c){
         myController=c;
         ArrayList<Player> convocados= myController.getNextConvocatory(myController.getTeamId());
-        String[] equipoInvencible=getResources().getStringArray(R.array.equipo_fantasma);
-        RecyclerView.Adapter adapter=new PlayersListAdapter(equipoInvencible);
+        RecyclerView.Adapter adapter=new PlayersListAdapter(convocados);
         myRV.setAdapter(adapter);
     }
 

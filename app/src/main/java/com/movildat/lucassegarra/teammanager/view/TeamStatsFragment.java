@@ -28,7 +28,7 @@ public class TeamStatsFragment extends ViewFragment {
     private TeamStats teamStats;
     private RecyclerView myRV;
     private TextView jugados,ganados,empatados,perdidos,pendientes,pichichi,asistente,maxJugados;
-    private ArrayList<String> teamPartners;
+    private ArrayList<Player> teamPartners;
     private TeamRecords records;
 
     @Override
@@ -38,7 +38,7 @@ public class TeamStatsFragment extends ViewFragment {
         myRV.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager=new LinearLayoutManager(getActivity());
         myRV.setLayoutManager(mLayoutManager);
-        ArrayList<String> teamMates=myController.getPartners();
+        ArrayList<Player> teamMates=myController.getPartners();
         RecyclerView.Adapter adapter=new TeamPlayersAdapter(teamMates);
         myRV.setAdapter(adapter);
         teamStats=myController.getMyTeamStats();
@@ -61,6 +61,8 @@ public class TeamStatsFragment extends ViewFragment {
         aux=String.valueOf(records.getTopScorer());
         pichichi.setText(aux);
         asistente=(TextView)v.findViewById(R.id.tv_tsv_asistente);
+        aux=String.valueOf(records.getTopAsistant());
+        asistente.setText(aux);
         return v;
     }
 
@@ -82,5 +84,5 @@ public class TeamStatsFragment extends ViewFragment {
     private void setStats(TeamStats s) {
         teamStats = s;
     }
-    private void setMates(ArrayList<String> partners){teamPartners=partners;}
+    private void setMates(ArrayList<Player> partners){teamPartners=partners;}
 }

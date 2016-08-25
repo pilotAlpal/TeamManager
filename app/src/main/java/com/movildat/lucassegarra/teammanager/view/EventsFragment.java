@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -34,10 +35,12 @@ public class EventsFragment extends ViewFragment {
 
     private static final int EVENTS_SHOWN =5 ;
     private RecyclerView myRecycler;
+    private CardView myCard;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.events_view,container,false);
+        myCard=(CardView)v.findViewById(R.id.cv_matches);
         myRecycler=(RecyclerView)v.findViewById(R.id.rv_next_matches);
         myRecycler.setHasFixedSize(true);
         RecyclerView.LayoutManager rvLM=new LinearLayoutManager(getActivity());

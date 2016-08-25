@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.movildat.lucassegarra.teammanager.R;
+import com.movildat.lucassegarra.teammanager.model.Player;
 
 import java.util.ArrayList;
 
@@ -22,11 +23,12 @@ import java.util.ArrayList;
  * Created by lucas.segarra on 19/07/2016.
  */
 public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.ViewHolder> {
-    private ArrayList<String> mDataSet;
+    private ArrayList<Player> mDataSet;
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView mTextView;
         public ImageButton butt;
+        private String number;
 
         public ViewHolder(View v){
             super(v);
@@ -50,11 +52,9 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
     }
 
 
-    public PlayersListAdapter(String[] data){
-        mDataSet=new ArrayList<String>();
+    public PlayersListAdapter(ArrayList<Player> data){
         if(data!=null)
-            for (int i=0;i<data.length;i++)
-                mDataSet.add(i,data[i]);
+            mDataSet=data;
     }
 
     /*
@@ -63,13 +63,6 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
     }
     */
 
-    public void fillList(String[] equipoFantasma){
-        for(int i=0;i<equipoFantasma.length;i++){
-            mDataSet.add(i,equipoFantasma[i]);
-            notifyItemInserted(i);
-        }
-
-    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
@@ -81,7 +74,8 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder,int pos){
-        holder.mTextView.setText(mDataSet.get(pos));
+        holder.mTextView.setText(mDataSet.get(pos).getNombre());
+        holder.number=mDataSet.get(pos).getPhone();
     }
 
     @Override

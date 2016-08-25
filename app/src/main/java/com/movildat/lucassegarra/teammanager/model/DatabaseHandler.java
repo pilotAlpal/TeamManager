@@ -53,7 +53,23 @@ public class DatabaseHandler implements Serializable {
     }
 
     public ArrayList<Player> getNextConvocatory(String teamId) {
-        return new ArrayList<>();
+        ArrayList<Player> convocatoria=new ArrayList<>();
+        convocatoria.add(new Player("Cañizares","a","626992478","Portero"));
+        convocatoria.add(new Player("Angloma","a","626992478","Lateral"));
+        convocatoria.add(new Player("Ayala","a","626992478","Central"));
+        convocatoria.add(new Player("Pelegrino","a","626992478","Central"));
+        convocatoria.add(new Player("Carboni","a","626992478","Lateral"));
+        convocatoria.add(new Player("Mendieta","a","626992478","Centrocampista"));
+        convocatoria.add(new Player("Baraja","a","626992478","Centrocampista"));
+        convocatoria.add(new Player("Aimar","a","626992478","Mediapunta"));
+        convocatoria.add(new Player("Killy Gónzalez","a","628665088","Extremo"));
+        convocatoria.add(new Player("Angulo","a","626992478","Extremo"));
+        convocatoria.add(new Player("Carew","a","626992478","Delantero"));
+        convocatoria.add(new Player("Vicente","a","628665088","Extremo"));
+        convocatoria.add(new Player("Juan Sánchez","a","626992478","Delantero"));
+        convocatoria.add(new Player("Albelda","a","626992478","Centrocampista"));
+        convocatoria.add(new Player("Djukic","a","626992478","Central"));
+        return convocatoria;
     }
 
     public Team lastTeamChosen(String idJugador) {
@@ -62,7 +78,7 @@ public class DatabaseHandler implements Serializable {
         Match nextMatch=new Match(getNextRivalId(team),convocatory);
         Agenda agenda=new Agenda(getNextMatches(team),getLastMatches(team),nextMatch,getEvents(team));
         TeamRecords tr=getTeamRecords(team);
-        return new Team(team,getTeamPlayers(),getTeamStats(team),agenda,tr);
+        return new Team(team,getTeamPlayers(team),getTeamStats(team),agenda,tr);
     }
 
     public ArrayList<Match> getLastMatches(String team) {
@@ -80,25 +96,13 @@ public class DatabaseHandler implements Serializable {
         return "Bayern";
     }
 
-    public ArrayList<String> getTeamPlayers() {
-        ArrayList<String> l=new ArrayList<>();
-        l.add("Cañizares");
-        l.add("Palop");
-        l.add("Angloma");
-        l.add("Pelegrino");
-        l.add("Ayala");
-        l.add("Djukic");
-        l.add("Carboni");
-        l.add("Fabio Aurelio");
-        l.add("Albelda");
-        l.add("Baraja");
-        l.add("Aimar");
-        l.add("Angulo");
-        l.add("Rufete");
-        l.add("Vicente");
-        l.add("Killy Gónzalez");
-        l.add("Carew");
-        l.add("Mista");
+    public ArrayList<Player> getTeamPlayers(String team) {
+        ArrayList<Player> l=getNextConvocatory(team);
+        l.add(new Player("Palop","a","626992478","Portero"));
+        l.add(new Player("Marchena","a","626992478","Central"));
+        l.add(new Player("Farinós","a","626992478","Centrocampista"));
+        l.add(new Player("Fabio Aurelio","a","626992478","Lateral"));
+        l.add(new Player("Rufete","a","626992478","Extremo"));
         return l;
     }
 
@@ -138,5 +142,17 @@ public class DatabaseHandler implements Serializable {
 
     public TeamRecords getTeamRecords(String teamName) {
         return new TeamRecords();
+    }
+
+    public boolean existPlayer(String playerPhone) {
+        return false;
+    }
+
+    public Player getPlayer(String playerPhone) {
+        return new Player("Aimar","a","626992478","Mediapunta");
+    }
+
+    public boolean createMatch(String miTeamId, String nRival, Date f, String h) {
+        return true;
     }
 }

@@ -1,12 +1,9 @@
 package com.movildat.lucassegarra.teammanager.view;
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.icu.util.GregorianCalendar;
 import android.os.Bundle;
 import android.provider.CalendarContract;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -15,6 +12,7 @@ import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.ViewActivity;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -53,12 +51,11 @@ public class RegisterEventActivity extends ViewActivity {
                     .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,begin).putExtra(CalendarContract.EXTRA_EVENT_END_TIME,end);
 
         } else {
-            Date fechaIni=new Date(dpIni.getYear(),dpIni.getMonth(),dpIni.getDayOfMonth());
-            Date fechaFin = new Date(dpFin.getYear(),dpFin.getMonth(),dpFin.getDayOfMonth());
+            Date fechaIni=new Date(dpIni.getYear()-1900,dpIni.getMonth(),dpIni.getDayOfMonth());
+            Date fechaFin = new Date(dpFin.getYear()-1900,dpFin.getMonth(),dpFin.getDayOfMonth());
             addCalEvIntent=new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI)
                     .putExtra(CalendarContract.Events.TITLE,nomEventto).putExtra(CalendarContract.Events.EVENT_LOCATION,lugEvent)
                     .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,fechaIni).putExtra(CalendarContract.EXTRA_EVENT_END_TIME,fechaFin);
-
         }
         if ((addCalEvIntent.resolveActivity(getPackageManager()))!=null){
             myController.createEvent();

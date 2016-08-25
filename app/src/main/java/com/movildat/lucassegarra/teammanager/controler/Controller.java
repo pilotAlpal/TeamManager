@@ -12,6 +12,7 @@ import com.movildat.lucassegarra.teammanager.model.TeamStats;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by lucas.segarra on 05/08/2016.
@@ -75,10 +76,26 @@ public class Controller implements Serializable{
         Agenda agenda=new Agenda();
         TeamStats ts=new TeamStats();
         TeamRecords recordEquipo=getTeamRecords(teamName);
-        Team equipo=new Team(teamName,initPlayers,ts,agenda,recordEquipo);
+        ArrayList<Player> players=new ArrayList<>();
+        Player p;
+        for (int i=0;i<initPlayers.size();i++){
+            String playerPhone=initPlayers.get(i);
+            if(existPlayer(playerPhone)){
+                p=getPlayer(playerPhone);
+            }
+            else{
+                p=new Player(initPlayers.get(i),"a","626992478","Desconocido");
+                mySesion.createPlayer(p);
+            }
+            players.add(p);
+        }
+        Team equipo=new Team(teamName,players,ts,agenda,recordEquipo);
         return mySesion.createTeam(equipo);
     }
 
+    private Player getPlayer(String playerPhone) {
+        return mySesion.getPlayer(playerPhone);
+    }
 
 
     /**
@@ -90,6 +107,10 @@ public class Controller implements Serializable{
     //permite al usuario inscribirse en un equipo
     public boolean enrollTeam(String teamName){
         return mySesion.enrollTeam(teamName);
+    }
+
+    private boolean existPlayer(String playerPhone) {
+        return mySesion.existPlayer(playerPhone);
     }
 
     /**
@@ -133,7 +154,7 @@ public class Controller implements Serializable{
 
 
 
-    public ArrayList<String> getPartners() {
+    public ArrayList<Player> getPartners() {
         return mySesion.getPartners();
     }
 
@@ -177,11 +198,14 @@ public class Controller implements Serializable{
         
     }
 
-    public void addToNextConvocatory() {
+    public void addMeToNextConvocatory() {
     }
 
-    public void removeFromNextConvocatory() {
+    public void removeMeFromNextConvocatory() {
     }
 
 
+    public boolean createMatch(String nRival, Date f, String h) {
+        return mySesion.createMatch(getTeamId(),nRival,f,h);
+    }
 }

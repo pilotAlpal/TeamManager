@@ -3,140 +3,146 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TableRow
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:rowCount="5"
+        android:columnCount="2">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/jugados"
-            android:id="@+id/textView43" />
+            android:id="@+id/textView43"
+            android:layout_row="0"
+            android:layout_column="0"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/vacio"
-            android:id="@+id/tv_tsv_jugados" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:id="@+id/tv_tsv_jugados"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_gravity="bottom|right"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ganados"
-            android:id="@+id/textView44" />
-
+            android:id="@+id/textView44"
+            android:layout_row="1"
+            android:layout_column="0"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/vacio"
-            android:id="@+id/tv_tsv_ganados" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:id="@+id/tv_tsv_ganados"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_gravity="bottom|right"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/empatados"
-            android:id="@+id/textView45" />
+            android:id="@+id/textView45"
+            android:layout_row="2"
+            android:layout_column="0"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/vacio"
-            android:id="@+id/tv_tsv_empatados" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:id="@+id/tv_tsv_empatados"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:layout_gravity="bottom|right"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/perdidos"
-            android:id="@+id/textView46" />
+            android:id="@+id/textView46"
+            android:layout_row="3"
+            android:layout_column="0"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/vacio"
-            android:id="@+id/tv_tsv_perdidos" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:id="@+id/tv_tsv_perdidos"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:layout_gravity="bottom|right"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/pending"
-            android:id="@+id/textView47" />
+            android:id="@+id/textView47"
+            android:layout_row="4"
+            android:layout_column="0"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/vacio"
-            android:id="@+id/tv_tsv_pendientes" />
-    </TableRow>
+            android:id="@+id/tv_tsv_pendientes"
+            android:layout_row="4"
+            android:layout_column="1"
+            android:layout_gravity="bottom|right"/>
 
-    <LinearLayout
+
+    </GridLayout>
+
+    <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/myGolden"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:rowCount="3"
+        android:columnCount="2"
+        android:background="@color/myGolden">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/team_records"
+            android:id="@+id/textView48"
+            android:layout_column="0"
+            android:layout_row="0"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/team_records"
-                android:id="@+id/textView48" />
-        </TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/goles"
+            android:id="@+id/textView49"
+            android:layout_column="0"
+            android:layout_row="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vacio"
+            android:id="@+id/tv_tsv_pichichi"
+            android:layout_gravity="bottom|right"
+            android:layout_column="1"
+            android:layout_row="1"/>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/asistencias"
+            android:id="@+id/textView50"
+            android:layout_column="0"
+            android:layout_row="2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vacio"
+            android:id="@+id/tv_tsv_asistente"
+            android:layout_column="1"
+            android:layout_row="2"
+            android:layout_gravity="bottom|right"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/goles"
-                android:id="@+id/textView49" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/vacio"
-                android:id="@+id/tv_tsv_pichichi" />
+    </GridLayout>
 
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/asistencias"
-                android:id="@+id/textView50" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/vacio"
-                android:id="@+id/tv_tsv_asistente" />
-        </TableRow>
-    </LinearLayout>
 
     <TableRow
         android:layout_width="match_parent"
@@ -155,8 +161,6 @@
         android:id="@+id/rv_all_players_layout"
         android:background="@color/colorPrimary"
         android:scrollbars="vertical"/>
-
-
 
 
 </LinearLayout>

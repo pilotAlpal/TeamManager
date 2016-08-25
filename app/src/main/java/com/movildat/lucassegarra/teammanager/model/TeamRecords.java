@@ -10,7 +10,7 @@ public class TeamRecords implements Serializable {
     private HashMap<String,Integer> goleadores;
     private HashMap<String,Integer> asistentes;
     private HashMap<String,Integer> partJugados;
-    private String topScorer,topAsistant,topPlayed;
+    private String topScorer="Carew",topAsistant="Aimar",topPlayed;
 
     public String getTopScorer(){
         return topScorer;

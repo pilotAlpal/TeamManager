@@ -19,7 +19,7 @@ public class Player implements Serializable {
         telefono=pTel;
         data=new PlayerStats(pPos);
     }
-    public Player(String pNam,String pass,String pTel,String pPos,PlayerStats stats){
+    public Player(String pNam,String pass,String pTel,PlayerStats stats){
         nombre= pNam;
         contrasena=pass;
         telefono=pTel;
@@ -36,4 +36,9 @@ public class Player implements Serializable {
     public void changePic() {
 
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
 }

@@ -4,6 +4,7 @@ import com.movildat.lucassegarra.teammanager.controler.Controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Observer;
 
 /**
@@ -118,7 +119,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     }
 
     //Modelo:Obtiene del modelo la lista de compañeros de equipo
-    public ArrayList<String> getPartners() {
+    public ArrayList<Player> getPartners() {
         return equipo.getPlayersList();
     }
 
@@ -135,8 +136,8 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         return equipo.getTeamId();
     }
 
-    private ArrayList<String> getTeamPlayers() {
-        return dao.getTeamPlayers();
+    private ArrayList<Player> getTeamPlayers() {
+        return dao.getTeamPlayers(getTeamId());
     }
 
     /**
@@ -171,6 +172,18 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
 
     public TeamRecords getTeamRecords(String teamName) {
         return dao.getTeamRecords(teamName);
+    }
+
+    public boolean existPlayer(String playerPhone) {
+        return dao.existPlayer(playerPhone);
+    }
+
+    public Player getPlayer(String playerPhone) {
+        return dao.getPlayer(playerPhone);
+    }
+
+    public boolean createMatch(String miTeamId,String nRival, Date f, String h) {
+        return dao.createMatch(miTeamId,nRival,f,h);
     }
 
     public interface Observador extends Observer{

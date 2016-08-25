@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.movildat.lucassegarra.teammanager.R;
+import com.movildat.lucassegarra.teammanager.model.Player;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  * Created by lucas.segarra on 02/08/2016.
  */
 public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.ViewHolder> {
-    private ArrayList<String> list;
+    private ArrayList<Player> list;
 
     public static class ViewHolder extends RecyclerView.ViewHolder /*implements View.OnClickListener*/{
         public ImageView image;
@@ -28,7 +29,7 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
         }
     }
 
-    public TeamPlayersAdapter(ArrayList<String> data){
+    public TeamPlayersAdapter(ArrayList<Player> data){
 
         if(data!=null)
             list=data;
@@ -41,7 +42,7 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
     }
      @Override
     public void onBindViewHolder(ViewHolder vH,int pos){
-        vH.name.setText(list.get(pos));
+        vH.name.setText(list.get(pos).getNombre());
          //cargar imagenes
      }
 

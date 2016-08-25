@@ -9,14 +9,14 @@ import java.util.HashMap;
  */
 public class Team implements Serializable{
     private String myId;
-    private ArrayList<String> players;
+    private ArrayList<Player> players;
     private TeamStats myTeamStats;
     private Agenda agenda;
     private TeamRecords records;
 
 
 
-    public Team(String myTeamid,ArrayList<String> myTeamPlayers,TeamStats ts,Agenda ag,TeamRecords tr){
+    public Team(String myTeamid,ArrayList<Player> myTeamPlayers,TeamStats ts,Agenda ag,TeamRecords tr){
         myId=myTeamid;
         players= myTeamPlayers;
         myTeamStats=ts;
@@ -32,7 +32,7 @@ public class Team implements Serializable{
         agenda.addMatch(m);
     }
 
-    public void addPlayer(String playerId){
+    public void addPlayer(Player playerId){
         players.add(playerId);
     }
 
@@ -46,7 +46,7 @@ public class Team implements Serializable{
         return myId;
     }
 
-    public ArrayList<String> getPlayersList() {
+    public ArrayList<Player> getPlayersList() {
         return players;
     }
 
