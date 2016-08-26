@@ -19,7 +19,9 @@ import com.movildat.lucassegarra.teammanager.model.Sesion;
  */
 public class SignInActivity extends Activity {
 //    private CheckBox cbLog;
+    private static final int TEAM_CODE=1;
     private Spinner spPos;
+
     private EditText etNombre,etContrasena,etEquipo,etTelefono;
     private Controller myController;
     @Override
@@ -46,18 +48,45 @@ public class SignInActivity extends Activity {
             String name = etNombre.getText().toString();
             String posicion=(String)spPos.getSelectedItem();
             myController=new Controller();
-            if (myController.createPlayer(name,pass,tel,posicion)) {
-                myController.validLogin(tel,pass);
-                Intent signInIntent = new Intent();
-                Bundle bundle=new Bundle();
-                bundle.putSerializable("Controller",myController);
-                signInIntent.putExtras(bundle);
-                signInIntent.setClass(this,MenuActivity.class);
-                startActivity(signInIntent);
+            if(myController.validLogin(tel,pass)){
+                if(team!=" ") {
+                    if (myController.existTeam(team))
+                        if (myController.createPlayer(name,pass,tel,posicion,team))
+                            raiseMenuIntent();
+                    else
+                        Toast.makeText(this,"Team does not exist",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Intent signInIntent = new Intent();
+                    Bundle bundle=new Bundle();
+                    bundle.putSerializable("Controller",myController);
+                    signInIntent.putExtras(bundle);
+                    signInIntent.setClass(this,NewTeamActivity.class);
+                    startActivityForResult(signInIntent,TEAM_CODE);
+                }
+            }
+            else{
+                Toast.makeText(this,"Invalid login",Toast.LENGTH_SHORT).show();
             }
             finish();
         }
     }
+
+    private void raiseMenuIntent(){
+        Intent signInIntent = new Intent();
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("Controller",myController);
+        signInIntent.putExtras(bundle);
+        signInIntent.setClass(this,MenuActivity.class);
+        startActivity(signInIntent);
+    }
+
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+        if((requestCode==TEAM_CODE)&&(resultCode==1)){
+            raiseMenuIntent();
+        }
+    }
+
 
     private boolean validPhone() {
         String tel=etTelefono.getText().toString();
@@ -91,5 +120,4 @@ public class SignInActivity extends Activity {
         }
         return true;
     }
-
 }

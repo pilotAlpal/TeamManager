@@ -155,4 +155,8 @@ public class DatabaseHandler implements Serializable {
     public boolean createMatch(String miTeamId, String nRival, Date f, String h) {
         return true;
     }
+
+    public boolean linkTeamAndPlayer(String pTel, String team) {
+        return true;
+    }
 }

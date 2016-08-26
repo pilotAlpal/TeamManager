@@ -68,7 +68,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     //Modelo:Carga en el objeto equipo la información asociada a ese equipo
     //Controlador:recibe la información de si ha sido posible inscribir al jugador en el equipo
     public boolean enrollTeam(String teamName) {
-        if(dao.existTeam(teamName)){
+        if(existTeam(teamName)){
             jugador.addTeam(teamName);
             Convocatory convocatory=new Convocatory(getNextMatchId(teamName),teamName, getNextConvocated(teamName));
             Match proxP=new Match(getNextRivalId(teamName),convocatory);
@@ -184,6 +184,14 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
 
     public boolean createMatch(String miTeamId,String nRival, Date f, String h) {
         return dao.createMatch(miTeamId,nRival,f,h);
+    }
+
+    public boolean existTeam(String team) {
+        return dao.existTeam(team);
+    }
+
+    public boolean linkTeamAndPlayer(String pTel, String team) {
+        return dao.linkTeamAndPlayer(pTel,team);
     }
 
     public interface Observador extends Observer{

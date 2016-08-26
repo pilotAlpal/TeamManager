@@ -29,7 +29,8 @@
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/s_ep_equipo" />
+            android:id="@+id/s_ep_equipo"
+            android:layout_gravity="left|bottom"/>
     </LinearLayout>
 
     <LinearLayout
@@ -78,6 +79,17 @@
         android:text="@string/buscar_equipo"
         android:onClick="showTeams"
         android:id="@+id/b_buscar_equiopo"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/crearEquipo"
+        android:id="@+id/button" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></LinearLayout>
 </LinearLayout>
 
 

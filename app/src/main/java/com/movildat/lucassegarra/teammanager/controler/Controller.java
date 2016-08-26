@@ -61,9 +61,11 @@ public class Controller implements Serializable{
      * @param pos
      * @return si no existia un usuario con ese telefono y se ha registrado al jugador
      */
-    public  boolean createPlayer(String pName,String pPass,String pTel,String pos) {
+    public  boolean createPlayer(String pName,String pPass,String pTel,String pos,String team) {
         Player jugador=new Player(pName,pPass,pTel,pos);
-        return mySesion.createPlayer(jugador);
+        return mySesion.createPlayer(jugador)&&mySesion.linkTeamAndPlayer(pTel,team);
+
+
     }
 
     /**
@@ -207,5 +209,9 @@ public class Controller implements Serializable{
 
     public boolean createMatch(String nRival, Date f, String h) {
         return mySesion.createMatch(getTeamId(),nRival,f,h);
+    }
+
+    public boolean existTeam(String team) {
+        return mySesion.existTeam(team);
     }
 }

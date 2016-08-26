@@ -1,5 +1,6 @@
 package com.movildat.lucassegarra.teammanager.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ import java.util.Observable;
  * Created by lucas.segarra on 03/08/2016.
  */
 public class NewTeamActivity extends ViewActivity{
+
     RecyclerView phoneNumbers;
     EditText phoneET,teamET;
     PhonesAdapter adapter;
@@ -50,8 +52,14 @@ public class NewTeamActivity extends ViewActivity{
         adapter.clear();
         ArrayList<String> equipoInicial=adapter.getValues();
         if (validPhones(equipoInicial)) {
-            if(myController.createTeam(teamName,equipoInicial))
+            if(myController.createTeam(teamName,equipoInicial)){
                 Toast.makeText(this,teamName+" "+R.string.anadido,Toast.LENGTH_SHORT).show();
+                int resultCode=1;
+                Intent resultIntent=new Intent();
+                resultIntent.putExtra("TEAM_ID",myController.getTeamId());
+                setResult(resultCode,resultIntent);
+                finish();
+            }
             else Toast.makeText(this,"fallo equipos",Toast.LENGTH_SHORT).show();
         }
         else Toast.makeText(this,"fallo telefonos",Toast.LENGTH_SHORT).show();
