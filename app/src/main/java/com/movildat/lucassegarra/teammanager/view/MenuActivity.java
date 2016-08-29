@@ -127,4 +127,13 @@ public class MenuActivity extends ViewActivity {
     public void deleteProfile(View v){
         myController.deleteProfile();
     }
+
+    public void newTeam(View v){
+        Intent newTeamIntent=new Intent();
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("Controller",myController);
+        newTeamIntent.putExtras(bundle);
+        newTeamIntent.setClass(this,NewTeamActivity.class);
+        startActivity(newTeamIntent);
+    }
 }

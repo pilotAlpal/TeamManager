@@ -1,95 +1,106 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@color/myPurpleGrey"
-    tools:context=".view.EditProfileFragment">
+<?xml version="1.0" encoding="utf-8"?>
 
-    <Button
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:text="@string/cambiaFoto"
-         android:onClick="changePic"
-         android:id="@+id/b_cambia_foto"
-         android:layout_gravity="left|center_vertical" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/equipo"
-            android:id="@+id/tv_ep_equipo" />
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/s_ep_equipo"
-            android:layout_gravity="left|bottom"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/posicion"
-            android:id="@+id/tv_ep_pos" />
-
-        <Spinner
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:id="@+id/sp_change_pos"
-             android:layout_gravity="left|bottom" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/borrar"
-            android:onClick="deleteProfile"
-            android:id="@+id/button6" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/abandonar"
-            android:onClick="leaveTeam"
-            android:id="@+id/b_abandonar" />
-    </LinearLayout>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/buscar_equipo"
-        android:onClick="showTeams"
-        android:id="@+id/b_buscar_equiopo"/>
-
-    <Button
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/crearEquipo"
-        android:id="@+id/button" />
+        android:background="@color/myPurpleGrey">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></LinearLayout>
-</LinearLayout>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cambiaFoto"
+                android:onClick="changePic"
+                android:id="@+id/b_ep_cambiar_foto" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/guardar"
+                android:id="@+id/b_ep_guarda_cambios"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/equipo"
+                    android:id="@+id/tv_ep_equipo" />
+            <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/s_ep_equipo"
+                   />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+             <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/posicion"
+                    android:id="@+id/tv_ep_posicion"
+                    android:layout_column="0"
+
+                    />
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sp_change_pos"
+                android:layout_column="1" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/buscar_equipo"
+                android:onClick="showTeams"
+                android:id="@+id/b_ep_busca_equipo"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="newTeam"
+                android:text="@string/crearEquipo"
+                android:id="@+id/b_crea_equipo"
+                android:layout_column="1" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/abandonar"
+                android:onClick="leaveTeam"
+                android:id="@+id/b_ep_abandonar" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/borrar"
+                android:onClick="deleteProfile"
+                android:id="@+id/b_ep_borrar" />
+        </TableRow>
+
+    </TableLayout>
 

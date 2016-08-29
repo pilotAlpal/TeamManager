@@ -1,22 +1,16 @@
 package com.movildat.lucassegarra.teammanager.view;
 
-import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.movildat.lucassegarra.teammanager.R;
-import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.ViewFragment;
 
-import java.util.ArrayList;
 import java.util.Observable;
 
 /**

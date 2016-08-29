@@ -42,15 +42,6 @@ public class LogInActivity extends AppCompatActivity implements Sesion.Observado
         startActivity(signInIntent);
     }
 
-    public void registrateTeam(View v){
-        Intent newTeamIntent=new Intent();
-        Controller controller=new Controller();
-        Bundle bundle=new Bundle();
-        bundle.putSerializable("Controller",controller);
-        newTeamIntent.putExtras(bundle);
-        newTeamIntent.setClass(this,NewTeamActivity.class);
-        startActivity(newTeamIntent);
-    }
 
     @Override
     public void setController(Controller controller) {
