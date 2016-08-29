@@ -44,19 +44,18 @@ public class MenuActivity extends ViewActivity {
         PlayerStatsFragment pSf=PlayerStatsFragment.newInstance(myController.getMyplayerStats(),myController);
         getFragmentManager().beginTransaction().replace(R.id.f_info,pSf).commit();
     }
+
     public void statsEquipo(View view){
         TeamStatsFragment tSf=TeamStatsFragment.newInstance(myController);
         getFragmentManager().beginTransaction().replace(R.id.f_info,tSf).commit();
     }
+
     public void calendario(View view){
         EventsFragment eventsFragment=EventsFragment.newInstance(myController);
         getFragmentManager().beginTransaction().replace(R.id.f_info,eventsFragment).commit();
     }
-   /* public void clasificacion(View view){
-        //posiblemente excluir de 1ºversion
-        //pasar equipo
-        getFragmentManager().beginTransaction().replace(R.id.f_info,new ClasificStatsFragment()).commit();
-    }*/
+
+
     public void showCalendar(View v){
         Uri.Builder builder= CalendarContract.CONTENT_URI.buildUpon();
         builder.appendPath("time");
@@ -64,6 +63,7 @@ public class MenuActivity extends ViewActivity {
         Intent calendarIntent=new Intent(Intent.ACTION_VIEW).setData(builder.build());
         this.startActivity(calendarIntent);
     }
+
     public void addEvent(View v){
         Intent registerEventIntent = new Intent(MenuActivity.this,RegisterEventActivity.class);
         Bundle b=new Bundle();
@@ -108,8 +108,6 @@ public class MenuActivity extends ViewActivity {
         myController.leaveTeam();
     }
 
-
-
     @Override
     public void onActivityResult(int reqCo,int resCo,Intent data){
         if(reqCo==CAM_INTENT_CODE) {
@@ -117,6 +115,7 @@ public class MenuActivity extends ViewActivity {
             myController.changePic();
         }
     }
+
     public void changePic(View v){
         Intent photoIntent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if(photoIntent.resolveActivity(this.getPackageManager())!=null){

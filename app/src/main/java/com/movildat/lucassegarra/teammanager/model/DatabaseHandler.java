@@ -18,13 +18,7 @@ import java.util.Date;
  */
 public class DatabaseHandler implements Serializable {
 
-    /**
-     * Permite identificar a un usuario
-     * @param nombre nombre del usuario
-     * @param pass contrasena
-     * @return true si se ha identificado correctamente, false si no
-     */
-    public boolean validLogin(String nombre, String pass) {
+    public boolean validLogin(String telefono, String pass) {
         return true;
     }
 
@@ -45,8 +39,8 @@ public class DatabaseHandler implements Serializable {
         return a;
     }
 
-    public Player login(String userName, String pass) {
-        return new Player(userName,pass,"626992478","mediapunta");
+    public Player login(String telf, String pass) {
+        return new Player("Lucas",pass,telf,"mediapunta");
     }
 
     public void createConvocatory(Convocatory c) {

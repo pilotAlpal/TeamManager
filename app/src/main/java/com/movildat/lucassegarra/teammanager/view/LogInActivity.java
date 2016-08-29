@@ -24,11 +24,15 @@ public class LogInActivity extends AppCompatActivity implements Sesion.Observado
         etPass=(EditText) findViewById(R.id.et_contrasena);
     }
 
+    /**
+     * Permite al usuario empezar la acción de loggearse
+     * @param view vista desde la que se invoca al método
+     */
     public void login(View view){
-        String nombre= etPhone.getText().toString();
+        String telf= etPhone.getText().toString();
         String pass=etPass.getText().toString();
         Controller controller=new Controller();
-        if(controller.validLogin(nombre,pass)) {
+        if(controller.validLogin(telf,pass)) {
             Intent menuIntent = new Intent();
             Bundle bundle=new Bundle();
             bundle.putSerializable("Controller",controller);
@@ -37,11 +41,11 @@ public class LogInActivity extends AppCompatActivity implements Sesion.Observado
             startActivity(menuIntent);
         }
     }
+
     public void signin(View view){
         Intent signInIntent=new Intent(LogInActivity.this,SignInActivity.class);
         startActivity(signInIntent);
     }
-
 
     @Override
     public void setController(Controller controller) {

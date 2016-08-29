@@ -149,21 +149,22 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         return equipo.getTeamStats(teamId);
     }
 
-    private void login(String nombre, String pass) {
-        jugador=dao.login(nombre,pass);
+    private void login(String tel, String pass) {
+        jugador=dao.login(tel,pass);
         equipo=dao.lastTeamChosen(jugador.getPhone());
         estsJugEqu=dao.getTeamPlayerStats(jugador.getPhone(),equipo.getTeamId());
     }
 
     /**
-     *
-     * @param nombre
-     * @param pass
-     * @return
+     * Comprueba si cierta información de inicio de sesión es válida. Si lo es carga los valores
+     * asocuiados al usario de la BD a la sesión, si no informa.
+     * @param tel numero de telefono del usuario
+     * @param pass contraseña
+     * @return true si se ha podido iniciar la sesión, falso si no.
      */
-    public boolean validLogin(String nombre, String pass) {
-        if(dao.validLogin(nombre,pass)) {
-            login(nombre, pass);
+    public boolean validLogin(String tel, String pass) {
+        if(dao.validLogin(tel,pass)) {
+            login(tel, pass);
             return true;
         }
         notifyInvalidCredentials();

@@ -21,7 +21,6 @@ public class SignInActivity extends Activity {
 //    private CheckBox cbLog;
     private static final int TEAM_CODE=1;
     private Spinner spPos;
-
     private EditText etNombre,etContrasena,etEquipo,etTelefono;
     private Controller myController;
     @Override
@@ -91,7 +90,7 @@ public class SignInActivity extends Activity {
     private boolean validPhone() {
         String tel=etTelefono.getText().toString();
         if (tel == "") {
-            Toast.makeText(this, R.string.equipo_vacio, Toast.LENGTH_SHORT).show();
+      //      Toast.makeText(this, R.string.equipo_vacio, Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -99,7 +98,7 @@ public class SignInActivity extends Activity {
     private boolean validTeam(){
         String team=etEquipo.getText().toString();
         if (team == "") {
-            Toast.makeText(this, R.string.equipo_vacio, Toast.LENGTH_SHORT).show();
+    //        Toast.makeText(this, R.string.equipo_vacio, Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -107,17 +106,13 @@ public class SignInActivity extends Activity {
     private boolean validPass() {
         String pass = etContrasena.getText().toString();
         if (pass == "") {
-            Toast.makeText(this, R.string.password_vacio, Toast.LENGTH_SHORT).show();
+  //          Toast.makeText(this, R.string.password_vacio, Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
     }
     private boolean validName() {
         String name = etNombre.getText().toString();
-        if (name == "") {
-            Toast.makeText(this, R.string.nombre_vacio, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
+        return !name.equalsIgnoreCase("");
     }
 }

@@ -186,13 +186,13 @@ public class Controller implements Serializable{
     }
 
     /**
-     *  Carga en el modelo los datos correspondientes al usuario asociado a ese nombre, si dicho usuario existe y si pass es su contraseña.
-     * @param nombre
-     * @param pass
-     * @return si se ha podido identificar a un usuario con esas credenciales y cargar los datos
+     * Carga de la BD la información asociada a un jugador si las credenciales de inicio de sesión son correctas.
+     * @param tel numero de telefono del usuario
+     * @param pass contraseña
+     * @return true si la información es correcta, false si no.
      */
-    public boolean validLogin(String nombre, String pass) {
-        return mySesion.validLogin(nombre,pass);
+    public boolean validLogin(String tel, String pass) {
+        return mySesion.validLogin(tel,pass);
     }
 
 
