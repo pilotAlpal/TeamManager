@@ -48,7 +48,7 @@ public class SignInActivity extends Activity {
             String posicion=(String)spPos.getSelectedItem();
             myController=new Controller();
             if(myController.validLogin(tel,pass)){
-                if(team!="") {
+                if(!team.equalsIgnoreCase("")) {
                     if (myController.existTeam(team))
                         if (myController.createPlayer(name,pass,tel,posicion,team))
                             raiseMenuIntent();
@@ -84,7 +84,7 @@ public class SignInActivity extends Activity {
 
     private boolean validPhone() {
         String tel=etTelefono.getText().toString();
-        if (tel == "") {
+        if (tel.equalsIgnoreCase("") ) {
       //      Toast.makeText(this, R.string.equipo_vacio, Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -92,7 +92,7 @@ public class SignInActivity extends Activity {
     }
     private boolean validTeam(){
         String team=etEquipo.getText().toString();
-        if (team == "") {
+        if (team.equalsIgnoreCase("")) {
     //        Toast.makeText(this, R.string.equipo_vacio, Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -100,7 +100,7 @@ public class SignInActivity extends Activity {
     }
     private boolean validPass() {
         String pass = etContrasena.getText().toString();
-        if (pass == "") {
+        if (pass.equalsIgnoreCase("")) {
   //          Toast.makeText(this, R.string.password_vacio, Toast.LENGTH_SHORT).show();
             return false;
         }
