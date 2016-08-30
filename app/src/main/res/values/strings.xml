@@ -1,6 +1,7 @@
 <resources>
     <string name="abandonar">Abandonar</string>
     <string name="abre_calendario">Abrir calendario..</string>
+    <string name="aceptar">Aceptar</string>
     <string name="anadido">Añadido</string>
     <string name="añadir">Añadir</string>
     <string name="app_name">TeamManager</string>
@@ -65,6 +66,7 @@
     <string name="rival_vacio">El nombre del rival no puede ser vacío</string>
     <string name="semanal">Semanal</string>
     <string name="signin">Regirstrarse</string>
+    <string name="sin_equipo">Jugador sin equipo</string>
     <string name="tb_apuntarse">Acudo</string>
     <string name="tb_borrarse">Falto</string>
     <string name="team_records">Récords del grupo</string>

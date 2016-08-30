@@ -52,15 +52,7 @@ public class NewTeamActivity extends ViewActivity{
         adapter.clear();
         ArrayList<String> equipoInicial=adapter.getValues();
         if (validPhones(equipoInicial)) {
-            if(myController.createTeam(teamName,equipoInicial)){
-                Toast.makeText(this,teamName+" "+R.string.anadido,Toast.LENGTH_SHORT).show();
-                int resultCode=1;
-                Intent resultIntent=new Intent();
-                resultIntent.putExtra("TEAM_ID",myController.getTeamId());
-                setResult(resultCode,resultIntent);
-                finish();
-            }
-            else Toast.makeText(this,"fallo equipos",Toast.LENGTH_SHORT).show();
+            myController.createTeam(teamName,equipoInicial);
         }
         else Toast.makeText(this,"fallo telefonos",Toast.LENGTH_SHORT).show();
     }

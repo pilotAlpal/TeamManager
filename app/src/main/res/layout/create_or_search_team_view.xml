@@ -3,32 +3,38 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/nombre_equipo"
-        android:id="@+id/tv_cos_nom_equipo" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/et_cos_nom_equipo"
+        android:text="@string/sin_equipo"
+        android:id="@+id/textView28"
         android:layout_gravity="center_horizontal" />
 
-    <Button
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/buscar_equipo"
-        android:id="@+id/b_cos_crear_equipo"
-        android:onClick="createTeam"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/buscar_equipo"
-        android:id="@+id/b_cos_buscar_equipo"
-        android:onClick="showTeams"
-        android:layout_gravity="center_horizontal" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/crearEquipo"
+            android:id="@+id/rb_crear"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buscar_equipo"
+            android:id="@+id/rb_buscar" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aceptar"
+            android:onClick="createOrLoad"
+            android:id="@+id/button" />
+    </RadioGroup>
 </LinearLayout>

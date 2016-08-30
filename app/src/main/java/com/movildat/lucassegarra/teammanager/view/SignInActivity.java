@@ -19,7 +19,7 @@ import com.movildat.lucassegarra.teammanager.model.Sesion;
  */
 public class SignInActivity extends Activity {
 //    private CheckBox cbLog;
-    private static final int TEAM_CODE=1;
+
     private Spinner spPos;
     private EditText etNombre,etContrasena,etEquipo,etTelefono;
     private Controller myController;
@@ -48,7 +48,7 @@ public class SignInActivity extends Activity {
             String posicion=(String)spPos.getSelectedItem();
             myController=new Controller();
             if(myController.validLogin(tel,pass)){
-                if(team!=" ") {
+                if(team!="") {
                     if (myController.existTeam(team))
                         if (myController.createPlayer(name,pass,tel,posicion,team))
                             raiseMenuIntent();
@@ -56,12 +56,12 @@ public class SignInActivity extends Activity {
                         Toast.makeText(this,"Team does not exist",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Intent signInIntent = new Intent();
+                    Intent findTeamIntent = new Intent();
                     Bundle bundle=new Bundle();
                     bundle.putSerializable("Controller",myController);
-                    signInIntent.putExtras(bundle);
-                    signInIntent.setClass(this,NewTeamActivity.class);
-                    startActivityForResult(signInIntent,TEAM_CODE);
+                    findTeamIntent.putExtras(bundle);
+                    findTeamIntent.setClass(this,NoTeamLoadedActivity.class);
+                    startActivity(findTeamIntent);
                 }
             }
             else{
@@ -80,11 +80,6 @@ public class SignInActivity extends Activity {
         startActivity(signInIntent);
     }
 
-    protected void onActivityResult(int requestCode,int resultCode,Intent data){
-        if((requestCode==TEAM_CODE)&&(resultCode==1)){
-            raiseMenuIntent();
-        }
-    }
 
 
     private boolean validPhone() {

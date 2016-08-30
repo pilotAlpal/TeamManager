@@ -55,7 +55,8 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     //BD:permite al usuario insertar un nuevo método en la bd
     //Modelo:No hay cambios ya que la sesion aun no ha sido iniciada cuando se invoca a este método
     //Controlador:Informa al controlador si ha sido posible crear el equipo
-    public boolean createTeam(Team equipo) {
+    public boolean createTeam(Team equipe) {
+        equipo=equipe;
         return dao.createTeam(equipo);
     }
 
