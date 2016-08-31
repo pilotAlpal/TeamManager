@@ -1,4 +1,6 @@
 package com.movildat.lucassegarra.teammanager.controler;
+import android.graphics.Bitmap;
+
 import com.movildat.lucassegarra.teammanager.model.Agenda;
 import com.movildat.lucassegarra.teammanager.model.Convocatory;
 import com.movildat.lucassegarra.teammanager.model.Events;
@@ -28,21 +30,25 @@ public class Controller implements Serializable{
 
     /**
      * permite cambiar la posicion del jugador en sesion y bd
+     * @param position
      */
-    public void changeMyPos() {
+    public void changeMyPos(String position) {
+        mySesion.changePlayerPos(position);
     }
     /**
      * permite cambiar la foto en bd y jugador
+     * @param image
      */
-    public void changePic() {
-        mySesion.changePic();
+    public void changePic(Bitmap image) {
+        mySesion.changePic(image);
     }
 
     /**
      * permite cambiar equipo en sesion
+     * @param newTeam
      */
-    public void changeTeam() {
-        mySesion.changeTeam();
+    public void changeTeam(String newTeam) {
+        mySesion.changeTeam(newTeam);
     }
 
     public void createConvocatory(String idPartido){

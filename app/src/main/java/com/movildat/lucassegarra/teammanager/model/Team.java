@@ -32,8 +32,8 @@ public class Team implements Serializable{
         agenda.addMatch(m);
     }
 
-    public void addPlayer(Player playerId){
-        players.add(playerId);
+    public void addPlayer(Player player){
+        players.add(player);
     }
 
     public void removePlayer(String playerId){

@@ -23,6 +23,7 @@
         <activity android:name=".view.NewTeamActivity"></activity>
         <activity android:name=".view.RegisterMatchActivity"></activity>
         <activity android:name=".view.LoadTeamsActivity"></activity>
+        <activity android:name=".view.NoTeamLoadedActivity"></activity>
     </application>
 
 </manifest>

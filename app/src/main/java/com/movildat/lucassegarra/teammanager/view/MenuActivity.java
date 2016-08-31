@@ -3,6 +3,7 @@ package com.movildat.lucassegarra.teammanager.view;
 
 import android.content.ContentUris;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -111,8 +112,11 @@ public class MenuActivity extends ViewActivity {
     @Override
     public void onActivityResult(int reqCo,int resCo,Intent data){
         if(reqCo==CAM_INTENT_CODE) {
-            Toast.makeText(this, "photo done", Toast.LENGTH_SHORT);
-            myController.changePic();
+            if(resCo==RESULT_OK){
+                Bundle extras=data.getExtras();
+                Bitmap image=(Bitmap) extras.get("data");
+                myController.changePic(image);
+            }
         }
     }
 

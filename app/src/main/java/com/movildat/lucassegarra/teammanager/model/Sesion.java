@@ -1,5 +1,7 @@
 package com.movildat.lucassegarra.teammanager.model;
 
+import android.graphics.Bitmap;
+
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 
 import java.io.Serializable;
@@ -28,15 +30,15 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
 
     //cambia en modelo y bd imagen asociada al usuario
     //recibirá una imagen cómo parámetro
-    public void changePic() {
-        jugador.changePic();
+    public void changePic(Bitmap image) {
+        jugador.changePic(image);
         dao.changePic(jugador.getPhone());
     }
 
     //Modelo:carga en equipo la informacion correspondiente a un equipo que se recibirá cómo parámetro
     //existe una relación entre el equipo y el usuario en la bd
-    //recibirá el nombre de un equipo como parámetro
-    public void changeTeam() {
+    public void changeTeam(String newTeam) {
+        equipo=makeTeam(newTeam);
     }
 
     //BD:crea una nueva convocatoria en la base de datos
@@ -65,20 +67,26 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         lista.remove(observer);
     }
 
-    //BD:permite al usuario apuntarse a un equipo ya existente
-    //Modelo:Carga en el objeto equipo la información asociada a ese equipo
-    //Controlador:recibe la información de si ha sido posible inscribir al jugador en el equipo
+    /**
+     * Añade una nueva relación entre el usuario y un equipo ya existente tanto en la BD como en la sesión actual
+     * @param teamName nombre del equipo
+     * @return si la operación ha tenido (o no) éxito
+     */
     public boolean enrollTeam(String teamName) {
         if(existTeam(teamName)){
-            jugador.addTeam(teamName);
-            Convocatory convocatory=new Convocatory(getNextMatchId(teamName),teamName, getNextConvocated(teamName));
-            Match proxP=new Match(getNextRivalId(teamName),convocatory);
-            Agenda agenda=new Agenda(getNextMatches(teamName),getLastMatches(teamName),proxP,getEvents(teamName));
-            TeamRecords tr=dao.getTeamRecords(teamName);
-            equipo=new Team(teamName,getTeamPlayers(),getTeamStats(teamName),agenda,tr);
+            changeTeam(teamName);
+            equipo.addPlayer(jugador);
             return true;
         }
         return false;
+    }
+
+    private Team makeTeam(String teamName){
+        Convocatory convocatory=new Convocatory(getNextMatchId(teamName),teamName, getNextConvocated(teamName));
+        Match proxP=new Match(getNextRivalId(teamName),convocatory);
+        Agenda agenda=new Agenda(getNextMatches(teamName),getLastMatches(teamName),proxP,getEvents(teamName));
+        TeamRecords tr=dao.getTeamRecords(teamName);
+        return new Team(teamName,getTeamPlayers(),getTeamStats(teamName),agenda,tr);
     }
 
 
@@ -194,6 +202,11 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
 
     public boolean linkTeamAndPlayer(String pTel, String team) {
         return dao.linkTeamAndPlayer(pTel,team);
+    }
+
+    public void changePlayerPos(String position) {
+        dao.changePlayerPos(jugador.getPhone(),position);
+        jugador.changePos(position);
     }
 
     public interface Observador extends Observer{

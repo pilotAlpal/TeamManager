@@ -91,11 +91,11 @@ public class SignInActivity extends Activity {
         return true;
     }
     private boolean validTeam(){
-        String team=etEquipo.getText().toString();
+    /*    String team=etEquipo.getText().toString();
         if (team.equalsIgnoreCase("")) {
-    //        Toast.makeText(this, R.string.equipo_vacio, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.equipo_vacio, Toast.LENGTH_SHORT).show();
             return false;
-        }
+        }*/
         return true;
     }
     private boolean validPass() {

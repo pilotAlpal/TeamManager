@@ -20,9 +20,9 @@ public class NoTeamLoadedActivity extends ViewActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         myController=(Controller)getIntent().getSerializableExtra("Controller");
+        setContentView(R.layout.create_or_search_team_view);
         rbBuscar=(RadioButton) findViewById(R.id.rb_buscar);
         rbCrear=(RadioButton) findViewById(R.id.rb_crear);
-        setContentView(R.layout.create_or_search_team_view);
     }
 
     public void createOrLoad(View v){

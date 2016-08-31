@@ -153,4 +153,7 @@ public class DatabaseHandler implements Serializable {
     public boolean linkTeamAndPlayer(String pTel, String team) {
         return true;
     }
+
+    public void changePlayerPos(String phone, String position) {
+    }
 }

@@ -9,15 +9,20 @@ import java.io.Serializable;
  */
 public class PlayerStats implements Serializable {
 
-    private int sumaValoraciones,goles,asistencias,expulsiones,patidos,valoraciones;
-    private String posicion;
-    private Image photo;//??
+    private float sumaValoraciones;
+    private int goles,asistencias,expulsiones,patidos,valoraciones;
+    private String posicion,dorsal;
 
     public PlayerStats(String pPos) {
         posicion=pPos;valoraciones=0;
         sumaValoraciones=0;asistencias=0;
         goles=0;expulsiones=0;
         patidos=0;valoraciones=0;
+    }
+
+    public void getRated(float stars){
+        sumaValoraciones+=stars;
+        valoraciones++;
     }
 
     public float getRating(){
@@ -63,5 +68,10 @@ public class PlayerStats implements Serializable {
 
     public void addExpulsions(int expuls){
         expulsiones+=expuls;
+    }
+
+
+    public void changeNumber(String number) {
+        dorsal=number;
     }
 }
