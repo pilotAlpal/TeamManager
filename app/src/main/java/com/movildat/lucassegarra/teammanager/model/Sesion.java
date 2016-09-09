@@ -57,9 +57,8 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     //BD:permite al usuario insertar un nuevo método en la bd
     //Modelo:No hay cambios ya que la sesion aun no ha sido iniciada cuando se invoca a este método
     //Controlador:Informa al controlador si ha sido posible crear el equipo
-    public boolean createTeam(Team equipe) {
-        equipo=equipe;
-        return dao.createTeam(equipo);
+    public void createTeam(String equipe, ArrayList<Player> players, TeamStats ts, Agenda agenda, TeamRecords recordEquipo) {
+        equipo=dao.createTeam(equipe,players,ts,agenda,recordEquipo);
     }
 
     @Override
@@ -158,7 +157,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         return equipo.getTeamStats(teamId);
     }
 
-    private void login(String tel, String pass) {
+    private void log(String tel, String pass) {
         jugador=dao.login(tel,pass);
         equipo=dao.lastTeamChosen(jugador.getPhone());
         estsJugEqu=dao.getTeamPlayerStats(jugador.getPhone(),equipo.getTeamId());
@@ -171,13 +170,18 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * @param pass contraseña
      * @return true si se ha podido iniciar la sesión, falso si no.
      */
-    public boolean validLogin(String tel, String pass) {
+    public boolean login(String tel, String pass) {
         if(dao.validLogin(tel,pass)) {
-            login(tel, pass);
+            log(tel, pass);
             return true;
         }
         notifyInvalidCredentials();
         return false;
+    }
+
+    public void signIn(String name,String pass,String team,String phone,String pos){
+        equipo=dao.getTeam(name);
+
     }
 
     public TeamRecords getTeamRecords(String teamName) {

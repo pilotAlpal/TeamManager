@@ -130,8 +130,8 @@ public class DatabaseHandler implements Serializable {
         return true;
     }
 
-    public boolean createTeam(Team equipo) {
-        return true;
+    public Team createTeam(String equipo, ArrayList<Player> players, TeamStats ts, Agenda agenda, TeamRecords recordEquipo) {
+        return new Team(equipo,players,ts,agenda,recordEquipo);
     }
 
     public TeamRecords getTeamRecords(String teamName) {
@@ -155,5 +155,11 @@ public class DatabaseHandler implements Serializable {
     }
 
     public void changePlayerPos(String phone, String position) {
+    }
+
+    public Team getTeam(String equipo) {
+        return new Team(equipo,new ArrayList<Player>(),new TeamStats(),
+                new Agenda(new ArrayList<Match>(),new ArrayList<Match>(),new Match("Bayern",new Convocatory("1",equipo)),new ArrayList<Events>())
+                ,new TeamRecords());
     }
 }

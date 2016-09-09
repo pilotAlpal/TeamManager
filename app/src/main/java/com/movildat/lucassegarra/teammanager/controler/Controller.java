@@ -80,7 +80,7 @@ public class Controller implements Serializable{
      * @param initPlayers
      * @return si se ha podido crear el equipo
      */
-    public boolean createTeam(String teamName, ArrayList<String> initPlayers){
+    public void createTeam(String teamName, ArrayList<String> initPlayers){
         Agenda agenda=new Agenda();
         TeamStats ts=new TeamStats();
         TeamRecords recordEquipo=getTeamRecords(teamName);
@@ -97,8 +97,7 @@ public class Controller implements Serializable{
             }
             players.add(p);
         }
-        Team equipo=new Team(teamName,players,ts,agenda,recordEquipo);
-        return mySesion.createTeam(equipo);
+        mySesion.createTeam(teamName,players,ts,agenda,recordEquipo);
     }
 
     private Player getPlayer(String playerPhone) {
@@ -198,7 +197,7 @@ public class Controller implements Serializable{
      * @return true si la información es correcta, false si no.
      */
     public boolean validLogin(String tel, String pass) {
-        return mySesion.validLogin(tel,pass);
+        return mySesion.login(tel,pass);
     }
 
 
