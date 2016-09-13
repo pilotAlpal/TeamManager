@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
-import com.movildat.lucassegarra.teammanager.model.Sesion;
 
 /**
  * Created by lucas.segarra on 14/07/2016.
@@ -47,31 +45,30 @@ public class SignInActivity extends Activity {
             String name = etNombre.getText().toString();
             String posicion=(String)spPos.getSelectedItem();
             myController=new Controller();
-            if(myController.validLogin(tel,pass)){
-                if(!team.equalsIgnoreCase("")) {
-                    if (myController.existTeam(team))
-                        if (myController.createPlayer(name,pass,tel,posicion,team))
-                            raiseMenuIntent(name,pass,team,tel,posicion);
-                    else
-                        Toast.makeText(this,"Team does not exist",Toast.LENGTH_SHORT).show();
+            if(!team.equalsIgnoreCase("")){
+                if(myController.existTeam(team)){
+                    if (myController.createPlayer(name,pass,tel,posicion,team))
+                        raiseSignIn(name,pass,team,tel,posicion);
                 }
-                else {
-                    Intent findTeamIntent = new Intent();
-                    Bundle bundle=new Bundle();
-                    bundle.putSerializable("Controller",myController);
-                    findTeamIntent.putExtras(bundle);
-                    findTeamIntent.setClass(this,NoTeamLoadedActivity.class);
-                    startActivity(findTeamIntent);
-                }
+                else
+                    Toast.makeText(this,"Team does not exist",Toast.LENGTH_SHORT).show();
+
             }
-            else{
-                Toast.makeText(this,"Invalid login",Toast.LENGTH_SHORT).show();
+            else {
+                myController.createPlayer(name,pass,tel,posicion);
+                myController.signIn(name,pass,team,tel,posicion);
+                Intent findTeamIntent = new Intent();
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("Controller",myController);
+                findTeamIntent.putExtras(bundle);
+                findTeamIntent.setClass(this,NoTeamLoadedActivity.class);
+                startActivity(findTeamIntent);
             }
             finish();
         }
     }
 
-    private void raiseMenuIntent(String name, String pass, String team, String tel, String posicion){
+    private void raiseSignIn(String name, String pass, String team, String tel, String posicion){
         myController.signIn(name,pass,team,tel,posicion);
         Intent signInIntent = new Intent();
         Bundle bundle=new Bundle();

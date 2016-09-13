@@ -130,8 +130,8 @@ public class DatabaseHandler implements Serializable {
         return new Player(n,pss,ph,pos);
     }
 
-    public Team createTeam(String equipo, ArrayList<Player> players, TeamStats ts, Agenda agenda, TeamRecords recordEquipo) {
-        return new Team(equipo,players,ts,agenda,recordEquipo);
+    public Team createTeam(String equipo, ArrayList<Player> players) {
+        return new Team(equipo,players,new TeamStats(),new Agenda(),new TeamRecords());
     }
 
     public TeamRecords getTeamRecords(String teamName) {
@@ -146,8 +146,8 @@ public class DatabaseHandler implements Serializable {
         return new Player("Aimar","a","626992478","Mediapunta");
     }
 
-    public boolean createMatch(String miTeamId, String nRival, Date f, String h) {
-        return true;
+    public Match createMatch(String miTeamId, String nRival, Date f, String h) {
+        return new Match();
     }
 
     public boolean linkTeamAndPlayer(String pTel, String team) {
@@ -169,4 +169,13 @@ public class DatabaseHandler implements Serializable {
     public Player invitePlayer(String phone) {
         return new Player("Pablo","asasas",phone,"MediaPunta");
     }
+
+    public void leaveTeam(Player jugador, Team equipo) {
+    }
+
+    public Events createEvent(String teamId, Date ini, Date fin) {
+        return new Events(teamId,"1");
+    }
+
+
 }

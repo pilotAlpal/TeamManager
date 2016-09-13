@@ -32,7 +32,7 @@ public class LogInActivity extends AppCompatActivity implements Sesion.Observado
         String telf= etPhone.getText().toString();
         String pass=etPass.getText().toString();
         Controller controller=new Controller();
-        if(controller.validLogin(telf,pass)) {
+        if(controller.login(telf,pass)) {
             Intent menuIntent = new Intent();
             Bundle bundle=new Bundle();
             bundle.putSerializable("Controller",controller);

@@ -24,9 +24,6 @@ public class LoadTeamsActivity extends ViewActivity {
 
     public void enrollTeam(View v){
         String tName=etTeamName.getText().toString();
-        if(myController.enrollTeam(tName)){
-
-        }
-
+        myController.enrollTeam(tName);
     }
 }

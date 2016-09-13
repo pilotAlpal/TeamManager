@@ -55,7 +55,8 @@ public class Controller implements Serializable{
         mySesion.createConvocatory(c);
     }
 
-    public void createEvent() {
+    public void createEvent(Date ini, Date fin) {
+        mySesion.createEvent(ini,fin);
     }
 
     /**
@@ -78,9 +79,6 @@ public class Controller implements Serializable{
      * @return si se ha podido crear el equipo
      */
     public void createTeam(String teamName, ArrayList<String> initPlayers){
-        Agenda agenda=new Agenda();
-        TeamStats ts=new TeamStats();
-        TeamRecords recordEquipo=getTeamRecords(teamName);
         ArrayList<Player> players=new ArrayList<>();
         Player p;
         for (int i=0;i<initPlayers.size();i++){
@@ -93,7 +91,7 @@ public class Controller implements Serializable{
             }
             players.add(p);
         }
-        mySesion.createTeam(teamName,players,ts,agenda,recordEquipo);
+        mySesion.createTeam(teamName,players);
     }
 
     private Player getPlayer(String playerPhone) {
@@ -108,8 +106,8 @@ public class Controller implements Serializable{
     }
 
     //permite al usuario inscribirse en un equipo
-    public boolean enrollTeam(String teamName){
-        return mySesion.enrollTeam(teamName);
+    public void enrollTeam(String teamName){
+        mySesion.enrollTeam(teamName);
     }
 
     private boolean existPlayer(String playerPhone) {
@@ -184,6 +182,7 @@ public class Controller implements Serializable{
     }
 
     public void leaveTeam() {
+        mySesion.leaveTeam();
     }
 
     /**
@@ -192,7 +191,7 @@ public class Controller implements Serializable{
      * @param pass contraseña
      * @return true si la información es correcta, false si no.
      */
-    public boolean validLogin(String tel, String pass) {
+    public boolean login(String tel, String pass) {
         return mySesion.login(tel,pass);
     }
 
@@ -202,6 +201,7 @@ public class Controller implements Serializable{
     }
 
     public void addMeToNextConvocatory() {
+        mySesion.addToNextMatch();
     }
 
     public void removeMeFromNextConvocatory() {
@@ -209,7 +209,8 @@ public class Controller implements Serializable{
 
 
     public boolean createMatch(String nRival, Date f, String h) {
-        return mySesion.createMatch(getTeamId(),nRival,f,h);
+        mySesion.createMatch(getTeamId(),nRival,f,h);
+        return true;
     }
 
     public boolean existTeam(String team) {
@@ -218,5 +219,9 @@ public class Controller implements Serializable{
 
     public void signIn(String name, String pass, String team, String tel, String posicion) {
         mySesion.signIn(name,pass,team,tel,posicion);
+    }
+
+    public void createPlayer(String name, String pass, String tel, String posicion) {
+        mySesion.createPlayer(name,pass,tel,posicion);
     }
 }

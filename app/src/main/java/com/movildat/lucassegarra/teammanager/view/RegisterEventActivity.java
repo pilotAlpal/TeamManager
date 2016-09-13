@@ -39,6 +39,7 @@ public class RegisterEventActivity extends ViewActivity {
         String lugEvent=etLugEvento.getText().toString();
         Intent addCalEvIntent = null;
         GregorianCalendar calendarBeg= null;
+        Date ini,fin;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             calendarBeg = new GregorianCalendar(dpIni.getYear(),
                     dpIni.getMonth(),dpIni.getDayOfMonth());
@@ -50,15 +51,17 @@ public class RegisterEventActivity extends ViewActivity {
                     .putExtra(CalendarContract.Events.TITLE,nomEventto).putExtra(CalendarContract.Events.EVENT_LOCATION,lugEvent)
                     .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,begin).putExtra(CalendarContract.EXTRA_EVENT_END_TIME,end);
 
+            ini=begin;fin=end;
         } else {
             Date fechaIni=new Date(dpIni.getYear()-1900,dpIni.getMonth(),dpIni.getDayOfMonth());
             Date fechaFin = new Date(dpFin.getYear()-1900,dpFin.getMonth(),dpFin.getDayOfMonth());
             addCalEvIntent=new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI)
                     .putExtra(CalendarContract.Events.TITLE,nomEventto).putExtra(CalendarContract.Events.EVENT_LOCATION,lugEvent)
                     .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,fechaIni).putExtra(CalendarContract.EXTRA_EVENT_END_TIME,fechaFin);
+            ini=fechaIni;fin=fechaFin;
         }
         if ((addCalEvIntent.resolveActivity(getPackageManager()))!=null){
-            myController.createEvent();
+            myController.createEvent(ini,fin);
             startActivity(addCalEvIntent);
         }
         finish();

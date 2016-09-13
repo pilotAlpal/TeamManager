@@ -43,6 +43,16 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         return false;
     }
 
+    private void log(String tel, String pass) {
+        jugador=dao.login(tel,pass);
+        equipo=dao.lastTeamChosen(jugador.getPhone());
+        refreshStats();
+    }
+
+    private void refreshStats(){
+        estsJugEqu=dao.getTeamPlayerStats(jugador.getPhone(),equipo.getTeamId());
+    }
+
     /**
      * Permite a un jugador registrarse.
      * Guarda información referente a él en la BD y carga al jugador y al equipo en la sesión.
@@ -51,22 +61,35 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * @param team Nombre del equipo.
      * @param phone Teléfono (identificación).
      * @param pos Posición.
+     * @return True si se ha podido registrar al jugador
      */
-    public void signIn(String name,String pass,String team,String phone,String pos){
+    public boolean signIn(String name,String pass,String team,String phone,String pos){
         equipo=dao.getTeam(team);
-        jugador=dao.createPlayer(name,pass,phone,pos);
+        if (!dao.existPlayer(phone)){
+            jugador=dao.createPlayer(name,pass,phone,pos);
+            estsJugEqu=new PlayerStats(pos);
+            return true;
+        }
+        notifyRepeatedPlayerId();
+        return false;
     }
+
 
     /**
      * Permite registrar un equipo si no existe otro con el mismo nombre
      * @param equipe Nombre del equipo.
      * @param players Lista con los jugadores.
-     * @param ts Estadísticas del equipo.
-     * @param agenda Calendario del equipo.
-     * @param recordEquipo Records del equipo.
+     * @return Si se pudo crear el equipo.
+     *
      */
-    public void createTeam(String equipe, ArrayList<Player> players, TeamStats ts, Agenda agenda, TeamRecords recordEquipo) {
-        equipo=dao.createTeam(equipe,players,ts,agenda,recordEquipo);
+    public boolean createTeam(String equipe, ArrayList<Player> players) {
+        if(!dao.existTeam(equipe)){
+            equipo=dao.createTeam(equipe,players);
+            refreshStats();
+            return true;
+        }
+        notifyRepeatedTeamName();
+        return false;
     }
 
     /**
@@ -85,6 +108,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     public void changeTeam(String newTeam) {
         equipo=dao.getTeam(newTeam);
         equipo.addPlayer(jugador);
+        refreshStats();
     }
 
     /**
@@ -144,7 +168,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     }
 
     /**
-     * Permite a un jugador inscribirse en un equipo ya existente siempre que este exista.
+     * Permite a un jugador inscribirse en un equipo  siempre que este exista.
      * @param teamName Nombre del equipo nuevo en el que se quiere registrar el jugador.
      * @return True si se ha podido inscribir, si no false.
      */
@@ -163,11 +187,12 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * @param nRival Visitante.
      * @param f Fecha.
      * @param h Hora.
-     * @return True si se ha podido registrar el partido.
      */
-    public boolean createMatch(String miTeamId,String nRival, Date f, String h) {
-        return dao.createMatch(miTeamId,nRival,f,h);
+    public void createMatch(String miTeamId,String nRival, Date f, String h) {
+        Match m= dao.createMatch(miTeamId,nRival,f,h);
+        equipo.addMatch(m);
     }
+
 
 
     @Override
@@ -286,11 +311,6 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         return equipo.getTeamStats(teamId);
     }
 
-    private void log(String tel, String pass) {
-        jugador=dao.login(tel,pass);
-        equipo=dao.lastTeamChosen(jugador.getPhone());
-        estsJugEqu=dao.getTeamPlayerStats(jugador.getPhone(),equipo.getTeamId());
-    }
 
 
     /**
@@ -320,18 +340,60 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         return dao.existTeam(team);
     }
 
+    /**
+     * Permite al usuario abandonar el equipo que tiene cargado en la sesion
+     */
+    public void leaveTeam() {
+        dao.leaveTeam(jugador,equipo);
+        equipo=dao.lastTeamChosen(jugador.getPhone());
+    }
+
+    /**
+     * Permite crear un nuevo evento en la BD y en la sesión
+     * @param ini Fecha de inicio
+     * @param fin Fecha de final
+     */
+    public void createEvent(Date ini, Date fin) {
+        Events event=dao.createEvent(getTeamId(),ini,fin);
+        equipo.addEvent(event);
+    }
+
+    public void addToNextMatch() {
+    }
+
+    public void createPlayer(String name, String pass, String tel, String posicion) {
+        jugador=dao.createPlayer(name,pass,tel,posicion);
+    }
 
 
-
-
-
-//Métodos que implementarán las vistas(observadores)
+    //Métodos que implementarán las vistas(observadores)
     public interface Observador extends Observer{
         void setController(Controller controller);
         /**
          * añadir aqui notificaciones a la vista
          */
+        void invalidCredentials();
+        void repeatedPlayerID();
+        void repeatedTeamName();
     }
 
-    private void notifyInvalidCredentials(){}
+    public void notifyInvalidCredentials(){
+        for (Observador o:lista){
+            o.invalidCredentials();
+        }
+    }
+
+    public void notifyRepeatedPlayerId(){
+        for (Observador o:lista){
+            o.repeatedPlayerID();
+        }
+    }
+
+    public void notifyRepeatedTeamName(){
+        for (Observador o:lista){
+            o.repeatedTeamName();
+        }
+    }
+
+
 }
