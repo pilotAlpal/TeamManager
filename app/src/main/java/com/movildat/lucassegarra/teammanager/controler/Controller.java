@@ -9,7 +9,6 @@ import com.movildat.lucassegarra.teammanager.model.PlayerStats;
 import com.movildat.lucassegarra.teammanager.model.TeamRecords;
 import com.movildat.lucassegarra.teammanager.model.Result;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
-import com.movildat.lucassegarra.teammanager.model.Team;
 import com.movildat.lucassegarra.teammanager.model.TeamStats;
 
 import java.io.Serializable;
@@ -60,18 +59,16 @@ public class Controller implements Serializable{
     }
 
     /**
-     * Crea un usuario con esos datos si no existia ya uno con ese nombre
-     * @param pName
-     * @param pPass
-     * @param pTel
-     * @param pos
-     * @return si no existia un usuario con ese telefono y se ha registrado al jugador
+     * Crea un usuario con esos datos si no existia ya uno con ese número. Y lo enlaza con un equipo.
+     * @param pName Nombre.
+     * @param pPass Contraseña.
+     * @param pTel Teléfono.
+     * @param pos Posición.
+     * @param team Nombre del equipo
+     * @return True si no existia un usuario con ese telefono y se ha registrado al jugador.
      */
     public  boolean createPlayer(String pName,String pPass,String pTel,String pos,String team) {
-        Player jugador=new Player(pName,pPass,pTel,pos);
-        return mySesion.createPlayer(jugador)&&mySesion.linkTeamAndPlayer(pTel,team);
-
-
+        return mySesion.createAndLinkPlayer(pName,pPass,pTel,pos,team);
     }
 
     /**
@@ -92,8 +89,7 @@ public class Controller implements Serializable{
                 p=getPlayer(playerPhone);
             }
             else{
-                p=new Player(initPlayers.get(i),"a","626992478","Desconocido");
-                mySesion.createPlayer(p);
+               p= mySesion.invitePlayer(playerPhone);
             }
             players.add(p);
         }
@@ -218,5 +214,9 @@ public class Controller implements Serializable{
 
     public boolean existTeam(String team) {
         return mySesion.existTeam(team);
+    }
+
+    public void signIn(String name, String pass, String team, String tel, String posicion) {
+        mySesion.signIn(name,pass,team,tel,posicion);
     }
 }

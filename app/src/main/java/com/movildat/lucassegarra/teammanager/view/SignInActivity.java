@@ -51,7 +51,7 @@ public class SignInActivity extends Activity {
                 if(!team.equalsIgnoreCase("")) {
                     if (myController.existTeam(team))
                         if (myController.createPlayer(name,pass,tel,posicion,team))
-                            raiseMenuIntent();
+                            raiseMenuIntent(name,pass,team,tel,posicion);
                     else
                         Toast.makeText(this,"Team does not exist",Toast.LENGTH_SHORT).show();
                 }
@@ -71,7 +71,8 @@ public class SignInActivity extends Activity {
         }
     }
 
-    private void raiseMenuIntent(){
+    private void raiseMenuIntent(String name, String pass, String team, String tel, String posicion){
+        myController.signIn(name,pass,team,tel,posicion);
         Intent signInIntent = new Intent();
         Bundle bundle=new Bundle();
         bundle.putSerializable("Controller",myController);

@@ -126,8 +126,8 @@ public class DatabaseHandler implements Serializable {
         return new PlayerStats("mediapunta");
     }
 
-    public boolean createPlayer(Player jugador) {
-        return true;
+    public Player createPlayer(String n,String pss,String ph,String pos) {
+        return new Player(n,pss,ph,pos);
     }
 
     public Team createTeam(String equipo, ArrayList<Player> players, TeamStats ts, Agenda agenda, TeamRecords recordEquipo) {
@@ -161,5 +161,12 @@ public class DatabaseHandler implements Serializable {
         return new Team(equipo,new ArrayList<Player>(),new TeamStats(),
                 new Agenda(new ArrayList<Match>(),new ArrayList<Match>(),new Match("Bayern",new Convocatory("1",equipo)),new ArrayList<Events>())
                 ,new TeamRecords());
+    }
+
+    public void deleteProfile(Player jugador) {
+    }
+
+    public Player invitePlayer(String phone) {
+        return new Player("Pablo","asasas",phone,"MediaPunta");
     }
 }
