@@ -12,16 +12,14 @@ public class Team implements Serializable{
     private ArrayList<Player> players;
     private TeamStats myTeamStats;
     private Agenda agenda;
-    private TeamRecords records;
 
 
 
-    public Team(String myTeamid,ArrayList<Player> myTeamPlayers,TeamStats ts,Agenda ag,TeamRecords tr){
+    public Team(String myTeamid,ArrayList<Player> myTeamPlayers,TeamStats ts,Agenda ag){
         myId=myTeamid;
         players= myTeamPlayers;
         myTeamStats=ts;
         agenda=ag;
-        records=tr;
     }
 
     public void addEvent(Events e){
@@ -50,7 +48,16 @@ public class Team implements Serializable{
         return players;
     }
 
-    public TeamStats getTeamStats(String teamId) {
+    public TeamStats getTeamStats() {
         return myTeamStats;
+    }
+
+
+    public TeamRecords getTeamRecords() {
+        return myTeamStats.getRecords();
+    }
+
+    public void addToNextMatch(String phone) {
+
     }
 }

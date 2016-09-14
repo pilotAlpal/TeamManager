@@ -2,6 +2,7 @@ package com.movildat.lucassegarra.teammanager.model;
 
 
 import android.app.Activity;
+import android.os.Bundle;
 
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 
@@ -15,8 +16,14 @@ public abstract class ViewActivity extends Activity implements Sesion.Observador
     @Override
     public void setController(Controller controller) {
         myController=controller;
+        controller.addObserver(this);
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        myController=(Controller)getIntent().getSerializableExtra("Controller");
+    }
 
     @Override
     public void update(Observable observable, Object o) {

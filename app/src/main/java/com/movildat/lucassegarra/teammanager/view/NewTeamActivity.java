@@ -28,7 +28,6 @@ public class NewTeamActivity extends ViewActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        myController=(Controller)getIntent().getSerializableExtra("Controller");
         setContentView(R.layout.create_team_view);
         phoneNumbers=(RecyclerView) findViewById(R.id.rv_new_team_phones);
         phoneNumbers.setHasFixedSize(true);
@@ -61,4 +60,23 @@ public class NewTeamActivity extends ViewActivity{
         return true;
     }
 
+    @Override
+    public void invalidCredentials() {
+
+    }
+
+    @Override
+    public void repeatedPlayerID() {
+
+    }
+
+    @Override
+    public void repeatedTeamName() {
+
+    }
+
+    @Override
+    public void teamDoesNotExist() {
+
+    }
 }

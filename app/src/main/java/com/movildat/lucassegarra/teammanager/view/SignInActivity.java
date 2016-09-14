@@ -52,7 +52,6 @@ public class SignInActivity extends Activity {
                 }
                 else
                     Toast.makeText(this,"Team does not exist",Toast.LENGTH_SHORT).show();
-
             }
             else {
                 myController.createPlayer(name,pass,tel,posicion);

@@ -53,6 +53,26 @@ public class LogInActivity extends AppCompatActivity implements Sesion.Observado
     }
 
     @Override
+    public void invalidCredentials() {
+
+    }
+
+    @Override
+    public void repeatedPlayerID() {
+
+    }
+
+    @Override
+    public void repeatedTeamName() {
+
+    }
+
+    @Override
+    public void teamDoesNotExist() {
+
+    }
+
+    @Override
     public void update(Observable observable, Object o) {
 
     }

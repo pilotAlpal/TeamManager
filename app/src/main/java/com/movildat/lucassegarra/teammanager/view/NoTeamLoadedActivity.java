@@ -19,7 +19,6 @@ public class NoTeamLoadedActivity extends ViewActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        myController=(Controller)getIntent().getSerializableExtra("Controller");
         setContentView(R.layout.create_or_search_team_view);
         rbBuscar=(RadioButton) findViewById(R.id.rb_buscar);
         rbCrear=(RadioButton) findViewById(R.id.rb_crear);
@@ -42,5 +41,25 @@ public class NoTeamLoadedActivity extends ViewActivity {
             newTeamIntent.setClass(this,NewTeamActivity.class);
             startActivity(newTeamIntent);
         }
+    }
+
+    @Override
+    public void invalidCredentials() {
+
+    }
+
+    @Override
+    public void repeatedPlayerID() {
+
+    }
+
+    @Override
+    public void repeatedTeamName() {
+
+    }
+
+    @Override
+    public void teamDoesNotExist() {
+
     }
 }

@@ -17,7 +17,6 @@ public class LoadTeamsActivity extends ViewActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        myController=(Controller)getIntent().getSerializableExtra("Controller");
         setContentView(R.layout.load_teams_view);
         etTeamName=(EditText)findViewById(R.id.et_team_name);
     }
@@ -25,5 +24,25 @@ public class LoadTeamsActivity extends ViewActivity {
     public void enrollTeam(View v){
         String tName=etTeamName.getText().toString();
         myController.enrollTeam(tName);
+    }
+
+    @Override
+    public void invalidCredentials() {
+
+    }
+
+    @Override
+    public void repeatedPlayerID() {
+
+    }
+
+    @Override
+    public void repeatedTeamName() {
+
+    }
+
+    @Override
+    public void teamDoesNotExist() {
+
     }
 }

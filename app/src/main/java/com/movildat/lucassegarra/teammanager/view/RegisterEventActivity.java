@@ -26,7 +26,6 @@ public class RegisterEventActivity extends ViewActivity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_event);
-        myController=(Controller)getIntent().getSerializableExtra("Controller");
         etNomEvento=(EditText) findViewById(R.id.et_ev_titulo);
         etLugEvento=(EditText) findViewById(R.id.et_ev_lug);
         dpIni=(DatePicker) findViewById(R.id.dp_ini);
@@ -68,4 +67,23 @@ public class RegisterEventActivity extends ViewActivity {
     }
 
 
+    @Override
+    public void invalidCredentials() {
+
+    }
+
+    @Override
+    public void repeatedPlayerID() {
+
+    }
+
+    @Override
+    public void repeatedTeamName() {
+
+    }
+
+    @Override
+    public void teamDoesNotExist() {
+
+    }
 }

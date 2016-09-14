@@ -71,4 +71,24 @@ public class PlayerStatsFragment extends ViewFragment {
     @Override
     public void update(Observable observable, Object o) {
     }
+
+    @Override
+    public void invalidCredentials() {
+
+    }
+
+    @Override
+    public void repeatedPlayerID() {
+
+    }
+
+    @Override
+    public void repeatedTeamName() {
+
+    }
+
+    @Override
+    public void teamDoesNotExist() {
+
+    }
 }

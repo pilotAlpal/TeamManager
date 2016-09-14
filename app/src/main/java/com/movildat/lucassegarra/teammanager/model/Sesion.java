@@ -50,7 +50,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     }
 
     private void refreshStats(){
-        estsJugEqu=dao.getTeamPlayerStats(jugador.getPhone(),equipo.getTeamId());
+        estsJugEqu=dao.getTeamPlayerStats(jugador.getPhone(),getTeamId());
     }
 
     /**
@@ -74,6 +74,36 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         return false;
     }
 
+    /**
+     * Cambia la imagen del usuario tanto en la sesión actual como en la BD.
+     * @param image Nueva Foto.
+     * @return Si se ha podido cambiar la imagen.
+     */
+    public boolean changePic(Bitmap image) {
+        jugador.changePic(image);
+        dao.changePic(jugador.getPhone());
+        return true;
+    }
+
+    /**
+     * Permite a un jugador cambiar su posición favorita en la sesión y en la BD
+     * @param position Nueva posición favorita.
+     * @return Si se pudo cambiar la posición.
+     */
+    public boolean changePlayerPos(String position) {
+        dao.changePlayerPos(jugador.getPhone(),position);
+        jugador.changePos(position);
+        return true;
+    }
+
+    /**
+     *
+     * @param team Nombre del equipo.
+     * @return Permite comprobar si existe un nombre asociado a algún equipo.
+     */
+    public boolean existTeam(String team) {
+        return dao.existTeam(team);
+    }
 
     /**
      * Permite registrar un equipo si no existe otro con el mismo nombre
@@ -93,22 +123,37 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     }
 
     /**
-     * Cambia la imagen del usuario tanto en la sesión actual como en la BD.
-     * @param image Nueva Foto.
-     */
-    public void changePic(Bitmap image) {
-        jugador.changePic(image);
-        dao.changePic(jugador.getPhone());
-    }
-
-    /**
      * Permite al usuario cambiar a otro de los equipos en los que está registrado.
      * @param newTeam Equipo que  se carga en la sesión.
+     * @return Si se ha podido hacer el cambio.
      */
-    public void changeTeam(String newTeam) {
+    public boolean changeTeam(String newTeam) {
         equipo=dao.getTeam(newTeam);
         equipo.addPlayer(jugador);
         refreshStats();
+        return true;
+    }
+
+    /**
+     * Permite a un jugador inscribirse en un equipo  siempre que este exista.
+     * @param teamName Nombre del equipo nuevo en el que se quiere registrar el jugador.
+     * @return True si se ha podido inscribir, si no false.
+     */
+    public boolean enrollTeam(String teamName) {
+        if(existTeam(teamName)){
+            dao.linkTeamAndPlayer(jugador.getPhone(),teamName);
+            return changeTeam(teamName);
+        }
+        notifyTeamDoesNotExist();
+        return false;
+    }
+
+    /**
+     * Permite al usuario abandonar el equipo que tiene cargado en la sesion
+     */
+    public void leaveTeam() {
+        dao.leaveTeam(jugador,equipo);
+        equipo=dao.lastTeamChosen(jugador.getPhone());
     }
 
     /**
@@ -116,6 +161,59 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      */
     public void deleteProfile(){
         dao.deleteProfile(jugador);
+    }
+
+    /**
+     * Devuelve el jugador asociado a un id
+     * @param playerPhone
+     * @return
+     */
+    public Player getPlayer(String playerPhone) {
+        return dao.getPlayer(playerPhone);
+    }
+
+    /**
+     * Comprueba si existe un jufador con un numero de teléfono concreto
+     * @param playerPhone
+     * @return
+     */
+    public boolean existPlayer(String playerPhone){
+        return dao.existPlayer(playerPhone);
+    }
+
+    /**
+     * Permite al usuario crear un jugador e inscribirlo a un equipo ya existente y cargarlo en la sesión.
+     * @param name Nombre del jugador.
+     * @param pass Contraseña.
+     * @param tel Teléfono.
+     * @param posicion Posición.
+     * @return True si se ha podido realizar la operación.
+     */
+    public boolean createPlayer(String name, String pass, String tel, String posicion) {
+        if(!dao.existPlayer(tel)){
+            jugador=dao.createPlayer(name,pass,tel,posicion);
+            return true;
+        }
+        notifyRepeatedPlayerId();
+        return false;
+    }
+
+    /**
+     * Permite guardar un jugador en la BD, inscribirlo a un equipo ya existente, y cargarlo en la sesión, registrando relación entre equipo y jugador.
+     * @param name Nombre del jugador.
+     * @param pass Contraseña.
+     * @param telef Teléfono.
+     * @param pos Posición.
+     * @param team Nombre del equipo.
+     * @return True si se ha podido inscribir al jugador en el equipo, false si no.
+     */
+    public boolean createAndLinkPlayer(String name, String pass, String telef, String pos, String team) {
+        if(!dao.existPlayer(telef)){
+            jugador= dao.createPlayer(name,pass,telef,pos);
+            return dao.linkTeamAndPlayer(telef,team);
+        }
+        notifyRepeatedPlayerId();
+        return false;
     }
 
     /**
@@ -128,225 +226,35 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     }
 
     /**
-     *
-     * @param observer
+     * Permite registrar un encuentro entre dos equipos dados una fecha y una hora.
+     * @param nRival Equipo rival.
+     * @param f Fecha.
+     * @param h Hora.
+     * @return Si se ha podido registrar el partido.
      */
-    @Override
-    public void addObserver(Observador observer) {
-        lista.add(observer);
-    }
-
-    /**
-     * Registra una nueva convocatoria en la BD
-      * @param c
-     */
-    public void createConvocatory(Convocatory c) {
-        dao.createConvocatory(c);
-    }
-
-    /**
-     * Permite guardar un jugador en la BD, inscribirlo a un equipo ya existente, y cargarlo en la sesión.
-     * @param name Nombre del jugador.
-     * @param pass Contraseña.
-     * @param telef Teléfono.
-     * @param pos Posición.
-     * @param team Nombre del equipo.
-     * @return True si se ha podido inscribir al jugador e inscribirlo en el equipo, false si no.
-     */
-    public boolean createAndLinkPlayer(String name, String pass, String telef, String pos, String team) {
-        jugador= dao.createPlayer(name,pass,telef,pos);
-        return dao.linkTeamAndPlayer(telef,team);
-    }
-
-    /**
-     * Permite a un jugador cambiar su posición favorita en la sesión y en la BD
-     * @param position Nueva posición favorita.
-     */
-    public void changePlayerPos(String position) {
-        dao.changePlayerPos(jugador.getPhone(),position);
-        jugador.changePos(position);
-    }
-
-    /**
-     * Permite a un jugador inscribirse en un equipo  siempre que este exista.
-     * @param teamName Nombre del equipo nuevo en el que se quiere registrar el jugador.
-     * @return True si se ha podido inscribir, si no false.
-     */
-    public boolean enrollTeam(String teamName) {
-        if(existTeam(teamName)){
-            dao.linkTeamAndPlayer(jugador.getPhone(),teamName);
-            changeTeam(teamName);
+    public boolean createMatch(String nRival, Date f, String h) {
+        if(existTeam(nRival)){
+            Match m= dao.createMatch(getTeamId(),nRival,f,h);
+            equipo.addMatch(m);
             return true;
         }
+        notifyTeamDoesNotExist();
         return false;
     }
 
     /**
-     * Permite registrar un encuentro entre dos equipos dados una fecha y una hora.
-     * @param miTeamId Equipo local.
-     * @param nRival Visitante.
-     * @param f Fecha.
-     * @param h Hora.
+     * Permite al jugador apuntarse al próximo partido.
      */
-    public void createMatch(String miTeamId,String nRival, Date f, String h) {
-        Match m= dao.createMatch(miTeamId,nRival,f,h);
-        equipo.addMatch(m);
+    public void addToNextMatch() {
+        equipo.addToNextMatch(jugador.getPhone());
+        dao.addToNextMatch(equipo.getTeamId(),jugador.getPhone());
     }
 
-
-
-    @Override
-    public void delObserver(Observador observer) {
-        lista.remove(observer);
+    public void removeFromNextMatch() {
+        equipo.addToNextMatch(jugador.getPhone());
+        dao.removeFromNextMatch(equipo.getTeamId(),jugador.getPhone());
     }
 
-
-    /**
-     * Carga la lista de próximos eventos
-     * @param teamId
-     * @return
-     */
-    public ArrayList<Events> getEvents(String teamId){
-        return dao.getEvents(teamId);
-    }
-
-    /**
-     * Carga los últimos partidos de un equipo
-     * @param teamName
-     * @return
-     */
-    public ArrayList<Match> getLastMatches(String teamName){
-        return dao.getLastMatches(teamName);
-    }
-
-    /**
-     *
-     * @return Id del jugador con sesión iniciada
-     */
-    public String getMyPlayerId() {
-        return jugador.getPhone();
-    }
-
-
-    /**
-     *
-     * @return Lista de los equipos en los que juega el usuario con sesión iniciada.
-     */
-    public String[] getMyTeams() {
-        return dao.getTeams(jugador.getPhone());
-    }
-
-
-    /**
-     *
-     * @param teamId Nombre del equipo.
-     * @return Lista de los convocados para el próximo partido.
-     */
-    public ArrayList<Player> getNextConvocated(String teamId) {
-        return dao.getNextConvocatory(teamId);
-    }
-
-    /**
-     *
-     * @param teamName Nombre del equipo.
-     * @return Lista de los próximos partidos.
-     */
-    private ArrayList<Match> getNextMatches(String teamName) {
-        return dao.getNextMatches(teamName);
-    }
-
-    /**
-     *
-     * @param tName Nombre del equipo.
-     * @return Id del próximo partido.
-     */
-    public String getNextMatchId(String tName){
-        return dao.getNextMatchId(tName);
-    }
-
-    /**
-     *
-     * @param teamName Nombre del equipo.
-     * @return Id del próximo rival.
-     */
-    private String getNextRivalId(String teamName) {
-        return dao.getNextRivalId(teamName);
-    }
-
-    /**
-     *
-     * @return Lista de compañeros de equipo.
-     */
-    public ArrayList<Player> getPartners() {
-        return equipo.getPlayersList();
-    }
-
-    /**
-     *
-     * @param playerId Teléfono del jugador.
-     * @return Estadísticas del jugador.
-     */
-    public PlayerStats getPlayerStats(String playerId) {
-        return dao.getPlayerStats(playerId);
-    }
-
-    /**
-     *
-     * @return el id de mi equipo
-     */
-    public String getTeamId() {
-        return equipo.getTeamId();
-    }
-
-    private ArrayList<Player> getTeamPlayers() {
-        return dao.getTeamPlayers(getTeamId());
-    }
-
-    /**
-     *
-     * @param teamId
-     * @return estadisticas asociadas a mi equipo
-     */
-    public TeamStats getTeamStats(String teamId) {
-        return equipo.getTeamStats(teamId);
-    }
-
-
-
-    /**
-     *
-     * @param teamName Nombre del equipo.
-     * @return Records de mi equipo.
-     */
-    public TeamRecords getTeamRecords(String teamName) {
-        return dao.getTeamRecords(teamName);
-    }
-
-    /**
-     *
-     * @param playerPhone
-     * @return
-     */
-    public boolean existPlayer(String playerPhone) {
-        return dao.existPlayer(playerPhone);
-    }
-
-    public Player getPlayer(String playerPhone) {
-        return dao.getPlayer(playerPhone);
-    }
-
-
-    public boolean existTeam(String team) {
-        return dao.existTeam(team);
-    }
-
-    /**
-     * Permite al usuario abandonar el equipo que tiene cargado en la sesion
-     */
-    public void leaveTeam() {
-        dao.leaveTeam(jugador,equipo);
-        equipo=dao.lastTeamChosen(jugador.getPhone());
-    }
 
     /**
      * Permite crear un nuevo evento en la BD y en la sesión
@@ -358,23 +266,138 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         equipo.addEvent(event);
     }
 
-    public void addToNextMatch() {
+    /**
+     *
+     * @return Lista de próximos eventos.
+     */
+    public ArrayList<Events> getEvents(){
+        return dao.getEvents(getTeamId());
     }
 
-    public void createPlayer(String name, String pass, String tel, String posicion) {
-        jugador=dao.createPlayer(name,pass,tel,posicion);
+    /**
+     *
+     * @return Últimos partidos de un equipo.
+     */
+    public ArrayList<Match> getLastMatches(){
+        return dao.getLastMatches(getTeamId());
     }
 
+    /**
+     *
+     * @return Id del jugador con sesión iniciada.
+     */
+    public String getId() {
+        return jugador.getPhone();
+    }
+
+    /**
+     *
+     * @return Lista de los equipos en los que juega el usuario con sesión iniciada.
+     */
+    public String[] getMyTeams() {
+        return dao.getTeams(jugador.getPhone());
+    }
+
+    /**
+     *
+     * @return Lista de los convocados para el próximo partido.
+     */
+    public ArrayList<Player> getNextConvocated() {
+        return dao.getNextConvocatory(getTeamId());
+    }
+
+    /**
+     * @return Lista de los próximos partidos.
+     */
+    private ArrayList<Match> getNextMatches() {
+        return dao.getNextMatches(getTeamId());
+    }
+
+    /**
+     *
+     * @return Lista de compañeros de equipo.
+     */
+    public ArrayList<Player> getPartners() {
+        return equipo.getPlayersList();
+    }
+
+    /**
+     * Permite obtener las estadísticas de un jugador.
+     * @param playerId Teléfono del jugador.
+     * @return Estadísticas del jugador.
+     */
+    public PlayerStats getPlayerStats(String playerId) {
+        return dao.getPlayerStats(playerId);
+    }
+
+    /**
+     *
+     * @return El id de mi equipo.
+     */
+    public String getTeamId() {
+        return equipo.getTeamId();
+    }
+
+    /**
+     *
+     * @return Lista de jugadores de mi equipo.
+     */
+    private ArrayList<Player> getTeamPlayers() {
+        return dao.getTeamPlayers(getTeamId());
+    }
+
+    /**
+     *
+     * @param teamId
+     * @return Estadísticas asociadas a teamId.
+     */
+    public TeamStats getTeamStats(String teamId) {
+        return dao.getTeamStats(teamId);
+    }
+
+    /**
+     *
+     * @return Estadísticas asociadas al equipo con sesión iniciada.
+     */
+    public TeamStats getMyTeamStats() {
+        return equipo.getTeamStats();
+    }
+
+    /**
+     *
+     * @param teamName Nombre del equipo.
+     * @return Records de un equipo.
+     */
+    public TeamRecords getTeamRecords(String teamName) {
+        return dao.getTeamRecords(teamName);
+    }
+
+    /**
+     *
+     * @return Records de mi equipo.
+     */
+    public TeamRecords getMyTeamRecords() {
+        return equipo.getTeamRecords();
+    }
+
+    @Override
+    public void addObserver(Observador observer) {
+        lista.add(observer);
+    }
+
+    @Override
+    public void delObserver(Observador observer) {
+        lista.remove(observer);
+    }
 
     //Métodos que implementarán las vistas(observadores)
+
     public interface Observador extends Observer{
         void setController(Controller controller);
-        /**
-         * añadir aqui notificaciones a la vista
-         */
         void invalidCredentials();
         void repeatedPlayerID();
         void repeatedTeamName();
+        void teamDoesNotExist();
     }
 
     public void notifyInvalidCredentials(){
@@ -395,5 +418,10 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         }
     }
 
+    private void notifyTeamDoesNotExist() {
+        for (Observador o:lista){
+            o.teamDoesNotExist();
+        }
+    }
 
 }

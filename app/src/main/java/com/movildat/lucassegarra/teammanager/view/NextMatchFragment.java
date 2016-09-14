@@ -14,13 +14,15 @@ import android.widget.ToggleButton;
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.Player;
+import com.movildat.lucassegarra.teammanager.model.ViewFragment;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 /**
  * Created by lucas.segarra on 14/07/2016.
  */
-public class NextMatchFragment extends Fragment {
+public class NextMatchFragment extends ViewFragment {
     private TextView proxRiv,numConfirmados;
     private RecyclerView myRV;
     private Controller myController;
@@ -61,9 +63,33 @@ public class NextMatchFragment extends Fragment {
     }
     public void setController(Controller c){
         myController=c;
-        ArrayList<Player> convocados= myController.getNextConvocatory(myController.getTeamId());
+        ArrayList<Player> convocados= myController.getNextConvocatory();
         RecyclerView.Adapter adapter=new PlayersListAdapter(convocados);
         myRV.setAdapter(adapter);
     }
 
+    @Override
+    public void invalidCredentials() {
+
+    }
+
+    @Override
+    public void repeatedPlayerID() {
+
+    }
+
+    @Override
+    public void repeatedTeamName() {
+
+    }
+
+    @Override
+    public void teamDoesNotExist() {
+
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+
+    }
 }

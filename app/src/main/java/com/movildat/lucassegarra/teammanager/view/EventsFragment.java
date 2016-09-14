@@ -45,7 +45,7 @@ public class EventsFragment extends ViewFragment {
         myRecycler.setHasFixedSize(true);
         RecyclerView.LayoutManager rvLM=new LinearLayoutManager(getActivity());
         myRecycler.setLayoutManager(rvLM);
-        ArrayList<Events> eventos= myController.getEvents(myController.getTeamId());
+        ArrayList<Events> eventos= myController.getEvents();
         Result[] resultados=myController.getResults();
         RecyclerView.Adapter adapter=new CalendarListAdapter(eventos);
         myRecycler.setAdapter(adapter);
@@ -63,5 +63,25 @@ public class EventsFragment extends ViewFragment {
         EventsFragment ef=new EventsFragment();
         ef.setController(c);
         return ef;
+    }
+
+    @Override
+    public void invalidCredentials() {
+
+    }
+
+    @Override
+    public void repeatedPlayerID() {
+
+    }
+
+    @Override
+    public void repeatedTeamName() {
+
+    }
+
+    @Override
+    public void teamDoesNotExist() {
+
     }
 }

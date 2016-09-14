@@ -24,7 +24,6 @@ public class RegisterMatchActivity extends ViewActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        myController=(Controller) getIntent().getSerializableExtra("Controller");
         setContentView(R.layout.add_match);
         rival=(EditText)findViewById(R.id.et_am_rival);
         fecha=(DatePicker) findViewById(R.id.dp_am);
@@ -70,4 +69,23 @@ public class RegisterMatchActivity extends ViewActivity {
         }
     }
 
+    @Override
+    public void invalidCredentials() {
+
+    }
+
+    @Override
+    public void repeatedPlayerID() {
+
+    }
+
+    @Override
+    public void repeatedTeamName() {
+
+    }
+
+    @Override
+    public void teamDoesNotExist() {
+
+    }
 }

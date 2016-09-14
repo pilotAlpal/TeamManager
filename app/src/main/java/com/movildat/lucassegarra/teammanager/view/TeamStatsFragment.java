@@ -85,4 +85,24 @@ public class TeamStatsFragment extends ViewFragment {
         teamStats = s;
     }
     private void setMates(ArrayList<Player> partners){teamPartners=partners;}
+
+    @Override
+    public void invalidCredentials() {
+
+    }
+
+    @Override
+    public void repeatedPlayerID() {
+
+    }
+
+    @Override
+    public void repeatedTeamName() {
+
+    }
+
+    @Override
+    public void teamDoesNotExist() {
+
+    }
 }

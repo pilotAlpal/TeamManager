@@ -9,5 +9,8 @@ import com.movildat.lucassegarra.teammanager.controler.Controller;
  */
 public abstract class ViewFragment extends Fragment implements Sesion.Observador {
     protected Controller myController;
-    public void setController(Controller c){myController=c;}
+    public void setController(Controller c){
+        myController=c;
+        myController.addObserver(this);
+    }
 }

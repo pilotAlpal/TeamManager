@@ -34,7 +34,6 @@ public class MenuActivity extends ViewActivity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_view);
-        myController=(Controller)getIntent().getSerializableExtra("Controller");
         optionsFragment=(OptionsFragment)getFragmentManager().findFragmentById(R.id.f_ops);
         optionsFragment.setController(myController);
         infoFragment=(InfoFragment)getFragmentManager().findFragmentById((R.id.f_info));
@@ -138,5 +137,25 @@ public class MenuActivity extends ViewActivity {
         newTeamIntent.putExtras(bundle);
         newTeamIntent.setClass(this,NewTeamActivity.class);
         startActivity(newTeamIntent);
+    }
+
+    @Override
+    public void invalidCredentials() {
+
+    }
+
+    @Override
+    public void repeatedPlayerID() {
+
+    }
+
+    @Override
+    public void repeatedTeamName() {
+
+    }
+
+    @Override
+    public void teamDoesNotExist() {
+
     }
 }

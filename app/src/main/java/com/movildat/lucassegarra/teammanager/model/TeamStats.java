@@ -7,13 +7,14 @@ import java.io.Serializable;
  */
 public class TeamStats implements Serializable {
     private int jugados,ganados,empatados,perdidos,pendientes;
+    private TeamRecords recordsEquipo;
 
-    public TeamStats(int j,int g,int e,int p,int pend){
+    public TeamStats(int j,int g,int e,int p,int pend,TeamRecords recE){
         jugados=j;
         ganados=g;
         perdidos=p;
         pendientes=pend;
-
+        recordsEquipo=recE;
     }
     public TeamStats(){
         jugados=0;
@@ -21,6 +22,7 @@ public class TeamStats implements Serializable {
         perdidos=0;
         ganados=0;
         empatados=0;
+        recordsEquipo=new TeamRecords();
     }
 
     public int getPlayed(){
@@ -43,4 +45,7 @@ public class TeamStats implements Serializable {
         return pendientes;
     }
 
+    public TeamRecords getRecords() {
+        return recordsEquipo;
+    }
 }

@@ -24,11 +24,6 @@ public class Convocatory implements Serializable {
         convocados=jugadores;
     }
 
-    public Convocatory(String id) {
-        id_equipo=id;
-        id_partido="no hay partidos";
-        convocados=new ArrayList<>();
-    }
 
 
     public void convoca(Player player){

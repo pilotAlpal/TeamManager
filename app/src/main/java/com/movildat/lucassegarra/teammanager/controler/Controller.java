@@ -1,8 +1,6 @@
 package com.movildat.lucassegarra.teammanager.controler;
 import android.graphics.Bitmap;
 
-import com.movildat.lucassegarra.teammanager.model.Agenda;
-import com.movildat.lucassegarra.teammanager.model.Convocatory;
 import com.movildat.lucassegarra.teammanager.model.Events;
 import com.movildat.lucassegarra.teammanager.model.Player;
 import com.movildat.lucassegarra.teammanager.model.PlayerStats;
@@ -10,6 +8,7 @@ import com.movildat.lucassegarra.teammanager.model.TeamRecords;
 import com.movildat.lucassegarra.teammanager.model.Result;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
 import com.movildat.lucassegarra.teammanager.model.TeamStats;
+import com.movildat.lucassegarra.teammanager.model.ViewActivity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -50,10 +49,6 @@ public class Controller implements Serializable{
         mySesion.changeTeam(newTeam);
     }
 
-    public void createConvocatory(String idPartido){
-        Convocatory c=new Convocatory(idPartido,mySesion.getTeamId());
-        mySesion.createConvocatory(c);
-    }
 
     public void createEvent(Date ini, Date fin) {
         mySesion.createEvent(ini,fin);
@@ -83,8 +78,8 @@ public class Controller implements Serializable{
         Player p;
         for (int i=0;i<initPlayers.size();i++){
             String playerPhone=initPlayers.get(i);
-            if(existPlayer(playerPhone)){
-                p=getPlayer(playerPhone);
+            if(mySesion.existPlayer(playerPhone)){
+                p=mySesion.getPlayer(playerPhone);
             }
             else{
                p= mySesion.invitePlayer(playerPhone);
@@ -94,9 +89,6 @@ public class Controller implements Serializable{
         mySesion.createTeam(teamName,players);
     }
 
-    private Player getPlayer(String playerPhone) {
-        return mySesion.getPlayer(playerPhone);
-    }
 
 
     /**
@@ -110,47 +102,40 @@ public class Controller implements Serializable{
         mySesion.enrollTeam(teamName);
     }
 
-    private boolean existPlayer(String playerPhone) {
-        return mySesion.existPlayer(playerPhone);
-    }
 
     /**
      *
      * @return Las estadísticas asociadas a mi jugador
      */
     public PlayerStats getMyplayerStats(){
-        return getPlayerStats(mySesion.getMyPlayerId());
+        return getPlayerStats(mySesion.getId());
     }
 
-    private String getNextMatchId(String teamName) {
-        return mySesion.getNextMatchId(teamName);
+
+    public ArrayList<Events> getEvents() {
+        return mySesion.getEvents();
     }
 
-    public ArrayList<Events> getEvents(String teamId) {
-        return mySesion.getEvents(teamId);
-    }
-
-    public String getMyPlayerId(){return mySesion.getMyPlayerId();}
+    public String getMyPlayerId(){return mySesion.getId();}
 
     public String[] getMyTeams() {
         return mySesion.getMyTeams();
     }
 
     public TeamStats getMyTeamStats(){
-        return getTeamStats(getTeamId());
+        return mySesion.getMyTeamStats();
     }
 
     public TeamRecords getMyTeamRecords() {
-        return getTeamRecords(getTeamId());
+        return mySesion.getMyTeamRecords();
     }
 
     /**
      *
      * @return Lista convocados proximo partido
-     * @param teamId
      */
-    public ArrayList<Player> getNextConvocatory(String teamId) {
-        return mySesion.getNextConvocated(teamId);
+    public ArrayList<Player> getNextConvocatory() {
+        return mySesion.getNextConvocated();
     }
 
 
@@ -167,14 +152,6 @@ public class Controller implements Serializable{
         Result[] r=new Result[1];
         r[0]=new Result();
         return r;
-    }
-
-    public String getTeamId(){
-        return mySesion.getTeamId();
-    }
-
-    public TeamRecords getTeamRecords(String teamName) {
-        return mySesion.getTeamRecords(teamName);
     }
 
     public TeamStats getTeamStats(String teamId){
@@ -205,11 +182,12 @@ public class Controller implements Serializable{
     }
 
     public void removeMeFromNextConvocatory() {
+        mySesion.removeFromNextMatch();
     }
 
 
     public boolean createMatch(String nRival, Date f, String h) {
-        mySesion.createMatch(getTeamId(),nRival,f,h);
+        mySesion.createMatch(nRival,f,h);
         return true;
     }
 
@@ -223,5 +201,13 @@ public class Controller implements Serializable{
 
     public void createPlayer(String name, String pass, String tel, String posicion) {
         mySesion.createPlayer(name,pass,tel,posicion);
+    }
+
+    /**
+     * Permite aniadir un observador al modelo
+     * @param o
+     */
+    public void addObserver(Sesion.Observador o) {
+        mySesion.addObserver(o);
     }
 }
