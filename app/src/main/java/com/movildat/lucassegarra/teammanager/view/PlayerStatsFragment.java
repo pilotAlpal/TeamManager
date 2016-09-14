@@ -57,10 +57,10 @@ public class PlayerStatsFragment extends ViewFragment {
         partidos.setText(aux);
         return v;
     }
-    public static PlayerStatsFragment newInstance(PlayerStats playerStats,Controller c) {
+    public static PlayerStatsFragment newInstance(Controller c) {
         PlayerStatsFragment pSf=new PlayerStatsFragment();
-        pSf.setPlayerStats(playerStats);
         pSf.setController(c);
+        pSf.setPlayerStats(c.getMyplayerStats());
         return pSf;
     }
 

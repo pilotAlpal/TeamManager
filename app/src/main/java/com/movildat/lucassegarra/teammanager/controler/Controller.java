@@ -108,7 +108,7 @@ public class Controller implements Serializable{
      * @return Las estadísticas asociadas a mi jugador
      */
     public PlayerStats getMyplayerStats(){
-        return getPlayerStats(mySesion.getId());
+        return mySesion.getMyPlayerStats();
     }
 
 
@@ -154,9 +154,6 @@ public class Controller implements Serializable{
         return r;
     }
 
-    public TeamStats getTeamStats(String teamId){
-        return mySesion.getTeamStats(teamId);
-    }
 
     public void leaveTeam() {
         mySesion.leaveTeam();

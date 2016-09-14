@@ -24,9 +24,14 @@ public class Match implements Serializable {
     public Match(String rival,Convocatory nc) {
         convocados=nc;
         guestId=rival;
-        id=convocados.getMatchId();
         homeId=convocados.getTeamId();
         resultado=new Result();
         goles=new ArrayList<>();
+    }
+    public void addToConvocatory(Player p){
+        convocados.addTo(p);
+    }
+    public void removeFromConvocatory(Player p){
+        convocados.removeFrom(p);
     }
 }

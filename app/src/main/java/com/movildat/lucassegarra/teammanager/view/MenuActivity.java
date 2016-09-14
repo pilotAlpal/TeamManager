@@ -41,7 +41,7 @@ public class MenuActivity extends ViewActivity {
     }
 
     public void statsJugador(View view){
-        PlayerStatsFragment pSf=PlayerStatsFragment.newInstance(myController.getMyplayerStats(),myController);
+        PlayerStatsFragment pSf=PlayerStatsFragment.newInstance(myController);
         getFragmentManager().beginTransaction().replace(R.id.f_info,pSf).commit();
     }
 

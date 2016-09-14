@@ -45,10 +45,10 @@ public class DatabaseHandler implements Serializable {
      */
     public Team lastTeamChosen(String idJugador) {
         String team="Rayo Vaticano";
-        Convocatory convocatory=new Convocatory(getNextMatchId(),team,getNextConvocatory(team));
+        Convocatory convocatory=new Convocatory(team,getNextConvocatory(team));
         Match nextMatch=new Match(getNextRivalId(team),convocatory);
         Agenda agenda=new Agenda(getNextMatches(team),getLastMatches(team),nextMatch,getEvents(team));
-        return new Team(team,getTeamPlayers(team),getTeamStats(team),agenda);
+        return new Team(team,getTeamPlayers(team),getTeamStats(),agenda);
     }
 
     /**
@@ -66,8 +66,9 @@ public class DatabaseHandler implements Serializable {
      * @return Objeto que representa a un equipo dado su id
      */
     public Team getTeam(String equipo) {
-        return new Team(equipo,new ArrayList<Player>(),new TeamStats(),
-                new Agenda(new ArrayList<Match>(),new ArrayList<Match>(),new Match("Bayern",new Convocatory("1",equipo)),new ArrayList<Events>()));
+        return new Team(equipo,getTeamPlayers(equipo),new TeamStats(),
+                        new Agenda(new ArrayList<Match>(),new ArrayList<Match>(),
+                                   new Match("Bayern",new Convocatory(equipo)),new ArrayList<Events>()));
     }
 
     /**
@@ -107,10 +108,9 @@ public class DatabaseHandler implements Serializable {
 
     /**
      *
-     * @param teamId
      * @return Estadísticas asociadas a un equipo.
      */
-    public TeamStats getTeamStats(String teamId) {
+    public TeamStats getTeamStats() {
         TeamRecords tRec=new TeamRecords();
         return new TeamStats(100,80,10,10,10,tRec);
     }

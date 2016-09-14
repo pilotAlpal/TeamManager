@@ -48,4 +48,11 @@ public class Agenda implements Serializable {
     public void addEvent(Events e){}
 
     public void removeEvent(Events e){}
+
+    public void addToNextMatch(Player p){
+        proxPartido.addToConvocatory(p);
+    }
+    public void removeFromNextMatch(Player p){
+        proxPartido.removeFromConvocatory(p);
+    }
 }

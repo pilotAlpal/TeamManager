@@ -45,8 +45,12 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
 
     private void log(String tel, String pass) {
         jugador=dao.login(tel,pass);
-        equipo=dao.lastTeamChosen(jugador.getPhone());
+        refreshTeam();
         refreshStats();
+    }
+
+    private void refreshTeam(){
+        equipo=dao.lastTeamChosen(jugador.getPhone());
     }
 
     private void refreshStats(){
@@ -64,7 +68,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * @return True si se ha podido registrar al jugador
      */
     public boolean signIn(String name,String pass,String team,String phone,String pos){
-        equipo=dao.getTeam(team);
+        setTeam(team);
         if (!dao.existPlayer(phone)){
             jugador=dao.createPlayer(name,pass,phone,pos);
             estsJugEqu=new PlayerStats(pos);
@@ -128,10 +132,14 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * @return Si se ha podido hacer el cambio.
      */
     public boolean changeTeam(String newTeam) {
-        equipo=dao.getTeam(newTeam);
+        setTeam(newTeam);
         equipo.addPlayer(jugador);
         refreshStats();
         return true;
+    }
+
+    private void setTeam(String teamName){
+        equipo=dao.getTeam(teamName);
     }
 
     /**
@@ -153,7 +161,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      */
     public void leaveTeam() {
         dao.leaveTeam(jugador,equipo);
-        equipo=dao.lastTeamChosen(jugador.getPhone());
+        refreshTeam();
     }
 
     /**
@@ -246,12 +254,15 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * Permite al jugador apuntarse al próximo partido.
      */
     public void addToNextMatch() {
-        equipo.addToNextMatch(jugador.getPhone());
+        equipo.addToNextMatch(jugador);
         dao.addToNextMatch(equipo.getTeamId(),jugador.getPhone());
     }
 
+    /**
+     *
+     */
     public void removeFromNextMatch() {
-        equipo.addToNextMatch(jugador.getPhone());
+        equipo.removeFromNextMatch(jugador);
         dao.removeFromNextMatch(equipo.getTeamId(),jugador.getPhone());
     }
 
@@ -322,6 +333,14 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     }
 
     /**
+     *
+     * @return Estadísticas asociadas a mi jugador
+     */
+    public PlayerStats getMyPlayerStats() {
+        return jugador.getPlayerStats();
+    }
+
+    /**
      * Permite obtener las estadísticas de un jugador.
      * @param playerId Teléfono del jugador.
      * @return Estadísticas del jugador.
@@ -342,18 +361,10 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      *
      * @return Lista de jugadores de mi equipo.
      */
-    private ArrayList<Player> getTeamPlayers() {
-        return dao.getTeamPlayers(getTeamId());
+    private ArrayList<Player> getMyTeamPlayers() {
+        return equipo.getPlayersList();
     }
 
-    /**
-     *
-     * @param teamId
-     * @return Estadísticas asociadas a teamId.
-     */
-    public TeamStats getTeamStats(String teamId) {
-        return dao.getTeamStats(teamId);
-    }
 
     /**
      *
@@ -361,15 +372,6 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      */
     public TeamStats getMyTeamStats() {
         return equipo.getTeamStats();
-    }
-
-    /**
-     *
-     * @param teamName Nombre del equipo.
-     * @return Records de un equipo.
-     */
-    public TeamRecords getTeamRecords(String teamName) {
-        return dao.getTeamRecords(teamName);
     }
 
     /**

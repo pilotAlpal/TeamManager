@@ -30,7 +30,6 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
     }
 
     public TeamPlayersAdapter(ArrayList<Player> data){
-
         if(data!=null)
             list=data;
     }

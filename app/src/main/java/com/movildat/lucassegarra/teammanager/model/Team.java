@@ -57,7 +57,12 @@ public class Team implements Serializable{
         return myTeamStats.getRecords();
     }
 
-    public void addToNextMatch(String phone) {
+    public void addToNextMatch(Player j) {
+        agenda.addToNextMatch(j);
 
+    }
+
+    public void removeFromNextMatch(Player j) {
+        agenda.removeFromNextMatch(j);
     }
 }
