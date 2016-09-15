@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class Match implements Serializable {
     private String id;
-    private String homeId,guestId;
+    private String rivalId;
     private Date when;
     private Time t;
     private Result resultado;
@@ -23,8 +23,7 @@ public class Match implements Serializable {
 
     public Match(String rival,Convocatory nc) {
         convocados=nc;
-        guestId=rival;
-        homeId=convocados.getTeamId();
+        rivalId=rival;
         resultado=new Result();
         goles=new ArrayList<>();
     }
@@ -33,5 +32,8 @@ public class Match implements Serializable {
     }
     public void removeFromConvocatory(Player p){
         convocados.removeFrom(p);
+    }
+    public Convocatory getConvocatory(){
+        return convocados;
     }
 }

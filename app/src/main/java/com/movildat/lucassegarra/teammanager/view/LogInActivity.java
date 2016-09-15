@@ -1,7 +1,7 @@
 package com.movildat.lucassegarra.teammanager.view;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -12,9 +12,11 @@ import com.movildat.lucassegarra.teammanager.model.Sesion;
 
 import java.util.Observable;
 
-public class LogInActivity extends AppCompatActivity implements Sesion.Observador{
+public class LogInActivity extends Activity implements Sesion.Observador{
 
     private EditText etPhone,etPass;
+    private Controller myController;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +33,14 @@ public class LogInActivity extends AppCompatActivity implements Sesion.Observado
     public void login(View view){
         String telf= etPhone.getText().toString();
         String pass=etPass.getText().toString();
-        Controller controller=new Controller();
-        if(controller.login(telf,pass)) {
-            Intent menuIntent = new Intent();
-            Bundle bundle=new Bundle();
-            bundle.putSerializable("Controller",controller);
-            menuIntent.putExtras(bundle);
-            menuIntent.setClass(this,MenuActivity.class);
-            startActivity(menuIntent);
-        }
+        myController=new Controller();
+        myController.login(telf,pass);
+        Intent menuIntent = new Intent();
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("Controller",myController);
+        menuIntent.putExtras(bundle);
+        menuIntent.setClass(this,MenuActivity.class);
+        startActivity(menuIntent);
     }
 
     public void signin(View view){
@@ -47,9 +48,11 @@ public class LogInActivity extends AppCompatActivity implements Sesion.Observado
         startActivity(signInIntent);
     }
 
+
     @Override
     public void setController(Controller controller) {
-
+        myController=controller;
+        controller.addObserver(this);
     }
 
     @Override

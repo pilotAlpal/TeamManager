@@ -52,7 +52,6 @@ public class Team implements Serializable{
         return myTeamStats;
     }
 
-
     public TeamRecords getTeamRecords() {
         return myTeamStats.getRecords();
     }
@@ -64,5 +63,21 @@ public class Team implements Serializable{
 
     public void removeFromNextMatch(Player j) {
         agenda.removeFromNextMatch(j);
+    }
+
+    public ArrayList<Match> getNextMatches() {
+        return agenda.getNextMatches();
+    }
+
+    public ArrayList<Player> getNextConvocatory() {
+        return agenda.getNextMatch().getConvocatory().getPlayers();
+    }
+
+    public ArrayList<Match> getLastMatches() {
+        return agenda.getNextMatches();
+    }
+
+    public ArrayList<Events> getEvents() {
+        return agenda.getTeamEvents();
     }
 }

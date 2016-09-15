@@ -11,11 +11,14 @@ import android.widget.Toast;
 
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
+import com.movildat.lucassegarra.teammanager.model.Sesion;
+
+import java.util.Observable;
 
 /**
  * Created by lucas.segarra on 14/07/2016.
  */
-public class SignInActivity extends Activity {
+public class SignInActivity extends Activity implements Sesion.Observador{
 //    private CheckBox cbLog;
 
     private Spinner spPos;
@@ -25,7 +28,6 @@ public class SignInActivity extends Activity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-     //   cbLog=(CheckBox)findViewById(R.id.cb_sign_and_log);
         spPos=(Spinner) findViewById(R.id.sp_si_pos);
         String[] pos= getResources().getStringArray(R.array.posiciones);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,pos);
@@ -47,8 +49,8 @@ public class SignInActivity extends Activity {
             myController=new Controller();
             if(!team.equalsIgnoreCase("")){
                 if(myController.existTeam(team)){
-                    if (myController.createPlayer(name,pass,tel,posicion,team))
-                        raiseSignIn(name,pass,team,tel,posicion);
+                    myController.createPlayer(name,pass,tel,posicion,team);
+                    raiseSignIn(name,pass,team,tel,posicion);
                 }
                 else
                     Toast.makeText(this,"Team does not exist",Toast.LENGTH_SHORT).show();
@@ -106,5 +108,35 @@ public class SignInActivity extends Activity {
     private boolean validName() {
         String name = etNombre.getText().toString();
         return !name.equalsIgnoreCase("");
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+
+    }
+
+    @Override
+    public void setController(Controller controller) {
+
+    }
+
+    @Override
+    public void invalidCredentials() {
+
+    }
+
+    @Override
+    public void repeatedPlayerID() {
+
+    }
+
+    @Override
+    public void repeatedTeamName() {
+
+    }
+
+    @Override
+    public void teamDoesNotExist() {
+
     }
 }

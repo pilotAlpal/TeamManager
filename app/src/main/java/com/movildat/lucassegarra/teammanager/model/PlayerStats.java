@@ -20,11 +20,6 @@ public class PlayerStats implements Serializable {
         patidos=0;valoraciones=0;
     }
 
-    public void getRated(float stars){
-        sumaValoraciones+=stars;
-        valoraciones++;
-    }
-
     public float getRating(){
         return sumaValoraciones/valoraciones;
     }
@@ -47,7 +42,7 @@ public class PlayerStats implements Serializable {
 
     public int countMatches(){return patidos;}
 
-    public void rate(int rating){
+    public void getRated(int rating){
         if ((rating>=0)&&(rating<=5)){
             valoraciones++;
             sumaValoraciones+=rating;
@@ -69,7 +64,6 @@ public class PlayerStats implements Serializable {
     public void addExpulsions(int expuls){
         expulsiones+=expuls;
     }
-
 
     public void changeNumber(String number) {
         dorsal=number;

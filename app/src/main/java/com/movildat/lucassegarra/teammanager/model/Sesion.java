@@ -32,15 +32,12 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * Carga un jugador y el último equipo al que este accedió, en la sesión actual dados su telefono(id) y su contraseña.
      * @param tel Identificador/teléfono.
      * @param pass Contraseña.
-     * @return true si la identificación se produce correctamente, false si no.
      */
-    public boolean login(String tel, String pass) {
+    public void login(String tel, String pass) {
         if(dao.validLogin(tel,pass)) {
             log(tel, pass);
-            return true;
         }
         notifyInvalidCredentials();
-        return false;
     }
 
     private void log(String tel, String pass) {
@@ -59,7 +56,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
 
     /**
      * Permite a un jugador registrarse.
-     * Guarda información referente a él en la BD y carga al jugador y al equipo en la sesión.
+     * Guarda información referente a él en la BD y carga el jugador y el equipo en la sesión.
      * @param name Nombre del jugador.
      * @param pass Contraseña.
      * @param team Nombre del equipo.
@@ -168,6 +165,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * Permite a un jugador borrar su usuario.
      */
     public void deleteProfile(){
+        equipo.removePlayer(jugador.getPhone());
         dao.deleteProfile(jugador);
     }
 
@@ -282,16 +280,9 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * @return Lista de próximos eventos.
      */
     public ArrayList<Events> getEvents(){
-        return dao.getEvents(getTeamId());
+        return equipo.getEvents();
     }
 
-    /**
-     *
-     * @return Últimos partidos de un equipo.
-     */
-    public ArrayList<Match> getLastMatches(){
-        return dao.getLastMatches(getTeamId());
-    }
 
     /**
      *
@@ -314,14 +305,23 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * @return Lista de los convocados para el próximo partido.
      */
     public ArrayList<Player> getNextConvocated() {
-        return dao.getNextConvocatory(getTeamId());
+        return equipo.getNextConvocatory();
     }
+
+    /**
+     *
+     * @return Últimos partidos de un equipo.
+     */
+    public ArrayList<Match> getLastMatches(){
+        return equipo.getLastMatches();
+    }
+
 
     /**
      * @return Lista de los próximos partidos.
      */
     private ArrayList<Match> getNextMatches() {
-        return dao.getNextMatches(getTeamId());
+        return equipo.getNextMatches();
     }
 
     /**
@@ -355,14 +355,6 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      */
     public String getTeamId() {
         return equipo.getTeamId();
-    }
-
-    /**
-     *
-     * @return Lista de jugadores de mi equipo.
-     */
-    private ArrayList<Player> getMyTeamPlayers() {
-        return equipo.getPlayersList();
     }
 
 

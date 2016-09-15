@@ -9,12 +9,10 @@ import java.util.Calendar;
  */
 public class Events implements Serializable{
     String myId;
-    String teamId;
     Date eventDate;
 
-    public Events(String ev_id, String team_id){
+    public Events(String ev_id){
         myId=ev_id;
-        teamId=team_id;
         eventDate= Calendar.getInstance().getTime();
     }
 

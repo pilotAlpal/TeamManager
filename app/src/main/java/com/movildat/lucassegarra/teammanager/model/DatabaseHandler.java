@@ -133,16 +133,16 @@ public class DatabaseHandler implements Serializable {
     public static ArrayList<Events> getEvents(String teamId) {
         ArrayList<Events> a= new ArrayList<>();
         // Resources.getSystem().getStringArray(R.array.eventos);
-        a.add(new Events("Tirol",teamId));
-        a.add(new Events("Olimpique",teamId));
-        a.add(new Events("Heerenveen",teamId));
-        a.add(new Events("Olimpiakos",teamId));
-        a.add(new Events("Manchester",teamId));
-        a.add(new Events("Stum Graz",teamId));
-        a.add(new Events("Panathinaikos",teamId));
-        a.add(new Events("Arsenal",teamId));
-        a.add(new Events("Leeds",teamId));
-        a.add(new Events("Bayern",teamId));
+        a.add(new Events("Tirol"));
+        a.add(new Events("Olimpique"));
+        a.add(new Events("Heerenveen"));
+        a.add(new Events("Olimpiakos"));
+        a.add(new Events("Manchester"));
+        a.add(new Events("Stum Graz"));
+        a.add(new Events("Panathinaikos"));
+        a.add(new Events("Arsenal"));
+        a.add(new Events("Leeds"));
+        a.add(new Events("Bayern"));
         return a;
     }
 
@@ -154,7 +154,7 @@ public class DatabaseHandler implements Serializable {
      * @return Nuevo evento
      */
     public Events createEvent(String teamId, Date ini, Date fin) {
-        return new Events(teamId,"1");
+        return new Events("1");
     }
 
     /**
@@ -263,7 +263,7 @@ public class DatabaseHandler implements Serializable {
      * @return Jugador asociado a un teléfono.
      */
     public Player getPlayer(String playerPhone) {
-        return new Player("Aimar","a","626992478","Mediapunta");
+        return new Player("Aimar","a",playerPhone,"Mediapunta");
     }
 
     /**

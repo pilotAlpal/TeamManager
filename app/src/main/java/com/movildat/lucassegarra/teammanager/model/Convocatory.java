@@ -21,8 +21,6 @@ public class Convocatory implements Serializable {
         convocados=jugadores;
     }
 
-
-
     public void addTo(Player player){
         convocados.add(player);
     }
@@ -31,4 +29,7 @@ public class Convocatory implements Serializable {
     }
     public String getTeamId(){return id_equipo;}
     public int getCount(){return  convocados.size();}
+    public ArrayList<Player> getPlayers(){
+        return convocados;
+    }
 }

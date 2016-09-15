@@ -50,6 +50,11 @@ public class Controller implements Serializable{
     }
 
 
+    /**
+     *
+     * @param ini
+     * @param fin
+     */
     public void createEvent(Date ini, Date fin) {
         mySesion.createEvent(ini,fin);
     }
@@ -61,10 +66,20 @@ public class Controller implements Serializable{
      * @param pTel Teléfono.
      * @param pos Posición.
      * @param team Nombre del equipo
-     * @return True si no existia un usuario con ese telefono y se ha registrado al jugador.
      */
-    public  boolean createPlayer(String pName,String pPass,String pTel,String pos,String team) {
-        return mySesion.createAndLinkPlayer(pName,pPass,pTel,pos,team);
+    public  void createPlayer(String pName,String pPass,String pTel,String pos,String team) {
+        mySesion.createAndLinkPlayer(pName,pPass,pTel,pos,team);
+    }
+
+    /**
+     *
+     * @param name
+     * @param pass
+     * @param tel
+     * @param posicion
+     */
+    public void createPlayer(String name, String pass, String tel, String posicion) {
+        mySesion.createPlayer(name,pass,tel,posicion);
     }
 
     /**
@@ -89,19 +104,22 @@ public class Controller implements Serializable{
         mySesion.createTeam(teamName,players);
     }
 
-
+    /**
+     *
+     * @param nRival
+     * @param f
+     * @param h
+     */
+    public void createMatch(String nRival, Date f, String h) {
+        mySesion.createMatch(nRival,f,h);
+    }
 
     /**
      * permite al usuario borrar su perfil
      */
     public void deleteProfile() {
+        mySesion.deleteProfile();
     }
-
-    //permite al usuario inscribirse en un equipo
-    public void enrollTeam(String teamName){
-        mySesion.enrollTeam(teamName);
-    }
-
 
     /**
      *
@@ -112,20 +130,40 @@ public class Controller implements Serializable{
     }
 
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Events> getEvents() {
         return mySesion.getEvents();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMyPlayerId(){return mySesion.getId();}
 
+    /**
+     *
+     * @return
+     */
     public String[] getMyTeams() {
         return mySesion.getMyTeams();
     }
 
+    /**
+     *
+     * @return
+     */
     public TeamStats getMyTeamStats(){
         return mySesion.getMyTeamStats();
     }
 
+    /**
+     *
+     * @return
+     */
     public TeamRecords getMyTeamRecords() {
         return mySesion.getMyTeamRecords();
     }
@@ -138,23 +176,44 @@ public class Controller implements Serializable{
         return mySesion.getNextConvocated();
     }
 
-
-
+    /**
+     *
+     * @return
+     */
     public ArrayList<Player> getPartners() {
         return mySesion.getPartners();
     }
 
+    /**
+     *
+     * @param playerId
+     * @return
+     */
     public PlayerStats getPlayerStats(String playerId) {
         return mySesion.getPlayerStats(playerId);
     }
 
+    /**
+     *
+     * @return
+     */
     public Result[] getResults() {
         Result[] r=new Result[1];
         r[0]=new Result();
         return r;
     }
 
+    /**
+     *
+     * @param teamName
+     */
+    public void enrollTeam(String teamName){
+        mySesion.enrollTeam(teamName);
+    }
 
+    /**
+     *
+     */
     public void leaveTeam() {
         mySesion.leaveTeam();
     }
@@ -163,41 +222,53 @@ public class Controller implements Serializable{
      * Carga de la BD la información asociada a un jugador si las credenciales de inicio de sesión son correctas.
      * @param tel numero de telefono del usuario
      * @param pass contraseña
-     * @return true si la información es correcta, false si no.
      */
-    public boolean login(String tel, String pass) {
-        return mySesion.login(tel,pass);
+    public void login(String tel, String pass) {
+        mySesion.login(tel,pass);
     }
 
 
+    /**
+     *
+     */
     public void ratePlayer() {
         
     }
 
+    /**
+     *
+     */
     public void addMeToNextConvocatory() {
         mySesion.addToNextMatch();
     }
 
+    /**
+     *
+     */
     public void removeMeFromNextConvocatory() {
         mySesion.removeFromNextMatch();
     }
 
 
-    public boolean createMatch(String nRival, Date f, String h) {
-        mySesion.createMatch(nRival,f,h);
-        return true;
-    }
-
+    /**
+     *
+     * @param team
+     * @return
+     */
     public boolean existTeam(String team) {
         return mySesion.existTeam(team);
     }
 
+    /**
+     *
+     * @param name
+     * @param pass
+     * @param team
+     * @param tel
+     * @param posicion
+     */
     public void signIn(String name, String pass, String team, String tel, String posicion) {
         mySesion.signIn(name,pass,team,tel,posicion);
-    }
-
-    public void createPlayer(String name, String pass, String tel, String posicion) {
-        mySesion.createPlayer(name,pass,tel,posicion);
     }
 
     /**

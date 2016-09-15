@@ -63,8 +63,7 @@ public class RegisterMatchActivity extends ViewActivity {
                 f=new Date(fecha.getYear()-1900,fecha.getMonth(),fecha.getDayOfMonth());
             }
             String h=hora.getText().toString();
-            if(myController.createMatch(nRival,f,h))
-                Toast.makeText(this,"Partido guardado", Toast.LENGTH_SHORT).show();
+            myController.createMatch(nRival,f,h);
             finish();
         }
     }
