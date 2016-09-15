@@ -5,8 +5,6 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.movildat.lucassegarra.teammanager.R;
-import com.movildat.lucassegarra.teammanager.controler.Controller;
-import com.movildat.lucassegarra.teammanager.model.ViewActivity;
 
 /**
  * Created by Propietario on 18/08/2016.

@@ -8,7 +8,6 @@ import com.movildat.lucassegarra.teammanager.model.TeamRecords;
 import com.movildat.lucassegarra.teammanager.model.Result;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
 import com.movildat.lucassegarra.teammanager.model.TeamStats;
-import com.movildat.lucassegarra.teammanager.model.ViewActivity;
 
 import java.io.Serializable;
 import java.util.ArrayList;

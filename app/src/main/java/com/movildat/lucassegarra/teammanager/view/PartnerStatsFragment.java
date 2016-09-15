@@ -1,6 +1,5 @@
 package com.movildat.lucassegarra.teammanager.view;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,8 +12,6 @@ import android.widget.RatingBar;
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.PlayerStats;
-import com.movildat.lucassegarra.teammanager.model.Sesion;
-import com.movildat.lucassegarra.teammanager.model.ViewFragment;
 
 import java.util.Observable;
 

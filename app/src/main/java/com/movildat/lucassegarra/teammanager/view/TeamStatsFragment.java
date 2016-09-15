@@ -1,6 +1,5 @@
 package com.movildat.lucassegarra.teammanager.view;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,10 +11,8 @@ import android.widget.TextView;
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.Player;
-import com.movildat.lucassegarra.teammanager.model.Sesion;
 import com.movildat.lucassegarra.teammanager.model.TeamRecords;
 import com.movildat.lucassegarra.teammanager.model.TeamStats;
-import com.movildat.lucassegarra.teammanager.model.ViewFragment;
 
 import java.util.ArrayList;
 import java.util.Observable;

@@ -1,14 +1,6 @@
 package com.movildat.lucassegarra.teammanager.view;
 
-import android.Manifest;
-import android.app.Fragment;
-import android.content.ContentResolver;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.CalendarContract;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,8 +12,6 @@ import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.Events;
 import com.movildat.lucassegarra.teammanager.model.Result;
-import com.movildat.lucassegarra.teammanager.model.Sesion;
-import com.movildat.lucassegarra.teammanager.model.ViewFragment;
 
 import java.util.ArrayList;
 import java.util.Observable;

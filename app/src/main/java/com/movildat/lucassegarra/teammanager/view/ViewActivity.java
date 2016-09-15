@@ -1,10 +1,11 @@
-package com.movildat.lucassegarra.teammanager.model;
+package com.movildat.lucassegarra.teammanager.view;
 
 
 import android.app.Activity;
 import android.os.Bundle;
 
 import com.movildat.lucassegarra.teammanager.controler.Controller;
+import com.movildat.lucassegarra.teammanager.model.Sesion;
 
 import java.util.Observable;
 

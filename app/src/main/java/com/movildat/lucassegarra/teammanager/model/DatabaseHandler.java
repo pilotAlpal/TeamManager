@@ -45,7 +45,7 @@ public class DatabaseHandler implements Serializable {
      */
     public Team lastTeamChosen(String idJugador) {
         String team="Rayo Vaticano";
-        Convocatory convocatory=new Convocatory(team,getNextConvocatory(team));
+        Convocatory convocatory=new Convocatory(getNextConvocatory(team));
         Match nextMatch=new Match(getNextRivalId(team),convocatory);
         Agenda agenda=new Agenda(getNextMatches(team),getLastMatches(team),nextMatch,getEvents(team));
         return new Team(team,getTeamPlayers(team),getTeamStats(),agenda);
@@ -68,7 +68,7 @@ public class DatabaseHandler implements Serializable {
     public Team getTeam(String equipo) {
         return new Team(equipo,getTeamPlayers(equipo),new TeamStats(),
                         new Agenda(new ArrayList<Match>(),new ArrayList<Match>(),
-                                   new Match("Bayern",new Convocatory(equipo)),new ArrayList<Events>()));
+                                   new Match("Bayern",new Convocatory()),new ArrayList<Events>()));
     }
 
     /**

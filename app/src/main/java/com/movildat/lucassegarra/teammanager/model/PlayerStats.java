@@ -20,6 +20,17 @@ public class PlayerStats implements Serializable {
         patidos=0;valoraciones=0;
     }
 
+    public PlayerStats(float total,int cuantos,int gols,int asis,int exps,int prtds,String pos,String number){
+        sumaValoraciones=total;
+        valoraciones=cuantos;
+        goles=gols;
+        asistencias=asis;
+        expulsiones=exps;
+        patidos=prtds;
+        posicion=pos;
+        dorsal=number;
+    }
+
     public float getRating(){
         return sumaValoraciones/valoraciones;
     }

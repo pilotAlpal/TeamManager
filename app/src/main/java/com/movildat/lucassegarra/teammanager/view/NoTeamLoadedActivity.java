@@ -3,12 +3,9 @@ package com.movildat.lucassegarra.teammanager.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.movildat.lucassegarra.teammanager.R;
-import com.movildat.lucassegarra.teammanager.controler.Controller;
-import com.movildat.lucassegarra.teammanager.model.ViewActivity;
 
 /**
  * Created by lucas.segarra on 30/08/2016.

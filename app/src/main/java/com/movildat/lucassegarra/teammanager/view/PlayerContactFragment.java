@@ -1,13 +1,11 @@
 package com.movildat.lucassegarra.teammanager.view;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.movildat.lucassegarra.teammanager.R;
-import com.movildat.lucassegarra.teammanager.model.ViewFragment;
 
 import java.util.Observable;
 

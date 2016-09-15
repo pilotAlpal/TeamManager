@@ -1,7 +1,9 @@
 package com.movildat.lucassegarra.teammanager.model;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by lucas.segarra on 24/08/2016.
@@ -41,13 +43,39 @@ public class Agenda implements Serializable {
     }
 
     public void addMatch(Match m) {
+        if(m.getDate().before(proxPartido.getDate())){
+            listaUltimos.add(proxPartido);
+            proxPartido=m;
+        }
+        else {
+            listaProximos.add(m);
+        }
+
     }
 
-    public void removeMatch(Match m){}
+    public void refreshNextMatch(){
+        listaUltimos.add(proxPartido);
+        proxPartido=getNextFromList();
+        listaProximos.remove(proxPartido);
+    }
 
-    public void addEvent(Events e){}
+    private Match getNextFromList() {
+        Match prox=listaProximos.get(0);
+        for(Match m:listaProximos){
+            if(prox.getDate().before(m.getDate())){
+                prox=m;
+            }
+        }
+        return prox;
+    }
 
-    public void removeEvent(Events e){}
+    public void addEvent(Events e){
+        teamEvents.add(e);
+    }
+
+    public void removeEvent(Events e){
+        teamEvents.remove(e);
+    }
 
     public void addToNextMatch(Player p){
         proxPartido.addToConvocatory(p);

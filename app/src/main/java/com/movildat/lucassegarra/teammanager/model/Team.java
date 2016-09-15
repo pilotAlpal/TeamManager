@@ -13,8 +13,6 @@ public class Team implements Serializable{
     private TeamStats myTeamStats;
     private Agenda agenda;
 
-
-
     public Team(String myTeamid,ArrayList<Player> myTeamPlayers,TeamStats ts,Agenda ag){
         myId=myTeamid;
         players= myTeamPlayers;
@@ -38,7 +36,7 @@ public class Team implements Serializable{
         players.remove(playerId);
     }
 
-    public int getCount(){return players.size();}
+    public int getPlayersCount(){return players.size();}
 
     public String getTeamId() {
         return myId;
@@ -58,7 +56,6 @@ public class Team implements Serializable{
 
     public void addToNextMatch(Player j) {
         agenda.addToNextMatch(j);
-
     }
 
     public void removeFromNextMatch(Player j) {
@@ -79,5 +76,14 @@ public class Team implements Serializable{
 
     public ArrayList<Events> getEvents() {
         return agenda.getTeamEvents();
+    }
+
+    public Player getPlayer(String playerPhone) {
+        Player player=null;
+        for (Player p :players){
+            if(p.getPhone().equalsIgnoreCase(playerPhone))
+                player=p;
+        }
+        return player;
     }
 }

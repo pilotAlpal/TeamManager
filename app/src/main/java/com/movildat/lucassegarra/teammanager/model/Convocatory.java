@@ -9,15 +9,12 @@ import java.util.ArrayList;
  * Created by lucas.segarra on 05/08/2016.
  */
 public class Convocatory implements Serializable {
-    private String id_equipo;
     private ArrayList<Player> convocados;
 
-    public Convocatory(String equipo){
-        id_equipo=equipo;
+    public Convocatory(){
         convocados=new ArrayList<Player>();
     }
-    public Convocatory(String equipo,ArrayList<Player> jugadores){
-        id_equipo=equipo;
+    public Convocatory(ArrayList<Player> jugadores){
         convocados=jugadores;
     }
 
@@ -27,7 +24,6 @@ public class Convocatory implements Serializable {
     public void removeFrom(Player player){
         convocados.remove(player);
     }
-    public String getTeamId(){return id_equipo;}
     public int getCount(){return  convocados.size();}
     public ArrayList<Player> getPlayers(){
         return convocados;

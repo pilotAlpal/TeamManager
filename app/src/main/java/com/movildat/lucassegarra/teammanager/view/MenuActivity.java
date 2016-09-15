@@ -11,13 +11,9 @@ import android.provider.CalendarContract;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.movildat.lucassegarra.teammanager.R;
-import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.PlayerStats;
-import com.movildat.lucassegarra.teammanager.model.TeamStats;
-import com.movildat.lucassegarra.teammanager.model.ViewActivity;
 
 
 /**

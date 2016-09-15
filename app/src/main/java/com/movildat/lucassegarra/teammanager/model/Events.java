@@ -16,6 +16,8 @@ public class Events implements Serializable{
         eventDate= Calendar.getInstance().getTime();
     }
 
+    public Events(String ev_id,Date date){}
+
     public Date getEventDate(){
         return eventDate;
     }

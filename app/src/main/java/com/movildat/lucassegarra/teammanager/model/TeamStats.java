@@ -12,6 +12,7 @@ public class TeamStats implements Serializable {
     public TeamStats(int j,int g,int e,int p,int pend,TeamRecords recE){
         jugados=j;
         ganados=g;
+        empatados=e;
         perdidos=p;
         pendientes=pend;
         recordsEquipo=recE;

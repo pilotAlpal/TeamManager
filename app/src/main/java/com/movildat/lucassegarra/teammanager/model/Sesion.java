@@ -62,39 +62,33 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * @param team Nombre del equipo.
      * @param phone Teléfono (identificación).
      * @param pos Posición.
-     * @return True si se ha podido registrar al jugador
      */
-    public boolean signIn(String name,String pass,String team,String phone,String pos){
+    public void signIn(String name,String pass,String team,String phone,String pos){
         setTeam(team);
         if (!dao.existPlayer(phone)){
             jugador=dao.createPlayer(name,pass,phone,pos);
             estsJugEqu=new PlayerStats(pos);
-            return true;
         }
         notifyRepeatedPlayerId();
-        return false;
     }
 
     /**
      * Cambia la imagen del usuario tanto en la sesión actual como en la BD.
      * @param image Nueva Foto.
-     * @return Si se ha podido cambiar la imagen.
      */
-    public boolean changePic(Bitmap image) {
+    public void changePic(Bitmap image) {
         jugador.changePic(image);
         dao.changePic(jugador.getPhone());
-        return true;
     }
 
     /**
      * Permite a un jugador cambiar su posición favorita en la sesión y en la BD
      * @param position Nueva posición favorita.
-     * @return Si se pudo cambiar la posición.
+     *
      */
-    public boolean changePlayerPos(String position) {
+    public void changePlayerPos(String position) {
         dao.changePlayerPos(jugador.getPhone(),position);
         jugador.changePos(position);
-        return true;
     }
 
     /**
@@ -110,29 +104,24 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * Permite registrar un equipo si no existe otro con el mismo nombre
      * @param equipe Nombre del equipo.
      * @param players Lista con los jugadores.
-     * @return Si se pudo crear el equipo.
      *
      */
-    public boolean createTeam(String equipe, ArrayList<Player> players) {
+    public void createTeam(String equipe, ArrayList<Player> players) {
         if(!dao.existTeam(equipe)){
             equipo=dao.createTeam(equipe,players);
             refreshStats();
-            return true;
         }
         notifyRepeatedTeamName();
-        return false;
     }
 
     /**
      * Permite al usuario cambiar a otro de los equipos en los que está registrado.
      * @param newTeam Equipo que  se carga en la sesión.
-     * @return Si se ha podido hacer el cambio.
      */
-    public boolean changeTeam(String newTeam) {
+    public void changeTeam(String newTeam) {
         setTeam(newTeam);
         equipo.addPlayer(jugador);
         refreshStats();
-        return true;
     }
 
     private void setTeam(String teamName){
@@ -142,15 +131,14 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     /**
      * Permite a un jugador inscribirse en un equipo  siempre que este exista.
      * @param teamName Nombre del equipo nuevo en el que se quiere registrar el jugador.
-     * @return True si se ha podido inscribir, si no false.
+
      */
-    public boolean enrollTeam(String teamName) {
+    public void enrollTeam(String teamName) {
         if(existTeam(teamName)){
             dao.linkTeamAndPlayer(jugador.getPhone(),teamName);
-            return changeTeam(teamName);
+            changeTeam(teamName);
         }
         notifyTeamDoesNotExist();
-        return false;
     }
 
     /**
@@ -193,15 +181,12 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * @param pass Contraseña.
      * @param tel Teléfono.
      * @param posicion Posición.
-     * @return True si se ha podido realizar la operación.
      */
-    public boolean createPlayer(String name, String pass, String tel, String posicion) {
+    public void createPlayer(String name, String pass, String tel, String posicion) {
         if(!dao.existPlayer(tel)){
             jugador=dao.createPlayer(name,pass,tel,posicion);
-            return true;
         }
         notifyRepeatedPlayerId();
-        return false;
     }
 
     /**
@@ -211,15 +196,13 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * @param telef Teléfono.
      * @param pos Posición.
      * @param team Nombre del equipo.
-     * @return True si se ha podido inscribir al jugador en el equipo, false si no.
      */
-    public boolean createAndLinkPlayer(String name, String pass, String telef, String pos, String team) {
+    public void createAndLinkPlayer(String name, String pass, String telef, String pos, String team) {
         if(!dao.existPlayer(telef)){
             jugador= dao.createPlayer(name,pass,telef,pos);
-            return dao.linkTeamAndPlayer(telef,team);
+            dao.linkTeamAndPlayer(telef,team);
         }
         notifyRepeatedPlayerId();
-        return false;
     }
 
     /**
@@ -236,16 +219,13 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * @param nRival Equipo rival.
      * @param f Fecha.
      * @param h Hora.
-     * @return Si se ha podido registrar el partido.
      */
-    public boolean createMatch(String nRival, Date f, String h) {
+    public void createMatch(String nRival, Date f, String h) {
         if(existTeam(nRival)){
             Match m= dao.createMatch(getTeamId(),nRival,f,h);
             equipo.addMatch(m);
-            return true;
         }
         notifyTeamDoesNotExist();
-        return false;
     }
 
     /**
@@ -257,7 +237,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     }
 
     /**
-     *
+     *Permite al jugador borrarse del próximo partido
      */
     public void removeFromNextMatch() {
         equipo.removeFromNextMatch(jugador);

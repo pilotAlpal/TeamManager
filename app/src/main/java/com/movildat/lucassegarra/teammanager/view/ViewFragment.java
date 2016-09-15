@@ -1,8 +1,9 @@
-package com.movildat.lucassegarra.teammanager.model;
+package com.movildat.lucassegarra.teammanager.view;
 
 import android.app.Fragment;
 
 import com.movildat.lucassegarra.teammanager.controler.Controller;
+import com.movildat.lucassegarra.teammanager.model.Sesion;
 
 /**
  * Created by lucas.segarra on 16/08/2016.

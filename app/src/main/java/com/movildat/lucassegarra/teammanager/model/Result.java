@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 public class Result implements Serializable {
     private int local,visitante;
+
     public Result(int golesL,int golesV){
         local=golesL;
         visitante=golesV;
@@ -21,8 +22,5 @@ public class Result implements Serializable {
     public void golVisitante(){
         visitante--;
     }
-    public void setResult(int l,int v){
-        local=l;
-        visitante=v;
-    }
+
 }

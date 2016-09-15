@@ -1,8 +1,6 @@
 package com.movildat.lucassegarra.teammanager.view;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,12 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.movildat.lucassegarra.teammanager.R;
-import com.movildat.lucassegarra.teammanager.controler.Controller;
-import com.movildat.lucassegarra.teammanager.model.Sesion;
-import com.movildat.lucassegarra.teammanager.model.ViewActivity;
 
 import java.util.ArrayList;
-import java.util.Observable;
 
 /**
  * Created by lucas.segarra on 03/08/2016.

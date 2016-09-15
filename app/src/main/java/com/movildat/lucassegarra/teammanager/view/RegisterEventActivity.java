@@ -9,10 +9,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.movildat.lucassegarra.teammanager.R;
-import com.movildat.lucassegarra.teammanager.controler.Controller;
-import com.movildat.lucassegarra.teammanager.model.ViewActivity;
 
-import java.util.Calendar;
 import java.util.Date;
 
 /**
