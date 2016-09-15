@@ -1,9 +1,7 @@
 package com.movildat.lucassegarra.teammanager.model;
 
 import java.io.Serializable;
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by lucas.segarra on 24/08/2016.

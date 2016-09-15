@@ -1,6 +1,5 @@
 package com.movildat.lucassegarra.teammanager.model;
 
-import com.movildat.lucassegarra.teammanager.controler.Controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -1,14 +1,5 @@
 package com.movildat.lucassegarra.teammanager.model;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.icu.util.Freezable;
-import android.support.v4.app.Fragment;
-import android.text.format.Time;
-
-import com.movildat.lucassegarra.teammanager.R;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,8 +11,8 @@ public class DatabaseHandler implements Serializable {
 
     /**
      * Verifica que exista un usuario con ese id y esa contraseña
-     * @param telefono
-     * @param pass
+     * @param telefono id del jugador
+     * @param pass contraseña
      * @return True si existe
      */
     public boolean validLogin(String telefono, String pass) {
@@ -30,8 +21,8 @@ public class DatabaseHandler implements Serializable {
 
     /**
      *
-     * @param telf
-     * @param pass
+     * @param telf id del jugador
+     * @param pass contraseña
      * @return El jugador asociado a un teléfono.
      */
     public Player login(String telf, String pass) {
@@ -117,22 +108,11 @@ public class DatabaseHandler implements Serializable {
 
     /**
      *
-     * @param teamName
-     * @return Récords asociados a un equipo.
-     */
-    public TeamRecords getTeamRecords(String teamName) {
-        return new TeamRecords();
-    }
-
-
-    /**
-     *
      * @param teamId
      * @return Próximos eventos en los que participa el equipo.
      */
     public static ArrayList<Events> getEvents(String teamId) {
         ArrayList<Events> a= new ArrayList<>();
-        // Resources.getSystem().getStringArray(R.array.eventos);
         a.add(new Events("Tirol"));
         a.add(new Events("Olimpique"));
         a.add(new Events("Heerenveen"));
@@ -157,13 +137,6 @@ public class DatabaseHandler implements Serializable {
         return new Events("1");
     }
 
-    /**
-     *
-     * @return Próximo id de partido disponible en la bd
-     */
-    public String getNextMatchId() {
-        return "Final de la Champions";
-    }
 
     /**
      *

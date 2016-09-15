@@ -1,9 +1,6 @@
 package com.movildat.lucassegarra.teammanager.model;
 
 import android.graphics.Bitmap;
-import android.media.Image;
-
-import com.movildat.lucassegarra.teammanager.controler.Controller;
 
 import java.io.Serializable;
 
