@@ -326,7 +326,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      * @return Estadísticas del jugador.
      */
     public PlayerStats getPlayerStats(String playerId) {
-        return dao.getPlayerStats(playerId);
+        return equipo.getPlayerStats(playerId);
     }
 
     /**

@@ -89,6 +89,7 @@ public class MenuActivity extends ViewActivity {
 
     }
 
+
     public void partnerClicked(View v){
 
         TextView t= (TextView) v.findViewById(R.id.tv_name_tmi);
@@ -155,4 +156,6 @@ public class MenuActivity extends ViewActivity {
     public void teamDoesNotExist() {
 
     }
+
+
 }

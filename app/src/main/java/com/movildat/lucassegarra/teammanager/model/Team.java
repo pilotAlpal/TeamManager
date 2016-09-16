@@ -86,4 +86,8 @@ public class Team implements Serializable{
         }
         return player;
     }
+
+    public PlayerStats getPlayerStats(String playerId) {
+        return getPlayer(playerId).getPlayerStats();
+    }
 }

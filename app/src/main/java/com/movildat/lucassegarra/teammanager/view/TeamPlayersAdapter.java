@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.ViewHolder> {
     private ArrayList<Player> list;
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         public ImageView image;
         public TextView name;
         public String playerPhone;
@@ -39,11 +39,6 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
             return playerPhone;
         }
 
-        @Override
-        public void onClick(View view) {
-            MenuActivity menuActivity= (MenuActivity) view.getContext();
-
-        }
     }
 
     public TeamPlayersAdapter(Controller controller){
