@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.provider.CalendarContract;
 import android.provider.MediaStore;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -89,10 +90,10 @@ public class MenuActivity extends ViewActivity {
     }
 
     public void partnerClicked(View v){
+
         TextView t= (TextView) v.findViewById(R.id.tv_name_tmi);
         String s=t.getText().toString();
-        PlayerStats pSf=myController.getPlayerStats(s);
-        PartnerStatsFragment partnerStatsFragment=PartnerStatsFragment.newInstance(myController,pSf);
+        PartnerStatsFragment partnerStatsFragment=PartnerStatsFragment.newInstance(myController);
         getFragmentManager().beginTransaction().replace(R.id.f_info,partnerStatsFragment).commit();
     }
 

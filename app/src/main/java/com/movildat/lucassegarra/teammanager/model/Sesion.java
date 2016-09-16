@@ -364,6 +364,9 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
         lista.remove(observer);
     }
 
+    public void rate(float v, String partnerId) {
+    }
+
     //Métodos que implementarán las vistas(observadores)
 
     public interface Observador extends Observer{

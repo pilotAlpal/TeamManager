@@ -229,9 +229,11 @@ public class Controller implements Serializable{
 
     /**
      *
+     * @param v
+     * @param partnerId
      */
-    public void ratePlayer() {
-        
+    public void ratePlayer(float v, String partnerId) {
+        mySesion.rate(v,partnerId);
     }
 
     /**
@@ -248,13 +250,12 @@ public class Controller implements Serializable{
         mySesion.removeFromNextMatch();
     }
 
-
     /**
      *
      * @param team
      * @return
      */
-    public boolean existTeam(String team) {
+    public boolean existTeam(String team){
         return mySesion.existTeam(team);
     }
 

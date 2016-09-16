@@ -35,8 +35,7 @@ public class TeamStatsFragment extends ViewFragment {
         myRV.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager=new LinearLayoutManager(getActivity());
         myRV.setLayoutManager(mLayoutManager);
-        ArrayList<Player> teamMates=myController.getPartners();
-        RecyclerView.Adapter adapter=new TeamPlayersAdapter(teamMates);
+        RecyclerView.Adapter adapter=new TeamPlayersAdapter(myController);
         myRV.setAdapter(adapter);
         teamStats=myController.getMyTeamStats();
         ganados=(TextView) v.findViewById(R.id.tv_tsv_ganados);

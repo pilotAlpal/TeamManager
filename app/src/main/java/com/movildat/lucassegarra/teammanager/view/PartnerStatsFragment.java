@@ -8,11 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
-
 import com.movildat.lucassegarra.teammanager.R;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
-import com.movildat.lucassegarra.teammanager.model.PlayerStats;
-
 import java.util.Observable;
 
 /**
@@ -22,6 +19,7 @@ public class PartnerStatsFragment extends ViewFragment{
 
     private ImageButton callButt,messageBut;
     private RatingBar ratePartner;
+    private String partnerId;
 
     @Override public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -37,7 +35,7 @@ public class PartnerStatsFragment extends ViewFragment{
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
                 //pasar numero del compañero
-                myController.ratePlayer();
+                myController.ratePlayer(v,partnerId);
             }
         });
         callButt=(ImageButton) v2.findViewById(R.id.b_contact_call);
@@ -67,7 +65,7 @@ public class PartnerStatsFragment extends ViewFragment{
     }
 
 
-    public static PartnerStatsFragment newInstance(Controller myController, PlayerStats pSf) {
+    public static PartnerStatsFragment newInstance(Controller myController) {
         PartnerStatsFragment partnerStatsFragment=new PartnerStatsFragment();
         partnerStatsFragment.setController(myController);
         return partnerStatsFragment;
