@@ -5,6 +5,8 @@ import android.app.Fragment;
 import com.movildat.lucassegarra.teammanager.controler.Controller;
 import com.movildat.lucassegarra.teammanager.model.Sesion;
 
+import java.io.Serializable;
+
 /**
  * Created by lucas.segarra on 16/08/2016.
  */

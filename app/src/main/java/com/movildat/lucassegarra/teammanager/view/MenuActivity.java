@@ -33,7 +33,7 @@ public class MenuActivity extends ViewActivity {
         setContentView(R.layout.menu_view);
         optionsFragment=(OptionsFragment)getFragmentManager().findFragmentById(R.id.f_ops);
         optionsFragment.setController(myController);
-        infoFragment=(InfoFragment)getFragmentManager().findFragmentById((R.id.f_info));
+        infoFragment=(InfoFragment)getFragmentManager().findFragmentById(R.id.f_info);
         infoFragment.setController(myController);
     }
 
@@ -62,11 +62,11 @@ public class MenuActivity extends ViewActivity {
     }
 
     public void addEvent(View v){
-        Intent registerEventIntent = new Intent(MenuActivity.this,RegisterEventActivity.class);
+        Intent registerEventIntent = new Intent();
         Bundle b=new Bundle();
         b.putSerializable("Controller",myController);
-        registerEventIntent.putExtras(b);
         registerEventIntent.setClass(this,RegisterEventActivity.class);
+        registerEventIntent.putExtras(b);
         this.startActivity(registerEventIntent);
     }
 

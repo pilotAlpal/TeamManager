@@ -115,9 +115,10 @@ public class SignInActivity extends Activity implements Sesion.Observador{
 
     }
 
+
     @Override
     public void setController(Controller controller) {
-
+        myController=controller;
     }
 
     @Override
