@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.movildat.lucassegarra.teammanager.R;
@@ -30,6 +31,13 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
             super(v);
             image=(ImageView) v.findViewById(R.id.iv_tmi);
             name=(TextView) v.findViewById(R.id.tv_name_tmi);
+            RelativeLayout layout=(RelativeLayout) v.findViewById(R.id.view_layout);
+            layout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
         }
         public void setPlayerPhone(String t){
             playerPhone=t;
@@ -41,10 +49,9 @@ public class TeamPlayersAdapter extends RecyclerView.Adapter<TeamPlayersAdapter.
 
     }
 
-    public TeamPlayersAdapter(Controller controller){
-        ArrayList<Player> data=controller.getPartners();
-        if(data!=null)
-            list=data;
+    public TeamPlayersAdapter(ArrayList<Player> partners){;
+        if(partners!=null)
+            list=partners;
     }
 
     @Override

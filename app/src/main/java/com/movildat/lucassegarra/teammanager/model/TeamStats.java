@@ -49,4 +49,12 @@ public class TeamStats implements Serializable {
     public TeamRecords getRecords() {
         return recordsEquipo;
     }
+
+    public String getTopAsistant() {
+       return recordsEquipo.getTopAsistant();
+    }
+
+    public String getTopScorer() {
+        return recordsEquipo.getTopScorer();
+    }
 }

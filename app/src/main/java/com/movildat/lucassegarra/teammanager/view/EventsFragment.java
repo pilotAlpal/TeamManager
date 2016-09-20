@@ -35,8 +35,8 @@ public class EventsFragment extends ViewFragment {
         myRecycler.setHasFixedSize(true);
         RecyclerView.LayoutManager rvLM=new LinearLayoutManager(getActivity());
         myRecycler.setLayoutManager(rvLM);
-        ArrayList<Events> eventos= myController.getEvents();
-        Result[] resultados=myController.getResults();
+        ArrayList<Events> eventos= myController.getMyEvents();
+        ArrayList<Result> resultados=myController.getMyResults();
         RecyclerView.Adapter adapter=new CalendarListAdapter(eventos);
         myRecycler.setAdapter(adapter);
 

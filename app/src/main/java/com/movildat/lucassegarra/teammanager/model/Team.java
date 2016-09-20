@@ -90,4 +90,8 @@ public class Team implements Serializable{
     public PlayerStats getPlayerStats(String playerId) {
         return getPlayer(playerId).getPlayerStats();
     }
+
+    public ArrayList<Result> getTeamResults() {
+        return agenda.getTeamResults();
+    }
 }

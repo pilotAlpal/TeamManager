@@ -26,7 +26,7 @@ public class TeamStatsFragment extends ViewFragment {
     private RecyclerView myRV;
     private TextView jugados,ganados,empatados,perdidos,pendientes,pichichi,asistente,maxJugados;
     private ArrayList<Player> teamPartners;
-    private TeamRecords records;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -35,7 +35,8 @@ public class TeamStatsFragment extends ViewFragment {
         myRV.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager=new LinearLayoutManager(getActivity());
         myRV.setLayoutManager(mLayoutManager);
-        RecyclerView.Adapter adapter=new TeamPlayersAdapter(myController);
+        teamPartners=myController.getPartners();
+        RecyclerView.Adapter adapter=new TeamPlayersAdapter(teamPartners);
         myRV.setAdapter(adapter);
         teamStats=myController.getMyTeamStats();
         ganados=(TextView) v.findViewById(R.id.tv_tsv_ganados);
@@ -54,10 +55,10 @@ public class TeamStatsFragment extends ViewFragment {
         aux=String.valueOf(teamStats.getPlayed());
         jugados.setText(aux);
         pichichi=(TextView) v.findViewById(R.id.tv_tsv_pichichi);
-        aux=String.valueOf(records.getTopScorer());
+        aux=String.valueOf(teamStats.getTopScorer());
         pichichi.setText(aux);
         asistente=(TextView)v.findViewById(R.id.tv_tsv_asistente);
-        aux=String.valueOf(records.getTopAsistant());
+        aux=String.valueOf(teamStats.getTopAsistant());
         asistente.setText(aux);
         return v;
     }
@@ -72,11 +73,10 @@ public class TeamStatsFragment extends ViewFragment {
         teamStatsFragment.setController(myController);
         teamStatsFragment.setStats(myController.getMyTeamStats());
         teamStatsFragment.setMates(myController.getPartners());
-        teamStatsFragment.setRecords(myController.getMyTeamRecords());
         return teamStatsFragment;
     }
 
-    private void setRecords(TeamRecords myTeamRecords) {records=myTeamRecords;}
+
     private void setStats(TeamStats s) {
         teamStats = s;
     }

@@ -133,8 +133,8 @@ public class Controller implements Serializable{
      *
      * @return
      */
-    public ArrayList<Events> getEvents() {
-        return mySesion.getEvents();
+    public ArrayList<Events> getMyEvents() {
+        return mySesion.getMyEvents();
     }
 
     /**
@@ -196,10 +196,8 @@ public class Controller implements Serializable{
      *
      * @return
      */
-    public Result[] getResults() {
-        Result[] r=new Result[1];
-        r[0]=new Result();
-        return r;
+    public ArrayList<Result> getMyResults() {
+        return mySesion.getMyTeamResults();
     }
 
     /**

@@ -259,7 +259,7 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
      *
      * @return Lista de próximos eventos.
      */
-    public ArrayList<Events> getEvents(){
+    public ArrayList<Events> getMyEvents(){
         return equipo.getEvents();
     }
 
@@ -365,6 +365,10 @@ public class Sesion implements Observable<Sesion.Observador> ,Serializable{
     }
 
     public void rate(float v, String partnerId) {
+    }
+
+    public ArrayList<Result> getMyTeamResults() {
+        return equipo.getTeamResults();
     }
 
     //Métodos que implementarán las vistas(observadores)

@@ -43,7 +43,9 @@ public class Match implements Serializable {
     public Convocatory getConvocatory(){
         return convocados;
     }
-
+    public Result getResult(){
+        return resultado;
+    }
     public Date getDate() {
         return when;
     }

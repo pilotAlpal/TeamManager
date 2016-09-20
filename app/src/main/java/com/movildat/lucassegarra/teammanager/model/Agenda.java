@@ -81,4 +81,12 @@ public class Agenda implements Serializable {
     public void removeFromNextMatch(Player p){
         proxPartido.removeFromConvocatory(p);
     }
+
+    public ArrayList<Result> getTeamResults() {
+        ArrayList<Result>resultados=new ArrayList<>();
+        for(Match m:listaUltimos){
+            resultados.add(m.getResult());
+        }
+        return resultados;
+    }
 }

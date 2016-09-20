@@ -28,7 +28,7 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView mTextView;
         public ImageButton butt;
-        private String number;
+        private String number="626992478";
 
         public ViewHolder(View v){
             super(v);
@@ -39,10 +39,8 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
             butt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //hacerse con el número asociado
-                    String numero="626992478";
                     Intent callIntent=new Intent(Intent.ACTION_DIAL);
-                    callIntent.setData(Uri.parse("tel:"+numero));
+                    callIntent.setData(Uri.parse("tel:"+number));
                     if (callIntent.resolveActivity(context.getPackageManager())!=null){
                         context.startActivity(callIntent);
                     }
@@ -57,11 +55,6 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
             mDataSet=data;
     }
 
-    /*
-    public void addItem(int pos){
-        mDataSet[pos]=new
-    }
-    */
 
 
     @Override
