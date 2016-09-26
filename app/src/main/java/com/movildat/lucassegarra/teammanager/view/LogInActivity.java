@@ -42,7 +42,6 @@ public class LogInActivity extends Activity implements Sesion.Observador{
         menuIntent.setClass(this,MenuActivity.class);
         startActivity(menuIntent);
     }
-
     public void signin(View view){
         Intent signInIntent=new Intent(LogInActivity.this,SignInActivity.class);
         startActivity(signInIntent);

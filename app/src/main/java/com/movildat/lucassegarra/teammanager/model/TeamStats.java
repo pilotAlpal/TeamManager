@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Propietario on 16/08/2016.
  */
 public class TeamStats implements Serializable {
-    private int jugados,ganados,empatados,perdidos,pendientes;
+    private Integer jugados,ganados,empatados,perdidos,pendientes;
     private TeamRecords recordsEquipo;
 
     public TeamStats(int j,int g,int e,int p,int pend,TeamRecords recE){

@@ -1,5 +1,7 @@
 package com.movildat.lucassegarra.teammanager.model;
 
+import android.content.pm.PackageInstaller;
+
 /**
  * Created by Propietario on 12/08/2016.
  */

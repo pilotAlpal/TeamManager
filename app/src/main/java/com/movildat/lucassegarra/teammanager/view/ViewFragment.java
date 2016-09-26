@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * Created by lucas.segarra on 16/08/2016.
  */
-public abstract class ViewFragment extends Fragment implements Sesion.Observador {
+public abstract class ViewFragment extends Fragment implements Sesion.Observador{
     protected Controller myController;
     public void setController(Controller c){
         myController=c;

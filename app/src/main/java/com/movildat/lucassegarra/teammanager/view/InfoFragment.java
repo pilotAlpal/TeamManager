@@ -15,7 +15,6 @@ public class InfoFragment extends ViewFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.info_view, container, false);
     }
 
